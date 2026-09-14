@@ -1,0 +1,36 @@
+/* Juniper — cool green primary, periwinkle blue-purple secondary */
+:root {
+  --color-neutral: 255, 255, 255;
+  --color-neutral-50: 249, 250, 251;
+  --color-neutral-100: 241, 243, 246;
+  --color-neutral-200: 226, 229, 235;
+  --color-neutral-300: 200, 205, 215;
+  --color-neutral-400: 144, 152, 167;
+  --color-neutral-500: 99, 108, 124;
+  --color-neutral-600: 70, 79, 93;
+  --color-neutral-700: 48, 55, 66;
+  --color-neutral-800: 30, 35, 43;
+  --color-neutral-900: 17, 21, 26;
+  /* Juniper green */
+  --color-primary-50: 236, 248, 243;
+  --color-primary-100: 211, 239, 228;
+  --color-primary-200: 166, 221, 200;
+  --color-primary-300: 117, 198, 169;
+  --color-primary-400: 74, 170, 139;
+  --color-primary-500: 47, 140, 113;
+  --color-primary-600: 35, 114, 91;
+  --color-primary-700: 28, 91, 73;
+  --color-primary-800: 22, 70, 57;
+  --color-primary-900: 16, 50, 41;
+  /* Periwinkle */
+  --color-secondary-50: 241, 243, 252;
+  --color-secondary-100: 228, 232, 249;
+  --color-secondary-200: 201, 209, 242;
+  --color-secondary-300: 168, 179, 232;
+  --color-secondary-400: 134, 147, 219;
+  --color-secondary-500: 108, 120, 200;
+  --color-secondary-600: 87, 96, 168;
+  --color-secondary-700: 70, 77, 134;
+  --color-secondary-800: 53, 58, 102;
+  --color-secondary-900: 38, 41, 72;
+}

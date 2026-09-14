@@ -1,0 +1,25 @@
+locale = "en-US"
+label = "English"
+displayName = "EN"
+isoCode = "en"
+weight = 1
+rtl = false
+
+title = "Christian Carrasco"
+copyright = "&copy; 2026 Christian Carrasco"
+
+[params]
+  dateFormat = "2 January 2006"
+  description = "Christian Carrasco: 10+ years in enterprise IT operations and security. SIEM engineering, incident command, cloud security, and compliance. Home lab writeups and detection engineering."
+
+[params.author]
+  name = "Christian Carrasco"
+  image = "img/author.jpg"
+  headline = "IT Operations & Security"
+  bio = "10+ years across enterprise IT operations, security, and service delivery. SIEM engineering, incident command, and cloud security. Building a lab in public and documenting the pivot back into hands-on security. Bilingual, English and Spanish."
+  links = [
+    { linkedin = "https://linkedin.com/in/cybercc" },
+    { github = "https://github.com/labwithchristian" },
+    { email = "mailto:hello@christiancarrasco.dev" },
+    { rss = "/index.xml" },
+  ]

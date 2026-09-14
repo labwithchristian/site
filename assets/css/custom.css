@@ -1,0 +1,480 @@
+/* --- Skills & tools marquee --- */
+.logo-marquee {
+  position: relative;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+.logo-marquee__track {
+  display: flex;
+  width: max-content;
+  animation: logo-marquee-scroll var(--marquee-duration, 42s) linear infinite;
+}
+
+.logo-marquee:hover .logo-marquee__track,
+.logo-marquee:focus-within .logo-marquee__track {
+  animation-play-state: paused;
+}
+
+.logo-marquee__group {
+  display: flex;
+  align-items: center;
+  gap: 2.75rem;
+  margin: 0;
+  padding: 0 1.375rem;
+  list-style: none;
+}
+
+.logo-marquee__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 0 0 auto;
+  width: 5.25rem;
+}
+
+.logo-marquee__icon svg {
+  width: 2.125rem;
+  height: 2.125rem;
+  fill: rgb(var(--color-neutral-500));
+  transition: fill 0.2s ease, transform 0.2s ease;
+}
+
+.dark .logo-marquee__icon svg {
+  fill: rgb(var(--color-neutral-400));
+}
+
+.logo-marquee__item:hover .logo-marquee__icon svg {
+  fill: rgb(var(--color-primary-600));
+  transform: translateY(-2px);
+}
+
+.dark .logo-marquee__item:hover .logo-marquee__icon svg {
+  fill: rgb(var(--color-primary-400));
+}
+
+.logo-marquee__label {
+  font-size: 0.7rem;
+  line-height: 1.1;
+  text-align: center;
+  color: rgb(var(--color-neutral-500));
+  white-space: nowrap;
+}
+
+.dark .logo-marquee__label {
+  color: rgb(var(--color-neutral-400));
+}
+
+/* Wordmark entries in the marquee, for brands whose marks are not redistributable */
+.logo-marquee__item--text { width: 7.5rem; }
+
+.logo-marquee__wordmark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.125rem;
+  padding: 0 0.7rem;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-align: center;
+  white-space: nowrap;
+  color: rgb(var(--color-neutral-500));
+  border: 1px solid rgba(var(--color-neutral-400), 0.4);
+  border-radius: 0.4rem;
+  transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.dark .logo-marquee__wordmark {
+  color: rgb(var(--color-neutral-400));
+  border-color: rgba(var(--color-neutral-400), 0.3);
+}
+
+.logo-marquee__item--text:hover .logo-marquee__wordmark {
+  color: rgb(var(--color-primary-600));
+  border-color: rgba(var(--color-primary-400), 0.7);
+  transform: translateY(-2px);
+}
+
+.dark .logo-marquee__item--text:hover .logo-marquee__wordmark {
+  color: rgb(var(--color-primary-400));
+}
+
+@keyframes logo-marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .logo-marquee__track { animation: none; }
+  .logo-marquee {
+    overflow-x: auto;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
+
+/* --- Footer credits --- */
+.site-credits {
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: rgb(var(--color-neutral-500));
+}
+
+.dark .site-credits { color: rgb(var(--color-neutral-400)); }
+
+.site-credits a {
+  color: rgb(var(--color-primary-600));
+  text-decoration: none;
+}
+
+.dark .site-credits a { color: rgb(var(--color-primary-400)); }
+.site-credits a:hover { text-decoration: underline; }
+
+/* --- Astral glass surfaces ---
+   Opt in per-site by adding `astral = true` under [params] in params.toml,
+   which sets data-astral="true" on <html>. Cards become translucent so the
+   background pattern shows through, with a primary-tinted edge. */
+
+html[data-astral="true"] .logo-marquee__item:hover .logo-marquee__icon svg {
+  filter: drop-shadow(0 0 6px rgba(var(--color-primary-400), 0.5));
+}
+
+/* Feature cards on the homepage */
+html[data-astral="true"] .feature-grid-glass,
+html[data-astral="true"] article.group {
+  background-color: rgba(var(--color-neutral-100), 0.55);
+  border-color: rgba(var(--color-primary-300), 0.35);
+  backdrop-filter: blur(14px) saturate(130%);
+  -webkit-backdrop-filter: blur(14px) saturate(130%);
+}
+
+html[data-astral="true"].dark article.group,
+html[data-astral="true"] .dark article.group {
+  background-color: rgba(var(--color-neutral-800), 0.45);
+  border-color: rgba(var(--color-primary-400), 0.22);
+}
+
+html[data-astral="true"] article.group:hover {
+  border-color: rgba(var(--color-primary-400), 0.6);
+  box-shadow:
+    0 0 0 1px rgba(var(--color-primary-400), 0.15),
+    0 10px 32px -12px rgba(var(--color-primary-500), 0.4);
+}
+
+/* Timeline entries */
+html[data-astral="true"] .timeline-glass,
+html[data-astral="true"] ol.border-s-2 > li > div > div.block {
+  background-color: rgba(var(--color-neutral-100), 0.5);
+  border: 1px solid rgba(var(--color-primary-300), 0.3);
+  backdrop-filter: blur(14px) saturate(130%);
+  -webkit-backdrop-filter: blur(14px) saturate(130%);
+  box-shadow: 0 8px 28px -16px rgba(var(--color-primary-600), 0.45);
+}
+
+html[data-astral="true"].dark ol.border-s-2 > li > div > div.block,
+html[data-astral="true"] .dark ol.border-s-2 > li > div > div.block {
+  background-color: rgba(var(--color-neutral-800), 0.42);
+  border-color: rgba(var(--color-primary-400), 0.2);
+}
+
+/* Article / recent-post cards */
+html[data-astral="true"] .article-card,
+html[data-astral="true"] .min-h-16.rounded-md,
+html[data-astral="true"] .rounded-md.border {
+  background-color: rgba(var(--color-neutral-100), 0.5);
+  backdrop-filter: blur(12px) saturate(125%);
+  -webkit-backdrop-filter: blur(12px) saturate(125%);
+}
+
+html[data-astral="true"].dark .article-card,
+html[data-astral="true"].dark .min-h-16.rounded-md,
+html[data-astral="true"].dark .rounded-md.border {
+  background-color: rgba(var(--color-neutral-800), 0.4);
+}
+
+/* Floating header glass */
+html[data-astral="true"] header .backdrop-blur,
+html[data-astral="true"] #floating-header {
+  background-color: rgba(var(--color-neutral-800), 0.35);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid rgba(var(--color-primary-400), 0.18);
+}
+
+/* --- Background pattern legibility ---
+   The pattern SVGs are drawn in neutral gray. On a light ground they need to be
+   darkened and the canvas overlay pulled back, or they vanish. On dark grounds
+   they need lifting instead. Alpha is preserved by brightness(), so the strokes
+   stay as subtle as they were drawn. */
+
+html:not(.dark) #background-canvas img {
+  filter: brightness(0.42);
+}
+
+html.dark #background-canvas img {
+  filter: brightness(1.45);
+}
+
+/* Non-astral light: theme default is a 75% wash, too heavy for these patterns */
+html:not(.dark) #background-canvas > div {
+  background-color: rgba(var(--color-neutral), 0.5) !important;
+}
+
+html[data-astral="true"]:not(.dark) #background-canvas > div {
+  background-color: rgba(var(--color-neutral-50), 0.38) !important;
+}
+
+html[data-astral="true"].dark #background-canvas > div,
+html[data-astral="true"] .dark #background-canvas > div {
+  background-color: rgba(var(--color-neutral-900), 0.55) !important;
+}
+
+/* Light-ground glass: lift cards above the page rather than tinting them darker */
+html[data-astral="true"]:not(.dark) article.group,
+html[data-astral="true"]:not(.dark) ol.border-s-2 > li > div > div.block,
+html[data-astral="true"]:not(.dark) .article-card {
+  background-color: rgba(255, 255, 255, 0.62);
+  border-color: rgba(var(--color-primary-300), 0.4);
+  box-shadow: 0 8px 30px -18px rgba(var(--color-primary-700), 0.35);
+}
+
+html[data-astral="true"]:not(.dark) header .backdrop-blur,
+html[data-astral="true"]:not(.dark) #floating-header {
+  background-color: rgba(255, 255, 255, 0.6);
+  border-color: rgba(var(--color-primary-300), 0.3);
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  html[data-astral="true"] article.group,
+  html[data-astral="true"] ol.border-s-2 > li > div > div.block,
+  html[data-astral="true"] .article-card {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+
+/* --- Dark-mode page background ---
+   Lightens only the page canvas in dark mode. Cards, glass fills and every other
+   neutral-800 consumer are unaffected. Light mode is untouched. */
+html.dark body {
+  background-color: rgb(var(--color-page-dark, var(--color-neutral-800)));
+}
+
+/* --- What's cooking / learning pipeline --- */
+.pipeline__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.pipeline__item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.85rem 1.1rem;
+  border: 1px solid rgba(var(--color-primary-300), 0.35);
+  border-radius: 0.6rem;
+  background-color: rgba(var(--color-neutral-50), 0.55);
+}
+
+.dark .pipeline__item {
+  border-color: rgba(var(--color-primary-400), 0.22);
+  background-color: rgba(var(--color-neutral-800), 0.45);
+}
+
+html[data-astral="true"] .pipeline__item {
+  backdrop-filter: blur(12px) saturate(125%);
+  -webkit-backdrop-filter: blur(12px) saturate(125%);
+}
+
+html[data-astral="true"]:not(.dark) .pipeline__item {
+  background-color: rgba(255, 255, 255, 0.62);
+  box-shadow: 0 8px 30px -18px rgba(var(--color-primary-700), 0.35);
+}
+
+.pipeline__status {
+  flex: 0 0 auto;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 999px;
+  background-color: rgb(var(--color-primary-500));
+  box-shadow: 0 0 0 3px rgba(var(--color-primary-400), 0.22);
+}
+
+.pipeline__status[data-state^="target"],
+.pipeline__status[data-state^="queued"] {
+  background-color: rgb(var(--color-neutral-400));
+  box-shadow: 0 0 0 3px rgba(var(--color-neutral-400), 0.18);
+}
+
+.pipeline__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.pipeline__name {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: rgb(var(--color-neutral-800));
+}
+
+.dark .pipeline__name { color: rgb(var(--color-neutral-100)); }
+
+.pipeline__note {
+  font-size: 0.8rem;
+  line-height: 1.4;
+  color: rgb(var(--color-neutral-500));
+}
+
+.dark .pipeline__note { color: rgb(var(--color-neutral-400)); }
+
+.pipeline__badge {
+  flex: 0 0 auto;
+  font-size: 0.7rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  white-space: nowrap;
+  color: rgb(var(--color-primary-700));
+  background-color: rgba(var(--color-primary-200), 0.55);
+}
+
+.dark .pipeline__badge {
+  color: rgb(var(--color-primary-200));
+  background-color: rgba(var(--color-primary-800), 0.6);
+}
+
+@media (max-width: 480px) {
+  .pipeline__item { flex-wrap: wrap; }
+  .pipeline__badge { margin-left: 1.45rem; }
+}
+
+/* --- Display fonts for headings ---
+   Self-hosted (static/fonts), so no third-party font requests.
+   Switch with `headingFont` in params.toml. */
+
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("/fonts/instrument-serif-400.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("/fonts/instrument-serif-400-italic.woff2") format("woff2");
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "Fraunces";
+  src: url("/fonts/fraunces-var.woff2") format("woff2-variations");
+  font-weight: 100 900; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Fraunces";
+  src: url("/fonts/fraunces-var-italic.woff2") format("woff2-variations");
+  font-weight: 100 900; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "Newsreader";
+  src: url("/fonts/newsreader-var.woff2") format("woff2-variations");
+  font-weight: 200 800; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Newsreader";
+  src: url("/fonts/newsreader-var-italic.woff2") format("woff2-variations");
+  font-weight: 200 800; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "Playfair Display";
+  src: url("/fonts/playfair-500.woff2") format("woff2");
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Playfair Display";
+  src: url("/fonts/playfair-500-italic.woff2") format("woff2");
+  font-weight: 500; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "Literata";
+  src: url("/fonts/literata-var.woff2") format("woff2-variations");
+  font-weight: 200 900; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Literata";
+  src: url("/fonts/literata-var-italic.woff2") format("woff2-variations");
+  font-weight: 200 900; font-style: italic; font-display: swap;
+}
+
+/* Headings that take the display face: section headings, page titles,
+   hero title, and the sub-captions under section headings stay body font. */
+html[data-heading-font] h1,
+html[data-heading-font] h2,
+html[data-heading-font] h3,
+html[data-heading-font] .prose h1,
+html[data-heading-font] .prose h2,
+html[data-heading-font] .prose h3 {
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+  font-weight: var(--font-display-weight, 500);
+  font-style: var(--font-display-style, normal);
+  letter-spacing: var(--font-display-tracking, -0.01em);
+  line-height: 1.2;
+}
+
+html[data-heading-font="instrument"] {
+  --font-display: "Instrument Serif";
+  --font-display-weight: 400;
+  --font-display-tracking: 0;
+}
+html[data-heading-font="instrument-italic"] {
+  --font-display: "Instrument Serif";
+  --font-display-weight: 400;
+  --font-display-style: italic;
+  --font-display-tracking: 0;
+}
+html[data-heading-font="fraunces"] {
+  --font-display: "Fraunces";
+  --font-display-weight: 600;
+  --font-display-tracking: -0.015em;
+}
+html[data-heading-font="fraunces-italic"] {
+  --font-display: "Fraunces";
+  --font-display-weight: 600;
+  --font-display-style: italic;
+  --font-display-tracking: -0.015em;
+}
+html[data-heading-font="newsreader-italic"] {
+  --font-display: "Newsreader";
+  --font-display-weight: 500;
+  --font-display-style: italic;
+  --font-display-tracking: -0.005em;
+}
+html[data-heading-font="playfair-italic"] {
+  --font-display: "Playfair Display";
+  --font-display-weight: 500;
+  --font-display-style: italic;
+  --font-display-tracking: -0.01em;
+}
+html[data-heading-font="literata"] {
+  --font-display: "Literata";
+  --font-display-weight: 600;
+  --font-display-tracking: -0.015em;
+}
+
+/* Keep functional UI text in the body font even when it sits in a heading tag */
+html[data-heading-font] .pipeline__badge,
+html[data-heading-font] .logo-marquee__label,
+html[data-heading-font] nav,
+html[data-heading-font] .site-credits {
+  font-family: inherit;
+}

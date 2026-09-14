@@ -1,0 +1,36 @@
+/* Nebula Linen — warm paper off-white, violet accents stay cool against it */
+:root {
+  --color-neutral: 251, 250, 246;      /* page background: warm off-white */
+  --color-neutral-50: 247, 245, 240;
+  --color-neutral-100: 241, 238, 232;
+  --color-neutral-200: 228, 224, 217;
+  --color-neutral-300: 203, 198, 192;
+  --color-neutral-400: 148, 143, 140;
+  --color-neutral-500: 103, 99, 100;
+  --color-neutral-600: 74, 71, 76;
+  --color-neutral-700: 51, 48, 56;
+  --color-neutral-800: 33, 31, 40;
+  --color-neutral-900: 27, 25, 35;
+  /* Indigo violet */
+  --color-primary-50: 241, 238, 253;
+  --color-primary-100: 227, 221, 251;
+  --color-primary-200: 201, 190, 247;
+  --color-primary-300: 170, 152, 240;
+  --color-primary-400: 133, 108, 224;
+  --color-primary-500: 106, 79, 198;
+  --color-primary-600: 85, 61, 165;
+  --color-primary-700: 68, 49, 132;
+  --color-primary-800: 52, 38, 101;
+  --color-primary-900: 37, 27, 72;
+  /* Magenta, warmed slightly to sit with the paper ground */
+  --color-secondary-50: 253, 239, 247;
+  --color-secondary-100: 250, 221, 239;
+  --color-secondary-200: 245, 189, 224;
+  --color-secondary-300: 233, 144, 200;
+  --color-secondary-400: 213, 103, 173;
+  --color-secondary-500: 186, 77, 146;
+  --color-secondary-600: 154, 60, 120;
+  --color-secondary-700: 123, 48, 96;
+  --color-secondary-800: 94, 37, 73;
+  --color-secondary-900: 66, 26, 52;
+}

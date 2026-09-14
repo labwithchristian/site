@@ -1,0 +1,13 @@
+# Hugo
+/public/
+/resources/_gen/
+.hugo_build.lock
+hugo.exe
+hugo.darwin
+hugo.linux
+
+# Node (not needed for a normal build; fonts are already vendored in static/fonts/)
+node_modules/
+
+# OS
+.DS_Store

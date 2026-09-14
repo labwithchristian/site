@@ -1,0 +1,36 @@
+/* Nebula Quartz — near-white with the faintest lilac cast, highest contrast */
+:root {
+  --color-neutral: 253, 252, 255;      /* page background: near-white, lilac cast */
+  --color-neutral-50: 249, 248, 253;
+  --color-neutral-100: 243, 241, 250;
+  --color-neutral-200: 230, 227, 243;
+  --color-neutral-300: 205, 200, 227;
+  --color-neutral-400: 150, 144, 181;
+  --color-neutral-500: 104, 99, 136;
+  --color-neutral-600: 74, 70, 103;
+  --color-neutral-700: 50, 47, 73;
+  --color-neutral-800: 31, 29, 50;
+  --color-neutral-900: 22, 20, 38;
+  /* Indigo violet, deepest of the three for maximum legibility */
+  --color-primary-50: 239, 236, 253;
+  --color-primary-100: 223, 217, 251;
+  --color-primary-200: 195, 183, 246;
+  --color-primary-300: 162, 142, 238;
+  --color-primary-400: 124, 98, 221;
+  --color-primary-500: 97, 70, 193;
+  --color-primary-600: 78, 54, 160;
+  --color-primary-700: 62, 43, 128;
+  --color-primary-800: 48, 33, 98;
+  --color-primary-900: 34, 23, 70;
+  /* Magenta */
+  --color-secondary-50: 252, 237, 247;
+  --color-secondary-100: 249, 217, 238;
+  --color-secondary-200: 243, 183, 222;
+  --color-secondary-300: 230, 135, 198;
+  --color-secondary-400: 208, 92, 170;
+  --color-secondary-500: 180, 67, 142;
+  --color-secondary-600: 149, 52, 117;
+  --color-secondary-700: 119, 42, 94;
+  --color-secondary-800: 91, 32, 72;
+  --color-secondary-900: 64, 23, 51;
+}

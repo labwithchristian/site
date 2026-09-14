@@ -1,0 +1,20 @@
+{{- $items := .Get "items" | default "" -}}
+<div class="pipeline not-prose my-8">
+  <ul class="pipeline__list">
+    {{- range split $items "|" -}}
+      {{- $parts := split (trim . " ") "::" -}}
+      {{- if ge (len $parts) 2 -}}
+        <li class="pipeline__item">
+          <span class="pipeline__status" data-state="{{ trim (index $parts 1) " " | lower }}"></span>
+          <div class="pipeline__body">
+            <span class="pipeline__name">{{ trim (index $parts 0) " " }}</span>
+            {{- if ge (len $parts) 3 }}
+              <span class="pipeline__note">{{ trim (index $parts 2) " " }}</span>
+            {{- end }}
+          </div>
+          <span class="pipeline__badge">{{ trim (index $parts 1) " " }}</span>
+        </li>
+      {{- end -}}
+    {{- end -}}
+  </ul>
+</div>
