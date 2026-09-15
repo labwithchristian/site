@@ -1,7 +1,7 @@
 ---
 title: "Operations, security, and service delivery for enterprise infrastructure"
 heroCaption: "Christian's Portfolio"
-heroLead: "Ten years of experience leading and strengthening enterprise technology operations across cloud and on-premises environments. Focused on operational resilience, incident and problem management, service delivery, compliance and controls, identity, and building the teams and processes that keep critical services secure, reliable, and running."
+heroLead: "Ten plus years of experience leading and strengthening enterprise technology operations across cloud and on-premises environments. Focused on operational resilience, incident and problem management, service delivery, compliance and controls, identity, and building the teams and processes that keep critical services secure, reliable, and running."
 heroButtons:
   - label: "Explore the lab"
     url: "/homelab/"
