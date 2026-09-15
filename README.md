@@ -393,8 +393,9 @@ It also skips itself entirely when any of these are true:
 
 - the visitor has `prefers-reduced-motion: reduce` set
 - it has already played once in this browser session (`sessionStorage`)
-- the entry point is any path other than `/`, so deep links from LinkedIn or search go straight to
-  the content
+- the entry point is any path other than the site root, so deep links from LinkedIn or search go
+  straight to the content. The root is resolved from `site.Home.RelPermalink`, not hardcoded, so it
+  works both on the custom domain (`/`) and on a GitHub Pages subpath (`/site/`)
 
 And it can always be dismissed: click anywhere, press Escape, Enter or Space, or use the Skip button.
 
@@ -486,3 +487,16 @@ correct way to surface those is a link to the Credly verification page for each 
 can be added if you want it.
 
 Used on both the homepage and the whoami page.
+
+
+## Testing the intro sequence
+
+Two things suppress it that look like bugs:
+
+1. **It only plays once per browser session.** The `intro-seen` flag lives in `sessionStorage`, so a
+   reload will not replay it. Open a new tab, use a private window, or run
+   `sessionStorage.clear()` in the console and reload.
+2. **`prefers-reduced-motion`.** If that is enabled at the OS level, the intro never runs by design.
+
+If it is missing for another reason, check in the browser console that `HOME` in the injected script
+matches `window.location.pathname`.

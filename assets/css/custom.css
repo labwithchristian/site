@@ -118,11 +118,15 @@
 
 /* --- Footer credits: a single line at one size --- */
 .site-credits {
-  margin: 0;
+  /* text-align alone only centres the words inside the box; the box itself has
+     to be centred too, or it sits against the left edge of the footer */
+  margin-inline: auto;
+  margin-block: 0;
   max-width: 46rem;
   font-size: 0.75rem;
   line-height: 1.7;
   text-align: center;
+  text-wrap: pretty;
   color: rgb(var(--color-neutral-500));
 }
 
@@ -1833,4 +1837,83 @@ html[data-astral="true"]:not(.dark) .soon {
 @media (prefers-reduced-motion: reduce) {
   .soon__track i { animation: none; left: 0; width: 45%; }
   .soon__status::after { animation: none; content: '...'; }
+}
+
+/* --- What's cooking, homepage ---
+   The heading above is centred, so full-width boxes with only two entries read
+   as sparse. Narrowing and centring the stack balances it against the heading
+   and keeps future entries looking deliberate rather than stretched.
+   Scoped to the landing page: on whoami the surrounding copy is left-aligned,
+   where a centred narrow box would look out of place. */
+.landing-rise .pipeline {
+  max-width: 34rem;
+  margin-inline: auto;
+}
+
+.landing-rise .pipeline__item {
+  padding: 0.95rem 1.25rem;
+}
+
+.landing-rise .pipeline__note {
+  text-wrap: pretty;
+}
+
+/* --- Left-align card copy on the landing page ---
+   The landing content section carries Tailwind's `sm:text-center`, which centres
+   every text node inside it. That is right for the hero and the connect block,
+   but wrong for card components: it centred the pipeline item names against
+   their own descriptions, and left the experience paragraphs ragged on both
+   edges. These put card copy back on a single left edge. */
+.landing-rise .pipeline,
+.landing-rise .pipeline__body,
+.landing-rise .xp__item,
+.landing-rise .xp__body,
+.landing-rise .xp__head {
+  text-align: left;
+}
+
+/* --- Social brand marks --- */
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin: 1rem 0 0;
+}
+
+.social__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.9rem;
+  height: 2.9rem;
+  border-radius: 0.65rem;
+  color: rgb(var(--color-primary-700));
+  border: 1px solid rgba(var(--color-primary-400), 0.45);
+  text-decoration: none;
+  transition: color 200ms ease, background-color 200ms ease,
+              border-color 200ms ease, transform 200ms ease;
+}
+
+.dark .social__link {
+  color: rgb(var(--color-primary-300));
+  border-color: rgba(var(--color-primary-400), 0.35);
+}
+
+.social__link:hover {
+  color: rgb(var(--color-neutral-50));
+  background-color: rgb(var(--color-primary-600));
+  border-color: rgb(var(--color-primary-600));
+  transform: translateY(-2px);
+}
+
+.social__link .icon,
+.social__link svg {
+  width: 1.35rem;
+  height: 1.35rem;
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .social__link { transition: none; }
+  .social__link:hover { transform: none; }
 }

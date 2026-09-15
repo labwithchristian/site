@@ -78,4 +78,4 @@ Sanitized artifacts live alongside the writing on [GitHub](https://github.com/la
 
 ## Find Me
 
-[LinkedIn](https://linkedin.com/in/cybercc)  ·  [GitHub](https://github.com/labwithchristian)
+{{< social items="linkedin|LinkedIn|https://linkedin.com/in/cybercc, github|GitHub|https://github.com/labwithchristian" >}}
