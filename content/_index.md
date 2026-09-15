@@ -1,7 +1,7 @@
 ---
-title: "Operations leader with a security analyst's hands"
-heroCaption: "Christian Carrasco"
-heroLead: "Ten years across enterprise IT operations, security, and service delivery. SIEM engineering and incident command on one side, SLA ownership and a five-person team on the other. Currently pivoting back toward security full time, and documenting the lab I am building to get there."
+title: "Operations, security, and service delivery for enterprise infrastructure"
+heroCaption: "Christian's Portfolio"
+heroLead: "Ten years keeping enterprise cloud and on-prem environments running and defensible. Incident and problem management, service delivery, compliance and control testing, identity, and the teams that hold it all together."
 heroButtons:
   - label: "Explore the lab"
     url: "/homelab/"
@@ -11,9 +11,7 @@ heroButtons:
     style: "secondary"
 ---
 
-## Skills & tools
-
-what I have actually run in production
+## Skills & Tools
 
 {{< logos items="aws, microsoft-azure, microsoft, dynatrace, pagerduty, jenkins, vmware, cisco, wireshark, linux, ubuntu, debian" speed="45" >}}
 
@@ -21,80 +19,102 @@ what I have actually run in production
 
 {{< feature-grid columns="3" >}}
 
-{{< feature icon="shield" title="Security Operations" >}}
-SIEM triage, detection engineering, and phishing investigation.
+{{< feature icon="fire" title="Incident Management" headingLevel="h3" >}}
+Calls made while the room is loud.
 {{< /feature >}}
 
-{{< feature icon="fire" title="Incident Command" >}}
-Severity calls, restoration, and the executive update nobody wants to write.
+{{< feature icon="bug" title="Problem Management" headingLevel="h3" >}}
+Root cause reviews that change something.
 {{< /feature >}}
 
-{{< feature icon="list-check" title="Compliance & Control Testing" >}}
-NIST, ISO 27001, SOX, PCI DSS, HIPAA. Evidence, not checkboxes.
+{{< feature icon="list-ol" title="Change Management" headingLevel="h3" >}}
+Maintenance windows nobody has to undo.
 {{< /feature >}}
 
-{{< feature icon="cloud" title="Cloud Security" >}}
-Auditing AWS accounts for the misconfiguration that becomes an incident.
+{{< feature icon="scale-balanced" title="Service Delivery & SLAs" headingLevel="h3" >}}
+Commitments tracked, not assumed.
 {{< /feature >}}
 
-{{< feature icon="lock" title="Identity & Access" >}}
-Entra ID, AD, MFA, conditional access, and the full joiner-mover-leaver lifecycle.
+{{< feature icon="worktree" title="Team Leadership" headingLevel="h3" >}}
+Five engineers, vendors, and a budget.
 {{< /feature >}}
 
-{{< feature icon="eye" title="Monitoring & Observability" >}}
-Dynatrace and PagerDuty, tuned so alerts still mean something.
+{{< feature icon="cloud" title="Cloud & Infrastructure" headingLevel="h3" >}}
+On-prem and cloud run as one estate.
 {{< /feature >}}
 
-{{< feature icon="search" title="Vulnerability Management" >}}
-Finding it is the easy half. Closing it with the owners is the work.
+{{< feature icon="shield" title="Security Operations" headingLevel="h3" >}}
+Triage that surfaces the real one.
 {{< /feature >}}
 
-{{< feature icon="bug" title="Root Cause Analysis" >}}
-Post-incident reviews that change something, not just close the ticket.
+{{< feature icon="list-check" title="Compliance & Control Testing" headingLevel="h3" >}}
+Evidence that survives an audit.
 {{< /feature >}}
 
-{{< feature icon="edit" title="Runbooks & Process" >}}
-Turning recurring failures into documentation that outlives me.
+{{< feature icon="lock" title="Identity & Access" headingLevel="h3" >}}
+Least privilege, actually enforced.
+{{< /feature >}}
+
+{{< feature icon="eye" title="Monitoring & Observability" headingLevel="h3" >}}
+Alerts that still mean something.
+{{< /feature >}}
+
+{{< feature icon="search" title="Vulnerability Management" headingLevel="h3" >}}
+Findings tracked to closure.
+{{< /feature >}}
+
+{{< feature icon="edit" title="Runbooks & Process" headingLevel="h3" >}}
+Documentation that outlives the author.
 {{< /feature >}}
 
 {{< /feature-grid >}}
 
 ## What's cooking
 
-in progress
+{{< pipeline items="CISSP :: In progress :: Targeting November 2026. Deepening the security governance and risk side | Home lab buildout :: Ongoing :: Segmentation, telemetry and detection engineering, documented as I go" >}}
 
-{{< pipeline items="CISSP :: Nov 2026 :: Formalizing the move into security governance and risk | Home lab buildout :: Ongoing :: Segmentation, telemetry and detection engineering, documented as I go" >}}
+## Professional Experience
 
-## Experience
+{{< xp >}}
 
-{{< timeline >}}
+{{< xpitem year="2021" role="Operations Manager" company="Beyondsoft Consulting" location="United States (Remote)" tags="Incident Management, AWS Security, Entra ID, Dynatrace, PagerDuty, Team Leadership" >}}
+Led a five-person engineering team supporting enterprise client infrastructure on a five-year assignment at Toyota Motor North America, serving as incident manager for high-impact production events. Audited client AWS accounts for exploitable misconfigurations, administered Entra ID conditional access and MFA, and remediated DDoS vectors through AWS Shield, WAF, and CDN. Owned SLA performance, vendor contracts, and hiring while running the post-incident reviews that turned recurring failures into preventive controls.
+{{< /xpitem >}}
 
-{{< timelineItem icon="worktree" header="Operations Manager" badge="2021 - 2026" subheader="Beyondsoft Consulting  ·  embedded at Toyota Motor North America" >}}
-A dual-track role: I owned the operational health of a multi-year enterprise client engagement while staying hands-on in the cloud and security work underneath it. On the operations side that meant commanding major incidents end to end, running the post-incident reviews that turned recurring failures into preventive controls, holding SLA performance across teams, and leading five engineers through hiring, development, and capacity planning, plus the budget and vendor contracts that funded the tooling. On the technical side I kept my hands in the environment: auditing client AWS accounts for misconfigurations before they became incidents, administering Entra ID conditional access and MFA, defending client-facing applications against DDoS through Shield, WAF and CDN, and owning the DNS and certificate hygiene that quietly prevents outages nobody ever sees. The through line was making the environment legible, through dashboards, runbooks, and metrics that told engineers what to fix and executives what it cost.
-{{< /timelineItem >}}
+{{< xpitem year="2019" role="Information Security Analyst" company="TelevisaUnivision" location="United States (Remote)" tags="SIEM Engineering, LogRhythm, MITRE ATT&CK, Detection Rules, NIST 800-53, Rapid7" >}}
+Triaged SIEM alerts across networks, endpoints, and servers, correlating events to reconstruct incident timelines and investigating spear-phishing campaigns aimed at senior staff. Served as lead LogRhythm administrator, building correlation rules, writing custom parsers for malformed log sources, and mapping detection coverage to MITRE ATT&CK. Planned and executed the SIEM migration onto a restructured server architecture, then validated coverage afterward so monitoring did not silently degrade.
+{{< /xpitem >}}
 
-{{< timelineItem icon="shield" header="Information Security Analyst" badge="2019 - 2020" subheader="TelevisaUnivision" >}}
-One title covering three jobs that are usually separate people: analyst, engineer, and architect. As an analyst I triaged SIEM alerts across networks, endpoints and servers, correlated events across firewalls, proxies and applications to reconstruct incident timelines, and ran the spear-phishing and whale-phishing investigations aimed at senior staff. As the lead LogRhythm administrator I owned the platform itself, building and tuning correlation rules, writing custom parsers for log sources that arrived malformed, and mapping detection coverage to MITRE ATT&amp;CK so gaps were prioritized against real adversary behavior rather than guesswork. As an architect I planned and executed the SIEM's migration onto a restructured server estate, sized it against log growth and licensing limits, and validated coverage afterward so monitoring did not silently degrade. Alongside that I tested control design and operating effectiveness against NIST 800-53 and CSF, mapped the same controls across SOX and PCI DSS, ran weekly Rapid7 scans, and evaluated vendor tooling with the Security Director's sponsorship, delivering buy and no-buy recommendations.
-{{< /timelineItem >}}
+{{< xpitem year="2014" role="System Administrator" company="Cigna HealthCare" location="Doral, FL" tags="Active Directory, Azure AD, Group Policy, SCCM, HIPAA, Disaster Recovery" >}}
+Served as Level 3 escalation point for a support team of four across roughly 350 employees in a HIPAA-regulated environment. Administered Active Directory and Azure AD, Exchange permissions, Group Policy, and MFA, applying least privilege at provisioning and treating revocation at termination as a controlled step rather than an afterthought. Built the standard images and SOPs behind onboarding, deployed security agents through SCCM, and supplied access records and evidence through HIPAA and CMS audit cycles.
+{{< /xpitem >}}
 
-{{< timelineItem icon="lock" header="System Administrator" badge="2014 - 2019" subheader="Cigna HealthCare" >}}
-Five years in a HIPAA-regulated environment, and the role where the identity and compliance discipline I still work from was formed. I was the Level 3 escalation point for a support team of four, closing what lower tiers could not across identity, endpoint, application and connectivity, at a daily volume that made triage by impact and urgency a reflex. Underneath the ticket queue was a real administration practice: Active Directory and Azure AD user and group management, Exchange permissions, Group Policy, MFA enforcement, and role-based access applied at provisioning and revoked as a controlled step at termination rather than an afterthought. I owned onboarding end to end, from access through fully imaged and deployed hardware, built the standard images and the SOPs behind them, and pushed security agents and patches to the fleet through SCCM. Working inside a regulated environment meant audit was routine rather than exceptional, so supplying access records and evidence to compliance through HIPAA and CMS cycles, and testing disaster recovery procedures with the business, were part of the job rather than interruptions to it.
-{{< /timelineItem >}}
+{{< xpitem year="2013" role="IT Support Specialist" company="Commonwealth-Altadis" location="Fort Lauderdale, FL" tags="Endpoint Deployment, Active Directory, ServiceNow, Asset Management" >}}
+Imaged and deployed more than 300 machines supporting a sales force of over 1,500 agents. Provisioned Active Directory accounts and OU changes while maintaining ServiceNow asset and user records accurate enough to be worth trusting.
+{{< /xpitem >}}
 
-{{< timelineItem icon="code" header="IT Support Specialist" badge="2013 - 2014" subheader="Commonwealth-Altadis  ·  contract" >}}
-A short contract that was mostly deployment at scale: imaging, prepping and rolling out more than 300 machines behind a sales force of over 1,500 agents, alongside Active Directory provisioning, OU changes, and keeping ServiceNow asset and user records accurate enough to be worth trusting. It is where I learned that the unglamorous half of infrastructure work, accurate records and repeatable builds, is what makes everything after it possible.
-{{< /timelineItem >}}
+{{< /xp >}}
 
-{{< timelineItem icon="graduation-cap" header="B.S. Network Operations and Security" badge="2017 - 2021" subheader="Western Governors University" >}}
-Completed over four years while working full time, first in a Level 3 escalation role and then as a security analyst, so the coursework and the day job kept feeding each other.
-{{< /timelineItem >}}
+## Education
 
-{{< timelineItem icon="star" header="National Cyber League, Individual Game" badge="2019 - 2020" subheader="Proctored hands-on skills assessment" >}}
-A proctored competition scored on both accuracy and completion across ten challenge modules. 1,470 of 3,000 points at 72.9% accuracy in Fall 2019, strongest in OSINT, cryptography, wireless access exploitation, network traffic analysis, password cracking, and log analysis.
-{{< /timelineItem >}}
+{{< xp >}}
 
-{{< /timeline >}}
+{{< xpitem year="2017" role="B.S. Network Operations and Security" company="Western Governors University" location="United States (Online)" tags="Network Architecture, Systems Security, Infrastructure Operations" >}}
+A competency-based program covering network design, network operations, network security, and cloud security, built on a core IT curriculum spanning systems and services, scripting and programming, data management, the business of IT, and web development. Coursework emphasizes network administration methods for uptime, performance, and security, with industry certifications embedded in the degree path. Completed while working full time.
+{{< /xpitem >}}
+
+{{< xpitem year="2019" role="National Cyber League, Individual Game" company="Cyber Skyline" location="United States (Remote)" tags="OSINT, Cryptography, Network Traffic Analysis, Password Cracking, Log Analysis" >}}
+A proctored, hands-on skills assessment scored on both accuracy and completion across ten challenge modules. Competed in the 2019 and 2020 seasons, scoring 1,470 of 3,000 points at 72.9% accuracy in Fall 2019. Strongest in OSINT, cryptography, wireless access exploitation, network traffic analysis, password cracking, and log analysis.
+{{< /xpitem >}}
+
+{{< /xp >}}
 
 ## Certifications
 
-Certified Ethical Hacker (CEH)  ·  CompTIA Security+  ·  CompTIA Project+  ·  AWS Certified Cloud Practitioner  ·  Cisco CCNA Routing &amp; Switching  ·  ITIL v4 Foundation
+{{< certs groups="Security :: Certified Ethical Hacker (CEH), CompTIA Security+ | Cloud :: AWS Certified Cloud Practitioner | Network :: Cisco CCNA Routing & Switching | Process :: ITIL v4 Foundation, CompTIA Project+" >}}
+
+## Open to What's Next
+
+{{< connect url="https://linkedin.com/in/cybercc" label="Connect on LinkedIn" >}}
+Open to operations, infrastructure, and security roles: operations and service delivery management, incident and problem management, and security engineering or governance. LinkedIn is the fastest way to reach me. Come say hi.
+{{< /connect >}}

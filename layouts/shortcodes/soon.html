@@ -1,0 +1,13 @@
+{{- $title := .Get "title" | default "Coming soon" -}}
+{{- $status := .Get "status" | default "building" -}}
+<div class="soon not-prose">
+  <div class="soon__bar" role="img" aria-label="{{ $title }}: {{ $status }}">
+    <span class="soon__track"><i></i></span>
+    <span class="soon__status">{{ $status }}</span>
+  </div>
+  <h2 class="soon__title">{{ $title }}</h2>
+  <div class="soon__text">{{ .Page.RenderString (dict "display" "block") (trim .Inner "\n ") }}</div>
+  <span class="soon__art" aria-hidden="true">
+    {{ partial "grill-art.html" . }}
+  </span>
+</div>

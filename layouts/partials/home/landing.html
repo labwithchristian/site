@@ -1,0 +1,64 @@
+<article class="relative isolate overflow-hidden">
+  {{ $heroImage := .Params.heroImage | default site.Params.homepage.homepageImage }}
+  {{ $heroImg := "" }}
+  {{ with $heroImage }}
+    {{ if or (strings.HasPrefix . "http:") (strings.HasPrefix . "https:") }}
+      {{ $heroImg = resources.GetRemote . }}
+    {{ else }}
+      {{ $heroImg = resources.Get . }}
+    {{ end }}
+  {{ end }}
+  {{ with $heroImg }}
+    <div
+      id="landing-hero-background"
+      class="hero-canvas-fade nozoom fixed inset-x-0 top-0 -z-10 h-[640px]">
+      <img
+        class="absolute inset-0 h-full w-full object-cover"
+        src="{{ .RelPermalink }}"
+        role="presentation"
+        loading="eager"
+        decoding="async"
+        fetchpriority="high" />
+      <div class="absolute inset-0 bg-neutral/60 dark:bg-neutral-800/50"></div>
+    </div>
+    {{ $heroFade := resources.Get "js/hero-scroll-fade.js" }}
+    {{ $heroFade = $heroFade | resources.Minify | resources.Fingerprint (site.Params.fingerprintAlgorithm | default "sha512") }}
+    <script
+      type="text/javascript"
+      src="{{ $heroFade.RelPermalink }}"
+      integrity="{{ $heroFade.Data.Integrity }}"
+      data-hero-id="landing-hero-background"
+      data-fade-distance="500"></script>
+  {{ end }}
+  <section class="mx-auto max-w-7xl px-4 pb-16 pt-12 sm:px-6 sm:pb-24 sm:pt-20 lg:px-8">
+    <div class="mx-auto max-w-4xl text-center">
+      {{ with .Params.heroCaption | default .Site.Params.Author.name }}
+        <h1 class="hero-name landing-rise landing-rise-1" data-scramble="{{ . }}">
+          <span class="hero-name__text">{{ . | markdownify }}</span>
+        </h1>
+      {{ end }}
+      {{ with .Title }}
+        <p class="hero-role landing-rise landing-rise-2">
+          <span class="hero-role__rule" aria-hidden="true"></span>
+          <span class="hero-role__text">{{ . | emojify }}</span>
+          <span class="hero-role__rule" aria-hidden="true"></span>
+        </p>
+      {{ end }}
+      {{ with .Params.heroLead }}
+        <p class="hero-lead landing-rise landing-rise-3">
+          {{ . | markdownify }}
+        </p>
+      {{ end }}
+      {{ with .Params.heroButtons }}
+        <div class="landing-rise landing-rise-4 mt-9 flex flex-wrap items-center justify-center gap-4">
+          {{ range . }}
+            {{ partial "cta-button.html" (dict "url" .url "label" .label "style" .style "github" .github) }}
+          {{ end }}
+        </div>
+      {{ end }}
+      <section class="landing-rise landing-rise-5 prose prose-lg mx-auto mt-10 max-w-3xl text-left dark:prose-invert sm:text-center">
+        {{ .Content }}
+      </section>
+    </div>
+  </section>
+</article>

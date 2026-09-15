@@ -1,0 +1,94 @@
+    <svg viewBox="0 -14 360 250" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="wipFlame" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0%" stop-color="#dc2626"/>
+      <stop offset="45%" stop-color="#f97316"/>
+      <stop offset="100%" stop-color="#fbbf24"/>
+    </linearGradient>
+    <linearGradient id="wipCoal" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f97316"/>
+      <stop offset="100%" stop-color="#7f1d1d"/>
+    </linearGradient>
+  </defs>
+
+  {{/* cook: chef hat, apron, tongs */}}
+  <g fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M31 30c-6 0-10-5-10-10s4-9 10-8c2-7 8-11 14-11s12 4 14 11c6-1 10 3 10 8s-4 10-10 10z"/>
+    <path d="M31 30h28v7H31z"/>
+    <circle cx="45" cy="57" r="13"/>
+    <path d="M45 70v9"/>
+    <path d="M34 79h22l3 33c0 5-4 8-8 8H39c-5 0-8-3-8-8z"/>
+    <path d="M38 79l7 7 7-7"/>
+    <path d="M45 120v14"/>
+    <path d="M45 134l-13 44M45 134l13 44"/>
+    <path d="M34 84 18 104"/>
+    <g class="wip__arm">
+      <path d="M56 82l34 12"/>
+      <path d="M90 94l18-6"/>
+      <path d="M108 82l6 10-11 6-6-10z"/>
+    </g>
+  </g>
+
+  {{/* rack posts with punched mounting holes */}}
+  <g stroke="currentColor" stroke-width="3.4" stroke-linejoin="round" fill="none">
+    <rect x="152" y="22" width="14" height="124" rx="2"/>
+    <rect x="306" y="22" width="14" height="124" rx="2"/>
+    <path d="M152 22h168M152 146h168"/>
+  </g>
+  <g fill="currentColor" opacity="0.55">
+    {{- range $i := seq 0 9 }}
+    <rect x="157" y="{{ add 30 (mul $i 12) }}" width="4" height="4"/>
+    <rect x="311" y="{{ add 30 (mul $i 12) }}" width="4" height="4"/>
+    {{- end }}
+  </g>
+
+  {{/* three mounted servers */}}
+  <g stroke="currentColor" stroke-width="3" stroke-linejoin="round" fill="none">
+    <rect x="166" y="30" width="140" height="32" rx="3"/>
+    <rect x="166" y="70" width="140" height="32" rx="3"/>
+    <rect x="166" y="110" width="140" height="32" rx="3"/>
+  </g>
+  <g stroke="currentColor" stroke-width="2" fill="none" opacity="0.9">
+    <path d="M176 30v32M296 30v32M176 70v32M296 70v32M176 110v32M296 110v32"/>
+    {{- range $u := slice 36 76 116 }}
+    <rect x="184" y="{{ $u }}" width="20" height="20" rx="1.5"/>
+    <rect x="208" y="{{ $u }}" width="20" height="20" rx="1.5"/>
+    <rect x="232" y="{{ $u }}" width="20" height="20" rx="1.5"/>
+    {{- end }}
+    {{- range $v := slice 40 80 120 }}
+    <path d="M262 {{ $v }}h26M262 {{ add $v 6 }}h26M262 {{ add $v 12 }}h26"/>
+    {{- end }}
+  </g>
+
+  {{/* status LEDs */}}
+  <g>
+    <circle class="wip__led wip__led--1" cx="300" cy="37" r="3" fill="#22c55e"/>
+    <circle class="wip__led wip__led--2" cx="300" cy="46" r="3" fill="#22c55e"/>
+    <circle class="wip__led wip__led--3" cx="300" cy="77" r="3" fill="#22c55e"/>
+    <circle class="wip__led wip__led--4" cx="300" cy="86" r="3" fill="#fbbf24"/>
+    <circle class="wip__led wip__led--5" cx="300" cy="117" r="3" fill="#22c55e"/>
+    <circle class="wip__led wip__led--6" cx="300" cy="126" r="3" fill="#22c55e"/>
+  </g>
+
+  {{/* legs holding the rack above the fire */}}
+  <g fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round">
+    <path d="M160 146v58M312 146v58"/>
+    <path d="M148 204h176"/>
+  </g>
+
+  {{/* fire bed */}}
+  <g class="wip__fire">
+    <path d="M176 184c8 0 10-4 18-4s10 4 18 4 10-4 18-4 10 4 18 4 10-4 18-4 10 4 18 4v10H176z"
+          fill="url(#wipCoal)" opacity="0.85"/>
+    <path class="wip__flame wip__flame--1" d="M190 180c-6-9 5-15 1-26 11 5 17 14 17 22 2-3 3-7 3-11 5 5 8 12 8 18 0 10-8 16-17 16s-16-7-16-15z" fill="url(#wipFlame)"/>
+    <path class="wip__flame wip__flame--2" d="M232 178c-7-11 6-18 1-31 13 6 20 17 20 27 3-4 4-9 4-13 6 6 10 14 10 22 0 12-10 19-20 19s-19-8-19-18z" fill="url(#wipFlame)"/>
+    <path class="wip__flame wip__flame--3" d="M276 182c-5-8 4-13 1-22 9 4 14 12 14 18 2-2 2-5 2-8 4 4 7 10 7 15 0 8-7 13-14 13s-13-6-13-12z" fill="url(#wipFlame)"/>
+  </g>
+
+  {{/* heat haze rising past the rack */}}
+  <g fill="none" stroke="#f97316" stroke-width="2.6" stroke-linecap="round" opacity="0.5">
+    <path class="wip__haze wip__haze--1" d="M196 16c-4-5 4-8 0-14 7 3 11 8 11 13"/>
+    <path class="wip__haze wip__haze--2" d="M240 12c-4-6 4-9 0-16 8 3 12 10 12 15"/>
+    <path class="wip__haze wip__haze--3" d="M284 16c-3-4 3-7 0-12 5 2 8 6 8 10"/>
+  </g>
+</svg>

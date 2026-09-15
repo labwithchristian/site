@@ -1,0 +1,28 @@
+{{- /* Groups separated by |, fields by ::
+       "Security :: CEH, CompTIA Security+ | Cloud :: AWS Certified Cloud Practitioner" */ -}}
+{{- $groups := split (.Get "groups") "|" -}}
+<div class="certs not-prose my-8">
+  {{- range $groups -}}
+    {{- $parts := split (trim . " ") "::" -}}
+    {{- if ge (len $parts) 2 -}}
+      <div class="certs__group">
+        <span class="certs__label">{{ trim (index $parts 0) " " }}</span>
+        <ul class="certs__list">
+          {{- range split (index $parts 1) "," -}}
+            {{- $c := trim . " " -}}
+            {{- $c = trim (strings.TrimPrefix "*" $c) " " -}}
+            <li class="certs__item">
+              <svg class="certs__seal" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="9" r="6"/>
+                <path d="M9.2 14.3 8 22l4-2.2L16 22l-1.2-7.7"/>
+                <path d="m9.8 9 1.6 1.7L14.4 7"/>
+              </svg>
+              <span>{{ $c }}</span>
+            </li>
+          {{- end -}}
+        </ul>
+      </div>
+    {{- end -}}
+  {{- end -}}
+</div>

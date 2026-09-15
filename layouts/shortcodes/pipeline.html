@@ -4,15 +4,56 @@
     {{- range split $items "|" -}}
       {{- $parts := split (trim . " ") "::" -}}
       {{- if ge (len $parts) 2 -}}
-        <li class="pipeline__item">
-          <span class="pipeline__status" data-state="{{ trim (index $parts 1) " " | lower }}"></span>
+        {{- $status := trim (index $parts 1) " " -}}
+        {{- $s := lower $status -}}
+        {{- $state := "active" -}}
+        {{- if or (hasPrefix $s "ongoing") (hasPrefix $s "continuous") -}}
+          {{- $state = "ongoing" -}}
+        {{- else if or (hasPrefix $s "target") (hasPrefix $s "queued") (hasPrefix $s "planned") -}}
+          {{- $state = "queued" -}}
+        {{- end -}}
+        <li class="pipeline__item" data-state="{{ $state }}">
           <div class="pipeline__body">
             <span class="pipeline__name">{{ trim (index $parts 0) " " }}</span>
             {{- if ge (len $parts) 3 }}
               <span class="pipeline__note">{{ trim (index $parts 2) " " }}</span>
             {{- end }}
           </div>
-          <span class="pipeline__badge">{{ trim (index $parts 1) " " }}</span>
+          <span class="pipeline__badge">
+            <span class="pipeline__mark" aria-hidden="true">
+              {{- if eq $state "active" -}}
+                {{/* open pan, steam rising: actively being worked right now */}}
+                <svg viewBox="0 0 120 68" fill="none" stroke="currentColor"
+                     stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                  <g class="pipeline__steam">
+                    <path class="pipeline__wisp pipeline__wisp--1" d="M42 34c-4-5 4-8 0-13s3-7 3-7"/>
+                    <path class="pipeline__wisp pipeline__wisp--2" d="M58 30c-4-6 4-9 0-14s3-8 3-8"/>
+                    <path class="pipeline__wisp pipeline__wisp--3" d="M74 34c-4-5 4-8 0-13s3-7 3-7"/>
+                  </g>
+                  <path d="M30 42h60c0 11-8 19-19 19H49c-11 0-19-8-19-19z"/>
+                  <path d="M26 42h68"/>
+                  <path d="M94 44l14-5"/>
+                </svg>
+              {{- else if eq $state "ongoing" -}}
+                {{/* lidded stockpot, slow simmer: long-running, no end date */}}
+                <svg viewBox="0 0 120 76" fill="none" stroke="currentColor"
+                     stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                  <path class="pipeline__puff" d="M60 18c-3-4 3-6 0-10"/>
+                  <g class="pipeline__lid">
+                    <path d="M30 34h60"/>
+                    <path d="M36 34c0-9 11-14 24-14s24 5 24 14"/>
+                    <path d="M60 20v-6"/>
+                  </g>
+                  <path d="M32 40h56v16c0 8-7 14-16 14H48c-9 0-16-6-16-14z"/>
+                  <path d="M28 40h64"/>
+                  <path d="M24 46h6M90 46h6"/>
+                </svg>
+              {{- else -}}
+                <span class="pipeline__dot"></span>
+              {{- end -}}
+            </span>
+            <span class="pipeline__status">{{ $status }}</span>
+          </span>
         </li>
       {{- end -}}
     {{- end -}}
