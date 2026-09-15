@@ -1834,3 +1834,36 @@ html[data-astral="true"]:not(.dark) .soon {
   .soon__track i { animation: none; left: 0; width: 45%; }
   .soon__status::after { animation: none; content: '...'; }
 }
+
+/* --- What's cooking, homepage ---
+   The heading above is centred, so full-width boxes with only two entries read
+   as sparse. Narrowing and centring the stack balances it against the heading
+   and keeps future entries looking deliberate rather than stretched.
+   Scoped to the landing page: on whoami the surrounding copy is left-aligned,
+   where a centred narrow box would look out of place. */
+.landing-rise .pipeline {
+  max-width: 34rem;
+  margin-inline: auto;
+}
+
+.landing-rise .pipeline__item {
+  padding: 0.95rem 1.25rem;
+}
+
+.landing-rise .pipeline__note {
+  text-wrap: pretty;
+}
+
+/* --- Left-align card copy on the landing page ---
+   The landing content section carries Tailwind's `sm:text-center`, which centres
+   every text node inside it. That is right for the hero and the connect block,
+   but wrong for card components: it centred the pipeline item names against
+   their own descriptions, and left the experience paragraphs ragged on both
+   edges. These put card copy back on a single left edge. */
+.landing-rise .pipeline,
+.landing-rise .pipeline__body,
+.landing-rise .xp__item,
+.landing-rise .xp__body,
+.landing-rise .xp__head {
+  text-align: left;
+}
