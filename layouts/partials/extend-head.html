@@ -17,6 +17,10 @@
     if (strip(here) !== strip(HOME)) return;
   } catch (e) { return; }
 
+  // Set before DOMContentLoaded so the hero script knows to wait for us rather
+  // than racing ahead and animating underneath the overlay.
+  window.__introWillRun = true;
+
   var VARIANTS = {
 
     // --- Illustrated variants -------------------------------------------------
@@ -186,7 +190,10 @@
       try { sessionStorage.setItem('intro-seen', '1'); } catch (e) {}
       host.classList.add('intro--out');
       document.documentElement.classList.remove('intro-active');
-      setTimeout(function () { host.remove(); }, 650);
+      setTimeout(function () {
+        host.remove();
+        document.dispatchEvent(new CustomEvent('intro:done'));
+      }, 650);
       document.removeEventListener('keydown', onKey);
     }
 
@@ -313,10 +320,27 @@
     var target = el.getAttribute('data-scramble') || span.textContent;
     var GLYPHS = '!<>-_\\/[]{}\u2014=+*^?#01ABCDEF';
 
-    // Wait for the intro overlay to clear, if one is running.
-    var delay = document.querySelector('.intro') ? 400 : 250;
+    // The intro overlay runs for several seconds. A fixed delay meant the name
+    // resolved behind it and was finished before anyone saw it, so when an
+    // intro is running we wait for its completion event instead.
+    var started = false;
+    function start() {
+      if (started) return;
+      started = true;
+      run();
+    }
 
-    setTimeout(function () {
+    if (window.__introWillRun) {
+      document.addEventListener('intro:done', function () {
+        setTimeout(start, 180);
+      }, { once: true });
+      // safety net: if the event never lands, do not strand the animation
+      setTimeout(start, 12000);
+    } else {
+      setTimeout(start, 250);
+    }
+
+    function run() {
       el.setAttribute('data-scrambling', '');
 
       // Phase 1 — glyphs churn and resolve into the name, monospace so the
@@ -365,7 +389,7 @@
           }
         }, 34);
       }
-    }, delay);
+    }
   });
 })();
 </script>

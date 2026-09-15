@@ -439,6 +439,14 @@ Content comes from the homepage front matter: `heroCaption` is the name, `title`
 On arrival, the name resolves out of random glyphs over about a second, echoing the intro sequence.
 It runs in three phases, driven by attributes on the `h1`:
 
+It waits for the intro sequence to finish before starting. The intro sets `window.__introWillRun`
+synchronously and dispatches an `intro:done` event once its overlay is removed; the hero script
+listens for that, with a 12 second fallback timer so a missed event cannot strand the animation.
+When no intro runs (repeat visit in the same session, reduced motion, or an interior page) the name
+animates after a short 250ms delay instead.
+
+Three phases:
+
 1. **`data-scrambling`** — glyphs churn and resolve into the name in a monospace face, so characters
    sit on an even grid and the line does not reflow
 2. **`data-typing`** — the shell walks the name back, deleting right to left, then retypes it
