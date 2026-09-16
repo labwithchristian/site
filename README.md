@@ -40,9 +40,10 @@ git add themes/blowfish && git commit -m "Update Blowfish to <version>"
 |---|---|
 | `_default/baseof.html` | Adds `data-astral`, `data-heading-font` and `data-bg-tinted` attributes to `<html>` |
 | `_default/list.html` | Drops the theme's "no articles" line; sections use their own empty states |
+| `_default/_markup/render-heading.html` | Theme heading markup, but keeps classes set with `{.h-minor}` style attributes |
 | `partials/header/floating.html`, `header/basic.html` | Compact pill nav with the Home icon |
 | `partials/home/landing.html` | Homepage hero: name, `heroRole` eyebrow, lead, buttons |
-| `partials/cta-button.html` | Primary and outline buttons with an arrow |
+| `partials/cta-button.html` | Primary and outline buttons with an arrow (optional `download`) |
 | `partials/extend-head.html` | Loads the site stylesheet bundle |
 | `partials/extend-head-uncached.html` | Loads the homepage intro script on the homepage only |
 | `partials/extend-footer.html` | Credits line |
@@ -60,10 +61,11 @@ Every file in this folder is concatenated in filename order and loaded after the
 | `20-surfaces.css` | Page background, glass surfaces, background pattern |
 | `30-nav.css` | Nav pill, mobile dropdown, Home icon |
 | `40-hero.css` | Hero name, role eyebrow, lead, buttons |
-| `50-home.css` | Skills marquee, core strengths, pipeline, experience, certifications, connect |
-| `60-pages.css` | whoami portrait, work-in-progress and coming-soon blocks, network diagram, spec cards |
+| `50-home.css` | Skills marquee, highlights, career timeline, core strengths, pipeline, experience cards, certifications, connect |
+| `60-pages.css` | whoami portrait and How I work headings, resume page, work-in-progress and coming-soon blocks, network diagram, spec cards |
 | `70-footer.css` | Footer menu and credits |
 | `80-intro.css` | Homepage intro overlay |
+| `90-print.css` | Print and Save as PDF layout, mainly for the resume |
 
 Colors come from the scheme in `assets/css/schemes/nebula-stone.css` (`colorScheme` in `params.toml`).
 Use its variables, for example `rgb(var(--color-primary-600))`, rather than hex values, so light and
@@ -85,6 +87,22 @@ All are latin-subset woff2 files from Fontsource, so the site makes no third-par
 homepage visit, then animates the hero name. It's remembered per browser, skippable, and never runs for
 visitors who prefer reduced motion. Set `introSequence = false` in `params.toml` to turn it off.
 
+### Resume and its PDF
+
+`content/resume/index.md` is the full resume. The site pages split the work:
+
+| Page | Job |
+|---|---|
+| Home | The 30-second pitch: highlights, core strengths, a short career timeline, certifications |
+| Resume | The full record: dated experience, frameworks, tools, certifications, education |
+| whoami | How Christian works, and who he is outside of work |
+
+The **Download PDF** button appears whenever a PDF sits next to the page
+(`content/resume/christian-carrasco-resume.pdf`). After editing the resume, regenerate it so the two
+match: run `hugo server`, open `/resume/` in Chrome in light mode, Print, Destination "Save as PDF",
+Paper "Letter", Margins "Default", Background graphics off, and save over the file. `90-print.css`
+strips the site chrome and adds the name and links at the top.
+
 ### Link previews
 
 `static/img/og-card.jpg` (1200x630) is the image LinkedIn, Slack and X show when the site is shared.
@@ -95,12 +113,18 @@ It's set with `images` in `params.toml`.
 | Shortcode | Used on | Purpose |
 |---|---|---|
 | `logos items="slug, slug" speed="45"` | Home | Scrolling Skills & Tools logo marquee. Logos live in `assets/img/logos/`; `text:Label` adds a wordmark |
+| `highlights` + `highlight figure label` | Home | Proof-point tiles under the hero. Swap figures for outcome numbers as they're gathered |
+| `timeline items="dates :: role :: company :: note \| ..." more` | Home | Career at a glance, with a button to the full resume |
+| `resume-head facts="Label :: Value \| ..."` | Resume | Summary, quick facts, Download PDF and LinkedIn buttons, print-only name block |
+| `job company dates location context positions tags` | Resume | One employer: titles held (`"Title :: years \| Title :: years"`), Markdown bullets, tags |
 | `strengths` + `strength icon title items` | Home | Core Strengths cards |
 | `pipeline items="Name :: Status :: Note \| ..."` | Home, Homelab | Status list with cooking-themed badges |
-| `xp` + `xpitem year role company location tags` | Home | Experience and education cards |
-| `certs groups="Label :: Cert, Cert \| ..."` | Home | Certifications by category |
+| `xp` | Resume | Wrapper that stacks `job` cards |
+| `certs groups="Label :: Cert, Cert \| ..." seal class` | Home, Resume | Labeled pill groups. `seal="false"` for lists that aren't certifications |
 | `connect url label` | Home | `> connect --linkedin` card |
 | `intro image alt` | whoami | Portrait beside the opening statement |
+
+On whoami, `### Area {.area}` renders a small eyebrow for a Core Strengths area, with `####` practices under it.
 | `specs` + `spec role title rows tags` | Homelab | Hardware spec cards. `rows="CPU: ... \| Memory: ..."` |
 | `network-diagram` | Homelab | Inline SVG network diagram. Edit the labels in the shortcode file |
 | `soon title status` | Writeups, Blog, Tags | Coming-soon block |

@@ -1,0 +1,53 @@
+{{- /*
+  Top of the resume page: summary, quick facts, and actions.
+
+    {{< resume-head facts="Experience :: Ten plus years | Languages :: English and Spanish" >}}
+    Summary paragraph in Markdown.
+    {{< /resume-head >}}
+
+  The Download PDF button appears when a PDF sits in the same page bundle
+  (content/resume/*.pdf). The identity block only shows when printing, so a
+  "Save as PDF" from the browser starts with name, role and links.
+*/ -}}
+{{- $facts := .Get "facts" | default "" -}}
+{{- $pdf := .Page.Resources.GetMatch "*.pdf" -}}
+{{- $author := site.Params.Author -}}
+{{- $linkedin := "" -}}{{- $github := "" -}}
+{{- range $author.links -}}
+  {{- with .linkedin }}{{ $linkedin = . }}{{ end -}}
+  {{- with .github }}{{ $github = . }}{{ end -}}
+{{- end -}}
+<div class="resume-head not-prose">
+  <div class="resume-print-id">
+    <p class="resume-print-id__name">{{ $author.name }}</p>
+    <p class="resume-print-id__role">{{ site.Home.Params.heroRole | default $author.headline }}</p>
+    <p class="resume-print-id__links">
+      {{- $links := slice (replaceRE "^https?://(www\\.)?" "" (strings.TrimSuffix "/" site.Home.Permalink)) -}}
+      {{- with $linkedin }}{{ $links = $links | append (replaceRE "^https?://(www\\.)?" "" .) }}{{ end -}}
+      {{- with $github }}{{ $links = $links | append (replaceRE "^https?://(www\\.)?" "" .) }}{{ end -}}
+      {{ delimit $links "  ·  " }}
+    </p>
+  </div>
+  <div class="resume-head__summary">{{ .Page.RenderString (dict "display" "block") (trim .Inner "\n ") }}</div>
+  {{- with $facts }}
+    <dl class="resume-facts">
+      {{- range split . "|" }}
+        {{- $f := split (trim . " ") "::" }}
+        {{- if ge (len $f) 2 }}
+          <div class="resume-facts__item">
+            <dt>{{ trim (index $f 0) " " }}</dt>
+            <dd>{{ trim (index $f 1) " " }}</dd>
+          </div>
+        {{- end }}
+      {{- end }}
+    </dl>
+  {{- end }}
+  <div class="resume-head__actions">
+    {{- with $pdf }}
+      {{ partial "cta-button.html" (dict "url" .RelPermalink "label" "Download PDF" "style" "primary" "download" (path.Base .RelPermalink)) }}
+    {{- end }}
+    {{- with $linkedin }}
+      {{ partial "cta-button.html" (dict "url" . "label" "Connect on LinkedIn" "style" "outline") }}
+    {{- end }}
+  </div>
+</div>

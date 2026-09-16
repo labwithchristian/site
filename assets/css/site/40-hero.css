@@ -155,6 +155,14 @@
 .cta-btn--outline:hover { border-color: rgb(var(--color-primary-500)); background-color: rgba(255, 255, 255, 0.75); }
 
 html.dark .cta-btn--primary { background-color: rgb(var(--color-primary-500)); }
+
+/* Buttons placed inside page content (resume, timeline) keep their own colors
+   instead of picking up the .prose link color. */
+html .prose a.cta-btn--primary { color: #fff; }
+html .prose a.cta-btn--outline { color: rgb(var(--color-primary-700)); }
+html.dark .prose a.cta-btn--primary { color: #fff; }
+html.dark .prose a.cta-btn--outline { color: rgb(var(--color-primary-200)); }
+html.dark .prose a.cta-btn--primary:hover { color: rgb(var(--color-neutral-900)); }
 html.dark .cta-btn--primary:hover { background-color: rgb(var(--color-primary-400)); color: rgb(var(--color-neutral-900)); }
 html.dark .cta-btn--outline { border-color: rgba(var(--color-primary-300), 0.55); background-color: rgba(var(--color-neutral-900), 0.35); color: rgb(var(--color-primary-200)); }
 html.dark .cta-btn--outline:hover { border-color: rgb(var(--color-primary-300)); color: rgb(var(--color-neutral-50)); }

@@ -7,7 +7,7 @@
 {{- $style := .style | default "primary" -}}
 {{- $variant := cond (in (slice "outline" "secondary") $style) "outline" "primary" -}}
 {{- $external := or (strings.HasPrefix $url "http:") (strings.HasPrefix $url "https:") -}}
-<a class="not-prose cta-btn cta-btn--{{ $variant }}" href="{{ $url | safeURL }}"{{ if $external }} target="_blank" rel="noopener noreferrer"{{ end }}>
+<a class="not-prose cta-btn cta-btn--{{ $variant }}" href="{{ $url | safeURL }}"{{ if $external }} target="_blank" rel="noopener noreferrer"{{ end }}{{ with .download }} download="{{ . }}"{{ end }}>
   {{- if .github }}{{ partial "icon.html" "github" }}{{ end -}}
   <span>{{ $label | markdownify }}</span>
   <svg class="cta-btn__arrow" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M4 10h11M11 5.5 15.5 10 11 14.5"/></svg>
