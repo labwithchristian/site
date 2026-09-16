@@ -14,7 +14,7 @@ heroButtons:
 
 ## Skills & Tools {.h-minor}
 
-{{< logos groups="Cloud & Platforms: aws, microsoft-azure, microsoft, vmware | Operations & Monitoring: dynatrace, pagerduty, jenkins | Network & Security: cisco, wireshark | Operating Systems: linux, ubuntu, debian" >}}
+{{< logos items="aws, microsoft-azure, microsoft, dynatrace, pagerduty, jenkins, vmware, cisco, wireshark, linux, ubuntu, debian" speed="45" >}}
 
 ## Core Strengths
 
@@ -77,5 +77,5 @@ A proctored, hands-on skills assessment scored on both accuracy and completion a
 ## Open to What's Next
 
 {{< connect url="https://linkedin.com/in/cybercc" label="Connect on LinkedIn" >}}
-Open to operations, infrastructure, and security roles: operations and service delivery management, incident and problem management, and security engineering or governance. LinkedIn is the fastest way to reach me. Come say hi.
+Always happy to meet new people, swap ideas, or talk shop about keeping systems running and secure. LinkedIn is the easiest place to find me, so come say hi.
 {{< /connect >}}
