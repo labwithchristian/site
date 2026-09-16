@@ -85,11 +85,12 @@ git remote add origin https://github.com/labwithchristian/site.git
 git push -u origin main
 ```
 
-4. Confirm the repo shows `config/`, `content/`, `layouts/`, `themes/blowfish/`, `static/fonts/`
-   (10 woff2 files), `assets/`, and `.github/workflows/hugo.yml`.
+4. Confirm the repo shows `config/`, `content/`, `layouts/`, `static/fonts/` (6 woff2 files),
+   `assets/`, `.gitmodules`, and `.github/workflows/hugo.yml`.
 
-The Blowfish theme is vendored as plain files, so a normal `git add .` captures everything. There is
-no submodule step.
+The Blowfish theme is a git submodule pinned to a specific commit (`themes/blowfish`). Clone with
+`git clone --recurse-submodules`, or run `git submodule update --init` after a plain clone. The
+workflow checks submodules out automatically.
 
 ---
 
@@ -98,7 +99,7 @@ no submodule step.
 1. Repo -> **Settings** -> **Pages**.
 2. **Source** -> **GitHub Actions**. Do not pick "Deploy from a branch"; Hugo needs a build step.
 3. **Actions** tab. The workflow should be running from your push. Wait for green, 1 to 2 minutes.
-   If it did not fire: Actions -> "Deploy Hugo site to Pages" -> Run workflow.
+   If it did not fire: Actions -> "Build, check and deploy" -> Run workflow.
 4. Open `https://labwithchristian.github.io/site/` and confirm the site renders.
 
 **Do this before touching DNS.** It separates "the build works" from "DNS and certificates work," so
@@ -206,7 +207,8 @@ Browser checklist:
 | Enforce HTTPS greyed out | Certificate not issued | Same as above. |
 | 404 at the custom domain | CNAME file missing from build | `curl -s https://christiancarrasco.dev/CNAME` should return the bare domain. Confirm `static/CNAME` was committed. |
 | Unstyled page | baseURL mismatch | `baseURL` must be exactly `https://christiancarrasco.dev/`, including protocol and trailing slash. |
-| Workflow build failure | Theme not committed | Confirm `themes/blowfish/` is present and not empty in the repo. |
+| Workflow build failure | Theme submodule missing | Confirm `.gitmodules` exists and `themes/blowfish` shows as a submodule link in the repo. Locally: `git submodule update --init`. |
+| Workflow fails at "Check internal links" | A page links to something that isn't in the build | Open the job log: lychee lists each missing file or anchor and the page it came from. |
 | Fonts fall back to serif | woff2 files missing | Confirm all 10 files in `static/fonts/` were committed. |
 
 ---
