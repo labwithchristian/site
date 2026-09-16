@@ -266,6 +266,25 @@ html[data-astral="true"]:not(.dark) #floating-header {
   border-color: rgba(var(--color-primary-300), 0.3);
 }
 
+/* --- Nav bar: light purple in light mode (all pages) ---
+   Targets the floating header's actual markup. The selectors above never
+   matched it, so the bar was falling back to the theme's neutral gray wash.
+   Colors come from the active scheme's primary ramp, so the tint follows
+   whichever scheme is set in params.toml. Dark mode is untouched. */
+html:not(.dark) .fixed.inset-x-0.top-3 > .rounded-2xl {
+  border-color: rgba(var(--color-primary-300), 0.55);
+  box-shadow: 0 10px 30px -16px rgba(var(--color-primary-700), 0.35);
+}
+
+html:not(.dark) .fixed.inset-x-0.top-3 > .rounded-2xl > div:first-child {
+  background-color: rgba(var(--color-primary-100), 0.78);
+}
+
+html:not(.dark) .fixed.inset-x-0.top-3 > .rounded-2xl a:hover,
+html:not(.dark) .fixed.inset-x-0.top-3 > .rounded-2xl button:hover {
+  color: rgb(var(--color-primary-700));
+}
+
 @media (prefers-reduced-transparency: reduce) {
   html[data-astral="true"] article.group,
   html[data-astral="true"] ol.border-s-2 > li > div > div.block,
