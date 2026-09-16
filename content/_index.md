@@ -15,7 +15,7 @@ heroButtons:
 
 {{< logos items="aws, microsoft-azure, microsoft, dynatrace, pagerduty, jenkins, vmware, cisco, wireshark, linux, ubuntu, debian" speed="45" >}}
 
-## Core strengths
+## Core Strengths
 
 {{< strengths >}}
 

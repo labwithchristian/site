@@ -13,6 +13,8 @@ mainSections = ["blog", "writeups"]
 
 disableImageOptimization = false
 disableTextInHeader = false
+navHomeText = "Home"
+navHomeIcon = "tp-classic"
 
 defaultFeaturedImage = ""
 defaultBackgroundImage = "img/patterns/grain.svg"
