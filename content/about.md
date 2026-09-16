@@ -68,7 +68,7 @@ I've known my beautiful wife for quite a while, and winning her over took longer
 
 The house is rarely quiet. Two doodles run the place, along with a parrot that talks, at least when it isn't busy inventing new sounds and dialects.
 
-Where we live, natural springs are never far away. When the Florida heat and humidity settle in, a cold, clear spring is the best part of the week, and it hasn't gotten old yet.
+Where we live, natural springs are never far away. When the Florida heat and humidity settle in, a cold, clear spring is the best part of the weekends, and it hasn't gotten old yet.
 
 If the parrot ever learns a new word worth sharing, you'll hear about it here first.
 

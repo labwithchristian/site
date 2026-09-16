@@ -1407,19 +1407,19 @@ html[data-astral="true"]:not(.dark) .connect {
 }
 
 /* --- whoami intro: portrait beside the opening statement --- */
-/* Portrait sits above the intro text at a size that shows the full photo
-   in detail; the frame matches the photo's 4:5 shape so nothing is cropped. */
+/* Portrait on the left, intro text beside it; stacks on phones. The frame
+   matches the photo's 4:5 shape so nothing is cropped. */
 .intro-block {
   display: grid;
-  grid-template-columns: 1fr;
-  justify-items: start;
-  gap: 2.25rem;
+  grid-template-columns: 16rem 1fr;
+  align-items: center;
+  gap: 2rem;
   margin: 1.75rem 0 2.25rem;
 }
 
 .intro-block__frame {
   position: relative;
-  width: min(100%, 23rem);
+  width: 100%;
   aspect-ratio: 4 / 5;
   border-radius: 1rem;
   padding: 0.4rem;
@@ -1485,7 +1485,7 @@ html[data-astral="true"]:not(.dark) .connect {
 .dark .intro-block__text p { color: rgb(var(--color-neutral-300)); }
 
 @media (max-width: 720px) {
-  .intro-block { gap: 1.75rem; justify-items: center; }
+  .intro-block { grid-template-columns: 1fr; gap: 1.75rem; justify-items: center; }
   .intro-block__frame { width: min(100%, 21rem); }
   .intro-block__text { text-align: left; }
 }

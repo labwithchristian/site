@@ -21,8 +21,8 @@
         {{- if eq . 760 }}{{ $fallback = $ji }}{{ end -}}
       {{- end }}
       <picture>
-        <source type="image/webp" srcset="{{ delimit (uniq $webp) ", " }}" sizes="(max-width: 720px) 90vw, 23rem" />
-        <img class="intro-block__img" src="{{ $fallback.RelPermalink }}" srcset="{{ delimit (uniq $jpg) ", " }}" sizes="(max-width: 720px) 90vw, 23rem" width="{{ $fallback.Width }}" height="{{ $fallback.Height }}" alt="{{ $alt }}" loading="eager" decoding="async" />
+        <source type="image/webp" srcset="{{ delimit (uniq $webp) ", " }}" sizes="(max-width: 720px) 90vw, 16rem" />
+        <img class="intro-block__img" src="{{ $fallback.RelPermalink }}" srcset="{{ delimit (uniq $jpg) ", " }}" sizes="(max-width: 720px) 90vw, 16rem" width="{{ $fallback.Width }}" height="{{ $fallback.Height }}" alt="{{ $alt }}" loading="eager" decoding="async" />
       </picture>
     {{- else }}
       <div class="intro-block__placeholder" role="img" aria-label="{{ $alt }}">
