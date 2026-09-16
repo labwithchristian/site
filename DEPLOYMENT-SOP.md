@@ -260,6 +260,116 @@ that people reach by clicking a link.
 
 ---
 
+## Phase 8: Rollback and disaster recovery
+
+GitHub is the only source of truth for this site. There is no database and no server state: every
+deploy is rebuilt from scratch from whatever `main` points to, so recovery is always a matter of
+getting `main` to point at a good commit and letting the existing workflow redeploy it. Nothing here
+needs a separate backup system.
+
+### The rule: revert, don't force-push
+
+`main` is shared and the deploy workflow reacts to every push to it. Prefer `git revert`, which adds
+a new commit undoing a change: it is safe on a shared branch, keeps history intact, and immediately
+triggers a redeploy of the reverted state. Reserve `git reset --hard` plus a force-push for a genuine
+emergency (see below), because it rewrites history other clones and the reflog rely on, and needs
+everyone else's clone to be reset to match.
+
+### Fastest path: the last push broke the site
+
+1. Find the bad commit:
+
+   ```bash
+   git fetch origin
+   git log --oneline -10 origin/main
+   ```
+
+2. If it was a single, non-merge commit:
+
+   ```bash
+   git revert <bad-commit-sha>
+   git push origin main
+   ```
+
+3. If it was a merged pull request (a merge commit, two parents), revert against the first parent:
+
+   ```bash
+   git revert -m 1 <merge-commit-sha>
+   git push origin main
+   ```
+
+   Concrete example: the `audit-phase2` merge landed as `1d98a93` on top of baseline `0baf568`. To
+   undo that whole merge in one step:
+
+   ```bash
+   git revert -m 1 1d98a93
+   git push origin main
+   ```
+
+4. Watch the redeploy and re-verify (Phase 5's `curl` checks and browser checklist). A revert commit
+   builds and deploys exactly like any other push, no special handling.
+
+### Confirming what "good" looks like before you revert
+
+Check the Actions tab for the last run that was green before things broke, and note its commit SHA
+(`git log --oneline` against that same SHA shows what it contained). Don't assume the most recent
+commit is the culprit; the site rebuilds fully on every push, so a change two commits back can be
+the one that surfaces the failure now.
+
+### Submodule-specific recovery (`themes/blowfish`)
+
+Since the audit-phase2 merge, the theme is a pinned git submodule rather than vendored files. Ways
+this can go wrong locally, and the fix:
+
+| Symptom | Fix |
+|---|---|
+| `themes/blowfish` is an empty folder after `git checkout` or `git pull` | `git submodule update --init --recursive` |
+| Wrong commit checked out inside the submodule | `git -C themes/blowfish log --oneline -1` to check, then `git submodule update --init --force` to snap it back to the pin recorded in `.gitmodules` / the parent commit |
+| Submodule clone fails because the directory already exists and isn't empty | List what's in there before deleting anything (`find themes/blowfish -mindepth 1`) — it should only ever contain the theme's own files. Anything else is unexpected and worth asking about before removing, the same way we handled a stray `.watchfire/` folder found there during the phase-2 merge |
+| Need to fully re-pin from scratch | `git submodule deinit -f themes/blowfish && rm -rf .git/modules/themes/blowfish && git submodule update --init --recursive` |
+
+This only affects local working copies. CI always does a fresh `git submodule update --init` on a
+clean checkout, so a broken local submodule state can't leak into a deploy.
+
+### Emergency: force-reset main to a known-good commit
+
+Only when a revert isn't fast enough (e.g. the repo is in a state `git revert` can't cleanly express)
+and you've confirmed with whoever else might have a clone:
+
+```bash
+git fetch origin
+git checkout main
+git reset --hard <known-good-sha>
+git push --force-with-lease origin main
+```
+
+`--force-with-lease` (not plain `--force`) refuses the push if someone else has pushed to `main`
+since your last fetch, so it fails loudly instead of silently discarding their work.
+
+### Domain and certificate disasters
+
+Covered in Phase 4's walkthrough and the Phase 5 troubleshooting table: a dead-looking `.dev` domain
+after a DNS or Pages settings change is almost always the Cloudflare proxy toggle or a custom-domain
+mismatch, not a code problem. Diagnose with `curl`/`openssl`, not a browser, since HSTS makes a
+provisioning gap look identical to a real outage. No rollback of `main` fixes a certificate issue.
+
+### Known-good checkpoints on record
+
+| Commit | What it is |
+|---|---|
+| `0baf568` | Last commit before the audit-phase2 restructure: vendored (non-submodule) theme, single `custom.css`. If the submodule/CSS-split approach ever needs to be abandoned entirely, this is the commit to return to. |
+| `1d98a93` | The audit-phase2 merge into `main`: submodule theme, split CSS, design polish, CI link check. Current baseline as of 2026-09-16. |
+
+### Local clones
+
+Two independent local clones of this repo exist on this machine: `~/code/site` and
+`~/Documents/GitHub/site` (this one, which the audit-phase2 handover was written against). They can
+drift out of sync with each other since neither knows about the other's commits until you `git fetch`.
+Treat GitHub's `main` as the source of truth, not either local clone, and `git pull` before starting
+work in whichever one you use.
+
+---
+
 ## Cost summary
 
 | Item | Cost |
