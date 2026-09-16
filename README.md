@@ -98,8 +98,8 @@ visitors who prefer reduced motion. Set `introSequence = false` in `params.toml`
 | whoami | How Christian works, and who he is outside of work |
 
 The **Download PDF** button appears whenever a PDF sits next to the page
-(`content/resume/christian-carrasco-resume.pdf`). After editing the resume, regenerate it so the two
-match: run `hugo server`, open `/resume/` in Chrome in light mode, Print, Destination "Save as PDF",
+(`content/resume/christian-carrasco-resume.pdf`). It can be Christian's own exported resume: replace
+the file, keeping the name. To generate one from the page instead: run `hugo server`, open `/resume/` in Chrome in light mode, Print, Destination "Save as PDF",
 Paper "Letter", Margins "Default", Background graphics off, and save over the file. `90-print.css`
 strips the site chrome and adds the name and links at the top.
 
@@ -122,6 +122,7 @@ It's set with `images` in `params.toml`.
 | `xp` | Resume | Wrapper that stacks `job` cards |
 | `certs groups="Label :: Cert, Cert \| ..." seal class` | Home, Resume | Labeled pill groups. `seal="false"` for lists that aren't certifications |
 | `connect url label` | Home | `> connect --linkedin` card |
+| `connect-mini url label` | whoami | One-line LinkedIn sign-off at the end of a page |
 | `intro image alt` | whoami | Portrait beside the opening statement |
 
 On whoami, `### Area {.area}` renders a small eyebrow for a Core Strengths area, with `####` practices under it.

@@ -617,3 +617,61 @@ html.dark .nd-barrier { stroke: rgb(var(--color-secondary-300)); }
 }
 #main-content .article-content > h3.area + h4 { margin-top: 0.7rem; }
 .dark #main-content .article-content > h4 { color: rgb(var(--color-neutral-100)); }
+
+/* --- Small LinkedIn sign-off at the end of a page (connect-mini) --- */
+.connect-mini {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1.25rem;
+  margin: 3rem 0 0;
+  padding: 1.1rem 0 0;
+  border-top: 1px solid rgba(var(--color-primary-400), 0.3);
+}
+
+.connect-mini__text {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgb(var(--color-neutral-600));
+}
+
+.connect-mini__cue {
+  margin-right: 0.3rem;
+  font-family: var(--font-mono);
+  color: rgb(var(--color-primary-500));
+}
+
+.connect-mini__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(var(--color-primary-400), 0.55);
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: none;
+  color: rgb(var(--color-primary-700));
+  transition: border-color 0.18s ease, background-color 0.18s ease;
+}
+.connect-mini__link:hover {
+  border-color: rgb(var(--color-primary-500));
+  background-color: rgba(var(--color-primary-100), 0.6);
+}
+.connect-mini__in { width: 0.95rem; height: 0.95rem; }
+.connect-mini__arrow { transition: transform 0.18s ease; }
+.connect-mini__link:hover .connect-mini__arrow { transform: translateX(2px); }
+
+.dark .connect-mini { border-top-color: rgba(var(--color-primary-400), 0.22); }
+.dark .connect-mini__text { color: rgb(var(--color-neutral-300)); }
+.dark .connect-mini__cue { color: rgb(var(--color-primary-300)); }
+.dark .connect-mini__link { border-color: rgba(var(--color-primary-300), 0.45); color: rgb(var(--color-primary-200)); }
+.dark .connect-mini__link:hover { border-color: rgb(var(--color-primary-300)); background-color: rgba(var(--color-primary-800), 0.4); }
+
+@media (prefers-reduced-motion: reduce) {
+  .connect-mini__link, .connect-mini__arrow { transition: none; }
+  .connect-mini__link:hover .connect-mini__arrow { transform: none; }
+}
