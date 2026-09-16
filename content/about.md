@@ -69,6 +69,10 @@ Where we live, natural springs are never far away. When the Florida heat and hum
 
 If the parrot ever learns a new word worth sharing, you'll hear about it here first.
 
-## What you'll find here {.h-minor}
+## What you'll find here
 
 The [Homelab]({{< ref "homelab" >}}) page is the running reference for the lab I'm building: hardware, segmentation, and service layout. Sanitized configs and playbooks go on [GitHub](https://github.com/labwithchristian) as the build grows.
+
+{{< connect-mini url="https://linkedin.com/in/cybercc" label="Connect on LinkedIn" >}}
+Thanks for stopping by. Let's connect.
+{{< /connect-mini >}}
