@@ -1,0 +1,38 @@
+{{- /* One piece of homelab hardware as a spec card.
+
+       {{< spec role="Host" title="Proxmox Hypervisor"
+                rows="CPU: Ryzen 9 5900X | Memory: 64GB DDR4-3200"
+                tags="Proxmox, KVM" >}}
+       Why this part, in a sentence or two.
+       {{< /spec >}}
+
+       rows: "Label: value" pairs separated by "|". Only the first ":" splits,
+       so values may contain colons. */ -}}
+{{- $role := .Get "role" -}}
+{{- $title := .Get "title" -}}
+{{- $rows := .Get "rows" | default "" -}}
+{{- $tags := .Get "tags" | default "" -}}
+<article class="spec">
+  <header class="spec__head">
+    <h3 class="spec__title">{{ $title }}</h3>
+    {{- with $role }}<span class="spec__role">{{ . }}</span>{{ end }}
+  </header>
+  {{- with $rows }}
+  <dl class="spec__rows">
+    {{- range split . "|" }}
+      {{- $pair := trim . " " -}}
+      {{- $label := index (split $pair ":") 0 | strings.TrimSpace -}}
+      {{- $value := strings.TrimPrefix (printf "%s:" (index (split $pair ":") 0)) $pair | strings.TrimSpace -}}
+      <div class="spec__row"><dt>{{ $label }}</dt><dd>{{ $value }}</dd></div>
+    {{- end }}
+  </dl>
+  {{- end }}
+  {{- with trim .Inner "\n " }}
+  <div class="spec__body">{{ $.Page.RenderString (dict "display" "block") . }}</div>
+  {{- end }}
+  {{- with $tags }}
+  <ul class="spec__tags">
+    {{- range split . "," }}<li>{{ trim . " " }}</li>{{ end }}
+  </ul>
+  {{- end }}
+</article>

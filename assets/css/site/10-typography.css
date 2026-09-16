@@ -1,50 +1,76 @@
-/* --- Page typography, normalised ---
-   The whoami page had grown a mix of sizes and colours: lead text, run-in bold
-   labels, and body copy all at different scales. These lock body copy, list
-   items and sub-headings to one ramp across every article page. */
-.prose > p,
-.prose > ul > li,
-.prose > ol > li,
-.article-content > p,
-.article-content > ul > li,
-.article-content > ol > li {
-  font-size: 1rem;
+/* --- Type scale ----------------------------------------------------------------
+   One ramp for every page. Steps are a major third (x1.25) off a 17px body,
+   with the display steps fluid between phone and desktop.
+   Mapping:
+     --step-5  hero name (40-hero.css)
+     --step-4  page title (h1 on whoami, homelab, writeups, blog, tags)
+     --step-3  section heading (h2 in page content and on the homepage)
+     --step-2  minor section heading (h2.h-minor, e.g. "## Education {.h-minor}")
+     --step-1  sub-heading, card title (h3, experience roles, spec cards)
+     --step-0  body copy
+     --step--1 meta, labels, captions
+   Scoped under #main-content so the scale beats Tailwind utility sizes set by
+   theme templates without needing !important.
+   --------------------------------------------------------------------------- */
+:root {
+  --step--1: 0.8125rem;
+  --step-0: 1.0625rem;
+  --step-1: 1.25rem;
+  --step-2: clamp(1.4rem, 2.6vw, 1.5625rem);
+  --step-3: clamp(1.75rem, 3.8vw, 2.3rem);
+  --step-4: clamp(2.25rem, 5.4vw, 3.3rem);
+  --step-5: clamp(2.6rem, 8vw, 4.75rem);
+}
+
+/* Body copy */
+#main-content :is(.prose, .article-content, .max-w-prose) > :is(p, ul > li, ol > li) {
+  font-size: var(--step-0);
   line-height: 1.72;
   color: rgb(var(--color-neutral-700));
 }
+.dark #main-content :is(.prose, .article-content, .max-w-prose) > :is(p, ul > li, ol > li) {
+  color: rgb(var(--color-neutral-300));
+}
 
-.dark .prose > p,
-.dark .prose > ul > li,
-.dark .prose > ol > li,
-.dark .article-content > p,
-.dark .article-content > ul > li,
-.dark .article-content > ol > li { color: rgb(var(--color-neutral-300)); }
-
-.prose > h2,
-.article-content > h2 {
-  margin-top: 2.6rem;
-  margin-bottom: 0.9rem;
-  font-size: clamp(1.45rem, 3.4vw, 1.8rem);
+/* Page title */
+#main-content h1:not(.hero-name) {
+  font-size: var(--step-4);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
   font-weight: 600;
-  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+
+/* Section headings */
+#main-content :is(.prose, .article-content, .max-w-prose) > h2 {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  font-size: var(--step-3);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+  text-wrap: balance;
   color: rgb(var(--color-neutral-900));
 }
+.dark #main-content :is(.prose, .article-content, .max-w-prose) > h2 { color: rgb(var(--color-neutral-100)); }
 
-.dark .prose > h2,
-.dark .article-content > h2 { color: rgb(var(--color-neutral-100)); }
-
-.prose > h3,
-.article-content > h3 {
-  margin-top: 1.7rem;
-  margin-bottom: 0.4rem;
-  font-size: 1.06rem;
-  font-weight: 600;
-  letter-spacing: 0;
-  color: rgb(var(--color-primary-700));
+#main-content :is(.prose, .article-content, .max-w-prose) > h2.h-minor {
+  margin-top: 2.6rem;
+  font-size: var(--step-2);
+  letter-spacing: -0.015em;
 }
 
-.dark .prose > h3,
-.dark .article-content > h3 { color: rgb(var(--color-primary-300)); }
+/* Sub-headings */
+#main-content :is(.prose, .article-content, .max-w-prose) > h3 {
+  margin-top: 1.9rem;
+  margin-bottom: 0.4rem;
+  font-size: var(--step-1);
+  line-height: 1.3;
+  letter-spacing: -0.005em;
+  font-weight: 600;
+  color: rgb(var(--color-primary-700));
+}
+.dark #main-content :is(.prose, .article-content, .max-w-prose) > h3 { color: rgb(var(--color-primary-300)); }
 
 .prose strong { font-weight: 600; color: inherit; }
 
@@ -52,53 +78,33 @@
   color: rgb(var(--color-primary-600));
   text-decoration-color: rgba(var(--color-primary-400), 0.5);
 }
-
 .dark .prose a { color: rgb(var(--color-primary-300)); }
 
-/* --- Section headings: bigger, with more presence on the page --- */
-.prose > h2,
-.article-content > h2 {
-  font-size: clamp(1.95rem, 5vw, 3rem);
-  line-height: 1.08;
-  letter-spacing: -0.03em;
-  margin-top: 3.4rem;
-  margin-bottom: 1.1rem;
-}
-
-/* Page title on interior pages (whoami, section indexes) */
-article > header h1#page-title,
-article > header h1[class],
-.prose > h1,
-.article-content > h1 {
-  font-size: clamp(2.6rem, 7vw, 4.25rem);
-  line-height: 1.03;
-  letter-spacing: -0.03em;
-  font-weight: 600;
-}
-
-.prose > h3,
-.article-content > h3 {
-  font-size: 1.12rem;
-  margin-top: 1.9rem;
+/* Eyebrows and status labels use the mono face */
+.hero-role__text,
+.pipeline__badge,
+.certs__label,
+.soon__status {
+  font-family: var(--font-mono);
 }
 
 /* --- Links inside running text ---
    Color alone doesn't mark a link for readers who can't see the difference
    (WCAG 1.4.1), so links in paragraphs, list items and table cells get a thin
    underline. Buttons, nav, cards and tag pills are unaffected. */
-.prose :is(p, li, td) a:not(.cta-btn),
+.prose :is(p, li, td) a:not(.cta-btn):not(#TableOfContents a),
 :is(.intro-block__text, .soon__text, .wip__text, .connect__text) a {
   text-decoration-line: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 3px;
   text-decoration-color: rgba(var(--color-primary-500), 0.55);
 }
-.prose :is(p, li, td) a:not(.cta-btn):hover,
+.prose :is(p, li, td) a:not(.cta-btn):not(#TableOfContents a):hover,
 :is(.intro-block__text, .soon__text, .wip__text, .connect__text) a:hover {
   text-decoration-thickness: 2px;
   text-decoration-color: currentColor;
 }
-html.dark .prose :is(p, li, td) a:not(.cta-btn),
+html.dark .prose :is(p, li, td) a:not(.cta-btn):not(#TableOfContents a),
 html.dark :is(.intro-block__text, .soon__text, .wip__text, .connect__text) a {
   text-decoration-color: rgba(var(--color-primary-300), 0.6);
 }

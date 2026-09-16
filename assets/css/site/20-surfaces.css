@@ -3,10 +3,6 @@
    which sets data-astral="true" on <html>. Cards become translucent so the
    background pattern shows through, with a primary-tinted edge. */
 
-html[data-astral="true"] .logo-marquee__item:hover .logo-marquee__icon svg {
-  filter: drop-shadow(0 0 6px rgba(var(--color-primary-400), 0.5));
-}
-
 /* Feature cards on the homepage */
 html[data-astral="true"] .feature-grid-glass,
 html[data-astral="true"] article.group {
@@ -92,7 +88,7 @@ html:not(.dark) #background-canvas > div {
 }
 
 html[data-astral="true"]:not(.dark) #background-canvas > div {
-  background-color: rgba(var(--color-neutral-50), 0.38) !important;
+  background-color: rgba(var(--color-neutral-50), 0.5) !important;
 }
 
 html[data-astral="true"].dark #background-canvas > div,
@@ -109,9 +105,15 @@ html[data-astral="true"]:not(.dark) .article-card {
   box-shadow: 0 8px 30px -18px rgba(var(--color-primary-700), 0.35);
 }
 
-/* --- Dark-mode page background ---
-   Lightens only the page canvas in dark mode. Cards, glass fills and every other
-   neutral-800 consumer are unaffected. Light mode is untouched. */
+/* --- Page background ---
+   Light mode sits on neutral-50 rather than the theme's mid-tone neutral, so
+   cards and the violet accents lift off the page. Dark mode lightens only the
+   page canvas; cards, glass fills and other neutral-800 consumers are
+   unaffected. */
+html:not(.dark) body {
+  background-color: rgb(var(--color-neutral-50));
+}
+
 html.dark body {
   background-color: rgb(var(--color-page-dark, var(--color-neutral-800)));
 }

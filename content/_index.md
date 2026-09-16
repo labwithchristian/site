@@ -12,9 +12,9 @@ heroButtons:
     style: "outline"
 ---
 
-## Skills & Tools
+## Skills & Tools {.h-minor}
 
-{{< logos items="aws, microsoft-azure, microsoft, dynatrace, pagerduty, jenkins, vmware, cisco, wireshark, linux, ubuntu, debian" speed="45" >}}
+{{< logos groups="Cloud & Platforms: aws, microsoft-azure, microsoft, vmware | Operations & Monitoring: dynatrace, pagerduty, jenkins | Network & Security: cisco, wireshark | Operating Systems: linux, ubuntu, debian" >}}
 
 ## Core Strengths
 
@@ -30,7 +30,7 @@ heroButtons:
 
 {{< /strengths >}}
 
-## What's cooking
+## What's cooking {.h-minor}
 
 {{< pipeline items="CISSP :: In progress :: Targeting November 2026. Deepening the security governance and risk side | Home lab buildout :: Ongoing :: Segmentation, telemetry and detection engineering, documented as I go" >}}
 
@@ -56,7 +56,7 @@ Imaged and deployed more than 300 machines supporting a sales force of over 1,50
 
 {{< /xp >}}
 
-## Education
+## Education {.h-minor}
 
 {{< xp >}}
 
@@ -70,7 +70,7 @@ A proctored, hands-on skills assessment scored on both accuracy and completion a
 
 {{< /xp >}}
 
-## Certifications
+## Certifications {.h-minor}
 
 {{< certs groups="Security :: Certified Ethical Hacker (CEH), CompTIA Security+ | Cloud :: AWS Certified Cloud Practitioner | Network :: Cisco CCNA Routing & Switching | Process :: ITIL v4 Foundation, CompTIA Project+" >}}
 

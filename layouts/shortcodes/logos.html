@@ -1,44 +1,49 @@
-{{- /* Items are comma separated. Two forms:
-       slug            -> renders assets/img/logos/<slug>.svg, label from its <title>
-       text:Label      -> renders a typographic wordmark (for brands with no
-                          redistributable mark, e.g. AWS, ServiceNow, Entra ID)   */ -}}
-{{- $speed := .Get "speed" | default "42" -}}
-{{- $names := split (.Get "items") "," -}}
-{{- $data := slice -}}
-{{- range $names -}}
-  {{- $raw := trim . " " -}}
-  {{- if hasPrefix $raw "text:" -}}
-    {{- $label := trim (strings.TrimPrefix "text:" $raw) " " -}}
-    {{- $data = $data | append (dict "kind" "text" "label" $label) -}}
-  {{- else -}}
-    {{- $res := resources.Get (printf "img/logos/%s.svg" $raw) -}}
-    {{- with $res -}}
-      {{- $svg := .Content -}}
-      {{- $label := "" -}}
-      {{- if findRE "<title>.*?</title>" $svg -}}
-        {{- $label = replaceRE ".*?<title>(.*?)</title>.*" "$1" $svg -}}
+{{- /* Skills & Tools logo grid, grouped by area.
+
+       {{< logos groups="Cloud & Platforms: aws, microsoft-azure | Operations: dynatrace, pagerduty" >}}
+
+       Groups are separated by "|", each as "Label: slug, slug". A slug renders
+       assets/img/logos/<slug>.svg with its <title> as the visible label.
+       Wordmark-only logos (wider than tall) are listed in $wide and get a
+       cropped viewBox so they sit at the same optical size as square marks. */ -}}
+{{- $wide := dict "vmware" "0 9.3 24 5.4" -}}
+{{- $groups := slice -}}
+{{- range split (.Get "groups") "|" -}}
+  {{- $parts := split . ":" -}}
+  {{- if ge (len $parts) 2 -}}
+    {{- $label := trim (index $parts 0) " " -}}
+    {{- $items := slice -}}
+    {{- range split (index $parts 1) "," -}}
+      {{- $slug := trim . " " -}}
+      {{- with resources.Get (printf "img/logos/%s.svg" $slug) -}}
+        {{- $svg := .Content -}}
+        {{- $name := $slug -}}
+        {{- with findRESubmatch "<title>(.*?)</title>" $svg 1 -}}{{- $name = index (index . 0) 1 -}}{{- end -}}
+        {{- $svg = replaceRE "<title>.*?</title>" "" $svg -}}
+        {{- $svg = replaceRE "<svg" "<svg aria-hidden=\"true\" focusable=\"false\"" $svg 1 -}}
+        {{- $isWide := false -}}
+        {{- with index $wide $slug -}}
+          {{- $svg = replaceRE "viewBox=\"[^\"]*\"" (printf "viewBox=\"%s\"" .) $svg 1 -}}
+          {{- $isWide = true -}}
+        {{- end -}}
+        {{- $items = $items | append (dict "svg" $svg "name" $name "wide" $isWide) -}}
       {{- end -}}
-      {{- $svg = replaceRE "<svg" "<svg aria-hidden=\"true\" focusable=\"false\"" $svg -}}
-      {{- $data = $data | append (dict "kind" "svg" "svg" $svg "label" $label) -}}
     {{- end -}}
+    {{- $groups = $groups | append (dict "label" $label "items" $items) -}}
   {{- end -}}
 {{- end -}}
-
-<div class="logo-marquee not-prose my-10" role="group" aria-label="Skills and tools">
-  <div class="logo-marquee__track" style="--marquee-duration: {{ $speed }}s;">
-    {{- range $pass := slice 1 2 -}}
-      <ul class="logo-marquee__group" {{ if eq $pass 2 }}aria-hidden="true"{{ end }}>
-        {{- range $data }}
-          <li class="logo-marquee__item{{ if eq .kind "text" }} logo-marquee__item--text{{ end }}">
-            {{- if eq .kind "text" }}
-              <span class="logo-marquee__wordmark">{{ .label }}</span>
-            {{- else }}
-              <span class="logo-marquee__icon">{{ .svg | safeHTML }}</span>
-              <span class="logo-marquee__label">{{ .label }}</span>
-            {{- end }}
-          </li>
-        {{- end }}
-      </ul>
-    {{- end -}}
-  </div>
+<div class="skills not-prose">
+  {{- range $groups }}
+  <section class="skills__group" aria-label="{{ .label }}">
+    <h3 class="skills__label">{{ .label }}</h3>
+    <ul class="skills__list">
+      {{- range .items }}
+      <li class="skills__item">
+        <span class="skills__icon{{ if .wide }} skills__icon--wide{{ end }}">{{ .svg | safeHTML }}</span>
+        <span class="skills__name">{{ .name }}</span>
+      </li>
+      {{- end }}
+    </ul>
+  </section>
+  {{- end }}
 </div>

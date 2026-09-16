@@ -1,17 +1,13 @@
-/* --- Display fonts for headings ---
-   Self-hosted (static/fonts), so no third-party font requests.
-   Switch with `headingFont` in params.toml. */
+/* --- Fonts ------------------------------------------------------------------
+   All self-hosted from static/fonts (woff2, latin subset, from Fontsource), so
+   the site makes no third-party font requests.
+     Display   Fraunces (variable)       headings, hero name
+     Body      IBM Plex Sans (variable)  running text and UI
+     Mono      IBM Plex Mono 400/500     eyebrows, status labels, terminal bits
+   Faces and tracking are tokens below; components use var(--font-*) rather
+   than naming families directly.
+   --------------------------------------------------------------------------- */
 
-@font-face {
-  font-family: "Instrument Serif";
-  src: url("/fonts/instrument-serif-400.woff2") format("woff2");
-  font-weight: 400; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: "Instrument Serif";
-  src: url("/fonts/instrument-serif-400-italic.woff2") format("woff2");
-  font-weight: 400; font-style: italic; font-display: swap;
-}
 @font-face {
   font-family: "Fraunces";
   src: url("/fonts/fraunces-var.woff2") format("woff2-variations");
@@ -23,95 +19,63 @@
   font-weight: 100 900; font-style: italic; font-display: swap;
 }
 @font-face {
-  font-family: "Newsreader";
-  src: url("/fonts/newsreader-var.woff2") format("woff2-variations");
-  font-weight: 200 800; font-style: normal; font-display: swap;
+  font-family: "IBM Plex Sans";
+  src: url("/fonts/ibm-plex-sans-var.woff2") format("woff2-variations");
+  font-weight: 100 700; font-style: normal; font-display: swap;
 }
 @font-face {
-  font-family: "Newsreader";
-  src: url("/fonts/newsreader-var-italic.woff2") format("woff2-variations");
-  font-weight: 200 800; font-style: italic; font-display: swap;
+  font-family: "IBM Plex Sans";
+  src: url("/fonts/ibm-plex-sans-var-italic.woff2") format("woff2-variations");
+  font-weight: 100 700; font-style: italic; font-display: swap;
 }
 @font-face {
-  font-family: "Playfair Display";
-  src: url("/fonts/playfair-500.woff2") format("woff2");
+  font-family: "IBM Plex Mono";
+  src: url("/fonts/ibm-plex-mono-400.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("/fonts/ibm-plex-mono-500.woff2") format("woff2");
   font-weight: 500; font-style: normal; font-display: swap;
 }
-@font-face {
-  font-family: "Playfair Display";
-  src: url("/fonts/playfair-500-italic.woff2") format("woff2");
-  font-weight: 500; font-style: italic; font-display: swap;
-}
-@font-face {
-  font-family: "Literata";
-  src: url("/fonts/literata-var.woff2") format("woff2-variations");
-  font-weight: 200 900; font-style: normal; font-display: swap;
-}
-@font-face {
-  font-family: "Literata";
-  src: url("/fonts/literata-var-italic.woff2") format("woff2-variations");
-  font-weight: 200 900; font-style: italic; font-display: swap;
+
+:root {
+  --font-display: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
+  --font-display-weight: 600;
+  --font-display-tracking: -0.015em;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 
-/* Headings that take the display face: section headings, page titles,
-   hero title, and the sub-captions under section headings stay body font. */
+html,
+body {
+  font-family: var(--font-body);
+  font-feature-settings: "kern" 1;
+}
+
+code, kbd, pre, samp, .font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Headings take the display face. Scoped to [data-heading-font] (set from
+   headingFont in params.toml by layouts/_default/baseof.html), so removing
+   that param falls back to the body face everywhere. */
 html[data-heading-font] h1,
 html[data-heading-font] h2,
 html[data-heading-font] h3,
 html[data-heading-font] .prose h1,
 html[data-heading-font] .prose h2,
 html[data-heading-font] .prose h3 {
-  font-family: var(--font-display), ui-serif, Georgia, serif;
-  font-weight: var(--font-display-weight, 500);
-  font-style: var(--font-display-style, normal);
-  letter-spacing: var(--font-display-tracking, -0.01em);
+  font-family: var(--font-display);
+  font-weight: var(--font-display-weight);
+  font-style: normal;
+  letter-spacing: var(--font-display-tracking);
   line-height: 1.2;
 }
 
-html[data-heading-font="instrument"] {
-  --font-display: "Instrument Serif";
-  --font-display-weight: 400;
-  --font-display-tracking: 0;
-}
-html[data-heading-font="instrument-italic"] {
-  --font-display: "Instrument Serif";
-  --font-display-weight: 400;
-  --font-display-style: italic;
-  --font-display-tracking: 0;
-}
-html[data-heading-font="fraunces"] {
-  --font-display: "Fraunces";
-  --font-display-weight: 600;
-  --font-display-tracking: -0.015em;
-}
-html[data-heading-font="fraunces-italic"] {
-  --font-display: "Fraunces";
-  --font-display-weight: 600;
-  --font-display-style: italic;
-  --font-display-tracking: -0.015em;
-}
-html[data-heading-font="newsreader-italic"] {
-  --font-display: "Newsreader";
-  --font-display-weight: 500;
-  --font-display-style: italic;
-  --font-display-tracking: -0.005em;
-}
-html[data-heading-font="playfair-italic"] {
-  --font-display: "Playfair Display";
-  --font-display-weight: 500;
-  --font-display-style: italic;
-  --font-display-tracking: -0.01em;
-}
-html[data-heading-font="literata"] {
-  --font-display: "Literata";
-  --font-display-weight: 600;
-  --font-display-tracking: -0.015em;
-}
-
-/* Keep functional UI text in the body font even when it sits in a heading tag */
+/* Functional UI text stays in the body face even inside heading tags. */
 html[data-heading-font] .pipeline__badge,
-html[data-heading-font] .logo-marquee__label,
 html[data-heading-font] nav,
 html[data-heading-font] .site-credits {
-  font-family: inherit;
+  font-family: var(--font-body);
 }
