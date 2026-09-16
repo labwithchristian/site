@@ -3,6 +3,11 @@
    which sets data-astral="true" on <html>. Cards become translucent so the
    background pattern shows through, with a primary-tinted edge. */
 
+/* Logo glow on hover in the Skills & Tools marquee */
+html[data-astral="true"] .logo-marquee__item:hover .logo-marquee__icon svg {
+  filter: drop-shadow(0 0 6px rgba(var(--color-primary-400), 0.5));
+}
+
 /* Feature cards on the homepage */
 html[data-astral="true"] .feature-grid-glass,
 html[data-astral="true"] article.group {

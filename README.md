@@ -60,7 +60,7 @@ Every file in this folder is concatenated in filename order and loaded after the
 | `20-surfaces.css` | Page background, glass surfaces, background pattern |
 | `30-nav.css` | Nav pill, mobile dropdown, Home icon |
 | `40-hero.css` | Hero name, role eyebrow, lead, buttons |
-| `50-home.css` | Skills grid, core strengths, pipeline, experience, certifications, connect |
+| `50-home.css` | Skills marquee, core strengths, pipeline, experience, certifications, connect |
 | `60-pages.css` | whoami portrait, work-in-progress and coming-soon blocks, network diagram, spec cards |
 | `70-footer.css` | Footer menu and credits |
 | `80-intro.css` | Homepage intro overlay |
@@ -94,7 +94,7 @@ It's set with `images` in `params.toml`.
 
 | Shortcode | Used on | Purpose |
 |---|---|---|
-| `logos groups="Label: slug, slug \| Label: slug"` | Home | Grouped Skills & Tools grid. Logos live in `assets/img/logos/` |
+| `logos items="slug, slug" speed="45"` | Home | Scrolling Skills & Tools logo marquee. Logos live in `assets/img/logos/`; `text:Label` adds a wordmark |
 | `strengths` + `strength icon title items` | Home | Core Strengths cards |
 | `pipeline items="Name :: Status :: Note \| ..."` | Home, Homelab | Status list with cooking-themed badges |
 | `xp` + `xpitem year role company location tags` | Home | Experience and education cards |

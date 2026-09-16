@@ -75,6 +75,7 @@ html[data-heading-font] .prose h3 {
 
 /* Functional UI text stays in the body face even inside heading tags. */
 html[data-heading-font] .pipeline__badge,
+html[data-heading-font] .logo-marquee__label,
 html[data-heading-font] nav,
 html[data-heading-font] .site-credits {
   font-family: var(--font-body);
