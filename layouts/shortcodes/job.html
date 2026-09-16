@@ -1,0 +1,52 @@
+{{- /*
+  One employer on the resume page. Titles held there are listed under the
+  company, newest first, so a promotion reads as progression.
+
+    {{< job company="Beyondsoft Consulting" dates="Mar 2021 to Aug 2026"
+            location="Remote" context="On assignment at Toyota Motor North America"
+            positions="Operations Manager :: 2022 to 2026 | Senior Lead Systems Analyst :: 2021 to 2022"
+            tags="Incident Management, AWS Security" >}}
+    - Bullet in Markdown
+    {{< /job >}}
+*/ -}}
+{{- $company := .Get "company" -}}
+{{- $dates := .Get "dates" -}}
+{{- $location := .Get "location" -}}
+{{- $context := .Get "context" -}}
+{{- $positions := .Get "positions" | default "" -}}
+{{- $tags := .Get "tags" | default "" -}}
+<article class="xp__item job">
+  <div class="xp__head">
+    <h3 class="xp__role">{{ $company }}</h3>
+    {{- with $dates }}<span class="xp__year">{{ . }}</span>{{ end }}
+  </div>
+  {{- if or $location $context }}
+    <p class="xp__meta">
+      <svg class="xp__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 21s7-6.2 7-11a7 7 0 1 0-14 0c0 4.8 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/>
+      </svg>
+      <span>{{ $location }}{{ if and $location $context }} · {{ end }}{{ $context }}</span>
+    </p>
+  {{- end }}
+  {{- with $positions }}
+    {{- $list := split . "|" }}
+    <ul class="job__positions{{ if gt (len $list) 1 }} job__positions--multi{{ end }}">
+      {{- range $list }}
+        {{- $p := split (trim . " ") "::" }}
+        <li class="job__position">
+          <span class="job__title">{{ trim (index $p 0) " " }}</span>
+          {{- if ge (len $p) 2 }}<span class="job__when">{{ trim (index $p 1) " " }}</span>{{ end }}
+        </li>
+      {{- end }}
+    </ul>
+  {{- end }}
+  <div class="xp__body job__body">{{ .Page.RenderString (dict "display" "block") (trim .Inner "\n ") }}</div>
+  {{- with $tags }}
+    <ul class="xp__tags">
+      {{- range split . "," }}
+        <li class="xp__tag">{{ trim . " " }}</li>
+      {{- end }}
+    </ul>
+  {{- end }}
+</article>

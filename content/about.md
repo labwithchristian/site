@@ -1,66 +1,63 @@
 ---
 title: "whoami"
-description: "Christian Carrasco: ten plus years in enterprise IT operations and security, moving back into hands-on security work."
+description: "Christian Carrasco: how I work across IT operations and security, and who I am outside of it."
 showDate: false
 showAuthor: false
 showReadingTime: false
 showTableOfContents: true
 showWordCount: false
+showPagination: false
 ---
 
 {{< intro image="img/author.jpg" alt="Christian Carrasco" >}}
-Ten plus years in enterprise IT. Over a decade of operations, five years in a HIPAA-regulated healthcare environment, a year inside a SOC, and five years running operations for the largest automotive brand in the world.
+I'm Christian. For ten plus years I've worked where IT operations and security meet: keeping enterprise systems running, keeping them defensible, and staying steady on the call when something big breaks.
 {{< /intro >}}
 
-## The short version
-
-Ten years in enterprise IT, and most of it spent where operations and security overlap.
-
-The last five as Operations Manager at Beyondsoft Consulting, on assignment at Toyota Motor North America. Five engineers, a global client account, and the phone that rings when something large is broken. I was the incident manager on those calls: severity, coordination, restoration, and the executive update that follows.
-
-Before that, a year as an Information Security Analyst at TelevisaUnivision, where the title matched the work. SOC alerts triage and response, LogRhythm administration, correlation rules, email phishing investigations, and end user security awareness training.
-
-Before that, five years as a system administrator at Cigna HealthCare. HIPAA-regulated, supporting from PXE image server configurations to identity access management escalations leveraging Active Directory for users and executives; including machines, servers for onboarding and off-boarding.
-
-Based out of Florida. Bilingual, hablo español.
-
-## The through line
+## Why operations and security
 
 Two tracks have run side by side for my whole career: keeping environments operating, and keeping them defensible. Most of my roles have asked for both at once, and the ones that only asked for one were the exception.
 
-At Cigna I was the escalation point for a support team in a HIPAA-regulated environment, which meant identity administration and audit evidence were part of the same job as the ticket queue. At TelevisaUnivision the title was security analyst and the work matched it: SOC triage, lead LogRhythm administrator, correlation rules and custom parsers, detection coverage mapped to MITRE ATT&CK, spear-phishing investigations, and a SIEM migration I planned.
+Operations leadership and security operations draw on the same instincts: triage under pressure, clear ownership, and evidence that holds up. I've been trusted with both, and I keep the technical side sharp through the CISSP and my home lab while the leadership side keeps growing.
 
-Then I moved into operations leadership at Beyondsoft, and neither track stopped. I ran incident and problem management for a global client account, owned SLA performance and vendor contracts, coordinated change and maintenance windows, and led five engineers. In the same role I audited client AWS accounts for exploitable firewalls and DNS misconfigurations, administered Entra ID conditional access and MFA, remediated DDoS vectors through Shield, owned the SSL certificate lifecycle, and supported the annual SOC review against ISO 27001.
+The dates, titles, and details are on my [resume]({{< ref "resume" >}}). This page is about how I work, and who I am outside of it.
 
-Across three employers I have supported audit and control testing in five regulatory domains: SOX and PCI DSS in media, HIPAA and CMS in healthcare, ISO 27001 in consulting. I have tested control design and operating effectiveness against NIST 800-53 and NIST CSF, tracked findings to closure in ServiceNow against the CMDB, performed user access reviews, and documented formal risk acceptance for approved exceptions.
+## How I work
 
-So I am not picking a lane. Operations leadership and security operations draw on the same instincts, and I would rather be useful in both than narrow to one. The CISSP and the lab are how I keep the technical side current while the leadership side keeps growing.
+### IT Service Management {.area}
 
-## Where I'm strongest
+#### Incident management
 
-### Incident management
+When a production system is down and five teams are talking at once, someone has to assign severity, coordinate the response, decide when to escalate, and tell the client's executives what is happening in language they can act on. I did that for over five years. The underrated part is the post-incident review that turns a recurring failure into a lasting fix, so the same problem doesn't page anyone again.
 
-When a production system is down and five teams are talking at once, someone assigns severity, coordinates the response, decides when to escalate, and tells the client's executives what is happening in language they can act on. I did that for over five years. The underrated part is the post-incident review that turns a recurring failure into a direct countermeasure changes to prevent the issue from occurring again.
+### IT Leadership & Operations {.area}
 
-### Running a team and a queue
+#### Running a team and a queue
 
 Five engineers, a shared backlog, an on-call rotation, and SLA commitments somebody is measuring. The work is triage discipline, clear ownership, and removing the recurring noise so the team spends its time on what actually matters. Hiring, one-on-ones, and vendor contracts come with it.
 
-### Detection engineering
+#### Translating between audiences
+
+Explaining a SIEM finding to an application team, the same finding to a compliance stakeholder, and the business impact of both to a client executive. It's most of the job in any senior role, and employers rarely list it. Done well, everyone leaves the call knowing what happens next and why it matters to them.
+
+### Infrastructure & Cloud {.area}
+
+#### Keeping it up and keeping it closed
+
+Uptime and exposure are the same conversation. That means coordinating change and maintenance windows so a fix doesn't become the next outage, watching service health in Dynatrace and PagerDuty, and owning the certificate lifecycle so nothing expires quietly. On the cloud side, it means auditing AWS accounts for exploitable firewall and DNS misconfigurations and closing DDoS exposure with AWS Shield, WAF, and CDN.
+
+### Cybersecurity {.area}
+
+#### Detection engineering
 
 Writing a correlation rule is easy. Writing one that fires on real adversary behavior, does not bury the analyst in false positives, and maps to a technique you can name is the actual skill. Suppression logic and signal-to-noise are where most SIEM implementations quietly fail.
 
-### Control testing that survives an auditor
+#### Control testing that survives an auditor
 
-Evidence, ownership, and closure. Correlating a finding against the CMDB so it lands on the owners or team that can fix it, then capturing closure evidence before the audit cycle asks for it.
+Evidence, ownership, and closure. Correlating a finding against the CMDB so it lands with the team that can fix it, then capturing closure evidence before the audit cycle asks for it.
 
-### Identity lifecycle
+#### Identity lifecycle
 
-Joiner, mover, leaver. Least privilege at provisioning, revocation at termination treated as a controlled step rather than an afterthought, and access reviews across AD, and Entra ID.
-
-### Translating between audiences
-
-Explaining a SIEM alert finding to an application team, the same finding to a compliance stakeholder, and the business impact of both to a client executive. This is most of the job in any senior role and rarely employers list it. This speaks on the art and skill that is required to intersect the delivery of information through multiple audiences without frustrations or lost stares given when the big picture was missed.
+Joiner, mover, leaver. Least privilege at provisioning, revocation at termination treated as a controlled step rather than an afterthought, and access reviews across Active Directory and Entra ID.
 
 ## Off the clock
 
@@ -72,16 +69,6 @@ Where we live, natural springs are never far away. When the Florida heat and hum
 
 If the parrot ever learns a new word worth sharing, you'll hear about it here first.
 
-## What you'll find here
+## What you'll find here {.h-minor}
 
-Three things, in three registers.
-
-- **[Homelab]({{< ref "homelab" >}})** is the maintained architecture reference for the lab I am building. Hardware, segmentation, service layout. A living document, not a dated post.
-- **[Writeups]({{< ref "writeups" >}})** are the formal technical pieces: network segmentation, telemetry pipelines, detection engineering, vulnerability management, control mapping. Methodology and evidence, written for practitioners.
-- **[Blog]({{< ref "blog" >}})** is looser and shorter. The reasoning behind a decision, the tradeoff I picked, the occasional mistake worth writing down.
-
-Sanitized artifacts live alongside the writing on [GitHub](https://github.com/labwithchristian): playbooks, configs, detection rules, control mappings.
-
-<!--## What's cooking
-
-{{< pipeline items="CISSP :: In progress :: Targeting November 2026. Deepening the security governance and risk side | Home lab buildout :: Ongoing :: Segmentation, telemetry and detection engineering, documented as I go" >}} -->
+The [Homelab]({{< ref "homelab" >}}) page is the running reference for the lab I'm building: hardware, segmentation, and service layout. Sanitized configs and playbooks go on [GitHub](https://github.com/labwithchristian) as the build grows.

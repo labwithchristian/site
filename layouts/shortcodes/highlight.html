@@ -1,0 +1,15 @@
+{{- /*
+  One proof point: a short figure, a label, one sentence.
+
+    {{< highlight figure="5 yrs" label="Incident command" >}}
+    One sentence of context.
+    {{< /highlight >}}
+
+  Swap the figure for an outcome number (MTTR, SLA attainment, findings closed)
+  once there is one worth showing.
+*/ -}}
+<article class="highlight">
+  <p class="highlight__figure">{{ .Get "figure" }}</p>
+  <h3 class="highlight__label">{{ .Get "label" }}</h3>
+  <p class="highlight__text">{{ trim .Inner "\n " | .Page.RenderString }}</p>
+</article>
