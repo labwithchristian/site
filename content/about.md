@@ -64,13 +64,13 @@ Explaining a SIEM alert finding to an application team, the same finding to a co
 
 ## Off the clock
 
-My wife and I have been together for over seven years and married for more than three. We recently welcomed our son, and I am grateful to the Lord Jesus Christ for blessing us with him.
+I've known my beautiful wife for quite a while, and winning her over took longer than any incident I ever managed. Once I finally did, we dated for seven years, and as of 2026 we've been married for more than three. We recently welcomed our son, and I am grateful to the Lord Jesus Christ for blessing us with him.
 
 The house is rarely quiet. Two doodles run the place, along with a parrot that talks, at least when it isn't busy inventing new sounds and dialects.
 
 Where we live, natural springs are never far away. When the Florida heat and humidity settle in, a cold, clear spring is the best part of the week, and it hasn't gotten old yet.
 
-If you know a spring I haven't found yet, I'm always taking recommendations. Otherwise, the rest of this site is what's been cooking in the lab.
+If the parrot ever learns a new word worth sharing, you'll hear about it here first.
 
 ## What you'll find here
 
