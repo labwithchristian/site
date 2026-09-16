@@ -62,6 +62,16 @@ Joiner, mover, leaver. Least privilege at provisioning, revocation at terminatio
 
 Explaining a SIEM alert finding to an application team, the same finding to a compliance stakeholder, and the business impact of both to a client executive. This is most of the job in any senior role and rarely employers list it. This speaks on the art and skill that is required to intersect the delivery of information through multiple audiences without frustrations or lost stares given when the big picture was missed.
 
+## Off the clock
+
+My wife and I have been together for over seven years and married for more than three. We recently welcomed our son, and I am grateful to the Lord Jesus Christ for blessing us with him.
+
+The house is rarely quiet. Two doodles run the place, along with a parrot that talks, at least when it isn't busy inventing new sounds and dialects.
+
+Where we live, natural springs are never far away. When the Florida heat and humidity settle in, a cold, clear spring is the best part of the week, and it hasn't gotten old yet.
+
+If you know a spring I haven't found yet, I'm always taking recommendations. Otherwise, the rest of this site is what's been cooking in the lab.
+
 ## What you'll find here
 
 Three things, in three registers.
