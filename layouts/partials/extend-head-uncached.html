@@ -1,0 +1,8 @@
+{{/* Per-page head additions (the theme calls this partial uncached, so .IsHome
+     is available). The arrival effects in assets/js/intro.js load on the
+     homepage only; set introSequence = false in params.toml to turn them off. */}}
+{{ if and .IsHome (ne site.Params.introSequence false) }}
+  {{ $alg := site.Params.fingerprintAlgorithm | default "sha512" }}
+  {{ $intro := resources.Get "js/intro.js" | resources.Minify | resources.Fingerprint $alg }}
+  <script src="{{ $intro.RelPermalink }}" integrity="{{ $intro.Data.Integrity }}"></script>
+{{ end }}
