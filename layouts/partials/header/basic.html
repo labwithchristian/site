@@ -1,34 +1,17 @@
-<div class="main-menu flex items-center w-full gap-2 p-1 pl-0">
-  {{ if .Site.Params.Logo }}
-    {{ $logo := resources.Get .Site.Params.Logo }}
-    {{ if $logo }}
-      <div>
-        <a href="{{ "" | relLangURL }}" class="flex">
-          <span class="sr-only">{{ .Site.Title | markdownify }}</span>
-          {{ if eq $logo.MediaType.SubType "svg" }}
-            <span class="logo object-scale-down object-left nozoom">
-              {{ $logo.Content | safeHTML }}
-            </span>
-          {{ else }}
-            <img
-              src="{{ $logo.RelPermalink }}"
-              width="{{ div $logo.Width 2 }}"
-              height="{{ div $logo.Height 2 }}"
-              class="logo max-h-20 max-w-20 object-scale-down object-left nozoom"
-              alt="">
-          {{ end }}
-        </a>
-      </div>
-    {{ end }}
-  {{ end }}
-  {{/* Site override: the header link reads "Home" with a themed icon instead of
-       the site title. The site title still drives <title>, SEO and metadata.
-       Set navHomeText / navHomeIcon in params.toml; icons live in
-       layouts/partials/nav-icons/. */}}
+{{/* Site override of the Blowfish header row.
+     - Home link: themed icon + "Home" (navHomeText / navHomeIcon in params.toml).
+       The site title still drives <title>, SEO and metadata.
+     - Desktop: page links as pills, then theme toggle and search after a divider.
+       The current page is marked server-side with aria-current, no script needed.
+     - Mobile: Blowfish's dropdown menu partial, unchanged.
+     Keep the element ids (appearance-switcher, search-button, ...) because the
+     theme's JavaScript binds to them. */}}
+{{ $page := . }}
+<div class="main-menu site-nav__row">
   {{ if not .Site.Params.disableTextInHeader | default true }}
     {{ $homeText := .Site.Params.navHomeText | default "Home" }}
     {{ $homeIcon := .Site.Params.navHomeIcon | default "" }}
-    <a href="{{ "" | relLangURL }}" class="nav-home text-base font-medium min-w-0 shrink" aria-label="{{ $homeText }}: {{ .Site.Title }}">
+    <a href="{{ "" | relLangURL }}" class="nav-home site-nav__link{{ if .IsHome }} is-current{{ end }}"{{ if .IsHome }} aria-current="page"{{ end }}>
       {{ with $homeIcon }}
         {{ $path := printf "nav-icons/%s.html" . }}
         {{ if templates.Exists (printf "partials/%s" $path) }}
@@ -38,60 +21,34 @@
       <span class="nav-home__text">{{ $homeText }}</span>
     </a>
   {{ end }}
-  <div class="flex items-center ms-auto">
-    <div class="hidden md:flex">
-      {{ partial "header/components/desktop-menu.html" . }}
-    </div>
-    <div class="flex md:hidden">
-      {{ partial "header/components/mobile-menu.html" . }}
-    </div>
+
+  <nav class="site-nav__links" aria-label="{{ i18n "nav.main_menu" }}">
+    {{ range .Site.Menus.main }}
+      {{ $current := or ($page.IsMenuCurrent "main" .) ($page.HasMenuCurrent "main" .) }}
+      <a href="{{ .URL }}" class="site-nav__link{{ if $current }} is-current{{ end }}"{{ if $current }} aria-current="page"{{ end }}
+        {{- if or (strings.HasPrefix .URL "http:") (strings.HasPrefix .URL "https:") }} target="_blank" rel="noopener noreferrer"{{ end }}>
+        {{- .Name | markdownify -}}
+      </a>
+    {{ end }}
+  </nav>
+
+  <div class="site-nav__tools">
+    {{ if .Site.Params.footer.showAppearanceSwitcher | default false }}
+      <button id="appearance-switcher" type="button" class="site-nav__icon"
+        aria-label="{{ i18n "footer.dark_appearance" }}" title="{{ i18n "footer.dark_appearance" }}">
+        <span class="flex dark:hidden">{{ partial "icon.html" "moon" }}</span>
+        <span class="hidden dark:flex">{{ partial "icon.html" "sun" }}</span>
+      </button>
+    {{ end }}
+    {{ if .Site.Params.enableSearch | default false }}
+      <button id="search-button" type="button" class="site-nav__icon"
+        aria-label="{{ i18n "search.open_button_title" }}" title="{{ i18n "search.open_button_title" }}">
+        {{ partial "icon.html" "search" }}
+      </button>
+    {{ end }}
+  </div>
+
+  <div class="site-nav__mobile">
+    {{ partial "header/components/mobile-menu.html" . }}
   </div>
 </div>
-
-{{ if .Site.Menus.subnavigation }}
-  <nav id="main-menu" aria-label="{{ i18n "nav.main_menu" }}">
-    <div
-      class="main-menu flex pb-3 flex-col items-end justify-between md:justify-start space-x-3 {{ if .Site.Params.Logo }}
-        -mt-[15px]
-      {{ end }}">
-      <div class="hidden md:flex items-center space-x-5">
-        {{ range .Site.Menus.subnavigation }}
-          <a
-            href="{{ .URL }}"
-            {{ if or (strings.HasPrefix .URL "http:" ) (strings.HasPrefix .URL "https:" ) }}
-              target="_blank"
-            {{ end }}
-            class="flex items-center bf-icon-color-hover">
-            {{ if .Pre }}
-              <span {{ if and .Pre .Name }}class="mr-1"{{ end }}>
-                {{ partial "icon.html" .Pre }}
-              </span>
-            {{ end }}
-            <span class="text-xs font-light" title="{{ .Title }}">
-              {{ .Name | markdownify }}
-            </span>
-          </a>
-        {{ end }}
-      </div>
-    </div>
-  </nav>
-{{ end }}
-
-{{ if .Site.Params.highlightCurrentMenuArea }}
-  <script>
-    (function () {
-      var mainmenu = document.querySelector(".main-menu");
-      if (!mainmenu) return;
-
-      var path = window.location.pathname;
-      var links = mainmenu.querySelectorAll('a[href="' + path + '"]');
-
-      links.forEach(function (link) {
-        var targets = link.querySelectorAll("span");
-        targets.forEach(function (el) {
-          el.classList.add("active");
-        });
-      });
-    })();
-  </script>
-{{ end }}

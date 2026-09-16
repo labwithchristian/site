@@ -1,14 +1,15 @@
 ---
-title: "Operations, security, GRC, and service delivery for enterprise infrastructure"
-heroCaption: "Christian's Portfolio"
-heroLead: "Ten plus years of experience leading and strengthening enterprise technology operations across cloud and on-premises environments. Focused on governance, risk, and compliance alongside operational resilience, incident and problem management, service delivery, and identity, building the teams, processes, and controls that keep critical services secure, reliable, and running."
+title: "Christian Carrasco · IT Operations & Security Leader"
+heroRole: "IT Operations & Security Leader"
+heroCaption: "Christian Carrasco"
+heroLead: "Ten plus years keeping enterprise systems running and defensible, from a HIPAA‑regulated healthcare environment and a SOC to incident management for Toyota Motor North America."
 heroButtons:
   - label: "Explore the lab"
     url: "/homelab/"
     style: "primary"
-  - label: "Read the writeups"
-    url: "/writeups/"
-    style: "secondary"
+  - label: "Get to know me"
+    url: "/about/"
+    style: "outline"
 ---
 
 ## Skills & Tools

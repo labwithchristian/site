@@ -1,6 +1,10 @@
 # -- Theme Options --
 # https://blowfish.page/docs/configuration/
 
+# Link preview card for LinkedIn, Slack, X, etc. (1200x630, static/img/og-card.jpg).
+# Hugo's Open Graph and Twitter templates use this when a page has no image of its own.
+images = ["img/og-card.jpg"]
+
 colorScheme = "nebula-stone"
 defaultAppearance = "light"
 autoSwitchAppearance = false
@@ -42,7 +46,7 @@ fingerprintAlgorithm = "sha512"
 [homepage]
   layout = "landing"
   layoutSwitcher = false
-  showRecent = true
+  showRecent = false   # turn back on once the first post is published
   showRecentItems = 6
   showMoreLink = true
   showMoreLinkDest = "blog"

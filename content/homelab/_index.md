@@ -42,16 +42,7 @@ The GPU is still open: an RTX 3080 already on hand against an RTX 3060 12GB for 
 
 Three segments, with policy between them rather than a flat network and good intentions.
 
-{{< mermaid >}}
-flowchart LR
-  WAN((Internet)) --> RTR[Router / Firewall]
-  RTR --> MGMT[Management VLAN]
-  RTR --> SVC[Services VLAN]
-  RTR --> LAB[Lab / Detonation VLAN]
-  MGMT --> PVE[Proxmox Host]
-  SVC --> PVE
-  LAB --> PVE
-{{< /mermaid >}}
+{{< network-diagram >}}
 
 Management carries the hypervisor and out-of-band access. Services carries the things meant to stay up. The detonation segment is where anything untrusted runs, and it does not get to talk to the other two.
 

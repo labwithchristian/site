@@ -1,6 +1,6 @@
 ---
 title: "whoami"
-description: "Christian Carrasco: ten years in enterprise IT operations and security, moving back into hands-on security work."
+description: "Christian Carrasco: ten plus years in enterprise IT operations and security, moving back into hands-on security work."
 showDate: false
 showAuthor: false
 showReadingTime: false

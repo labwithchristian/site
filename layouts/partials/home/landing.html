@@ -37,7 +37,9 @@
           <span class="hero-name__text">{{ . | markdownify }}</span>
         </h1>
       {{ end }}
-      {{ with .Title }}
+      {{/* heroRole keeps the eyebrow short while .Title carries the full
+           "Name · Role" string for link previews and search results. */}}
+      {{ with .Params.heroRole | default .Title }}
         <p class="hero-role landing-rise landing-rise-2">
           <span class="hero-role__rule" aria-hidden="true"></span>
           <span class="hero-role__text">{{ . | emojify }}</span>
