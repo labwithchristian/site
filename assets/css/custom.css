@@ -1407,17 +1407,20 @@ html[data-astral="true"]:not(.dark) .connect {
 }
 
 /* --- whoami intro: portrait beside the opening statement --- */
+/* Portrait sits above the intro text at a size that shows the full photo
+   in detail; the frame matches the photo's 4:5 shape so nothing is cropped. */
 .intro-block {
   display: grid;
-  grid-template-columns: 15rem 1fr;
-  align-items: center;
-  gap: 2rem;
-  margin: 1.5rem 0 2.25rem;
+  grid-template-columns: 1fr;
+  justify-items: start;
+  gap: 2.25rem;
+  margin: 1.75rem 0 2.25rem;
 }
 
 .intro-block__frame {
   position: relative;
-  aspect-ratio: 11 / 13;
+  width: min(100%, 23rem);
+  aspect-ratio: 4 / 5;
   border-radius: 1rem;
   padding: 0.4rem;
   border: 2px solid rgb(var(--color-primary-500));
@@ -1437,6 +1440,8 @@ html[data-astral="true"]:not(.dark) .connect {
   border: 1px solid rgba(var(--color-primary-400), 0.4);
   pointer-events: none;
 }
+
+.intro-block__frame picture { display: block; width: 100%; height: 100%; }
 
 .intro-block__img {
   width: 100%;
@@ -1480,8 +1485,8 @@ html[data-astral="true"]:not(.dark) .connect {
 .dark .intro-block__text p { color: rgb(var(--color-neutral-300)); }
 
 @media (max-width: 720px) {
-  .intro-block { grid-template-columns: 1fr; gap: 1.5rem; justify-items: center; }
-  .intro-block__frame { width: 13rem; }
+  .intro-block { gap: 1.75rem; justify-items: center; }
+  .intro-block__frame { width: min(100%, 21rem); }
   .intro-block__text { text-align: left; }
 }
 

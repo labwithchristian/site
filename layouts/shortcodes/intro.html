@@ -4,8 +4,26 @@
 <div class="intro-block not-prose">
   <div class="intro-block__frame">
     {{- with $res }}
-      {{- $img := .Fill "440x520 Center" }}
-      <img class="intro-block__img" src="{{ $img.RelPermalink }}" width="{{ $img.Width }}" height="{{ $img.Height }}" alt="{{ $alt }}" loading="eager" />
+      {{- /* Serve the photo uncropped at several widths (never upscaled) so it
+             stays sharp on high-density screens without shipping the full
+             file to phones. WebP first, JPEG fallback. */ -}}
+      {{- $orig := . -}}
+      {{- $widths := slice 480 760 1120 -}}
+      {{- $webp := slice -}}
+      {{- $jpg := slice -}}
+      {{- $fallback := $orig -}}
+      {{- range $widths -}}
+        {{- $w := cond (gt . $orig.Width) $orig.Width . -}}
+        {{- $wi := $orig.Resize (printf "%dx webp q88" $w) -}}
+        {{- $ji := $orig.Resize (printf "%dx jpg q88" $w) -}}
+        {{- $webp = $webp | append (printf "%s %dw" $wi.RelPermalink $wi.Width) -}}
+        {{- $jpg = $jpg | append (printf "%s %dw" $ji.RelPermalink $ji.Width) -}}
+        {{- if eq . 760 }}{{ $fallback = $ji }}{{ end -}}
+      {{- end }}
+      <picture>
+        <source type="image/webp" srcset="{{ delimit (uniq $webp) ", " }}" sizes="(max-width: 720px) 90vw, 23rem" />
+        <img class="intro-block__img" src="{{ $fallback.RelPermalink }}" srcset="{{ delimit (uniq $jpg) ", " }}" sizes="(max-width: 720px) 90vw, 23rem" width="{{ $fallback.Width }}" height="{{ $fallback.Height }}" alt="{{ $alt }}" loading="eager" decoding="async" />
+      </picture>
     {{- else }}
       <div class="intro-block__placeholder" role="img" aria-label="{{ $alt }}">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"
