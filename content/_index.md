@@ -15,59 +15,19 @@ heroButtons:
 
 {{< logos items="aws, microsoft-azure, microsoft, dynatrace, pagerduty, jenkins, vmware, cisco, wireshark, linux, ubuntu, debian" speed="45" >}}
 
-## What I do
+## Core strengths
 
-{{< feature-grid columns="3" >}}
+{{< strengths >}}
 
-{{< feature icon="fire" title="Incident Management" headingLevel="h3" >}}
-Calls made while the room is loud.
-{{< /feature >}}
+{{< strength icon="list-check" title="IT Service Management (ITSM)" items="Incident, Problem, Change, Service Delivery & SLAs" >}}
 
-{{< feature icon="bug" title="Problem Management" headingLevel="h3" >}}
-Root cause reviews that change something.
-{{< /feature >}}
+{{< strength icon="worktree" title="IT Leadership & Operations" items="Team Leadership, Runbooks & Process" >}}
 
-{{< feature icon="list-ol" title="Change Management" headingLevel="h3" >}}
-Maintenance windows nobody has to undo.
-{{< /feature >}}
+{{< strength icon="cloud" title="Infrastructure & Cloud" items="Cloud & Infrastructure, Monitoring & Observability" >}}
 
-{{< feature icon="scale-balanced" title="Service Delivery & SLAs" headingLevel="h3" >}}
-Commitments tracked, not assumed.
-{{< /feature >}}
+{{< strength icon="shield" title="Cybersecurity" items="Security Operations, Identity & Access, Vulnerability Management, Compliance & Control Testing" >}}
 
-{{< feature icon="worktree" title="Team Leadership" headingLevel="h3" >}}
-Five engineers, vendors, and a budget.
-{{< /feature >}}
-
-{{< feature icon="cloud" title="Cloud & Infrastructure" headingLevel="h3" >}}
-On-prem and cloud run as one estate.
-{{< /feature >}}
-
-{{< feature icon="shield" title="Security Operations" headingLevel="h3" >}}
-Triage that surfaces the real one.
-{{< /feature >}}
-
-{{< feature icon="list-check" title="Compliance & Control Testing" headingLevel="h3" >}}
-Evidence that survives an audit.
-{{< /feature >}}
-
-{{< feature icon="lock" title="Identity & Access" headingLevel="h3" >}}
-Least privilege, actually enforced.
-{{< /feature >}}
-
-{{< feature icon="eye" title="Monitoring & Observability" headingLevel="h3" >}}
-Alerts that still mean something.
-{{< /feature >}}
-
-{{< feature icon="search" title="Vulnerability Management" headingLevel="h3" >}}
-Findings tracked to closure.
-{{< /feature >}}
-
-{{< feature icon="edit" title="Runbooks & Process" headingLevel="h3" >}}
-Documentation that outlives the author.
-{{< /feature >}}
-
-{{< /feature-grid >}}
+{{< /strengths >}}
 
 ## What's cooking
 

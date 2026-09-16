@@ -1,0 +1,26 @@
+{{/*
+  One core strength card: the area title sits in the purple header band,
+  the areas it covers are listed underneath in the card body.
+
+  Usage:
+    {{< strength icon="shield" title="Cybersecurity" items="Security Operations, Identity & Access" >}}
+
+  items is comma separated. Icons come from the Blowfish icon set.
+*/}}
+{{ $icon := .Get "icon" | default "star" }}
+{{ $title := .Get "title" | default "Strength" }}
+{{ $items := .Get "items" | default "" }}
+
+<article class="strength">
+  <div class="strength__head">
+    <span class="strength__icon" aria-hidden="true">{{ partial "icon.html" $icon }}</span>
+    <h3 class="strength__title">{{ $title }}</h3>
+  </div>
+  {{ with $items }}
+  <ul class="strength__items">
+    {{ range split . "," }}
+      {{ with trim . " " }}<li>{{ . }}</li>{{ end }}
+    {{ end }}
+  </ul>
+  {{ end }}
+</article>
