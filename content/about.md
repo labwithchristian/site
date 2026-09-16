@@ -82,9 +82,9 @@ Three things, in three registers.
 
 Sanitized artifacts live alongside the writing on [GitHub](https://github.com/labwithchristian): playbooks, configs, detection rules, control mappings.
 
-## What's cooking
+<!--## What's cooking
 
-{{< pipeline items="CISSP :: In progress :: Targeting November 2026. Deepening the security governance and risk side | Home lab buildout :: Ongoing :: Segmentation, telemetry and detection engineering, documented as I go" >}}
+{{< pipeline items="CISSP :: In progress :: Targeting November 2026. Deepening the security governance and risk side | Home lab buildout :: Ongoing :: Segmentation, telemetry and detection engineering, documented as I go" >}} -->
 
 ## Find Me
 
