@@ -285,6 +285,30 @@ html:not(.dark) .fixed.inset-x-0.top-3 > .rounded-2xl button:hover {
   color: rgb(var(--color-primary-700));
 }
 
+/* --- Nav bar: deep violet in dark mode (all pages) ---
+   The theme default (neutral-800 at 60%) is darker than the dark page ground
+   and nearly disappears. A saturated primary-700 fill with a brighter
+   primary-400 edge separates the bar from the page while keeping the light
+   link text well above WCAG AA contrast. */
+html.dark .fixed.inset-x-0.top-3 > .rounded-2xl {
+  border-color: rgba(var(--color-primary-400), 0.55);
+  box-shadow: 0 10px 32px -14px rgba(var(--color-primary-500), 0.45);
+}
+
+html.dark .fixed.inset-x-0.top-3 > .rounded-2xl > div:first-child {
+  background-color: rgba(var(--color-primary-700), 0.85);
+}
+
+html.dark .fixed.inset-x-0.top-3 > .rounded-2xl a,
+html.dark .fixed.inset-x-0.top-3 > .rounded-2xl button {
+  color: rgb(var(--color-neutral-50));
+}
+
+html.dark .fixed.inset-x-0.top-3 > .rounded-2xl a:hover,
+html.dark .fixed.inset-x-0.top-3 > .rounded-2xl button:hover {
+  color: rgb(var(--color-primary-200));
+}
+
 @media (prefers-reduced-transparency: reduce) {
   html[data-astral="true"] article.group,
   html[data-astral="true"] ol.border-s-2 > li > div > div.block,
