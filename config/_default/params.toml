@@ -19,6 +19,7 @@ disableImageOptimization = false
 disableTextInHeader = false
 navHomeText = "Home"
 navHomeIcon = "tp-classic"
+navSocial = ["linkedin", "github"]   # author links (languages.en.toml) shown at the top right of every page
 
 defaultFeaturedImage = ""
 defaultBackgroundImage = "img/patterns/grain.svg"

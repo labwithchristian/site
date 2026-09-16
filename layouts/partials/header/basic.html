@@ -49,6 +49,7 @@
   </div>
 
   <div class="site-nav__mobile">
+    {{ partial "header/social-links.html" (dict "class" "site-nav__social-inline") }}
     {{ partial "header/components/mobile-menu.html" . }}
   </div>
 </div>

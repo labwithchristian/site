@@ -47,6 +47,7 @@ git add themes/blowfish && git commit -m "Update Blowfish to <version>"
 | `partials/extend-head-uncached.html` | Loads the homepage intro script on the homepage only |
 | `partials/extend-footer.html` | Credits line |
 | `partials/nav-icons/tp-classic.html` | Terminal pot Home icon (`navHomeIcon` in `params.toml`) |
+| `partials/header/social-links.html` | LinkedIn and GitHub icons at the top right of every page (`navSocial` in `params.toml`, URLs from `languages.en.toml`) |
 
 ### Styles (`assets/css/site/`)
 
@@ -100,7 +101,6 @@ It's set with `images` in `params.toml`.
 | `certs groups="Label :: Cert, Cert \| ..."` | Home | Certifications by category |
 | `connect url label` | Home | `> connect --linkedin` card |
 | `intro image alt` | whoami | Portrait beside the opening statement |
-| `social items="icon\|Label\|URL, ..."` | whoami | Social links |
 | `specs` + `spec role title rows tags` | Homelab | Hardware spec cards. `rows="CPU: ... \| Memory: ..."` |
 | `network-diagram` | Homelab | Inline SVG network diagram. Edit the labels in the shortcode file |
 | `soon title status` | Writeups, Blog, Tags | Coming-soon block |

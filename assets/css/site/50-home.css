@@ -760,52 +760,6 @@ html[data-astral="true"]:not(.dark) .connect {
   .connect__wave { animation: none; }
 }
 
-/* --- Social brand marks --- */
-.social {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.7rem;
-  margin: 1rem 0 0;
-}
-
-.social__link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.9rem;
-  height: 2.9rem;
-  border-radius: 0.65rem;
-  color: rgb(var(--color-primary-700));
-  border: 1px solid rgba(var(--color-primary-400), 0.45);
-  text-decoration: none;
-  transition: color 200ms ease, background-color 200ms ease,
-              border-color 200ms ease, transform 200ms ease;
-}
-
-.dark .social__link {
-  color: rgb(var(--color-primary-300));
-  border-color: rgba(var(--color-primary-400), 0.35);
-}
-
-.social__link:hover {
-  color: rgb(var(--color-neutral-50));
-  background-color: rgb(var(--color-primary-600));
-  border-color: rgb(var(--color-primary-600));
-  transform: translateY(-2px);
-}
-
-.social__link .icon,
-.social__link svg {
-  width: 1.35rem;
-  height: 1.35rem;
-  display: block;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .social__link { transition: none; }
-  .social__link:hover { transform: none; }
-}
-
 /* Homepage section headings stay centred on every screen size, matching the
    hero above them. */
 #main-content .landing-rise-5.prose > h2 { text-align: center; }
