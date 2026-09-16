@@ -1,18 +1,15 @@
-name: Deploy Hugo site to Pages
+name: Build, check and deploy
 
+# Pull requests: build the site and check every internal link, no deploy.
+# Pushes to main: the same checks, then deploy to GitHub Pages.
 on:
   push:
     branches: ["main"]
+  pull_request:
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
 
 defaults:
   run:
@@ -23,35 +20,59 @@ jobs:
     runs-on: ubuntu-latest
     env:
       HUGO_VERSION: 0.166.0
+      SITE_URL: https://christiancarrasco.dev
     steps:
       - name: Install Hugo CLI
         run: |
           curl -sL "https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb" -o /tmp/hugo.deb \
           && sudo dpkg -i /tmp/hugo.deb
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
           submodules: recursive
           fetch-depth: 0
-      - name: Configure GitHub Pages
-        id: pages
-        uses: actions/configure-pages@v5
+
       - name: Build with Hugo
         run: |
-          hugo \
-            --gc --minify \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"
-      - name: Upload artifact
+          hugo --gc --minify --baseURL "${SITE_URL}/"
+
+      # Offline: internal pages, anchors, CSS, JS and images must exist in the
+      # build. Absolute links to the site itself are mapped back onto ./public.
+      # External links are not fetched, so a slow third-party site can't fail
+      # a deploy.
+      - name: Check internal links
+        uses: lycheeverse/lychee-action@v2
+        with:
+          fail: true
+          args: >-
+            --offline
+            --no-progress
+            --include-fragments
+            --root-dir ${{ github.workspace }}/public
+            --index-files index.html
+            --remap 'https://christiancarrasco\.dev/(.*) file://${{ github.workspace }}/public/$1'
+            './public/**/*.html'
+
+      - name: Upload Pages artifact
+        if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./public
 
   deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    concurrency:
+      group: pages
+      cancel-in-progress: false
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
     steps:
       - name: Deploy to GitHub Pages
         id: deployment

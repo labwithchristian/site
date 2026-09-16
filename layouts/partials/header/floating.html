@@ -1,9 +1,13 @@
 {{/* Site override of Blowfish's floating header: a compact pill that sizes to
-     its content instead of spanning max-w-7xl. Styles live under "Site nav"
-     in assets/css/custom.css and target only these site-owned classes. */}}
+     its content instead of spanning max-w-7xl, plus LinkedIn/GitHub links at
+     the top right. Styles live under "Site nav"
+     in assets/css/site/30-nav.css and target only these site-owned classes. */}}
 <div class="site-nav-spacer" aria-hidden="true"></div>
 <div class="site-nav">
   <div class="site-nav__bar">
     {{ partial "header/basic.html" . }}
   </div>
+  {{/* Top-right profile links on desktop. On phones the same links sit in the
+       nav row instead (see header/basic.html). */}}
+  {{ partial "header/social-links.html" (dict "class" "site-nav__social") }}
 </div>

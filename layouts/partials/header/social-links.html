@@ -1,0 +1,25 @@
+{{- /* LinkedIn / GitHub (or whatever navSocial lists) as icon links.
+       URLs come from params.author.links in config/_default/languages.en.toml,
+       so they're defined once. Call with (dict "class" "...") for placement. */ -}}
+{{- $want := site.Params.navSocial | default (slice "linkedin" "github") -}}
+{{- $links := slice -}}
+{{- range $name := $want -}}
+  {{- range site.Params.Author.links -}}
+    {{- with index . $name -}}
+      {{- $links = $links | append (dict "name" $name "url" .) -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- $labels := dict "linkedin" "LinkedIn" "github" "GitHub" "email" "Email" "rss" "RSS" -}}
+{{- with $links }}
+<ul class="{{ $.class }}" aria-label="Profiles">
+  {{- range . }}
+  {{- $label := index $labels .name | default (title .name) }}
+  <li>
+    <a class="site-nav__social-link" href="{{ .url }}" target="_blank" rel="noopener noreferrer me" aria-label="{{ $label }} (opens in a new tab)" title="{{ $label }}">
+      {{ partial "icon.html" .name }}
+    </a>
+  </li>
+  {{- end }}
+</ul>
+{{- end }}

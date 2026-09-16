@@ -1,0 +1,81 @@
+/* --- Fonts ------------------------------------------------------------------
+   All self-hosted from static/fonts (woff2, latin subset, from Fontsource), so
+   the site makes no third-party font requests.
+     Display   Fraunces (variable)       headings, hero name
+     Body      IBM Plex Sans (variable)  running text and UI
+     Mono      IBM Plex Mono 400/500     eyebrows, status labels, terminal bits
+   Faces and tracking are tokens below; components use var(--font-*) rather
+   than naming families directly.
+   --------------------------------------------------------------------------- */
+
+@font-face {
+  font-family: "Fraunces";
+  src: url("/fonts/fraunces-var.woff2") format("woff2-variations");
+  font-weight: 100 900; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Fraunces";
+  src: url("/fonts/fraunces-var-italic.woff2") format("woff2-variations");
+  font-weight: 100 900; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Sans";
+  src: url("/fonts/ibm-plex-sans-var.woff2") format("woff2-variations");
+  font-weight: 100 700; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Sans";
+  src: url("/fonts/ibm-plex-sans-var-italic.woff2") format("woff2-variations");
+  font-weight: 100 700; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("/fonts/ibm-plex-mono-400.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("/fonts/ibm-plex-mono-500.woff2") format("woff2");
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+
+:root {
+  --font-display: "Fraunces", ui-serif, Georgia, "Times New Roman", serif;
+  --font-display-weight: 600;
+  --font-display-tracking: -0.015em;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+html,
+body {
+  font-family: var(--font-body);
+  font-feature-settings: "kern" 1;
+}
+
+code, kbd, pre, samp, .font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Headings take the display face. Scoped to [data-heading-font] (set from
+   headingFont in params.toml by layouts/_default/baseof.html), so removing
+   that param falls back to the body face everywhere. */
+html[data-heading-font] h1,
+html[data-heading-font] h2,
+html[data-heading-font] h3,
+html[data-heading-font] .prose h1,
+html[data-heading-font] .prose h2,
+html[data-heading-font] .prose h3 {
+  font-family: var(--font-display);
+  font-weight: var(--font-display-weight);
+  font-style: normal;
+  letter-spacing: var(--font-display-tracking);
+  line-height: 1.2;
+}
+
+/* Functional UI text stays in the body face even inside heading tags. */
+html[data-heading-font] .pipeline__badge,
+html[data-heading-font] nav,
+html[data-heading-font] .site-credits {
+  font-family: var(--font-body);
+}

@@ -16,25 +16,25 @@ A living reference, not a dated post. The lab exists to keep the hands-on side c
 
 ## Hardware
 
-{{< xp >}}
+{{< specs >}}
 
-{{< xpitem year="Host" role="Proxmox Hypervisor" company="Ryzen 9 5900X, 12C/24T" location="64GB DDR4-3200" tags="Proxmox, KVM, Virtualization" >}}
-A repurposed desktop rather than a used enterprise server. Gigabyte B550 AORUS ELITE V2 board, EVGA SuperNOVA G3 1000W supply. Enough cores and memory to run a segmented lab without a second box or a rack in the garage.
-{{< /xpitem >}}
+{{< spec role="Host" title="Proxmox Hypervisor" rows="CPU: Ryzen 9 5900X, 12C/24T | Memory: 64GB DDR4-3200 | Board: Gigabyte B550 AORUS ELITE V2 | PSU: EVGA SuperNOVA G3 1000W" tags="Proxmox, KVM, Virtualization" >}}
+A repurposed desktop rather than a used enterprise server. Enough cores and memory to run a segmented lab without a second box or a rack in the garage.
+{{< /spec >}}
 
-{{< xpitem year="Network" role="Quad-Port Intel I350" company="NICGIGA" location="Four gigabit ports" tags="VLANs, Trunking, Segmentation" >}}
+{{< spec role="Network" title="Quad-Port Intel I350" rows="Vendor: NICGIGA | Ports: Four gigabit" tags="VLANs, Trunking, Segmentation" >}}
 Four ports means real segmentation instead of everything sharing one interface. Management, services, and the detonation network stay separate at the NIC rather than only in software.
-{{< /xpitem >}}
+{{< /spec >}}
 
-{{< xpitem year="Access" role="Out-of-Band Management" company="Sipeed NanoKVM-PCIe" location="Remote KVM over IP" tags="Remote Console, Recovery" >}}
+{{< spec role="Access" title="Out-of-Band Management" rows="Device: Sipeed NanoKVM-PCIe | Function: Remote KVM over IP" tags="Remote Console, Recovery" >}}
 Console access that survives the host being unreachable. The point of a lab is breaking things on purpose, which means needing a way back in that does not depend on whatever just broke.
-{{< /xpitem >}}
+{{< /spec >}}
 
-{{< xpitem year="Power" role="1000VA LiFePO4 UPS" company="GoldenMate" location="600W output" tags="Runtime, Graceful Shutdown" >}}
+{{< spec role="Power" title="1000VA LiFePO4 UPS" rows="Vendor: GoldenMate | Output: 600W | Chemistry: LiFePO4" tags="Runtime, Graceful Shutdown" >}}
 Lithium iron phosphate rather than sealed lead acid, for the cycle life and the absence of a replacement schedule. Sized for graceful shutdown, not for riding out an outage.
-{{< /xpitem >}}
+{{< /spec >}}
 
-{{< /xp >}}
+{{< /specs >}}
 
 The GPU is still open: an RTX 3080 already on hand against an RTX 3060 12GB for lower idle draw, with local model work and hashcat on the other side of that tradeoff.
 

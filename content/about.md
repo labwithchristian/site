@@ -85,7 +85,3 @@ Sanitized artifacts live alongside the writing on [GitHub](https://github.com/la
 <!--## What's cooking
 
 {{< pipeline items="CISSP :: In progress :: Targeting November 2026. Deepening the security governance and risk side | Home lab buildout :: Ongoing :: Segmentation, telemetry and detection engineering, documented as I go" >}} -->
-
-## Find Me
-
-{{< social items="linkedin|LinkedIn|https://linkedin.com/in/cybercc, github|GitHub|https://github.com/labwithchristian" >}}

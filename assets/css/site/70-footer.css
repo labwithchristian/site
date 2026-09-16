@@ -1,0 +1,30 @@
+/* --- Footer credits: a single line at one size --- */
+.site-credits {
+  /* text-align alone only centres the words inside the box; the box itself has
+     to be centred too, or it sits against the left edge of the footer */
+  margin-inline: auto;
+  margin-block: 0;
+  max-width: 46rem;
+  font-size: 0.75rem;
+  line-height: 1.7;
+  text-align: center;
+  text-wrap: pretty;
+  color: rgb(var(--color-neutral-500));
+}
+
+.dark .site-credits { color: rgb(var(--color-neutral-300)); }
+
+.site-credits a {
+  color: rgb(var(--color-primary-600));
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.dark .site-credits a { color: rgb(var(--color-primary-300)); }
+.site-credits a:hover { text-decoration: underline; }
+
+/* --- Footer menu: centered over the credits line, AA contrast in dark mode --- */
+#site-footer > nav { justify-content: center; }
+#site-footer > nav ul { justify-content: center; align-items: center; }
+html.dark #site-footer > nav a { color: rgb(var(--color-neutral-300)); }

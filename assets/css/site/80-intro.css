@@ -1,0 +1,96 @@
+/* --- Homepage intro overlay (assets/js/intro.js) ---
+   Injected by JS only, so crawlers, no-JS visitors and reduced-motion users
+   get the page with no overlay at all. Plays once per browser. */
+
+html.intro-active body { overflow: hidden; }
+
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 1rem;
+  cursor: pointer;
+  background-color: rgb(var(--color-neutral-900));
+  color: rgb(var(--color-primary-300));
+  animation: intro-in 0.2s ease-out both;
+}
+
+html.dark .intro { background-color: rgb(var(--color-page-dark, var(--color-neutral-800))); }
+
+.intro--out { animation: intro-out 0.45s ease-in forwards; }
+
+@keyframes intro-in  { from { opacity: 0; } to { opacity: 1; } }
+@keyframes intro-out { to { opacity: 0; transform: scale(1.03); } }
+
+.intro__scene { width: min(92vw, 520px); }
+
+.intro__log {
+  width: 100%;
+  font-family: var(--font-mono);
+  font-size: clamp(0.72rem, 2.4vw, 0.88rem);
+  line-height: 1.9;
+}
+
+.intro__row {
+  margin: 0;
+  overflow-wrap: anywhere;
+  color: rgb(var(--color-neutral-300));
+  animation: intro-row-in 0.2s ease-out both;
+}
+
+.intro__row.is-dim     { color: rgb(var(--color-neutral-400)); }
+.intro__row.is-fail    { color: rgb(var(--color-secondary-300)); }
+.intro__row.is-ok      { color: rgb(var(--color-primary-300)); }
+.intro__row.is-granted { color: rgb(var(--color-primary-200)); font-weight: 500; }
+
+@keyframes intro-row-in {
+  from { opacity: 0; transform: translateY(3px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.intro__prompt { opacity: 0.55; }
+
+.intro__cursor {
+  display: inline-block;
+  width: 0.55em;
+  height: 1em;
+  margin-left: 0.15em;
+  vertical-align: text-bottom;
+  background-color: currentColor;
+  animation: intro-caret 0.8s steps(2) infinite;
+}
+
+@keyframes intro-caret { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+.intro.is-granted .intro__scene { animation: intro-flash 0.35s ease-out; }
+
+@keyframes intro-flash {
+  0%   { filter: brightness(2.2); }
+  100% { filter: none; }
+}
+
+.intro__skip {
+  position: absolute;
+  right: 1.25rem;
+  bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
+  padding: 0.45rem 0.95rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgb(var(--color-neutral-200));
+  background: transparent;
+  border: 1px solid rgba(var(--color-neutral-300), 0.5);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.intro__skip:hover,
+.intro__skip:focus-visible {
+  color: rgb(var(--color-primary-200));
+  border-color: rgb(var(--color-primary-300));
+  outline: none;
+}

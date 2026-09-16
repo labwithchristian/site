@@ -1,0 +1,110 @@
+/* --- Type scale ----------------------------------------------------------------
+   One ramp for every page. Steps are a major third (x1.25) off a 17px body,
+   with the display steps fluid between phone and desktop.
+   Mapping:
+     --step-5  hero name (40-hero.css)
+     --step-4  page title (h1 on whoami, homelab, writeups, blog, tags)
+     --step-3  section heading (h2 in page content and on the homepage)
+     --step-2  minor section heading (h2.h-minor, e.g. "## Education {.h-minor}")
+     --step-1  sub-heading, card title (h3, experience roles, spec cards)
+     --step-0  body copy
+     --step--1 meta, labels, captions
+   Scoped under #main-content so the scale beats Tailwind utility sizes set by
+   theme templates without needing !important.
+   --------------------------------------------------------------------------- */
+:root {
+  --step--1: 0.8125rem;
+  --step-0: 1.0625rem;
+  --step-1: 1.25rem;
+  --step-2: clamp(1.4rem, 2.6vw, 1.5625rem);
+  --step-3: clamp(1.75rem, 3.8vw, 2.3rem);
+  --step-4: clamp(2.25rem, 5.4vw, 3.3rem);
+  --step-5: clamp(2.6rem, 8vw, 4.75rem);
+}
+
+/* Body copy */
+#main-content :is(.prose, .article-content, .max-w-prose) > :is(p, ul > li, ol > li) {
+  font-size: var(--step-0);
+  line-height: 1.72;
+  color: rgb(var(--color-neutral-700));
+}
+.dark #main-content :is(.prose, .article-content, .max-w-prose) > :is(p, ul > li, ol > li) {
+  color: rgb(var(--color-neutral-300));
+}
+
+/* Page title */
+#main-content h1:not(.hero-name) {
+  font-size: var(--step-4);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+  text-wrap: balance;
+}
+
+/* Section headings */
+#main-content :is(.prose, .article-content, .max-w-prose) > h2 {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+  font-size: var(--step-3);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  font-weight: 600;
+  text-wrap: balance;
+  color: rgb(var(--color-neutral-900));
+}
+.dark #main-content :is(.prose, .article-content, .max-w-prose) > h2 { color: rgb(var(--color-neutral-100)); }
+
+#main-content :is(.prose, .article-content, .max-w-prose) > h2.h-minor {
+  margin-top: 2.6rem;
+  font-size: var(--step-2);
+  letter-spacing: -0.015em;
+}
+
+/* Sub-headings */
+#main-content :is(.prose, .article-content, .max-w-prose) > h3 {
+  margin-top: 1.9rem;
+  margin-bottom: 0.4rem;
+  font-size: var(--step-1);
+  line-height: 1.3;
+  letter-spacing: -0.005em;
+  font-weight: 600;
+  color: rgb(var(--color-primary-700));
+}
+.dark #main-content :is(.prose, .article-content, .max-w-prose) > h3 { color: rgb(var(--color-primary-300)); }
+
+.prose strong { font-weight: 600; color: inherit; }
+
+.prose a {
+  color: rgb(var(--color-primary-600));
+  text-decoration-color: rgba(var(--color-primary-400), 0.5);
+}
+.dark .prose a { color: rgb(var(--color-primary-300)); }
+
+/* Eyebrows and status labels use the mono face */
+.hero-role__text,
+.pipeline__badge,
+.certs__label,
+.soon__status {
+  font-family: var(--font-mono);
+}
+
+/* --- Links inside running text ---
+   Color alone doesn't mark a link for readers who can't see the difference
+   (WCAG 1.4.1), so links in paragraphs, list items and table cells get a thin
+   underline. Buttons, nav, cards and tag pills are unaffected. */
+.prose :is(p, li, td) a:not(.cta-btn):not(#TableOfContents a),
+:is(.intro-block__text, .soon__text, .wip__text, .connect__text) a {
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(var(--color-primary-500), 0.55);
+}
+.prose :is(p, li, td) a:not(.cta-btn):not(#TableOfContents a):hover,
+:is(.intro-block__text, .soon__text, .wip__text, .connect__text) a:hover {
+  text-decoration-thickness: 2px;
+  text-decoration-color: currentColor;
+}
+html.dark .prose :is(p, li, td) a:not(.cta-btn):not(#TableOfContents a),
+html.dark :is(.intro-block__text, .soon__text, .wip__text, .connect__text) a {
+  text-decoration-color: rgba(var(--color-primary-300), 0.6);
+}
