@@ -1,0 +1,166 @@
+/* --- Hero: name first, role as a ruled subtitle --- */
+.hero-name {
+  margin: 0;
+  font-size: clamp(2.6rem, 9vw, 5.25rem);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  /* rests in the same primary the scramble ends on, so there is no colour shift */
+  color: rgb(var(--color-primary-600));
+}
+
+/* white in dark mode, where purple loses too much contrast on the deep ground */
+.dark .hero-name { color: rgb(var(--color-neutral-50)); }
+
+.hero-name__text {
+  display: inline-block;
+  /* holds width steady while the scramble resolves */
+  min-width: 1ch;
+}
+
+.hero-role {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  margin: 1.1rem auto 0;
+  max-width: 44rem;
+}
+
+.hero-role__text {
+  font-size: clamp(0.72rem, 2.2vw, 0.9rem);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-align: center;
+  color: rgb(var(--color-primary-600));
+}
+
+.dark .hero-role__text { color: rgb(var(--color-primary-400)); }
+
+.hero-role__rule {
+  flex: 1 1 auto;
+  max-width: 4.5rem;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(var(--color-primary-400), 0.7));
+}
+
+.hero-role__rule:last-child {
+  background: linear-gradient(90deg, rgba(var(--color-primary-400), 0.7), transparent);
+}
+
+.hero-lead {
+  text-wrap: balance;
+  margin: 1.6rem auto 0;
+  max-width: 44rem;
+  font-size: clamp(1rem, 2.4vw, 1.2rem);
+  line-height: 1.7;
+  color: rgb(var(--color-neutral-600));
+}
+
+.dark .hero-lead { color: rgb(var(--color-neutral-300)); }
+
+/* Name animation on arrival, in three phases:
+   1. scrambling — glyphs churn in monospace so nothing reflows
+   2. typing     — the shell walks the name back, then retypes it in the
+                   display face with a caret trailing
+   3. rested     — caret fades out, line settles
+
+   Colour never changes: it opens, runs and finishes in primary, so there is no
+   tonal shift drawing attention to the handoff. */
+.hero-name__text {
+  transition: letter-spacing 700ms cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.hero-name[data-scrambling] .hero-name__text {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  letter-spacing: -0.01em;
+  transition: none;
+}
+
+/* Caret rides the end of the line while deleting and retyping */
+.hero-name[data-typing] .hero-name__text::after,
+.hero-name[data-rested] .hero-name__text::after {
+  content: '';
+  display: inline-block;
+  width: 0.06em;
+  height: 0.78em;
+  margin-left: 0.07em;
+  vertical-align: baseline;
+  background-color: currentColor;
+  transform: translateY(0.02em);
+}
+
+.hero-name[data-typing] .hero-name__text::after {
+  animation: hero-caret 0.9s steps(2) infinite;
+}
+
+.hero-name[data-rested] .hero-name__text::after {
+  animation: hero-caret-out 600ms ease-out forwards;
+}
+
+@keyframes hero-caret {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
+}
+
+@keyframes hero-caret-out {
+  0%   { opacity: 1; }
+  100% { opacity: 0; width: 0; margin-left: 0; }
+}
+
+@media (max-width: 480px) {
+  .hero-role { gap: 0.6rem; }
+  .hero-role__rule { max-width: 1.75rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-name__text { transition: none; }
+  .hero-name[data-scrambling] .hero-name__text {
+    font-family: inherit;
+    letter-spacing: inherit;
+  }
+  .hero-name[data-typing] .hero-name__text::after,
+  .hero-name[data-rested] .hero-name__text::after { display: none; }
+}
+
+/* --- Call-to-action buttons (layouts/partials/cta-button.html) --- */
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.8rem 1.35rem;
+  border-radius: 0.8rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: transform 0.18s ease, background-color 0.18s ease, border-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+}
+.cta-btn__arrow { width: 1.05rem; height: 1.05rem; transition: transform 0.18s ease; }
+.cta-btn:hover .cta-btn__arrow { transform: translateX(3px); }
+.cta-btn:focus-visible { outline: 2px solid rgb(var(--color-primary-600)); outline-offset: 3px; }
+
+.cta-btn--primary {
+  background-color: rgb(var(--color-primary-600));
+  color: #fff;
+  box-shadow: 0 10px 24px -12px rgba(var(--color-primary-600), 0.55);
+}
+.cta-btn--primary:hover { background-color: rgb(var(--color-primary-700)); transform: translateY(-2px); }
+
+.cta-btn--outline {
+  border: 1px solid rgba(var(--color-primary-400), 0.7);
+  background-color: rgba(255, 255, 255, 0.45);
+  color: rgb(var(--color-primary-700));
+}
+.cta-btn--outline:hover { border-color: rgb(var(--color-primary-500)); background-color: rgba(255, 255, 255, 0.75); }
+
+html.dark .cta-btn--primary { background-color: rgb(var(--color-primary-500)); }
+html.dark .cta-btn--primary:hover { background-color: rgb(var(--color-primary-400)); color: rgb(var(--color-neutral-900)); }
+html.dark .cta-btn--outline { border-color: rgba(var(--color-primary-300), 0.55); background-color: rgba(var(--color-neutral-900), 0.35); color: rgb(var(--color-primary-200)); }
+html.dark .cta-btn--outline:hover { border-color: rgb(var(--color-primary-300)); color: rgb(var(--color-neutral-50)); }
+html.dark .cta-btn:focus-visible { outline-color: rgb(var(--color-primary-200)); }
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-btn, .cta-btn__arrow { transition: none; }
+  .cta-btn:hover, .cta-btn:hover .cta-btn__arrow { transform: none; }
+}

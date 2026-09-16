@@ -1,3 +1,13 @@
+{{/* Site stylesheet: every file in assets/css/site/, concatenated in filename
+     order (00-fonts, 10-typography, ... 80-intro) and loaded after the theme
+     bundle so site rules win the cascade. Add a component by dropping a new
+     numbered file in that folder. */}}
+{{ $alg := site.Params.fingerprintAlgorithm | default "sha512" }}
+{{ with resources.Match "css/site/*.css" }}
+  {{ $siteCSS := . | resources.Concat "css/site.bundle.css" | resources.Minify | resources.Fingerprint $alg }}
+  <link rel="stylesheet" href="{{ $siteCSS.RelPermalink }}" integrity="{{ $siteCSS.Data.Integrity }}">
+{{ end }}
+
 {{ $variant := site.Params.introSequence }}
 {{ if and $variant (ne $variant false) }}
 {{ $v := cond (eq (printf "%v" $variant) "true") "sentinel" (printf "%v" $variant) }}

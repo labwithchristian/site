@@ -1,0 +1,117 @@
+/* --- Display fonts for headings ---
+   Self-hosted (static/fonts), so no third-party font requests.
+   Switch with `headingFont` in params.toml. */
+
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("/fonts/instrument-serif-400.woff2") format("woff2");
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("/fonts/instrument-serif-400-italic.woff2") format("woff2");
+  font-weight: 400; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "Fraunces";
+  src: url("/fonts/fraunces-var.woff2") format("woff2-variations");
+  font-weight: 100 900; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Fraunces";
+  src: url("/fonts/fraunces-var-italic.woff2") format("woff2-variations");
+  font-weight: 100 900; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "Newsreader";
+  src: url("/fonts/newsreader-var.woff2") format("woff2-variations");
+  font-weight: 200 800; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Newsreader";
+  src: url("/fonts/newsreader-var-italic.woff2") format("woff2-variations");
+  font-weight: 200 800; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "Playfair Display";
+  src: url("/fonts/playfair-500.woff2") format("woff2");
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Playfair Display";
+  src: url("/fonts/playfair-500-italic.woff2") format("woff2");
+  font-weight: 500; font-style: italic; font-display: swap;
+}
+@font-face {
+  font-family: "Literata";
+  src: url("/fonts/literata-var.woff2") format("woff2-variations");
+  font-weight: 200 900; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: "Literata";
+  src: url("/fonts/literata-var-italic.woff2") format("woff2-variations");
+  font-weight: 200 900; font-style: italic; font-display: swap;
+}
+
+/* Headings that take the display face: section headings, page titles,
+   hero title, and the sub-captions under section headings stay body font. */
+html[data-heading-font] h1,
+html[data-heading-font] h2,
+html[data-heading-font] h3,
+html[data-heading-font] .prose h1,
+html[data-heading-font] .prose h2,
+html[data-heading-font] .prose h3 {
+  font-family: var(--font-display), ui-serif, Georgia, serif;
+  font-weight: var(--font-display-weight, 500);
+  font-style: var(--font-display-style, normal);
+  letter-spacing: var(--font-display-tracking, -0.01em);
+  line-height: 1.2;
+}
+
+html[data-heading-font="instrument"] {
+  --font-display: "Instrument Serif";
+  --font-display-weight: 400;
+  --font-display-tracking: 0;
+}
+html[data-heading-font="instrument-italic"] {
+  --font-display: "Instrument Serif";
+  --font-display-weight: 400;
+  --font-display-style: italic;
+  --font-display-tracking: 0;
+}
+html[data-heading-font="fraunces"] {
+  --font-display: "Fraunces";
+  --font-display-weight: 600;
+  --font-display-tracking: -0.015em;
+}
+html[data-heading-font="fraunces-italic"] {
+  --font-display: "Fraunces";
+  --font-display-weight: 600;
+  --font-display-style: italic;
+  --font-display-tracking: -0.015em;
+}
+html[data-heading-font="newsreader-italic"] {
+  --font-display: "Newsreader";
+  --font-display-weight: 500;
+  --font-display-style: italic;
+  --font-display-tracking: -0.005em;
+}
+html[data-heading-font="playfair-italic"] {
+  --font-display: "Playfair Display";
+  --font-display-weight: 500;
+  --font-display-style: italic;
+  --font-display-tracking: -0.01em;
+}
+html[data-heading-font="literata"] {
+  --font-display: "Literata";
+  --font-display-weight: 600;
+  --font-display-tracking: -0.015em;
+}
+
+/* Keep functional UI text in the body font even when it sits in a heading tag */
+html[data-heading-font] .pipeline__badge,
+html[data-heading-font] .logo-marquee__label,
+html[data-heading-font] nav,
+html[data-heading-font] .site-credits {
+  font-family: inherit;
+}

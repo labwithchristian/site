@@ -1,0 +1,117 @@
+/* --- Astral glass surfaces ---
+   Opt in per-site by adding `astral = true` under [params] in params.toml,
+   which sets data-astral="true" on <html>. Cards become translucent so the
+   background pattern shows through, with a primary-tinted edge. */
+
+html[data-astral="true"] .logo-marquee__item:hover .logo-marquee__icon svg {
+  filter: drop-shadow(0 0 6px rgba(var(--color-primary-400), 0.5));
+}
+
+/* Feature cards on the homepage */
+html[data-astral="true"] .feature-grid-glass,
+html[data-astral="true"] article.group {
+  background-color: rgba(var(--color-neutral-100), 0.55);
+  border-color: rgba(var(--color-primary-300), 0.35);
+  backdrop-filter: blur(14px) saturate(130%);
+  -webkit-backdrop-filter: blur(14px) saturate(130%);
+}
+
+html[data-astral="true"].dark article.group,
+html[data-astral="true"] .dark article.group {
+  background-color: rgba(var(--color-neutral-800), 0.45);
+  border-color: rgba(var(--color-primary-400), 0.22);
+}
+
+html[data-astral="true"] article.group:hover {
+  border-color: rgba(var(--color-primary-400), 0.6);
+  box-shadow:
+    0 0 0 1px rgba(var(--color-primary-400), 0.15),
+    0 10px 32px -12px rgba(var(--color-primary-500), 0.4);
+}
+
+/* Timeline entries */
+html[data-astral="true"] .timeline-glass,
+html[data-astral="true"] ol.border-s-2 > li > div > div.block {
+  background-color: rgba(var(--color-neutral-100), 0.5);
+  border: 1px solid rgba(var(--color-primary-300), 0.3);
+  backdrop-filter: blur(14px) saturate(130%);
+  -webkit-backdrop-filter: blur(14px) saturate(130%);
+  box-shadow: 0 8px 28px -16px rgba(var(--color-primary-600), 0.45);
+}
+
+html[data-astral="true"].dark ol.border-s-2 > li > div > div.block,
+html[data-astral="true"] .dark ol.border-s-2 > li > div > div.block {
+  background-color: rgba(var(--color-neutral-800), 0.42);
+  border-color: rgba(var(--color-primary-400), 0.2);
+}
+
+/* Article / recent-post cards */
+html[data-astral="true"] .article-card,
+html[data-astral="true"] .min-h-16.rounded-md,
+html[data-astral="true"] .rounded-md.border {
+  background-color: rgba(var(--color-neutral-100), 0.5);
+  backdrop-filter: blur(12px) saturate(125%);
+  -webkit-backdrop-filter: blur(12px) saturate(125%);
+}
+
+html[data-astral="true"].dark .article-card,
+html[data-astral="true"].dark .min-h-16.rounded-md,
+html[data-astral="true"].dark .rounded-md.border {
+  background-color: rgba(var(--color-neutral-800), 0.4);
+}
+
+/* --- Background pattern legibility ---
+   The pattern SVGs are drawn in neutral gray. On a light ground they need to be
+   darkened and the canvas overlay pulled back, or they vanish. On dark grounds
+   they need lifting instead. Alpha is preserved by brightness(), so the strokes
+   stay as subtle as they were drawn. */
+
+html:not(.dark) #background-canvas img {
+  filter: brightness(0.42);
+}
+
+html.dark #background-canvas img {
+  filter: brightness(1.45);
+}
+
+/* Patterns that carry their own colour (aurora) must not be re-tinted.
+   Set `backgroundTinted = true` in params.toml alongside them. */
+html[data-bg-tinted="true"] #background-canvas img { filter: none; }
+
+html[data-bg-tinted="true"]:not(.dark) #background-canvas > div {
+  background-color: rgba(var(--color-neutral), 0.62) !important;
+}
+
+html[data-bg-tinted="true"].dark #background-canvas > div {
+  background-color: rgba(var(--color-page-dark, var(--color-neutral-800)), 0.7) !important;
+}
+
+/* Non-astral light: theme default is a 75% wash, too heavy for these patterns */
+html:not(.dark) #background-canvas > div {
+  background-color: rgba(var(--color-neutral), 0.5) !important;
+}
+
+html[data-astral="true"]:not(.dark) #background-canvas > div {
+  background-color: rgba(var(--color-neutral-50), 0.38) !important;
+}
+
+html[data-astral="true"].dark #background-canvas > div,
+html[data-astral="true"] .dark #background-canvas > div {
+  background-color: rgba(var(--color-neutral-900), 0.55) !important;
+}
+
+/* Light-ground glass: lift cards above the page rather than tinting them darker */
+html[data-astral="true"]:not(.dark) article.group,
+html[data-astral="true"]:not(.dark) ol.border-s-2 > li > div > div.block,
+html[data-astral="true"]:not(.dark) .article-card {
+  background-color: rgba(255, 255, 255, 0.62);
+  border-color: rgba(var(--color-primary-300), 0.4);
+  box-shadow: 0 8px 30px -18px rgba(var(--color-primary-700), 0.35);
+}
+
+/* --- Dark-mode page background ---
+   Lightens only the page canvas in dark mode. Cards, glass fills and every other
+   neutral-800 consumer are unaffected. Light mode is untouched. */
+html.dark body {
+  background-color: rgb(var(--color-page-dark, var(--color-neutral-800)));
+}
