@@ -9,7 +9,7 @@ showWordCount: false
 ---
 
 {{< intro image="img/author.jpg" alt="Christian Carrasco" >}}
-Ten years in enterprise IT. A decade of operations, five years in a HIPAA-regulated healthcare environment, a year inside a SOC, and five years running operations for the largest automotive brand in the world.
+Ten plus years in enterprise IT. Over a decade of operations, five years in a HIPAA-regulated healthcare environment, a year inside a SOC, and five years running operations for the largest automotive brand in the world.
 {{< /intro >}}
 
 ## The short version
