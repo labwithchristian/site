@@ -58,7 +58,7 @@ Fluent in English and Spanish, able to work directly with Spanish-speaking teams
 
 {{< timeline-item company="Beyondsoft Consulting, on assignment at Toyota Motor North America" >}}
 {{< timeline-role title="Operations Manager" dates="2023 to 2026" promoted="2023" >}}
-Incident command, SLA performance, vendor contracts and budget, and a five-person engineering team.
+Incident command, SLA performance, vendor contracts and budget, and a five-person team.
 {{< /timeline-role >}}
 {{< timeline-role title="Senior Lead Technical Systems Analyst" dates="2021 to 2023" company="Beyondsoft Consulting, on assignment at Toyota Motor North America" >}}
 AWS security audits, Entra ID, DNS and certificates, and Dynatrace and PagerDuty monitoring for client production workloads.
@@ -70,7 +70,7 @@ SOC triage, lead LogRhythm administrator, and detection coverage mapped to MITRE
 {{< /timeline-item >}}
 
 {{< timeline-item dates="2014 to 2019" role="System Administrator" company="Cigna HealthCare" >}}
-Level 3 escalation, identity and access, and CMS and HIPAA audit evidence.
+Progressive level 1 through level 3 escalations, identity and access, and CMS and HIPAA audit evidence.
 {{< /timeline-item >}}
 
 {{< timeline-item dates="2013 to 2014" role="IT Support Specialist" company="Commonwealth-Altadis" >}}
