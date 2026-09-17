@@ -18,8 +18,8 @@ IT operations and security leader with ten plus years in enterprise environments
 
 {{< xp >}}
 
-{{< job company="Beyondsoft Consulting" dates="2021 to 2026" location="Remote" context="On assignment at Toyota Motor North America" >}}
-{{< role title="Operations Manager" dates="2023 to 2026" promoted="2023" tags="Incident Management, Problem Management, Change Management, SLA Management, Team Leadership, Vendor Management, ISO 27001" >}}
+{{< job company="Beyondsoft Consulting" dates="2023 to 2026" location="Remote" context="On assignment at Toyota Motor North America" >}}
+{{< role title="Operations Manager" promoted="2023" tags="Incident Management, Problem Management, Change Management, SLA Management, Team Leadership, Vendor Management, ISO 27001" >}}
 - Commanded high-impact production incidents end to end: set severity against business impact, coordinated the response across teams, drove restoration, and briefed client executives.
 - Led a five-person engineering team, owning hiring, performance, and development with minimal turnover, along with the Dynatrace and PagerDuty vendor contracts and budget.
 - Owned SLA performance and incident metrics including MTTR, backlog, and repeat-incident rate, investigating breaches and driving corrective action plans to closure.

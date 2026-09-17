@@ -624,6 +624,7 @@ html.dark .nd-barrier { stroke: rgb(var(--color-secondary-300)); }
 }
 
 h4.job__title { margin: 0; }
+.job__role-head .xp__year { align-self: center; }
 
 
 .job__role .xp__body { margin-top: 0.6rem; }
