@@ -67,5 +67,5 @@ Fluent in English and Spanish, from the incident bridge to the executive update.
 ## Open to What's Next
 
 {{< connect url="https://linkedin.com/in/cybercc" label="Connect on LinkedIn" >}}
-Always happy to meet new people, swap ideas, or talk shop about keeping systems running and secure. LinkedIn is the easiest place to find me, so come say hi.
+Always happy to meet new people, swap ideas, or talk shop about keeping systems running and secure. LinkedIn is the easiest place to find me, so come say hi!
 {{< /connect >}}

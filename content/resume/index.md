@@ -10,7 +10,7 @@ showPagination: false
 showBreadcrumbs: false
 ---
 
-{{< resume-head facts="Experience :: Ten plus years in enterprise IT | Focus :: IT operations and security | Languages :: English and Spanish - fluent | Studying :: CISSP - target November 2026" >}}
+{{< resume-head facts="Experience :: Ten Plus Years in Enterprise IT | Focus :: IT Operations and Security | Languages :: English and Spanish - Fluent | Studying :: CISSP - Target November 2026" >}}
 IT operations and security leader with ten plus years in enterprise environments. Five years as incident manager and operations lead on assignment at Toyota Motor North America, a year as a SOC analyst and lead SIEM administrator, and five years administering systems and identity in a HIPAA-regulated healthcare environment. Supported audit and control testing across SOX, PCI DSS, HIPAA, CMS, and ISO 27001.
 {{< /resume-head >}}
 
@@ -56,7 +56,7 @@ IT operations and security leader with ten plus years in enterprise environments
 
 ## Compliance and Frameworks {.h-minor}
 
-{{< certs seal="false" class="certs--wide" groups="Regulatory :: SOX, PCI DSS, HIPAA, CMS, ISO 27001 | Frameworks :: NIST 800-53, NIST CSF, MITRE ATT&CK, ITIL v4 | Practice :: Control design and operating effectiveness testing, User access reviews, Formal risk acceptance, Findings tracked to closure in ServiceNow, Audit evidence" >}}
+{{< certs seal="false" class="certs--wide" groups="Regulatory :: CMS, HIPAA, ISO 27001, PCI DSS, SOX | Frameworks :: ITIL v4, MITRE ATT&CK, NIST 800-53, NIST CSF | Practice :: Control design and operating effectiveness testing, User access reviews, Formal risk acceptance, Findings tracked to closure in ServiceNow, Audit evidence" >}}
 
 ## Tools and Platforms {.h-minor}
 
