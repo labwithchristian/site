@@ -74,5 +74,5 @@ If the parrot ever learns a new word worth sharing, you'll hear about it here fi
 The [Homelab]({{< ref "homelab" >}}) page is the running reference for the lab I'm building: hardware, segmentation, and service layout. Sanitized configs and playbooks go on [GitHub](https://github.com/labwithchristian) as the build grows.
 
 {{< connect-mini url="https://linkedin.com/in/cybercc" label="Connect on LinkedIn" >}}
-Thanks for stopping by. Let's connect.
+Thanks for stopping by. Let's connect!
 {{< /connect-mini >}}
