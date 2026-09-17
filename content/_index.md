@@ -21,7 +21,7 @@ heroButtons:
 {{< highlights >}}
 
 {{< highlight figure="5 yrs" label="Incident command" >}}
-Incident manager for high-impact production events at Toyota Motor North America, leading a five-person team.
+Incident manager for high-impact production outages at Toyota Motor North America, leading a five-person team.
 {{< /highlight >}}
 
 {{< highlight figure="5" label="Audit domains" >}}
@@ -58,19 +58,19 @@ Fluent in English and Spanish, able to work directly with Spanish-speaking teams
 
 {{< timeline-item company="Beyondsoft Consulting, on assignment at Toyota Motor North America" >}}
 {{< timeline-role title="Operations Manager" dates="2023 to 2026" promoted="2023" >}}
-Incident command, SLA performance, vendor contracts and budget, and a five-person team.
+Incident management lead, SLA performance tracking, vendor contracts and budget utilization tracking, and a five-person team.
 {{< /timeline-role >}}
 {{< timeline-role title="Senior Lead Technical Systems Analyst" dates="2021 to 2023" company="Beyondsoft Consulting, on assignment at Toyota Motor North America" >}}
-AWS security audits, Entra ID, DNS and certificates, and Dynatrace and PagerDuty monitoring for client production workloads.
+AWS security audits, Entra ID, DNS and SSL certificates, and Dynatrace and PagerDuty monitoring for client production applications.
 {{< /timeline-role >}}
 {{< /timeline-item >}}
 
 {{< timeline-item dates="2019 to 2020" role="Information Security Analyst" company="TelevisaUnivision" >}}
-SOC triage, lead LogRhythm administrator, and detection coverage mapped to MITRE ATT&CK.
+SOC triage, lead LogRhythm SIEM administrator, and detection alert enhancements mapped to MITRE ATT&CK.
 {{< /timeline-item >}}
 
 {{< timeline-item dates="2014 to 2019" role="System Administrator" company="Cigna HealthCare" >}}
-Progressive level 1 through level 3 escalations, identity and access, and CMS and HIPAA audit evidence.
+Progressive level 1 through level 3 escalations, identity and access management, and CMS and HIPAA audit evidence and compliance support.
 {{< /timeline-item >}}
 
 {{< timeline-item dates="2013 to 2014" role="IT Support Specialist" company="Commonwealth-Altadis" >}}
@@ -81,11 +81,11 @@ Deployed more than 300 machines for a sales force of over 1,500 agents.
 
 ## Certifications & Education
 
-{{< certs groups="Security :: Certified Ethical Hacker (CEH), CompTIA Security+ | Cloud :: AWS Certified Cloud Practitioner | Network :: Cisco CCNA Routing & Switching | Process :: ITIL v4 Foundation, CompTIA Project+ | Degree :: B.S. Network Operations and Security · Western Governors University" >}}
+{{< certs groups="Security :: EC-Council Certified Ethical Hacker (CEH), CompTIA Security+ | Cloud :: AWS Certified Cloud Practitioner | Network :: Cisco CCNA Routing & Switching | Process :: ITIL v4 Foundation, CompTIA Project+ | Degree :: B.S. Network Operations and Security · Western Governors University" >}}
 
 ## What's cooking
 
-{{< pipeline items="CISSP :: In progress :: Targeting November 2026. Deepening the security governance and risk side | Home lab buildout :: Ongoing :: Segmentation, telemetry and detection engineering, documented as I go" >}}
+{{< pipeline items="ISC2 CISSP :: In progress :: Targeting November 2026. Credential for practitioners responsible for the architecture, implementation, and management of an organization's security program | Home lab buildout :: Ongoing :: Segmentation, telemetry and detection engineering, documented as I go" >}}
 
 ## Open to What's Next
 
