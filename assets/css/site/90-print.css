@@ -57,11 +57,10 @@
   .job__title { font-size: 9.5pt; color: #111 !important; }
   .job__when { font-size: 8pt; color: #444 !important; }
   .job__roles { margin-top: 3pt; padding-left: 7pt; border-left: 0.75pt solid #bbb; }
-  .job__role::before { display: none; }
+  .job__role::before, .promo-track { display: none; }
   .job__role + .job__role { margin-top: 4pt; padding-top: 3pt; border-top: 0.5pt dashed #ccc; }
   .job__role .xp__body { margin-top: 2pt; }
   .job__role .xp__tags { margin-top: 2pt; }
-  .job__badge { margin-left: 3pt; padding: 0; background: none !important; font-size: 7pt; color: #444 !important; }
   .job__body li { margin-bottom: 1pt; padding-left: 9pt; }
   .job__body li::before { content: "•"; top: 0; left: 0; width: auto; height: auto; border-radius: 0; background: none; color: #555; }
 

@@ -1,17 +1,19 @@
 {{- /*
   One title held at an employer, nested inside {{< job >}}. See job.html.
-    title   job title
-    dates   years in this title, e.g. "2023 to 2026"
-    note    optional badge beside the title, e.g. "Promoted 2023"
-    tags    optional comma-separated keywords for this title
+    title     job title
+    dates     years in this title, e.g. "2023 to 2026"
+    promoted  optional year, on the newer title of a promotion. Draws the
+              rising promotion track from the earlier title up to this one.
+    tags      optional comma-separated keywords for this title
   Bullets go inside in Markdown.
 */ -}}
 {{- $title := .Get "title" -}}
 {{- $dates := .Get "dates" -}}
-{{- $note := .Get "note" -}}
+{{- $promoted := .Get "promoted" -}}
 {{- $tags := .Get "tags" | default "" -}}
-<section class="job__role">
-<div class="job__role-head"><h4 class="job__title">{{ $title }}{{ with $note }} <span class="job__badge">{{ . }}</span>{{ end }}</h4>{{ with $dates }}<span class="job__when">{{ . }}</span>{{ end }}</div>
+<section class="job__role{{ if $promoted }} job__role--current{{ end }}">
+{{- if $promoted }}<span class="promo-track" aria-hidden="true"></span>{{ end }}
+<div class="job__role-head"><h4 class="job__title">{{ $title }}{{ with $promoted }}<span class="timeline__sr">, promoted in {{ . }}</span>{{ end }}</h4>{{ with $dates }}<span class="job__when">{{ . }}</span>{{ end }}</div>
 <div class="xp__body job__body">{{ .Page.RenderString (dict "display" "block") (trim .Inner "\n ") }}</div>
 {{- with $tags }}
 <ul class="xp__tags">{{ range split . "," }}<li class="xp__tag">{{ trim . " " }}</li>{{ end }}</ul>

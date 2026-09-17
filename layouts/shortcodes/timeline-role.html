@@ -1,22 +1,24 @@
 {{- /*
   One title inside a {{< timeline-item >}}, for a promotion at one employer.
-  The first (newest) role shows the company; later ones sit beneath it on the
-  same rail with a hollow marker.
-    title, dates, note (optional badge such as "Promoted 2023")
+  List the newest title first. Each title is its own row with its own dates
+  in the left column, formatted like every other entry.
+    title     job title
+    dates     years in this title
+    company   optional; defaults to the item's company
+    promoted  optional year, on the newer title. Draws the rising promotion
+              track from the earlier title up to this one.
 */ -}}
 {{- $title := .Get "title" -}}
 {{- $dates := .Get "dates" -}}
-{{- $note := .Get "note" -}}
+{{- $promoted := .Get "promoted" -}}
+{{- $company := .Get "company" | default (.Parent.Get "company") -}}
 {{- $text := trim .Inner "\n " -}}
-{{- if eq .Ordinal 0 -}}
-<div class="timeline__stint">
-<div class="timeline__role-head"><h3 class="timeline__role">{{ $title }}{{ with $note }} <span class="timeline__badge">{{ . }}</span>{{ end }}</h3>{{ with $dates }}<span class="timeline__when">{{ . }}</span>{{ end }}</div>
-{{- with .Parent.Get "company" }}<p class="timeline__company">{{ . }}</p>{{ end }}
+<div class="timeline__row {{ if $promoted }}timeline__row--current{{ else }}timeline__row--prior{{ end }}">
+<span class="timeline__dates">{{ $dates }}</span>
+<div class="timeline__body">
+{{- if $promoted }}<span class="promo-track timeline__track" aria-hidden="true"></span>{{ end }}
+<h3 class="timeline__role">{{ $title }}{{ with $promoted }}<span class="timeline__sr">, promoted in {{ . }}</span>{{ end }}</h3>
+{{- with $company }}<p class="timeline__company">{{ . }}</p>{{ end }}
 {{- with $text }}<p class="timeline__note">{{ . | $.Page.RenderString }}</p>{{ end }}
 </div>
-{{- else -}}
-<div class="timeline__stint timeline__stint--prior">
-<div class="timeline__role-head"><h4 class="timeline__prior-title">{{ $title }}</h4>{{ with $dates }}<span class="timeline__when">{{ . }}</span>{{ end }}</div>
-{{- with $text }}<p class="timeline__note">{{ . | $.Page.RenderString }}</p>{{ end }}
 </div>
-{{- end -}}

@@ -114,10 +114,10 @@ It's set with `images` in `params.toml`.
 |---|---|---|
 | `logos items="slug, slug" speed="45"` | Home | Scrolling Skills & Tools logo marquee. Logos live in `assets/img/logos/`; `text:Label` adds a wordmark |
 | `highlights` + `highlight figure label` | Home | Proof-point tiles under the hero. Swap figures for outcome numbers as they're gathered |
-| `timeline more` + `timeline-item dates role company` | Home | Career at a glance, with a button to the full resume. For a promotion, nest `timeline-role title dates note` entries in one item, newest first |
+| `timeline more` + `timeline-item dates role company` | Home | Career at a glance, with a button to the full resume. For a promotion, nest `timeline-role title dates promoted` entries in one item, newest first; each title gets its own row and dates, and `promoted` draws the rising arrow track |
 | `resume-head facts="Label :: Value \| ..."` | Resume | Summary, quick facts, Download PDF and LinkedIn buttons, print-only name block |
 | `job company dates location context positions tags` | Resume | One employer: titles held (`"Title :: years \| Title :: years"`), Markdown bullets, tags |
-| `role title dates note tags` | Resume | Inside `job`, one title with its own bullets and tags, for a promotion (newest first, `note="Promoted 2023"`) |
+| `role title dates promoted tags` | Resume | Inside `job`, one title with its own bullets and tags, for a promotion (newest first; `promoted="2023"` on the newer title draws the rising arrow track) |
 | `strengths` + `strength icon title items` | Home | Core Strengths cards |
 | `pipeline items="Name :: Status :: Note \| ..."` | Home, Homelab | Status list with cooking-themed badges |
 | `xp` | Resume | Wrapper that stacks `job` cards |
