@@ -1,6 +1,6 @@
 ---
 title: "Resume"
-description: "Resume of Christian Carrasco: IT operations and security leader with ten plus years across incident management, security operations, identity, and audit."
+description: "Resume of Christian Carrasco: Security and IT operations leader with ten plus years across incident management, security operations, identity and access management, and audit."
 showDate: false
 showAuthor: false
 showReadingTime: false
@@ -11,7 +11,7 @@ showBreadcrumbs: false
 ---
 
 {{< resume-head facts="Experience :: Ten Plus Years in Enterprise IT | Focus :: IT Operations and Security | Languages :: English and Spanish - Fluent | Studying :: CISSP - Target November 2026" >}}
-IT operations and security leader with ten plus years in enterprise environments. Five years on assignment at Toyota Motor North America, first owning cloud security, identity, and monitoring as a senior lead technical systems analyst, then promoted to operations manager to lead incident management and a five-person engineering team. Before that, a year as a SOC analyst and lead SIEM administrator, and five years administering systems and identity in a HIPAA-regulated healthcare environment. Supported audit and control testing across SOX, PCI DSS, HIPAA, CMS, and ISO 27001.
+IT operations and security leader with ten plus years in enterprise environments. Five years on assignment at Toyota Motor North America, first owning cloud security, identity, and monitoring as a senior lead technical systems analyst, then promoted to operations manager, leading incident management and a five-person engineering team. Before that, a year as a SOC analyst and lead SIEM administrator, and five years administering systems and identity in a HIPAA-regulated healthcare environment. Supported audit and control testing across SOX, PCI DSS, HIPAA, CMS, and ISO 27001.
 {{< /resume-head >}}
 
 ## Experience {.h-minor}
@@ -35,7 +35,7 @@ IT operations and security leader with ten plus years in enterprise environments
 {{< /role >}}
 {{< /job >}}
 
-{{< job company="TelevisaUnivision" dates="2019 to 2020" location="Remote" positions="Information Security Analyst" tags="Detection Rules, LogRhythm, MITRE ATT&CK, NIST 800-53, PCI DSS, Rapid7, ServiceNow, SIEM Engineering, SOX" >}}
+{{< job company="TelevisaUnivision" dates="2019 to 2020" location="Hybrid | Doral, FL" positions="Information Security Analyst" tags="Detection Rules, LogRhythm, MITRE ATT&CK, NIST 800-53, PCI DSS, Rapid7, ServiceNow, SIEM Engineering, SOX" >}}
 - Triaged SIEM alerts across networks, endpoints, and servers, correlating events to reconstruct incident timelines.
 - Investigated spear-phishing campaigns aimed at senior staff and delivered end user security awareness training.
 - Lead LogRhythm administrator: built correlation rules, wrote custom parsers for malformed log sources, and mapped detection coverage to MITRE ATT&CK.
@@ -43,11 +43,11 @@ IT operations and security leader with ten plus years in enterprise environments
 - Supported SOX and PCI DSS audit and control testing.
 {{< /job >}}
 
-{{< job company="Cigna HealthCare" dates="2014 to 2019" location="Doral, FL" positions="System Administrator" tags="Active Directory, CMS, Disaster Recovery, Endpoint Detection and Response, Exchange, Group Policy, HIPAA, MDM" >}}
+{{< job company="Cigna HealthCare" dates="2014 to 2019" location="Hybrid | Doral, FL" positions="System Administrator" tags="Active Directory, CMS, Disaster Recovery, Endpoint Detection and Response, Exchange, Group Policy, HIPAA, MDM" >}}
 - Level 3 escalation point for a support team of four serving roughly 350 employees in a HIPAA-regulated environment.
 - Administered Active Directory and Azure AD, Exchange permissions, Group Policy, and MFA, applying least privilege at provisioning and treating revocation at termination as a controlled step.
-- Built the standard PXE images and SOPs behind onboarding and offboarding, and deployed security agents through SCCM.
-- Supplied access records and audit evidence through HIPAA and CMS audit cycles.
+- Built the standard PXE images and SOPs behind onboarding and offboarding, and deployed security endpoints detection and AV.
+- Supplied access records and audit evidence through HIPAA and CMS audit cycles to business stakeholders, business owners, and internal auditors.
 {{< /job >}}
 
 {{< job company="Commonwealth-Altadis" dates="2013 to 2014" location="Fort Lauderdale, FL" context="Contract" positions="IT Support Specialist" tags="Active Directory, Asset Management, Endpoint Deployment, ServiceNow" >}}
@@ -67,7 +67,7 @@ IT operations and security leader with ten plus years in enterprise environments
 
 ## Tools and Platforms {.h-minor}
 
-{{< certs seal="false" class="certs--wide" groups="Cloud :: AWS, AWS Shield and WAF, Microsoft Azure | Microsoft :: Entra ID, Active Directory, Microsoft 365, Exchange, Group Policy | Security :: LogRhythm, Rapid7, Wireshark | Operations :: ServiceNow, Dynatrace, PagerDuty, Jenkins | Infrastructure :: SCCM, PXE imaging, VMware, Cisco, Linux" >}}
+{{< certs seal="false" class="certs--wide" groups="Cloud :: Amazon CloudFront, Amazon Route 53, AWS, AWS Shield and WAF, Microsoft Azure | Microsoft :: Active Directory, Entra ID, Exchange, Group Policy, Microsoft 365, Microsoft Defender for Cloud Apps (MCAS), Office 365 Security and Compliance | Security :: Check Point, Cisco Umbrella, Cylance, Imperva, LogRhythm, Rapid7, Sophos, Wireshark | Operations :: Dynatrace, FACETS, Jenkins, KACE, PagerDuty, Password Safe, ServiceNow | Infrastructure :: Hyper-V, Linux, PXE imaging, VMware, Windows Server" >}}
 
 ## Education and Competitions {.h-minor}
 
@@ -78,7 +78,7 @@ IT operations and security leader with ten plus years in enterprise environments
 {{< /job >}}
 
 {{< job company="National Cyber League" dates="2019 to 2020" location="Remote" positions="Individual Game, Cyber Skyline" >}}
-- Proctored, hands-on skills assessment scored on accuracy and completion across ten challenge modules.
+- Hands-on skills assessment scored on accuracy and completion across ten challenge modules.
 - Fall 2019: 1,470 of 3,000 points at 72.9% accuracy. Strongest in OSINT, cryptography, wireless access exploitation, network traffic analysis, password cracking, and log analysis.
 {{< /job >}}
 
