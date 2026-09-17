@@ -1,6 +1,6 @@
 ---
-title: "Christian Carrasco · IT Operations & Security Leader"
-heroRole: "IT Operations & Security Leader"
+title: "Christian Carrasco · Security & IT Operations Leader"
+heroRole: "Security & IT Operations Leader"
 heroCaption: "Christian Carrasco"
 heroLead: "Ten plus years keeping enterprise systems running and defensible, from a HIPAA‑regulated healthcare environment and a SOC to incident management for Toyota Motor North America."
 heroButtons:
