@@ -21,11 +21,11 @@ heroButtons:
 {{< highlights >}}
 
 {{< highlight figure="5 yrs" label="Incident command" >}}
-Incident manager for high-impact production events at Toyota Motor North America, leading a five-person engineering team.
+Incident manager for high-impact production events at Toyota Motor North America, leading a five-person team.
 {{< /highlight >}}
 
 {{< highlight figure="5" label="Audit domains" >}}
-SOX, PCI DSS, HIPAA, CMS, and ISO 27001, with controls tested against NIST 800-53 and CSF.
+CMS, HIPAA, ISO 27001, PCI DSS, SOX, with controls tested against NIST 800-53 and CSF.
 {{< /highlight >}}
 
 {{< highlight figure="3" label="Industries" >}}
@@ -33,7 +33,7 @@ Healthcare, media, and automotive: regulated systems, a security operations cent
 {{< /highlight >}}
 
 {{< highlight figure="2" label="Languages" >}}
-Fluent in English and Spanish, from the incident bridge to the executive update.
+Fluent in English and Spanish, able to work directly with Spanish-speaking teams, users and stakeholders.
 {{< /highlight >}}
 
 {{< /highlights >}}
@@ -60,7 +60,7 @@ Fluent in English and Spanish, from the incident bridge to the executive update.
 {{< timeline-role title="Operations Manager" dates="2023 to 2026" promoted="2023" >}}
 Incident command, SLA performance, vendor contracts and budget, and a five-person engineering team.
 {{< /timeline-role >}}
-{{< timeline-role title="Senior Lead Technical Systems Analyst" dates="2021 to 2023" company="Beyondsoft Consulting" >}}
+{{< timeline-role title="Senior Lead Technical Systems Analyst" dates="2021 to 2023" company="Beyondsoft Consulting, on assignment at Toyota Motor North America" >}}
 AWS security audits, Entra ID, DNS and certificates, and Dynatrace and PagerDuty monitoring for client production workloads.
 {{< /timeline-role >}}
 {{< /timeline-item >}}
@@ -70,7 +70,7 @@ SOC triage, lead LogRhythm administrator, and detection coverage mapped to MITRE
 {{< /timeline-item >}}
 
 {{< timeline-item dates="2014 to 2019" role="System Administrator" company="Cigna HealthCare" >}}
-Level 3 escalation, identity and access, and HIPAA and CMS audit evidence.
+Level 3 escalation, identity and access, and CMS and HIPAA audit evidence.
 {{< /timeline-item >}}
 
 {{< timeline-item dates="2013 to 2014" role="IT Support Specialist" company="Commonwealth-Altadis" >}}
