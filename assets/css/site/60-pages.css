@@ -578,6 +578,83 @@ html.dark .nd-barrier { stroke: rgb(var(--color-secondary-300)); }
   .job__position { flex-direction: column; gap: 0; }
 }
 
+/* Promotion inside one employer card (role shortcode): each title has its own
+   dates, bullets and tags. A rail with a filled marker for the current title
+   and a hollow one for the earlier title shows the progression. */
+.job__roles {
+  margin-top: 1rem;
+  padding-left: 1.2rem;
+  border-left: 2px solid rgba(var(--color-primary-300), 0.6);
+}
+
+.job__role { position: relative; }
+
+.job__role + .job__role {
+  margin-top: 1.35rem;
+  padding-top: 1.2rem;
+  border-top: 1px dashed rgba(var(--color-primary-300), 0.55);
+}
+
+.job__role::before {
+  content: "";
+  position: absolute;
+  left: calc(-1.2rem - 6px);
+  top: 0.4rem;
+  width: 10px;
+  height: 10px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  background-color: rgb(var(--color-primary-500));
+  box-shadow: 0 0 0 3px rgba(var(--color-primary-200), 0.8);
+}
+
+.job__role + .job__role::before {
+  top: calc(1.2rem + 0.4rem);
+  border: 2px solid rgb(var(--color-primary-500));
+  background-color: rgb(var(--color-neutral-50));
+  box-shadow: none;
+}
+
+.job__role-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.15rem 1rem;
+}
+
+h4.job__title { margin: 0; }
+
+.job__badge {
+  display: inline-block;
+  margin-left: 0.4rem;
+  padding: 0.12rem 0.5rem;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  vertical-align: 0.15em;
+  color: rgb(var(--color-primary-700));
+  background-color: rgba(var(--color-primary-200), 0.65);
+}
+
+.job__role .xp__body { margin-top: 0.6rem; }
+.job__role .xp__tags { margin-top: 0.8rem; }
+
+.dark .job__roles { border-left-color: rgba(var(--color-primary-400), 0.35); }
+.dark .job__role + .job__role { border-top-color: rgba(var(--color-primary-400), 0.3); }
+.dark .job__role::before { background-color: rgb(var(--color-primary-400)); box-shadow: 0 0 0 3px rgba(var(--color-primary-800), 0.8); }
+.dark .job__role + .job__role::before { border-color: rgb(var(--color-primary-400)); background-color: rgb(var(--color-neutral-800)); box-shadow: none; }
+.dark .job__badge { color: rgb(var(--color-primary-200)); background-color: rgba(var(--color-primary-800), 0.7); }
+
+@media (max-width: 480px) {
+  .job__roles { padding-left: 0.95rem; }
+  .job__role::before { left: calc(-0.95rem - 6px); }
+}
+
 /* Chip lists that aren't certifications, and wider labels on the resume */
 .certs--plain .certs__item { padding: 0.36rem 0.75rem; }
 .certs--wide .certs__group { grid-template-columns: 8.5rem 1fr; }

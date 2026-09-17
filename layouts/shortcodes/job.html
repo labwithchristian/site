@@ -8,6 +8,19 @@
             tags="Incident Management, AWS Security" >}}
     - Bullet in Markdown
     {{< /job >}}
+
+  For a promotion, leave out positions and tags and nest one {{< role >}} per
+  title instead, newest first. Each role carries its own dates, bullets and
+  tags, and they share the company header:
+
+    {{< job company="Beyondsoft Consulting" dates="2021 to 2026" location="Remote" >}}
+    {{< role title="Operations Manager" dates="2023 to 2026" note="Promoted 2023" tags="..." >}}
+    - Bullet
+    {{< /role >}}
+    {{< role title="Senior Lead Technical Systems Analyst" dates="2021 to 2023" tags="..." >}}
+    - Bullet
+    {{< /role >}}
+    {{< /job >}}
 */ -}}
 {{- $company := .Get "company" -}}
 {{- $dates := .Get "dates" -}}
@@ -15,7 +28,9 @@
 {{- $context := .Get "context" -}}
 {{- $positions := .Get "positions" | default "" -}}
 {{- $tags := .Get "tags" | default "" -}}
-<article class="xp__item job">
+{{- $inner := trim .Inner "\n " -}}
+{{- $hasRoles := in $inner "job__role" -}}
+<article class="xp__item job{{ if $hasRoles }} job--roles{{ end }}">
   <div class="xp__head">
     <h3 class="xp__role">{{ $company }}</h3>
     {{- with $dates }}<span class="xp__year">{{ . }}</span>{{ end }}
@@ -41,7 +56,11 @@
       {{- end }}
     </ul>
   {{- end }}
-  <div class="xp__body job__body">{{ .Page.RenderString (dict "display" "block") (trim .Inner "\n ") }}</div>
+  {{- if $hasRoles }}
+  <div class="job__roles">{{ $inner | safeHTML }}</div>
+  {{- else }}
+  <div class="xp__body job__body">{{ .Page.RenderString (dict "display" "block") $inner }}</div>
+  {{- end }}
   {{- with $tags }}
     <ul class="xp__tags">
       {{- range split . "," }}

@@ -11,21 +11,35 @@ showBreadcrumbs: false
 ---
 
 {{< resume-head facts="Experience :: Ten Plus Years in Enterprise IT | Focus :: IT Operations and Security | Languages :: English and Spanish - Fluent | Studying :: CISSP - Target November 2026" >}}
-IT operations and security leader with ten plus years in enterprise environments. Five years as incident manager and operations lead on assignment at Toyota Motor North America, a year as a SOC analyst and lead SIEM administrator, and five years administering systems and identity in a HIPAA-regulated healthcare environment. Supported audit and control testing across SOX, PCI DSS, HIPAA, CMS, and ISO 27001.
+IT operations and security leader with ten plus years in enterprise environments. Five years on assignment at Toyota Motor North America, first owning cloud security, identity, and monitoring as a senior lead technical systems analyst, then promoted to operations manager to lead incident management and a five-person engineering team. Before that, a year as a SOC analyst and lead SIEM administrator, and five years administering systems and identity in a HIPAA-regulated healthcare environment. Supported audit and control testing across SOX, PCI DSS, HIPAA, CMS, and ISO 27001.
 {{< /resume-head >}}
 
 ## Experience {.h-minor}
 
 {{< xp >}}
 
-{{< job company="Beyondsoft Consulting" dates="2021 to 2026" location="Remote" context="On assignment at Toyota Motor North America" positions="Operations Manager :: 2022 to 2026 | Senior Lead Systems Analyst :: 2021 to 2022" tags="Incident Management, Problem Management, Change Management, AWS Security, Entra ID, Dynatrace, PagerDuty, ISO 27001, Team Leadership" >}}
-- Incident manager for high-impact production events on a global client account: set severity, coordinated the response, decided when to escalate, and briefed client executives.
-- Led a five-person engineering team with a shared backlog and on-call rotation; owned hiring, one-on-ones, SLA performance, and vendor contracts.
-- Ran incident and problem management and coordinated change and maintenance windows.
-- Led post-incident reviews that turned recurring failures into preventive controls.
-- Audited client AWS accounts for exploitable firewall and DNS misconfigurations, and remediated DDoS vectors through AWS Shield, WAF, and CDN.
-- Administered Entra ID conditional access and MFA, and owned the SSL certificate lifecycle.
-- Supported the annual SOC review against ISO 27001.
+{{< job company="Beyondsoft Consulting" dates="2021 to 2026" location="Remote" context="On assignment at Toyota Motor North America" >}}
+{{< role title="Operations Manager" dates="2023 to 2026" note="Promoted 2023" tags="Incident Management, Problem Management, Change Management, SLA Management, Team Leadership, Vendor Management, ISO 27001" >}}
+- Led a five-person engineering team, owning hiring, performance, one-on-ones, and development, with minimal turnover.
+- Commanded high-impact production incidents end to end: set severity against business impact, coordinated the response across teams, drove restoration, and briefed client executives.
+- Owned SLA performance across teams, investigating breaches and driving corrective action plans with the owners responsible for closing them.
+- Tracked and reported MTTR, aging, backlog, and repeat-incident rate so response gaps were addressed before they became client-visible.
+- Led post-incident reviews and root cause analysis, turning recurring failures into runbook improvements, preventive controls, and problem records.
+- Coordinated maintenance windows, change requests, and release activity, communicating scope and risk so planned work did not become unplanned downtime.
+- Managed Dynatrace and PagerDuty vendor contracts and budget, forecasting consumption against contract limits.
+- Maintained incident runbooks, escalation matrices, and on-call coverage, and built the onboarding and knowledge-transfer material behind them.
+- Supported the annual SOC compliance review against ISO 27001, giving feedback on remediation plans and residual risk.
+{{< /role >}}
+{{< role title="Senior Lead Technical Systems Analyst" dates="2021 to 2023" tags="AWS Security, IAM, Entra ID, DNS, SSL/TLS, AWS Shield, WAF, Dynatrace, PagerDuty, CloudFormation, Jenkins" >}}
+- Audited client AWS accounts for technical debt and exploitable misconfigurations across IAM policies and security groups, tracking remediation to closure with application teams.
+- Administered Entra ID users and groups, enforcing conditional access and MFA across client environments.
+- Monitored critical applications with AWS Shield and managed CDN and WAF configurations to remediate DDoS activity.
+- Owned DNS and domain configurations, security-validating MX, TXT, and CNAME changes before execution to prevent spoofing, hijacking, or disruption.
+- Managed the SSL/TLS certificate lifecycle across client domains, tracking issuance, renewal, and expiration.
+- Administered Dynatrace and PagerDuty, onboarding applications into monitoring and tuning alert thresholds to cut noise.
+- Supported deployments through AWS CloudFormation and Jenkins CI/CD pipelines alongside application teams.
+- Commanded high-impact production incidents from severity assignment through restoration and client communication.
+{{< /role >}}
 {{< /job >}}
 
 {{< job company="TelevisaUnivision" dates="2019 to 2020" location="Remote" positions="Information Security Analyst" tags="SIEM Engineering, LogRhythm, MITRE ATT&CK, Detection Rules, Rapid7, NIST 800-53, SOX, PCI DSS" >}}

@@ -300,6 +300,73 @@ html.dark[data-heading-font] .timeline__role { color: rgb(var(--color-neutral-10
 .dark .timeline__company { color: rgb(var(--color-neutral-300)); }
 .dark .timeline__note { color: rgb(var(--color-neutral-200)); }
 
+/* Promotion at one employer: newest title first with a badge, the earlier
+   title beneath it on the same rail with a hollow marker. */
+.timeline__role-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.15rem 0.9rem;
+}
+
+.timeline__when {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  white-space: nowrap;
+  color: rgb(var(--color-neutral-500));
+}
+
+.timeline__badge {
+  display: inline-block;
+  margin-left: 0.45rem;
+  padding: 0.12rem 0.5rem;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 0.66rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  vertical-align: 0.2em;
+  color: rgb(var(--color-primary-700));
+  background-color: rgba(var(--color-primary-200), 0.65);
+}
+
+.timeline__stint--prior {
+  position: relative;
+  margin-top: 1rem;
+}
+
+.timeline__stint--prior::before {
+  content: "";
+  position: absolute;
+  left: calc(-1.5rem - 6px);
+  top: 0.38rem;
+  width: 10px;
+  height: 10px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border: 2px solid rgb(var(--color-primary-500));
+  background-color: rgb(var(--color-neutral-50));
+}
+
+html .timeline__prior-title,
+html[data-heading-font] .timeline__prior-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.3;
+  color: rgb(var(--color-neutral-800));
+}
+
+.dark .timeline__when { color: rgb(var(--color-neutral-300)); }
+.dark .timeline__badge { color: rgb(var(--color-primary-200)); background-color: rgba(var(--color-primary-800), 0.7); }
+.dark .timeline__stint--prior::before { border-color: rgb(var(--color-primary-400)); background-color: rgb(var(--color-neutral-900)); }
+html.dark .timeline__prior-title,
+html.dark[data-heading-font] .timeline__prior-title { color: rgb(var(--color-neutral-200)); }
+
 @media (max-width: 560px) {
   .timeline__item { grid-template-columns: 1fr; gap: 0; }
   .timeline__dates { padding: 0 0 0.35rem 1.5rem; text-align: left; border-left: 2px solid rgba(var(--color-primary-300), 0.7); }

@@ -1,0 +1,22 @@
+{{- /*
+  One title inside a {{< timeline-item >}}, for a promotion at one employer.
+  The first (newest) role shows the company; later ones sit beneath it on the
+  same rail with a hollow marker.
+    title, dates, note (optional badge such as "Promoted 2023")
+*/ -}}
+{{- $title := .Get "title" -}}
+{{- $dates := .Get "dates" -}}
+{{- $note := .Get "note" -}}
+{{- $text := trim .Inner "\n " -}}
+{{- if eq .Ordinal 0 -}}
+<div class="timeline__stint">
+<div class="timeline__role-head"><h3 class="timeline__role">{{ $title }}{{ with $note }} <span class="timeline__badge">{{ . }}</span>{{ end }}</h3>{{ with $dates }}<span class="timeline__when">{{ . }}</span>{{ end }}</div>
+{{- with .Parent.Get "company" }}<p class="timeline__company">{{ . }}</p>{{ end }}
+{{- with $text }}<p class="timeline__note">{{ . | $.Page.RenderString }}</p>{{ end }}
+</div>
+{{- else -}}
+<div class="timeline__stint timeline__stint--prior">
+<div class="timeline__role-head"><h4 class="timeline__prior-title">{{ $title }}</h4>{{ with $dates }}<span class="timeline__when">{{ . }}</span>{{ end }}</div>
+{{- with $text }}<p class="timeline__note">{{ . | $.Page.RenderString }}</p>{{ end }}
+</div>
+{{- end -}}

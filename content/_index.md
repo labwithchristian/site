@@ -54,7 +54,30 @@ Fluent in English and Spanish, from the incident bridge to the executive update.
 
 ## Career at a Glance
 
-{{< timeline more="/resume/" moreLabel="Read the full resume" items="2021 to 2026 :: Operations Manager :: Beyondsoft Consulting, on assignment at Toyota Motor North America :: Promoted from Senior Lead Systems Analyst in 2022. Incident and problem management, SLAs, AWS security, and a five-person team. | 2019 to 2020 :: Information Security Analyst :: TelevisaUnivision :: SOC triage, lead LogRhythm administrator, and detection coverage mapped to MITRE ATT&CK. | 2014 to 2019 :: System Administrator :: Cigna HealthCare :: Level 3 escalation, identity and access, and HIPAA and CMS audit evidence. | 2013 to 2014 :: IT Support Specialist :: Commonwealth-Altadis :: Deployed more than 300 machines for a sales force of over 1,500 agents." >}}
+{{< timeline more="/resume/" moreLabel="Read the full resume" >}}
+
+{{< timeline-item dates="2021 to 2026" company="Beyondsoft Consulting, on assignment at Toyota Motor North America" >}}
+{{< timeline-role title="Operations Manager" dates="2023 to 2026" note="Promoted 2023" >}}
+Incident command, SLA performance, vendor contracts and budget, and a five-person engineering team.
+{{< /timeline-role >}}
+{{< timeline-role title="Senior Lead Technical Systems Analyst" dates="2021 to 2023" >}}
+AWS security audits, Entra ID, DNS and certificates, and Dynatrace and PagerDuty monitoring for client production workloads.
+{{< /timeline-role >}}
+{{< /timeline-item >}}
+
+{{< timeline-item dates="2019 to 2020" role="Information Security Analyst" company="TelevisaUnivision" >}}
+SOC triage, lead LogRhythm administrator, and detection coverage mapped to MITRE ATT&CK.
+{{< /timeline-item >}}
+
+{{< timeline-item dates="2014 to 2019" role="System Administrator" company="Cigna HealthCare" >}}
+Level 3 escalation, identity and access, and HIPAA and CMS audit evidence.
+{{< /timeline-item >}}
+
+{{< timeline-item dates="2013 to 2014" role="IT Support Specialist" company="Commonwealth-Altadis" >}}
+Deployed more than 300 machines for a sales force of over 1,500 agents.
+{{< /timeline-item >}}
+
+{{< /timeline >}}
 
 ## Certifications & Education
 
