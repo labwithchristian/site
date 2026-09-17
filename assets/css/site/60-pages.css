@@ -639,15 +639,30 @@ h4.job__title { margin: 0; }
   .job__role::before { left: calc(-0.95rem - 6px); }
 }
 
-/* --- Promotion track, shared by the homepage timeline and the resume ---
-   A brighter stretch of rail with chevrons rising slowly along it, from the
-   earlier title's hollow marker up to the current title's filled one. Each
-   context sets top, bottom and left. */
+/* --- Promotion comet, shared by the homepage timeline and the resume ---
+   A point of light with a soft tail leaves the earlier title's hollow marker,
+   eases up the rail and lands on the current title's marker, which pops and
+   sends out one ripple, then a short pause before the next pass.
+   Markup (from the role and timeline-role shortcodes):
+     .promo-track  the stretch of rail between the two markers
+       .promo-clip > .promo-comet
+     .promo-land   sits over the current marker and carries the ripple
+   Each context sets where .promo-track and .promo-land sit. Every piece runs
+   on the same --promo-dur so the launch, flight and landing stay in step. */
+.timeline__item--promotion,
+.job--roles {
+  --promo-glow: var(--color-primary-500);
+  --promo-dur: 3.6s;
+}
+.dark .timeline__item--promotion,
+.dark .job--roles { --promo-glow: var(--color-primary-300); }
+
 .promo-track {
   position: absolute;
   z-index: 0;
   width: 12px;
   pointer-events: none;
+  transition: filter 0.3s ease;
 }
 
 .promo-track::before {
@@ -658,82 +673,144 @@ h4.job__title { margin: 0; }
   left: 5px;
   width: 2px;
   border-radius: 2px;
-  background: linear-gradient(to top, rgba(var(--color-primary-300), 0.6), rgb(var(--color-primary-500)));
+  background: linear-gradient(to top, rgba(var(--color-primary-300), 0.3), rgba(var(--color-primary-300), 0.55));
+}
+.dark .promo-track::before { background: linear-gradient(to top, rgba(var(--color-primary-400), 0.25), rgba(var(--color-primary-400), 0.55)); }
+
+.promo-clip {
+  position: absolute;
+  inset: -6px -26px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(transparent, #000 16px, #000 calc(100% - 20px), transparent);
+  mask-image: linear-gradient(transparent, #000 16px, #000 calc(100% - 20px), transparent);
 }
 
-.promo-track::after {
+.promo-comet {
+  position: absolute;
+  top: 6px;
+  bottom: 6px;
+  left: 26px;
+  right: 26px;
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: promo-travel var(--promo-dur) cubic-bezier(0.62, 0.02, 0.3, 1) infinite;
+}
+
+/* the head */
+.promo-comet::before {
   content: "";
   position: absolute;
-  inset: 0;
-  background-color: rgb(var(--color-primary-600));
-  -webkit-mask-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='16' viewBox='0 0 12 16'%3E%3Cpath d='M2.5 9.5 6 6l3.5 3.5' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"),
-    linear-gradient(to bottom, transparent, #000 22%, #000 78%, transparent);
-  -webkit-mask-repeat: repeat-y, no-repeat;
-  -webkit-mask-size: 12px 16px, 100% 100%;
-  -webkit-mask-composite: source-in;
-  mask-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='16' viewBox='0 0 12 16'%3E%3Cpath d='M2.5 9.5 6 6l3.5 3.5' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"),
-    linear-gradient(to bottom, transparent, #000 22%, #000 78%, transparent);
-  mask-repeat: repeat-y, no-repeat;
-  mask-size: 12px 16px, 100% 100%;
-  mask-composite: intersect;
-  animation: promo-rise 2s linear infinite;
+  left: 50%;
+  top: 0;
+  width: 7px;
+  height: 7px;
+  margin: -3.5px 0 0 -3.5px;
+  border-radius: 50%;
+  background-color: #fff;
+  box-shadow: 0 0 6px 2px rgba(var(--promo-glow), 0.95), 0 0 18px 6px rgba(var(--promo-glow), 0.45);
 }
 
-@keyframes promo-rise {
-  from { -webkit-mask-position: 0 16px, 0 0; mask-position: 0 16px, 0 0; }
-  to   { -webkit-mask-position: 0 0, 0 0;    mask-position: 0 0, 0 0; }
+/* the tail */
+.promo-comet::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 4px;
+  height: 64px;
+  margin-left: -2px;
+  border-radius: 4px;
+  background: linear-gradient(rgba(var(--promo-glow), 1), rgba(var(--promo-glow), 0.35) 45%, rgba(var(--promo-glow), 0));
+  filter: blur(0.4px);
 }
 
-/* The current title's marker gives a soft ring as each wave of chevrons arrives */
-@keyframes promo-arrive {
-  0%, 70%, 100% { box-shadow: 0 0 0 4px var(--promo-ring); }
-  82%           { box-shadow: 0 0 0 4px var(--promo-ring), 0 0 0 9px rgba(var(--color-primary-400), 0.22); }
+@keyframes promo-travel {
+  0%        { transform: translateY(100%); opacity: 0; }
+  8%        { opacity: 1; }
+  62%       { transform: translateY(0);    opacity: 1; }
+  72%, 100% { transform: translateY(0);    opacity: 0; }
 }
 
-.dark .promo-track::before { background: linear-gradient(to top, rgba(var(--color-primary-400), 0.35), rgb(var(--color-primary-400))); }
-.dark .promo-track::after { background-color: rgb(var(--color-primary-300)); }
+/* landing: the current marker pops, and one ripple spreads from it */
+.promo-land {
+  position: absolute;
+  z-index: 1;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.promo-land::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  border: 2px solid rgba(var(--promo-glow), 0.7);
+  opacity: 0;
+  animation: promo-ripple var(--promo-dur) ease-out infinite;
+}
 
 .timeline__row--current .timeline__body::before,
-.job__role--current::before { --promo-ring: rgba(var(--color-primary-200), 0.8); }
-.dark .timeline__row--current .timeline__body::before,
-.dark .job__role--current::before { --promo-ring: rgba(var(--color-primary-800), 0.8); }
+.job__role--current::before {
+  animation: promo-catch var(--promo-dur) ease-out infinite;
+}
+
+/* launch: the earlier marker gives a faint pulse as the comet leaves */
+.timeline__row--prior .timeline__body::before,
+.job__role--current + .job__role::before {
+  animation: promo-launch var(--promo-dur) ease-out infinite;
+}
+
+@keyframes promo-catch {
+  0%, 60%, 100% { transform: scale(1); }
+  66%           { transform: scale(1.28); }
+  76%           { transform: scale(0.96); }
+  84%           { transform: scale(1); }
+}
+
+@keyframes promo-ripple {
+  0%, 60% { opacity: 0;   transform: scale(1); }
+  64%     { opacity: 0.9; transform: scale(1); }
+  100%    { opacity: 0;   transform: scale(3.2); }
+}
+
+@keyframes promo-launch {
+  0%        { box-shadow: 0 0 0 0 rgba(var(--promo-glow), 0.5); }
+  14%, 100% { box-shadow: 0 0 0 7px rgba(var(--promo-glow), 0); }
+}
+
+/* hover: a touch brighter, without changing the timing */
+.timeline__item--promotion:hover .promo-track,
+.job--roles:hover .promo-track { filter: brightness(1.18) saturate(1.15); }
 
 @media (prefers-reduced-motion: reduce) {
-  .promo-track::after,
+  .promo-comet { display: none; }
+  .promo-land::after,
   .timeline__row--current .timeline__body::before,
-  .job__role--current::before { animation: none; }
+  .timeline__row--prior .timeline__body::before,
+  .job__role--current::before,
+  .job__role--current + .job__role::before { animation: none; }
 }
 
-/* On the resume card: inside the current role, from under its marker down
-   to the earlier role's marker (margin + padding + marker offset below). */
+/* On the resume card: the track runs inside the current role, from under its
+   marker down to the earlier role's marker (margin + padding + marker offset
+   below). The card is taller, so each pass takes a little longer. */
+.job--roles { --promo-dur: 4.4s; }
+
 .job__role .promo-track {
-  top: calc(0.4rem + 13px);
-  bottom: calc(-1 * (1.35rem + 1.2rem + 0.4rem) + 3px);
+  top: calc(0.4rem + 12px);
+  bottom: calc(-1 * (1.35rem + 1.2rem + 0.4rem) + 2px);
   left: calc(-1.2rem - 7px);
 }
-.job__role--current::before { animation: promo-arrive-sm 3.6s ease-out infinite; }
-/* The resume card is much taller, so the chevrons are spaced out to stay calm */
-.job__role .promo-track::after {
-  -webkit-mask-size: 12px 32px, 100% 100%;
-  mask-size: 12px 32px, 100% 100%;
-  animation-name: promo-rise-wide;
-  animation-duration: 3.2s;
-}
-@keyframes promo-rise-wide {
-  from { -webkit-mask-position: 0 32px, 0 0; mask-position: 0 32px, 0 0; }
-  to   { -webkit-mask-position: 0 0, 0 0;    mask-position: 0 0, 0 0; }
-}
-.job:hover .job__role .promo-track::after { animation-duration: 1.4s; }
 
-@keyframes promo-arrive-sm {
-  0%, 70%, 100% { box-shadow: 0 0 0 3px var(--promo-ring); }
-  82%           { box-shadow: 0 0 0 3px var(--promo-ring), 0 0 0 8px rgba(var(--color-primary-400), 0.22); }
+.job__role .promo-land {
+  top: 0.4rem;
+  left: calc(-1.2rem - 6px);
+  width: 10px;
+  height: 10px;
 }
 
 @media (max-width: 480px) {
   .job__role .promo-track { left: calc(-0.95rem - 7px); }
+  .job__role .promo-land { left: calc(-0.95rem - 6px); }
 }
 
 /* Chip lists that aren't certifications, and wider labels on the resume */

@@ -329,20 +329,20 @@ html.dark[data-heading-font] .timeline__role { color: rgb(var(--color-neutral-10
   border-color: rgb(var(--color-primary-400));
 }
 
-/* Promotion track: chevrons drift up the rail from the earlier title to the
-   current one. Faster on hover; still for reduced motion. Positioned inside
-   the current title's body, from under its dot down to the earlier dot. */
+/* Promotion comet (shared styles in 60-pages.css): the track runs inside the
+   current title's body, from under its marker down to the earlier marker. */
 .timeline__track {
-  top: calc(0.42rem + 15px);
-  bottom: calc(-0.42rem + 3px);
+  top: calc(0.42rem + 14px);
+  bottom: calc(-0.42rem + 2px);
   left: -7px;
 }
 
-.timeline__row--current .timeline__body::before {
-  animation: promo-arrive 3.6s ease-out infinite;
+.timeline__land {
+  top: 0.42rem;
+  left: -7px;
+  width: 12px;
+  height: 12px;
 }
-
-.timeline__item--promotion:hover .timeline__track::after { animation-duration: 0.8s; }
 
 @media (max-width: 560px) {
   .timeline__row { grid-template-columns: 1fr; gap: 0; }
@@ -353,7 +353,8 @@ html.dark[data-heading-font] .timeline__role { color: rgb(var(--color-neutral-10
   .timeline__item:first-child > .timeline__row:first-child > .timeline__dates { border-left-color: transparent; }
   .timeline__item:last-child > .timeline__body,
   .timeline__item:last-child > .timeline__row:last-child > .timeline__body { background-image: none; }
-  .timeline__track { top: calc(-1.45rem + 15px); bottom: calc(0.15rem + 3px); }
+  .timeline__track { top: calc(-1.45rem + 14px); bottom: calc(0.15rem + 2px); }
+  .timeline__land { top: -1.45rem; }
 }
 
 /* --- Core strengths ---

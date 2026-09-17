@@ -3,7 +3,7 @@
     title     job title
     dates     years in this title, e.g. "2023 to 2026"
     promoted  optional year, on the newer title of a promotion. Draws the
-              rising promotion track from the earlier title up to this one.
+              promotion comet from the earlier title up to this one.
     tags      optional comma-separated keywords for this title
   Bullets go inside in Markdown.
 */ -}}
@@ -12,7 +12,7 @@
 {{- $promoted := .Get "promoted" -}}
 {{- $tags := .Get "tags" | default "" -}}
 <section class="job__role{{ if $promoted }} job__role--current{{ end }}">
-{{- if $promoted }}<span class="promo-track" aria-hidden="true"></span>{{ end }}
+{{- if $promoted }}<span class="promo-track" aria-hidden="true"><span class="promo-clip"><span class="promo-comet"></span></span></span><span class="promo-land" aria-hidden="true"></span>{{ end }}
 <div class="job__role-head"><h4 class="job__title">{{ $title }}{{ with $promoted }}<span class="timeline__sr">, promoted in {{ . }}</span>{{ end }}</h4>{{ with $dates }}<span class="job__when">{{ . }}</span>{{ end }}</div>
 <div class="xp__body job__body">{{ .Page.RenderString (dict "display" "block") (trim .Inner "\n ") }}</div>
 {{- with $tags }}

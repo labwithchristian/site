@@ -5,8 +5,8 @@
     title     job title
     dates     years in this title
     company   optional; defaults to the item's company
-    promoted  optional year, on the newer title. Draws the rising promotion
-              track from the earlier title up to this one.
+    promoted  optional year, on the newer title. Draws the promotion comet
+              from the earlier title up to this one.
 */ -}}
 {{- $title := .Get "title" -}}
 {{- $dates := .Get "dates" -}}
@@ -16,7 +16,7 @@
 <div class="timeline__row {{ if $promoted }}timeline__row--current{{ else }}timeline__row--prior{{ end }}">
 <span class="timeline__dates">{{ $dates }}</span>
 <div class="timeline__body">
-{{- if $promoted }}<span class="promo-track timeline__track" aria-hidden="true"></span>{{ end }}
+{{- if $promoted }}<span class="promo-track timeline__track" aria-hidden="true"><span class="promo-clip"><span class="promo-comet"></span></span></span><span class="promo-land timeline__land" aria-hidden="true"></span>{{ end }}
 <h3 class="timeline__role">{{ $title }}{{ with $promoted }}<span class="timeline__sr">, promoted in {{ . }}</span>{{ end }}</h3>
 {{- with $company }}<p class="timeline__company">{{ . }}</p>{{ end }}
 {{- with $text }}<p class="timeline__note">{{ . | $.Page.RenderString }}</p>{{ end }}
