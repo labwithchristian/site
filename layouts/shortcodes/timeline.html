@@ -1,24 +1,20 @@
 {{- /*
-  Condensed career timeline for the homepage. Items separated by |, fields by ::
-    dates :: role :: company :: one-line note
+  Condensed career timeline for the homepage. Wraps {{< timeline-item >}}
+  entries, newest first.
   Optional: more="/resume/" moreLabel="Read the full resume"
+
+    {{< timeline more="/resume/" >}}
+    {{< timeline-item dates="2019 to 2020" role="Information Security Analyst" company="TelevisaUnivision" >}}
+    One-line note.
+    {{< /timeline-item >}}
+    {{< /timeline >}}
+
+  A promotion at one employer: leave out role and nest {{< timeline-role >}}
+  entries instead (newest first). They share the item's dates and company.
 */ -}}
-{{- $items := .Get "items" | default "" -}}
 <div class="timeline not-prose">
   <ol class="timeline__list">
-    {{- range split $items "|" -}}
-      {{- $p := split (trim . " ") "::" -}}
-      {{- if ge (len $p) 3 }}
-        <li class="timeline__item">
-          <span class="timeline__dates">{{ trim (index $p 0) " " }}</span>
-          <div class="timeline__body">
-            <h3 class="timeline__role">{{ trim (index $p 1) " " }}</h3>
-            <p class="timeline__company">{{ trim (index $p 2) " " }}</p>
-            {{- if ge (len $p) 4 }}<p class="timeline__note">{{ trim (index $p 3) " " }}</p>{{ end }}
-          </div>
-        </li>
-      {{- end -}}
-    {{- end }}
+    {{- .Inner -}}
   </ol>
   {{- with .Get "more" }}
     <p class="timeline__more">{{ partial "cta-button.html" (dict "url" . "label" ($.Get "moreLabel" | default "Read the full resume") "style" "outline") }}</p>

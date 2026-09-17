@@ -1,0 +1,17 @@
+{{- /* One employer on the homepage timeline. See timeline.html. */ -}}
+{{- $dates := .Get "dates" -}}
+{{- $role := .Get "role" -}}
+{{- $company := .Get "company" -}}
+{{- $inner := trim .Inner "\n " -}}
+<li class="timeline__item">
+<span class="timeline__dates">{{ $dates }}</span>
+<div class="timeline__body">
+{{- if in $inner "timeline__stint" -}}
+{{ $inner | safeHTML }}
+{{- else -}}
+<h3 class="timeline__role">{{ $role }}</h3>
+<p class="timeline__company">{{ $company }}</p>
+{{- with $inner }}<p class="timeline__note">{{ . | $.Page.RenderString }}</p>{{ end }}
+{{- end -}}
+</div>
+</li>
