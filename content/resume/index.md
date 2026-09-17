@@ -20,24 +20,19 @@ IT operations and security leader with ten plus years in enterprise environments
 
 {{< job company="Beyondsoft Consulting" dates="2021 to 2026" location="Remote" context="On assignment at Toyota Motor North America" >}}
 {{< role title="Operations Manager" dates="2023 to 2026" note="Promoted 2023" tags="Incident Management, Problem Management, Change Management, SLA Management, Team Leadership, Vendor Management, ISO 27001" >}}
-- Led a five-person engineering team, owning hiring, performance, one-on-ones, and development, with minimal turnover.
 - Commanded high-impact production incidents end to end: set severity against business impact, coordinated the response across teams, drove restoration, and briefed client executives.
-- Owned SLA performance across teams, investigating breaches and driving corrective action plans with the owners responsible for closing them.
-- Tracked and reported MTTR, aging, backlog, and repeat-incident rate so response gaps were addressed before they became client-visible.
+- Led a five-person engineering team, owning hiring, performance, and development with minimal turnover, along with the Dynatrace and PagerDuty vendor contracts and budget.
+- Owned SLA performance and incident metrics including MTTR, backlog, and repeat-incident rate, investigating breaches and driving corrective action plans to closure.
 - Led post-incident reviews and root cause analysis, turning recurring failures into runbook improvements, preventive controls, and problem records.
 - Coordinated maintenance windows, change requests, and release activity, communicating scope and risk so planned work did not become unplanned downtime.
-- Managed Dynatrace and PagerDuty vendor contracts and budget, forecasting consumption against contract limits.
-- Maintained incident runbooks, escalation matrices, and on-call coverage, and built the onboarding and knowledge-transfer material behind them.
 - Supported the annual SOC compliance review against ISO 27001, giving feedback on remediation plans and residual risk.
 {{< /role >}}
-{{< role title="Senior Lead Technical Systems Analyst" dates="2021 to 2023" tags="AWS Security, IAM, Entra ID, DNS, SSL/TLS, AWS Shield, WAF, Dynatrace, PagerDuty, CloudFormation, Jenkins" >}}
+{{< role title="Senior Lead Technical Systems Analyst" dates="2021 to 2023" tags="AWS Security, IAM, AWS Shield, WAF, Entra ID, DNS, SSL/TLS, Dynatrace, PagerDuty" >}}
 - Audited client AWS accounts for technical debt and exploitable misconfigurations across IAM policies and security groups, tracking remediation to closure with application teams.
-- Administered Entra ID users and groups, enforcing conditional access and MFA across client environments.
 - Monitored critical applications with AWS Shield and managed CDN and WAF configurations to remediate DDoS activity.
-- Owned DNS and domain configurations, security-validating MX, TXT, and CNAME changes before execution to prevent spoofing, hijacking, or disruption.
-- Managed the SSL/TLS certificate lifecycle across client domains, tracking issuance, renewal, and expiration.
+- Administered Entra ID users and groups, enforcing conditional access and MFA across client environments.
+- Owned DNS and SSL/TLS certificates across client domains, security-validating record changes before execution to prevent spoofing or hijacking.
 - Administered Dynatrace and PagerDuty, onboarding applications into monitoring and tuning alert thresholds to cut noise.
-- Supported deployments through AWS CloudFormation and Jenkins CI/CD pipelines alongside application teams.
 - Commanded high-impact production incidents from severity assignment through restoration and client communication.
 {{< /role >}}
 {{< /job >}}
