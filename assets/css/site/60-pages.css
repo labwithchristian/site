@@ -625,21 +625,6 @@ html.dark .nd-barrier { stroke: rgb(var(--color-secondary-300)); }
 
 h4.job__title { margin: 0; }
 
-.job__badge {
-  display: inline-block;
-  margin-left: 0.4rem;
-  padding: 0.12rem 0.5rem;
-  border-radius: 999px;
-  font-family: var(--font-mono);
-  font-size: 0.66rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  line-height: 1.4;
-  text-transform: uppercase;
-  vertical-align: 0.15em;
-  color: rgb(var(--color-primary-700));
-  background-color: rgba(var(--color-primary-200), 0.65);
-}
 
 .job__role .xp__body { margin-top: 0.6rem; }
 .job__role .xp__tags { margin-top: 0.8rem; }
@@ -648,11 +633,107 @@ h4.job__title { margin: 0; }
 .dark .job__role + .job__role { border-top-color: rgba(var(--color-primary-400), 0.3); }
 .dark .job__role::before { background-color: rgb(var(--color-primary-400)); box-shadow: 0 0 0 3px rgba(var(--color-primary-800), 0.8); }
 .dark .job__role + .job__role::before { border-color: rgb(var(--color-primary-400)); background-color: rgb(var(--color-neutral-800)); box-shadow: none; }
-.dark .job__badge { color: rgb(var(--color-primary-200)); background-color: rgba(var(--color-primary-800), 0.7); }
 
 @media (max-width: 480px) {
   .job__roles { padding-left: 0.95rem; }
   .job__role::before { left: calc(-0.95rem - 6px); }
+}
+
+/* --- Promotion track, shared by the homepage timeline and the resume ---
+   A brighter stretch of rail with chevrons rising slowly along it, from the
+   earlier title's hollow marker up to the current title's filled one. Each
+   context sets top, bottom and left. */
+.promo-track {
+  position: absolute;
+  z-index: 0;
+  width: 12px;
+  pointer-events: none;
+}
+
+.promo-track::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 5px;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(to top, rgba(var(--color-primary-300), 0.6), rgb(var(--color-primary-500)));
+}
+
+.promo-track::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgb(var(--color-primary-600));
+  -webkit-mask-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='16' viewBox='0 0 12 16'%3E%3Cpath d='M2.5 9.5 6 6l3.5 3.5' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"),
+    linear-gradient(to bottom, transparent, #000 22%, #000 78%, transparent);
+  -webkit-mask-repeat: repeat-y, no-repeat;
+  -webkit-mask-size: 12px 16px, 100% 100%;
+  -webkit-mask-composite: source-in;
+  mask-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='16' viewBox='0 0 12 16'%3E%3Cpath d='M2.5 9.5 6 6l3.5 3.5' fill='none' stroke='%23000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"),
+    linear-gradient(to bottom, transparent, #000 22%, #000 78%, transparent);
+  mask-repeat: repeat-y, no-repeat;
+  mask-size: 12px 16px, 100% 100%;
+  mask-composite: intersect;
+  animation: promo-rise 2s linear infinite;
+}
+
+@keyframes promo-rise {
+  from { -webkit-mask-position: 0 16px, 0 0; mask-position: 0 16px, 0 0; }
+  to   { -webkit-mask-position: 0 0, 0 0;    mask-position: 0 0, 0 0; }
+}
+
+/* The current title's marker gives a soft ring as each wave of chevrons arrives */
+@keyframes promo-arrive {
+  0%, 70%, 100% { box-shadow: 0 0 0 4px var(--promo-ring); }
+  82%           { box-shadow: 0 0 0 4px var(--promo-ring), 0 0 0 9px rgba(var(--color-primary-400), 0.22); }
+}
+
+.dark .promo-track::before { background: linear-gradient(to top, rgba(var(--color-primary-400), 0.35), rgb(var(--color-primary-400))); }
+.dark .promo-track::after { background-color: rgb(var(--color-primary-300)); }
+
+.timeline__row--current .timeline__body::before,
+.job__role--current::before { --promo-ring: rgba(var(--color-primary-200), 0.8); }
+.dark .timeline__row--current .timeline__body::before,
+.dark .job__role--current::before { --promo-ring: rgba(var(--color-primary-800), 0.8); }
+
+@media (prefers-reduced-motion: reduce) {
+  .promo-track::after,
+  .timeline__row--current .timeline__body::before,
+  .job__role--current::before { animation: none; }
+}
+
+/* On the resume card: inside the current role, from under its marker down
+   to the earlier role's marker (margin + padding + marker offset below). */
+.job__role .promo-track {
+  top: calc(0.4rem + 13px);
+  bottom: calc(-1 * (1.35rem + 1.2rem + 0.4rem) + 3px);
+  left: calc(-1.2rem - 7px);
+}
+.job__role--current::before { animation: promo-arrive-sm 3.6s ease-out infinite; }
+/* The resume card is much taller, so the chevrons are spaced out to stay calm */
+.job__role .promo-track::after {
+  -webkit-mask-size: 12px 32px, 100% 100%;
+  mask-size: 12px 32px, 100% 100%;
+  animation-name: promo-rise-wide;
+  animation-duration: 3.2s;
+}
+@keyframes promo-rise-wide {
+  from { -webkit-mask-position: 0 32px, 0 0; mask-position: 0 32px, 0 0; }
+  to   { -webkit-mask-position: 0 0, 0 0;    mask-position: 0 0, 0 0; }
+}
+.job:hover .job__role .promo-track::after { animation-duration: 1.4s; }
+
+@keyframes promo-arrive-sm {
+  0%, 70%, 100% { box-shadow: 0 0 0 3px var(--promo-ring); }
+  82%           { box-shadow: 0 0 0 3px var(--promo-ring), 0 0 0 8px rgba(var(--color-primary-400), 0.22); }
+}
+
+@media (max-width: 480px) {
+  .job__role .promo-track { left: calc(-0.95rem - 7px); }
 }
 
 /* Chip lists that aren't certifications, and wider labels on the resume */

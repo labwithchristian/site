@@ -56,11 +56,11 @@ Fluent in English and Spanish, from the incident bridge to the executive update.
 
 {{< timeline more="/resume/" moreLabel="Read the full resume" >}}
 
-{{< timeline-item dates="2021 to 2026" company="Beyondsoft Consulting, on assignment at Toyota Motor North America" >}}
-{{< timeline-role title="Operations Manager" dates="2023 to 2026" note="Promoted 2023" >}}
+{{< timeline-item company="Beyondsoft Consulting, on assignment at Toyota Motor North America" >}}
+{{< timeline-role title="Operations Manager" dates="2023 to 2026" promoted="2023" >}}
 Incident command, SLA performance, vendor contracts and budget, and a five-person engineering team.
 {{< /timeline-role >}}
-{{< timeline-role title="Senior Lead Technical Systems Analyst" dates="2021 to 2023" >}}
+{{< timeline-role title="Senior Lead Technical Systems Analyst" dates="2021 to 2023" company="Beyondsoft Consulting" >}}
 AWS security audits, Entra ID, DNS and certificates, and Dynatrace and PagerDuty monitoring for client production workloads.
 {{< /timeline-role >}}
 {{< /timeline-item >}}
