@@ -67,7 +67,7 @@ IT operations and security leader with ten plus years in enterprise environments
 
 ## Tools and Platforms {.h-minor}
 
-{{< certs seal="false" class="certs--wide" groups="Cloud :: Amazon CloudFront, Amazon Route 53, AWS, AWS Shield and WAF, Microsoft Azure | Microsoft :: Active Directory, Entra ID, Exchange, Group Policy, Microsoft 365, Microsoft Defender for Cloud Apps (MCAS), Office 365 Security and Compliance | Security :: Check Point, Cisco Umbrella, Cylance, Imperva, LogRhythm, Rapid7, Sophos, Wireshark | Operations :: Dynatrace, FACETS, Jenkins, KACE, PagerDuty, Password Safe, ServiceNow | Infrastructure :: Hyper-V, Linux, PXE imaging, VMware, Windows Server" >}}
+{{< certs seal="false" class="certs--wide" groups="Cloud :: Amazon CloudFront, Amazon Route 53, AWS Shield and WAF, Microsoft Azure | Microsoft :: Active Directory, Entra ID, Exchange, Group Policy, Microsoft 365, Microsoft Defender for Cloud Apps (MCAS), Office 365 Security and Compliance | Security :: Check Point, Cisco Umbrella, Cylance, Imperva, LogRhythm, Rapid7, Sophos, Wireshark | Operations :: Dynatrace, FACETS, Jenkins, KACE, PagerDuty, Password Safe, ServiceNow | Infrastructure :: Hyper-V, Linux, PXE imaging, VMware, Windows Server" >}}
 
 ## Education and Competitions {.h-minor}
 
