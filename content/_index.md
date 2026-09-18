@@ -83,7 +83,7 @@ Deployed more than 300 machines for a sales force of over 1,500 agents.
 
 {{< certs groups="Security :: EC-Council Certified Ethical Hacker (CEH), CompTIA Security+ | Cloud :: AWS Certified Cloud Practitioner | Network :: Cisco CCNA Routing & Switching | Process :: ITIL v4 Foundation, CompTIA Project+ | Degree :: B.S. Network Operations and Security · Western Governors University" >}}
 
-## What's cooking
+## What's Cooking
 
 {{< pipeline items="ISC2 CISSP :: In progress :: Targeting November 2026. Credential for practitioners responsible for the architecture, implementation, and management of an organization's security program | Home lab buildout :: Ongoing :: Segmentation, telemetry and detection engineering, documented as I go" >}}
 
