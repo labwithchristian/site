@@ -20,19 +20,19 @@ heroButtons:
 
 {{< highlights >}}
 
-{{< highlight figure="5 yrs" label="Incident command" >}}
+{{< highlight figure="5 yrs" label="Incident management" icon="bell" >}}
 Incident manager for high-impact production outages at Toyota Motor North America, leading a five-person team.
 {{< /highlight >}}
 
-{{< highlight figure="5" label="Audit domains" >}}
+{{< highlight figure="5" label="Audit domains" icon="scale-balanced" >}}
 CMS, HIPAA, ISO 27001, PCI DSS, SOX, with controls tested against NIST 800-53 and CSF.
 {{< /highlight >}}
 
-{{< highlight figure="3" label="Industries" >}}
+{{< highlight figure="3" label="Industries" icon="globe" >}}
 Healthcare, media, and automotive: regulated systems, a security operations center, and enterprise production support.
 {{< /highlight >}}
 
-{{< highlight figure="2" label="Languages" >}}
+{{< highlight figure="2" label="Languages" icon="language" >}}
 Fluent in English and Spanish, able to work directly with Spanish-speaking teams, users and stakeholders.
 {{< /highlight >}}
 
