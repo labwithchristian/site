@@ -126,9 +126,10 @@ Every Phase 2 writeup pairs an attack with the evidence it left behind.
 - Offensive tooling is only pointed at systems I own or am explicitly authorized to test.
 - No addresses, hostnames, or topology specifics are published here. That is deliberate.
 
+<!--
 ## Changelog {.h-minor}
 
-- **17 September 2026:** Restructured into two phases. Vulnerability management is Phase 1, with detection and the attack range moved to Phase 2. Added the storage expansion requirement, the target segment, scanner scoping rules, credentialed scanning, cloud scope, ticket workflow, program documents, off-box backups, and remote access.
+- **17 September 2026:** Restructured into two phases. Vulnerability management is Phase 1, with detection and the attack range moved to Phase 2. Added the storage expansion requirement, the target segment, scanner scoping rules, credentialed scanning, cloud scope, ticket workflow, program documents, off-box backups, and remote access. -->
 
 {{< wip title="Still cooking" >}}
 Phase 1 is being built and documented as it lands, with sanitized configs and playbooks published alongside on [GitHub](https://github.com/labwithchristian).
