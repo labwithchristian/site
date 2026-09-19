@@ -6,6 +6,10 @@
  * Arrow keys and the on-screen arrows move between images, Escape or a click
  * on the backdrop closes, and focus returns to the thumbnail afterwards.
  * Visitors who prefer reduced motion get the same viewer without the motion.
+ *
+ * Both images carry the theme's `nozoom` class, so Blowfish's medium-zoom
+ * (themes/blowfish/assets/js/medium-zoom.js binds every img:not(.nozoom))
+ * does not open its own zoom on top of this viewer.
  */
 (function () {
   'use strict';
@@ -22,7 +26,7 @@
       '<div class="proof-lb__scrim"></div>' +
       '<div class="proof-lb__panel" role="dialog" aria-modal="true" aria-label="Image viewer">' +
         '<button class="proof-lb__close" type="button">Close</button>' +
-        '<div class="proof-lb__stage"><img class="proof-lb__img" alt="" sizes="(max-width: 900px) 92vw, 900px"></div>' +
+        '<div class="proof-lb__stage"><img class="proof-lb__img nozoom" alt="" sizes="(max-width: 900px) 92vw, 900px"></div>' +
         '<p class="proof-lb__bar"><span class="proof-lb__cap"></span><span class="proof-lb__count"></span></p>' +
         '<button class="proof-lb__nav proof-lb__prev" type="button" aria-label="Previous image">' +
           '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>' +

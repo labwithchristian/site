@@ -878,7 +878,7 @@ html.proof-open { overflow: hidden; }
 .proof-lb {
   position: fixed;
   inset: 0;
-  z-index: 60;
+  z-index: 150; /* above the nav pill (30-nav.css), below the intro overlay */
   display: none;
   align-items: center;
   justify-content: center;

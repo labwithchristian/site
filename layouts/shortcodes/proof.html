@@ -34,7 +34,7 @@
               data-proof-set="{{ delimit (uniq $full) ", " }}"
               data-proof-alt="{{ $alt }}"
               data-proof-label="{{ $label }}">
-        <span class="proof__thumb"><img src="{{ $thumb.RelPermalink }}" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}" alt="" loading="lazy" decoding="async"></span>
+        <span class="proof__thumb"><img class="nozoom" src="{{ $thumb.RelPermalink }}" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}" alt="" loading="lazy" decoding="async"></span>
         <span class="proof__label">{{ $label }}</span>
       </button>
     {{- end -}}
