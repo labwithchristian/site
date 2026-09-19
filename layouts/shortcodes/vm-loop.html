@@ -1,0 +1,53 @@
+{{/*
+  The vulnerability management loop as inline SVG, sharing the network
+  diagram's styles (see "Network diagram" in assets/css/site/60-pages.css).
+  Edit the stages here as the program changes.
+*/}}
+<figure class="netdiagram not-prose">
+  <div class="netdiagram__scroll" tabindex="0" role="group" aria-label="Vulnerability management loop">
+    <svg viewBox="0 0 640 196" role="img" aria-labelledby="vmloop-title vmloop-desc" focusable="false">
+      <title id="vmloop-title">The vulnerability management loop</title>
+      <desc id="vmloop-desc">Six stages run left to right: Inventory in NetBox, Scan with Greenbone, Nessus and Trivy, Triage in DefectDojo against KEV and EPSS, Remediate with Ansible, Verify by rescanning, and Report in Grafana. If the rescan still finds the issue, it returns to Triage.</desc>
+      <defs>
+        <marker id="vmloop-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 10 5 0 10z" class="nd-arrowhead"/>
+        </marker>
+      </defs>
+
+      <g class="nd-edge" fill="none" marker-end="url(#vmloop-arrow)">
+        <path d="M98 55h14"/>
+        <path d="M206 55h14"/>
+        <path d="M314 55h14"/>
+        <path d="M422 55h14"/>
+        <path d="M530 55h14"/>
+        <path d="M484 82v44H268V84"/>
+      </g>
+
+      <rect x="6" y="30" width="92" height="50" rx="10" class="nd-node"/>
+      <text x="52" y="52" text-anchor="middle" class="nd-label">Inventory</text>
+      <text x="52" y="69" text-anchor="middle" class="nd-sub">NetBox</text>
+
+      <rect x="114" y="30" width="92" height="50" rx="10" class="nd-node"/>
+      <text x="160" y="52" text-anchor="middle" class="nd-label">Scan</text>
+      <text x="160" y="69" text-anchor="middle" class="nd-sub">scanners</text>
+
+      <rect x="222" y="30" width="92" height="50" rx="10" class="nd-node"/>
+      <text x="268" y="52" text-anchor="middle" class="nd-label">Triage</text>
+      <text x="268" y="69" text-anchor="middle" class="nd-sub">DefectDojo</text>
+
+      <rect x="330" y="30" width="92" height="50" rx="10" class="nd-node"/>
+      <text x="376" y="52" text-anchor="middle" class="nd-label">Remediate</text>
+      <text x="376" y="69" text-anchor="middle" class="nd-sub">Ansible</text>
+
+      <rect x="438" y="30" width="92" height="50" rx="10" class="nd-node"/>
+      <text x="484" y="52" text-anchor="middle" class="nd-label">Verify</text>
+      <text x="484" y="69" text-anchor="middle" class="nd-sub">rescan</text>
+
+      <rect x="546" y="30" width="92" height="50" rx="10" class="nd-node nd-node--host"/>
+      <text x="592" y="52" text-anchor="middle" class="nd-label">Report</text>
+      <text x="592" y="69" text-anchor="middle" class="nd-sub">Grafana</text>
+
+      <text x="376" y="152" text-anchor="middle" class="nd-note">still there after the rescan, back to triage</text>
+    </svg>
+  </div>
+</figure>
