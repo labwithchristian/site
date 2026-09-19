@@ -83,7 +83,7 @@ All are latin-subset woff2 files from Fontsource, so the site makes no third-par
 
 ### Homepage intro
 
-`assets/js/intro.js` plays a short terminal "breach" overlay (about 1.5 seconds) on a visitor's first
+`assets/js/intro.js` plays a short terminal "breach" overlay (about 3.5 seconds) on a visitor's first
 homepage visit, then animates the hero name. It's remembered per browser, skippable, and never runs for
 visitors who prefer reduced motion. Set `introSequence = false` in `params.toml` to turn it off.
 

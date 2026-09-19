@@ -2,7 +2,7 @@
  * Homepage arrival effects. Loaded only on the homepage
  * (layouts/partials/extend-head-uncached.html), so no other page pays for it.
  *
- * 1. "Breach" intro: a short terminal overlay (about 1.5 s) the first time a
+ * 1. "Breach" intro: a short terminal overlay (about 3.5 s) the first time a
  *    browser visits. Remembered in localStorage, so it plays once, not once per
  *    session. Skippable by click, the Skip button, Escape, Enter or Space.
  *    Never runs for reduced-motion users.
@@ -78,24 +78,24 @@
     var pool = ['P@ssw0rd', 'letmein1', 'admin123', 'qwerty!!', 'hunter2 ', 'Summer26', 'ch4ngeme', 'trustno1'];
 
     at(0, function () { row('hydra -L users.txt -P rockyou.txt christiancarrasco.dev'); });
-    at(180, function () { row('wordlist loaded · 14,344,391 entries', 'is-dim'); });
-    at(360, function () {
+    at(380, function () { row('wordlist loaded · 14,344,391 entries', 'is-dim'); });
+    at(760, function () {
       var p = row('attempt ' + pool[0] + '  FAILED', 'is-fail');
       var body = p.querySelector('.intro__body');
       var n = 1;
       var iv = setInterval(function () {
         body.textContent = 'attempt ' + pool[n % pool.length] + '  FAILED';
         n++;
-      }, 70);
+      }, 110);
       timers.push(iv);
-      at(540, function () { // 360 + 540 = MATCH lands at 900ms
+      at(1200, function () { // 760 + 1200 = MATCH lands at 1960ms
         clearInterval(iv);
         p.className = 'intro__row is-ok';
         body.textContent = 'attempt ••••••••  MATCH';
       });
     });
-    at(1060, function () { row('session established. welcome.', 'is-granted'); host.classList.add('is-granted'); });
-    at(1560, finish);
+    at(2450, function () { row('session established. welcome.', 'is-granted'); host.classList.add('is-granted'); });
+    at(3560, finish);
 
     host.querySelector('.intro__skip').addEventListener('click', function (e) { e.stopPropagation(); finish(); });
     host.addEventListener('click', finish);
@@ -151,7 +151,7 @@
       var started = false;
       var start = function () { if (!started) { started = true; animateHero(); } };
       document.addEventListener('intro:done', function () { setTimeout(start, 150); }, { once: true });
-      setTimeout(start, 4000); // safety net if the overlay never reports back
+      setTimeout(start, 6000); // safety net if the overlay never reports back
       playIntro();
     } else {
       setTimeout(animateHero, 200);
