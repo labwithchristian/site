@@ -325,7 +325,7 @@ this can go wrong locally, and the fix:
 |---|---|
 | `themes/blowfish` is an empty folder after `git checkout` or `git pull` | `git submodule update --init --recursive` |
 | Wrong commit checked out inside the submodule | `git -C themes/blowfish log --oneline -1` to check, then `git submodule update --init --force` to snap it back to the pin recorded in `.gitmodules` / the parent commit |
-| Submodule clone fails because the directory already exists and isn't empty | List what's in there before deleting anything (`find themes/blowfish -mindepth 1`) — it should only ever contain the theme's own files. Anything else is unexpected and worth asking about before removing, the same way we handled a stray `.watchfire/` folder found there during the phase-2 merge |
+| Submodule clone fails because the directory already exists and isn't empty | List what's in there before deleting anything (`find themes/blowfish -mindepth 1`). It should only ever contain the theme's own files. Anything else is unexpected and worth asking about before removing, the same way we handled a stray `.watchfire/` folder found there during the phase-2 merge |
 | Need to fully re-pin from scratch | `git submodule deinit -f themes/blowfish && rm -rf .git/modules/themes/blowfish && git submodule update --init --recursive` |
 
 This only affects local working copies. CI always does a fresh `git submodule update --init` on a

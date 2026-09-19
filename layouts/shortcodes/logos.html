@@ -32,7 +32,11 @@
   {{- end -}}
 {{- end -}}
 
-<div class="logo-marquee not-prose my-10" role="group" aria-label="Skills and tools">
+{{- /* tabindex="0" is required, not decorative: under prefers-reduced-motion the
+       CSS swaps the animation for overflow-x: auto, and a scrollable region has
+       to be reachable by keyboard. It also lets a keyboard user pause the scroll,
+       because :focus-within on this element stops the animation.              */ -}}
+<div class="logo-marquee not-prose my-10" role="group" aria-label="Skills and tools" tabindex="0">
   <div class="logo-marquee__track" style="--marquee-duration: {{ $speed }}s;">
     {{- range $pass := slice 1 2 -}}
       <ul class="logo-marquee__group" {{ if eq $pass 2 }}aria-hidden="true"{{ end }}>

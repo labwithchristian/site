@@ -61,10 +61,10 @@
 .dark .hero-lead { color: rgb(var(--color-neutral-300)); }
 
 /* Name animation on arrival, in three phases:
-   1. scrambling — glyphs churn in monospace so nothing reflows
-   2. typing     — the shell walks the name back, then retypes it in the
+   1. scrambling: glyphs churn in monospace so nothing reflows
+   2. typing:     the shell walks the name back, then retypes it in the
                    display face with a caret trailing
-   3. rested     — caret fades out, line settles
+   3. rested:     caret fades out, line settles
 
    Colour never changes: it opens, runs and finishes in primary, so there is no
    tonal shift drawing attention to the handoff. */

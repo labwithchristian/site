@@ -114,7 +114,8 @@ It's set with `images` in `params.toml`.
 |---|---|---|
 | `logos items="slug, slug" speed="45"` | Home | Scrolling Skills & Tools logo marquee. Logos live in `assets/img/logos/`; `text:Label` adds a wordmark |
 | `highlights` + `highlight figure label` | Home | Proof-point tiles under the hero. Swap figures for outcome numbers as they're gathered |
-| `timeline more` + `timeline-item dates role company` | Home | Career at a glance, with a button to the full resume. For a promotion, nest `timeline-role title dates promoted` entries in one item, newest first; each title gets its own row and dates, and `promoted` draws the promotion comet |
+| `timeline more` + `timeline-item dates role company` | Home | Career at a glance, with a button to the full resume |
+| `timeline-role title dates promoted company` | Home | Inside `timeline-item`, one title of a promotion, newest first. Each title gets its own row and dates; `promoted="2023"` on the newer title draws the promotion comet |
 | `resume-head facts="Label :: Value \| ..."` | Resume | Summary, quick facts, Download PDF and LinkedIn buttons, print-only name block |
 | `job company dates location context positions tags` | Resume | One employer: titles held (`"Title :: years \| Title :: years"`), Markdown bullets, tags |
 | `role title dates promoted tags` | Resume | Inside `job`, one title with its own bullets and tags, for a promotion (newest first; `promoted="2023"` on the newer title draws the promotion comet) |
@@ -125,16 +126,18 @@ It's set with `images` in `params.toml`.
 | `connect url label` | Home | `> connect --linkedin` card |
 | `connect-mini url label` | whoami | One-line LinkedIn sign-off at the end of a page |
 | `intro image alt` | whoami | Portrait beside the opening statement |
-
-On whoami, `### Area {.area}` renders a small eyebrow for a Core Strengths area, with `####` practices under it.
 | `specs` + `spec role title rows tags` | Homelab | Hardware spec cards. `rows="CPU: ... \| Memory: ..."` |
 | `proof items="Label :: file.jpg :: alt \| ..."` | Resume | Thumbnails at the bottom of a card that open a popup viewer (`assets/js/proof.js`). Images live in the page bundle |
 | `network-diagram` | Homelab | Inline SVG network diagram. Edit the labels in the shortcode file |
+| `vm-loop` | Homelab | Inline SVG of the vulnerability management loop, from inventory to verified fix. Edit the stage labels in the shortcode file |
 | `soon title status` | Writeups, Blog, Tags | Coming-soon block |
 | `wip title` | Homelab | Work-in-progress block |
 
-Homepage section headings can be made smaller with a heading attribute:
-`## Education {.h-minor}`.
+### Heading attributes
+
+Section headings can be made smaller with a heading attribute: `## Education {.h-minor}`. On whoami,
+`### Area {.area}` renders a small eyebrow for a Core Strengths area, with `####` practices under it.
+Both rely on `layouts/_default/_markup/render-heading.html`; the theme's own hook drops the class.
 
 ## Adding content
 

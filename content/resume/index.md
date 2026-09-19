@@ -18,8 +18,8 @@ IT operations and security leader with ten plus years in enterprise environments
 
 {{< xp >}}
 
-{{< job company="Beyondsoft Consulting" dates="2023 to 2026" location="Remote" context="On assignment at Toyota Motor North America" >}}
-{{< role title="Operations Manager" promoted="2023" tags="Change Management, Incident Management, ISO 27001, Problem Management, ServiceNow, SLA Management, Team Leadership, Vendor Management" >}}
+{{< job company="Beyondsoft Consulting" dates="2021 to 2026" location="Remote" context="On assignment at Toyota Motor North America" >}}
+{{< role title="Operations Manager" dates="2023 to 2026" promoted="2023" tags="Change Management, Incident Management, ISO 27001, Problem Management, ServiceNow, SLA Management, Team Leadership, Vendor Management" >}}
 - Commanded high-impact production major incidents end to end: set severity against business impact, coordinated the response across teams, drove restoration, and briefed stakeholders.
 - Led a five-person engineering team, owning hiring, performance, and development with minimal turnover, along with the Dynatrace and PagerDuty vendor contracts and budget.
 - Owned SLA performance and incident metrics including MTTR, backlog, and repeat-incident rate, investigating breaches and driving corrective action plans to closure.
@@ -35,7 +35,7 @@ IT operations and security leader with ten plus years in enterprise environments
 {{< /role >}}
 {{< /job >}}
 
-{{< job company="TelevisaUnivision" dates="2019 to 2020" location="Hybrid | Doral, FL" positions="Information Security Analyst" tags="Detection Rules, LogRhythm, MITRE ATT&CK, NIST 800-53, PCI DSS, Rapid7, ServiceNow, SIEM Engineering, SOX" >}}
+{{< job company="TelevisaUnivision" dates="2019 to 2020" location="Onsite then remote | Doral, FL" positions="Information Security Analyst" tags="Detection Rules, LogRhythm, MITRE ATT&CK, NIST 800-53, PCI DSS, Rapid7, ServiceNow, SIEM Engineering, SOX" >}}
 - Triaged SIEM alerts across networks, endpoints, and servers, correlating events to reconstruct incident timelines.
 - Investigated spear-phishing campaigns aimed at senior staff and delivered end user security awareness training.
 - Lead LogRhythm administrator: built correlation rules, wrote custom parsers for malformed log sources, and mapped detection coverage to MITRE ATT&CK.

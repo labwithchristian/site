@@ -120,6 +120,19 @@
   to   { transform: translateX(-50%); }
 }
 
+/* The container carries tabindex="0" (see layouts/shortcodes/logos.html), so it
+   needs a visible ring of its own. Focusing it also pauses the scroll through
+   the :focus-within rule above. */
+.logo-marquee:focus-visible {
+  outline: 2px solid rgb(var(--color-primary-600));
+  outline-offset: 4px;
+  border-radius: 0.4rem;
+}
+
+.dark .logo-marquee:focus-visible {
+  outline-color: rgb(var(--color-primary-400));
+}
+
 @media (prefers-reduced-motion: reduce) {
   .logo-marquee__track { animation: none; }
   .logo-marquee {
@@ -127,6 +140,9 @@
     -webkit-mask-image: none;
     mask-image: none;
   }
+  /* With the animation off the marquee is a plain scroller, so the duplicate
+     pass that made the loop seamless would just repeat the list. */
+  .logo-marquee__group[aria-hidden="true"] { display: none; }
 }
 
 /* --- Highlights (layouts/shortcodes/highlight.html) ---

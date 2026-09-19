@@ -20,8 +20,8 @@ Phase 1 is complete when a finding can travel the whole loop, from inventory to 
 
 {{< specs >}}
 
-{{< spec role="Host" title="Proxmox Node" rows="CPU: AMD Ryzen 9 5900X, 12 cores | Board: Gigabyte B550 AORUS ELITE V2 | Memory: 64GB DDR4-3200, 32GB installed | Power: EVGA SuperNOVA G3 1000W" tags="Proxmox VE 9.2, ZFS, Virtualization" >}}
-A repurposed workstation rather than a used enterprise server. In service, with Phase 1 sized to fit inside the 32GB currently installed.
+{{< spec role="Host" title="Proxmox Node" rows="CPU: AMD Ryzen 9 5900X, 12 cores | Board: Gigabyte B550 AORUS ELITE V2 | Memory: 32GB G.Skill DDR4-3200, non-ECC | Power: EVGA SuperNOVA G3 1000W" tags="Proxmox VE 9.2, ZFS, Virtualization" >}}
+A repurposed workstation rather than a used enterprise server. In service, with Phase 1 sized to fit inside 32GB. Staying at 32GB is a deliberate call: memory pricing moved against the build, and the next dollar buys more program value in storage than in headroom.
 {{< /spec >}}
 
 {{< spec role="Storage" title="NVMe and Expansion" rows="Boot and VMs: 1TB Seagate FireCuda 530 NVMe | State: in service, near capacity | Next: second NVMe or 2TB SATA SSD" tags="ZFS, Capacity" >}}
@@ -121,7 +121,7 @@ Every Phase 2 writeup pairs an attack with the evidence it left behind.
 
 ## Operating Constraints {.h-minor}
 
-- 64GB cannot run the Phase 2 range and the full Phase 1 stack at the same time. Workloads are scheduled, not stacked.
+- 32GB cannot run the Phase 2 range and the full Phase 1 stack at the same time. Workloads are scheduled, not stacked.
 - No inbound port forwards. The lab is never reachable from the internet.
 - Offensive tooling is only pointed at systems I own or am explicitly authorized to test.
 - No addresses, hostnames, or topology specifics are published here. That is deliberate.

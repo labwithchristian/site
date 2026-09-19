@@ -15,7 +15,7 @@ The looser register. One argument per post, three or four minutes, my own voice.
 | Post | The argument |
 |---|---|
 | Why I did not buy a used Dell | Rack servers are cheap until you price the power, the noise, and the drive caddies |
-| RAM ate my budget | How memory pricing reshaped the whole build plan |
+| RAM ate my budget | Why the lab stays at 32GB, and what memory pricing cost the rest of the build |
 
 {{< soon title="Drafts, not posts yet" status="writing" >}}
 Two pieces are written and sitting in drafts. They go up once they are worth your four minutes.
