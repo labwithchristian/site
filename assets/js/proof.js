@@ -49,7 +49,7 @@
       api.img.src = s.src;
       api.img.alt = s.alt;
       api.cap.textContent = s.label;
-      api.count.textContent = (api.index + 1) + ' / ' + api.shots.length;
+      api.count.textContent = api.shots.length > 1 ? (api.index + 1) + ' / ' + api.shots.length : '';
       el.querySelector('.proof-lb__prev').hidden = api.shots.length < 2;
       el.querySelector('.proof-lb__next').hidden = api.shots.length < 2;
     }
