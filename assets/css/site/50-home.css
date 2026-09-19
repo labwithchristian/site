@@ -386,8 +386,8 @@ html.dark[data-heading-font] .timeline__role { color: rgb(var(--color-neutral-10
 }
 
 /* --- Core strengths ---
-   Four area cards. The area title sits inside the purple header band; the
-   areas it covers are listed underneath in the card body. */
+   Four area cards, built like the Highlights cards above them: a mono label,
+   the areas it covers, and a large faint icon filling the corner. */
 .strengths {
   display: grid;
   grid-template-columns: 1fr;
@@ -401,12 +401,14 @@ html.dark[data-heading-font] .timeline__role { color: rgb(var(--color-neutral-10
 }
 
 .strength {
+  position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.35rem;
   min-width: 0;
   text-align: left;
-  padding: 1rem;
+  padding: 1.15rem 1.25rem 1.2rem;
   border-radius: 1rem;
   border: 1px solid rgba(var(--color-neutral-300), 0.7);
   background-color: rgba(255, 255, 255, 0.62);
@@ -422,45 +424,47 @@ html.dark[data-heading-font] .timeline__role { color: rgb(var(--color-neutral-10
   box-shadow: 0 16px 36px -18px rgba(var(--color-primary-600), 0.4);
 }
 
-.strength__head {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-  padding: 0.75rem 0.9rem;
-  border-radius: 0.75rem;
-  border: 1px solid rgba(var(--color-primary-300), 0.9);
-  background-color: rgb(var(--color-primary-100));
-}
-
+/* Same corner treatment as .highlight__icon */
 .strength__icon {
-  display: inline-flex;
-  flex: 0 0 auto;
+  position: absolute;
+  top: -0.35rem;
+  right: -0.5rem;
+  width: 5.2rem;
+  height: 5.2rem;
   color: rgb(var(--color-primary-600));
+  opacity: 0.13;
+  transform: rotate(-8deg);
+  pointer-events: none;
+  transition: opacity 0.25s ease;
 }
 
-.strength__icon svg { width: 1.15rem; height: 1.15rem; }
+.strength__icon > span { display: block; width: 100%; height: 100%; }
+.strength__icon svg { width: 100%; height: 100%; display: block; }
+.strength:hover .strength__icon { opacity: 0.2; }
 
-html .strength__title,
-html[data-heading-font] .strength__title {
+html .strengths .strength__title,
+html[data-heading-font] .strengths .strength__title {
   margin: 0;
-  font-size: 1.125rem;
-  line-height: 1.3;
-  color: rgb(var(--color-primary-800));
-  text-wrap: balance;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgb(var(--color-primary-700));
   overflow-wrap: break-word;
 }
 
 .strength__items {
-  margin: 0 0.35rem 0.25rem;
+  margin: 0.15rem 0 0;
   font-size: 0.925rem;
   line-height: 1.6;
   text-wrap: pretty; /* avoids a lone word on the last line */
   color: rgb(var(--color-neutral-700));
 }
 
-/* Dark mode: the body stays a dark glass panel; the header band becomes a
-   deep violet with a brighter edge so the title reads clearly. Item text is
-   lifted from the theme's dim neutral-400 to neutral-200 for contrast. */
+/* Dark mode: a dark glass panel, with the label and icon lifted so both stay
+   readable against it. */
 .dark .strength {
   border-color: rgba(var(--color-primary-400), 0.22);
   background-color: rgba(var(--color-neutral-900), 0.55);
@@ -472,22 +476,19 @@ html[data-heading-font] .strength__title {
   box-shadow: 0 16px 36px -18px rgba(var(--color-primary-500), 0.35);
 }
 
-.dark .strength__head {
-  border-color: rgba(var(--color-primary-400), 0.6);
-  background-color: rgba(var(--color-primary-700), 0.7);
-}
+.dark .strength__icon { color: rgb(var(--color-primary-200)); opacity: 0.2; }
+.dark .strength:hover .strength__icon { opacity: 0.28; }
 
-.dark .strength__icon { color: rgb(var(--color-primary-200)); }
-
-html.dark .strength__title,
-html.dark[data-heading-font] .strength__title {
-  color: rgb(var(--color-neutral-50));
+html.dark .strengths .strength__title,
+html.dark[data-heading-font] .strengths .strength__title {
+  color: rgb(var(--color-primary-200));
 }
 
 .dark .strength__items { color: rgb(var(--color-neutral-200)); }
 
 @media (prefers-reduced-motion: reduce) {
   .strength, .strength:hover { transition: none; transform: none; }
+  .strength__icon { transition: none; }
 }
 
 /* --- What's cooking / learning pipeline --- */

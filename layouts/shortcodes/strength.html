@@ -1,21 +1,21 @@
 {{/*
-  One core strength card: the area title sits in the purple header band,
-  the areas it covers read underneath as one comma-separated line.
+  One core strength card, built like the Highlights cards: a mono label for
+  the area, the areas it covers as one comma-separated line, and a large faint
+  icon in the corner.
 
   Usage:
     {{< strength icon="shield" title="Cybersecurity" items="Security Operations, Identity & Access" >}}
 
-  items is comma separated. Icons come from the Blowfish icon set.
+  items is comma separated. Icons come from the Blowfish icon set, and are
+  decorative only.
 */}}
 {{ $icon := .Get "icon" | default "star" }}
 {{ $title := .Get "title" | default "Strength" }}
 {{ $items := .Get "items" | default "" }}
 
 <article class="strength">
-  <div class="strength__head">
-    <span class="strength__icon" aria-hidden="true">{{ partial "icon.html" $icon }}</span>
-    <h3 class="strength__title">{{ $title }}</h3>
-  </div>
+  {{ with $icon }}<span class="strength__icon" aria-hidden="true">{{ partial "icon.html" . }}</span>{{ end }}
+  <h3 class="strength__title">{{ $title }}</h3>
   {{ with $items }}
   {{ $list := slice }}
   {{ range split . "," }}{{ with trim . " " }}{{ $list = $list | append . }}{{ end }}{{ end }}
