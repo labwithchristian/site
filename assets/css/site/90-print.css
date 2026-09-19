@@ -9,6 +9,7 @@
   html, body { background: #fff !important; color: #111 !important; }
   body { font-size: 10pt; }
 
+  .proof, .proof-lb,
   .site-nav, .site-nav-spacer, .site-nav__social, #site-footer, #scroll-to-top,
   #the-top, #reading-progress, #background-canvas, .toc, .anchor,
   .resume-head__actions, .cta-btn { display: none !important; }

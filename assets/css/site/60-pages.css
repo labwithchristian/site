@@ -814,6 +814,196 @@ h4.job__title { margin: 0; }
   .job__role .promo-land { left: calc(-0.95rem - 6px); }
 }
 
+/* --- Proof thumbnails and viewer (layouts/shortcodes/proof.html) ---
+   Two small buttons at the bottom of a card. The viewer grows out of the
+   thumbnail that was clicked and shrinks back into it on close. */
+.proof {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed rgba(var(--color-primary-300), 0.45);
+}
+
+.proof__btn {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem 0.8rem 0.45rem 0.45rem;
+  border-radius: 0.7rem;
+  border: 1px solid rgba(var(--color-primary-300), 0.7);
+  background-color: rgba(255, 255, 255, 0.7);
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+}
+
+.proof__btn:hover {
+  border-color: rgb(var(--color-primary-400));
+  transform: translateY(-2px);
+}
+
+.proof__thumb {
+  flex: 0 0 auto;
+  width: 3.4rem;
+  height: 2.4rem;
+  overflow: hidden;
+  border-radius: 0.4rem;
+  border: 1px solid rgba(var(--color-primary-300), 0.7);
+  background-color: #fff;
+}
+
+.proof__thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+.proof__label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgb(var(--color-primary-700));
+}
+
+.dark .proof { border-top-color: rgba(var(--color-primary-400), 0.3); }
+.dark .proof__btn { border-color: rgba(var(--color-primary-400), 0.4); background-color: rgba(var(--color-neutral-900), 0.5); }
+.dark .proof__btn:hover { border-color: rgb(var(--color-primary-300)); }
+.dark .proof__thumb { border-color: rgba(var(--color-primary-400), 0.4); }
+.dark .proof__label { color: rgb(var(--color-primary-200)); }
+
+/* the viewer */
+html.proof-open { overflow: hidden; }
+
+.proof-lb {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(1rem, 4vw, 3rem);
+}
+
+.proof-lb.is-open { display: flex; }
+
+.proof-lb__scrim {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(var(--color-neutral-900), 0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.proof-lb.is-in .proof-lb__scrim { opacity: 1; }
+
+.proof-lb__panel {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  max-width: min(1000px, 92vw);
+  opacity: 0;
+  transform: scale(0.18) translateY(8px);
+  transition: opacity 0.26s ease, transform 0.42s cubic-bezier(0.22, 0.9, 0.28, 1);
+}
+.proof-lb.is-in .proof-lb__panel { opacity: 1; transform: none; }
+
+.proof-lb__stage {
+  overflow: hidden;
+  border-radius: 1rem;
+  background-color: #fff;
+  box-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.6);
+}
+
+.proof-lb__img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 72vh;
+}
+
+.proof-lb.is-swapping .proof-lb__img { animation: proof-swap 0.36s cubic-bezier(0.2, 0.8, 0.3, 1); }
+
+@keyframes proof-swap {
+  from { opacity: 0; transform: scale(0.94); }
+  to   { opacity: 1; transform: none; }
+}
+
+.proof-lb__bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0;
+  color: rgb(var(--color-neutral-50));
+}
+
+.proof-lb__cap,
+.proof-lb__count {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.proof-lb__cap { opacity: 0.9; }
+.proof-lb__count { opacity: 0.7; letter-spacing: 0.06em; }
+
+.proof-lb__nav {
+  position: absolute;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background-color: rgba(var(--color-neutral-900), 0.45);
+  color: #fff;
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+.proof-lb__nav:hover { background-color: rgb(var(--color-primary-500)); transform: translateY(-50%) scale(1.06); }
+.proof-lb__prev { left: -3.4rem; }
+.proof-lb__next { right: -3.4rem; }
+
+.proof-lb__nav svg { width: 1.1rem; height: 1.1rem; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+
+.proof-lb__close {
+  position: absolute;
+  top: -2.9rem;
+  right: 0;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background-color: rgba(var(--color-neutral-900), 0.45);
+  color: #fff;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.proof-lb__close:hover { background-color: rgb(var(--color-primary-500)); }
+
+@media (max-width: 720px) {
+  .proof-lb__prev { left: 0.4rem; }
+  .proof-lb__next { right: 0.4rem; }
+  .proof-lb__close { top: -2.6rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .proof__btn, .proof-lb__panel, .proof-lb__scrim, .proof-lb__nav { transition: none; }
+  .proof-lb__panel { transform: none; }
+  .proof-lb.is-swapping .proof-lb__img { animation: none; }
+}
+
 /* Chip lists that aren't certifications, and wider labels on the resume */
 .certs--plain .certs__item { padding: 0.36rem 0.75rem; }
 .certs--wide .certs__group { grid-template-columns: 8.5rem 1fr; }

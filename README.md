@@ -128,6 +128,7 @@ It's set with `images` in `params.toml`.
 
 On whoami, `### Area {.area}` renders a small eyebrow for a Core Strengths area, with `####` practices under it.
 | `specs` + `spec role title rows tags` | Homelab | Hardware spec cards. `rows="CPU: ... \| Memory: ..."` |
+| `proof items="Label :: file.jpg :: alt \| ..."` | Resume | Thumbnails at the bottom of a card that open a popup viewer (`assets/js/proof.js`). Images live in the page bundle |
 | `network-diagram` | Homelab | Inline SVG network diagram. Edit the labels in the shortcode file |
 | `soon title status` | Writeups, Blog, Tags | Coming-soon block |
 | `wip title` | Homelab | Work-in-progress block |

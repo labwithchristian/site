@@ -1,0 +1,50 @@
+{{- /*
+  Proof thumbnails at the bottom of a card, opening a popup viewer that grows
+  out of the thumbnail you clicked. Arrow keys or the on-screen arrows move
+  between the images, Escape or the backdrop closes it.
+
+    {{< proof items="Certificate :: ncl-certificate.jpg :: Alt text | Score card :: ncl-scorecard.jpg" >}}
+
+  Items are separated by "|", fields by "::": label, image file in the page
+  bundle, and optional alt text (the label is used when it is left out).
+  Behaviour lives in assets/js/proof.js, which is loaded once per page here.
+*/ -}}
+{{- $page := .Page -}}
+{{- $groups := split (.Get "items") "|" -}}
+<div class="proof not-prose">
+{{- range $groups -}}
+  {{- $f := split (trim . " ") "::" -}}
+  {{- if ge (len $f) 2 -}}
+    {{- $label := trim (index $f 0) " " -}}
+    {{- $file := trim (index $f 1) " " -}}
+    {{- $alt := $label -}}
+    {{- if ge (len $f) 3 }}{{ $alt = trim (index $f 2) " " }}{{ end -}}
+    {{- with $page.Resources.GetMatch $file -}}
+      {{- $thumb := .Fill "192x136 jpg q80 Center" -}}
+      {{- $full := slice -}}
+      {{- $res := . -}}
+      {{- range (slice 700 1100 1500) -}}
+        {{- $w := cond (gt . $res.Width) $res.Width . -}}
+        {{- $i := $res.Resize (printf "%dx jpg q82" $w) -}}
+        {{- $full = $full | append (printf "%s %dw" $i.RelPermalink $i.Width) -}}
+      {{- end -}}
+      {{- $fallback := $res.Resize (printf "%dx jpg q82" (cond (gt 1100 $res.Width) $res.Width 1100)) -}}
+      <button class="proof__btn" type="button"
+              data-proof-image="{{ $fallback.RelPermalink }}"
+              data-proof-set="{{ delimit (uniq $full) ", " }}"
+              data-proof-alt="{{ $alt }}"
+              data-proof-label="{{ $label }}">
+        <span class="proof__thumb"><img src="{{ $thumb.RelPermalink }}" width="{{ $thumb.Width }}" height="{{ $thumb.Height }}" alt="" loading="lazy" decoding="async"></span>
+        <span class="proof__label">{{ $label }}</span>
+      </button>
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+</div>
+{{- if not ($page.Store.Get "proofJS") -}}
+  {{- $page.Store.Set "proofJS" true -}}
+  {{- with resources.Get "js/proof.js" -}}
+    {{- $js := . | minify | fingerprint (site.Params.fingerprintAlgorithm | default "sha512") -}}
+    <script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
+  {{- end -}}
+{{- end -}}
