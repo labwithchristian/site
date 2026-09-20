@@ -1095,3 +1095,30 @@ html.proof-open { overflow: hidden; }
   .connect--compact { grid-template-columns: auto minmax(0, 1fr); padding: 1.1rem 1.15rem; }
   .connect--compact .connect__btn { grid-column: 1 / -1; justify-self: start; }
 }
+
+/* --- List pages with no table of contents (Blog, Writeups, Tags) ---
+   layouts/_default/list.html caps the body at the theme's 65ch prose width
+   when a TOC is present, because the TOC occupies the rest of the container.
+   With no TOC that column is dead space, and the post card grid below already
+   spans the full container, so the body above it looked stranded at 65ch.
+
+   Here the body opens to the full width and only the running prose keeps a
+   readable measure. Tables, and the blocks that carry their own layout, use
+   the whole width like the card grid does. */
+.list-body--roomy {
+  max-width: none;
+}
+
+.list-body--roomy > p,
+.list-body--roomy > ul,
+.list-body--roomy > ol,
+.list-body--roomy > blockquote {
+  max-width: 65ch;
+}
+
+/* The coming-soon and work-in-progress blocks are centred around an
+   illustration, so a full 1024px box leaves their text swimming. */
+.list-body--roomy > .soon,
+.list-body--roomy > .wip {
+  max-width: 46rem;
+}

@@ -39,7 +39,7 @@ git add themes/blowfish && git commit -m "Update Blowfish to <version>"
 | File | What it changes |
 |---|---|
 | `_default/baseof.html` | Adds `data-astral`, `data-heading-font` and `data-bg-tinted` attributes to `<html>` |
-| `_default/list.html` | Drops the theme's "no articles" line; sections use their own empty states |
+| `_default/list.html` | Drops the theme's "no articles" line; sections use their own empty states. On a section with no table of contents, the body opens to the full container (`.list-body--roomy`) instead of the theme's 65ch cap |
 | `_default/_markup/render-heading.html` | Theme heading markup, but keeps classes set with `{.h-minor}` style attributes |
 | `partials/header/floating.html`, `header/basic.html` | Compact pill nav with the Home icon |
 | `partials/home/landing.html` | Homepage hero: name, `heroRole` eyebrow, lead, buttons |
@@ -148,6 +148,21 @@ hugo new content blog/some-new-post.md
 
 When the first post is published, set `showRecent = true` under `[homepage]` in `params.toml` to bring
 back the recent posts list.
+
+### Post thumbnails
+
+Blog and Writeups list posts as a three-column card grid across the full container, and each card shows
+a feature image when the post has one. No extra markup is needed: make the post a page bundle and drop
+an image in it whose name contains `feature`, `cover` or `thumbnail`.
+
+```
+content/blog/the-life-of-one-finding/
+  index.md
+  feature.jpg
+```
+
+A `featureImage` value in the post's front matter overrides that. Hugo resizes the image to 600px wide
+for the card, so the source can be larger.
 
 ## Continuous integration
 
