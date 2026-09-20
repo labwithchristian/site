@@ -85,7 +85,7 @@ Deployed more than 300 machines for a sales force of over 1,500 agents.
 
 ## What's Cooking
 
-{{< pipeline items="ISC2 CISSP :: In progress :: Targeting November 2026. Credential for practitioners responsible for the architecture, implementation, and management of an organization's security program | Home lab buildout :: Ongoing :: Phase 1 is a vulnerability management program end to end, from asset inventory to verified fix, documented as I go" >}}
+{{< pipeline items="ISC2 CISSP :: In progress :: Targeting November 2026. The five year experience requirement is already met, so what is left is the exam | Home lab buildout :: Ongoing :: Phase 1 is a vulnerability management program end to end, from asset inventory to verified fix, documented as I go" >}}
 
 ## Open to What's Next
 
