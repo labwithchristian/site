@@ -1,6 +1,6 @@
 ---
 title: "Writeups"
-description: "Technical writeups: network segmentation, asset inventory, vulnerability management end to end, and the attack range that validates it."
+description: "Technical writeups: lab builds, vulnerability management end to end, public breach analysis, and offensive practice."
 showDate: false
 showAuthor: false
 showReadingTime: false
@@ -8,7 +8,7 @@ showTableOfContents: false
 showWordCount: false
 ---
 
-The formal register. Methodology, decisions, and evidence, written for practitioners rather than recruiters. Each piece comes out of a milestone in the [lab]({{< ref "homelab" >}}), with sanitized configs and playbooks published alongside on [GitHub](https://github.com/labwithchristian).
+The formal register. Methodology, decisions, and evidence, written for practitioners and hiring managers rather than recruiters. The [lab]({{< ref "homelab" >}}) is where a lot of it starts, but not where it stops: public breaches worth taking apart, CTFs, and Hack The Box and TryHackMe machines land here too. Sanitized configs and playbooks go on [GitHub](https://github.com/labwithchristian).
 
 ## What's planned
 
