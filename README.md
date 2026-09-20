@@ -132,7 +132,7 @@ It's set with `images` in `params.toml`.
 | `job company dates location context positions tags` | Resume | One employer: titles held (`"Title :: years \| Title :: years"`), Markdown bullets, tags |
 | `role title dates promoted tags` | Resume | Inside `job`, one title with its own bullets and tags, for a promotion (newest first; `promoted="2023"` on the newer title draws the promotion comet) |
 | `strengths` + `strength icon title items` | Home | Core Strengths cards |
-| `pipeline items="Name :: Status :: Note \| ..."` | Home, Homelab | Status list with cooking-themed badges |
+| `pipeline items="Name :: Status :: Note \| ..."` | Home, Homelab | Status list with cooking-themed badges. The status word picks the icon: a steaming pan for anything else, a lidded stockpot for `Ongoing` or `Continuous`, and a cold pan on an unlit burner for `Planned`, `Queued` or `Target`. Only the first two move |
 | `xp` | Resume | Wrapper that stacks `job` cards |
 | `certs groups="Label :: Cert, Cert \| ..." seal class` | Home, Resume | Labeled pill groups. `seal="false"` for lists that aren't certifications |
 | `connect url label` | Home | `> connect --linkedin` card |

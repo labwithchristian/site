@@ -49,7 +49,15 @@
                   <path d="M24 46h6M90 46h6"/>
                 </svg>
               {{- else -}}
-                <span class="pipeline__dot"></span>
+                {{/* cold pan over an unlit burner: on the stove, not yet lit.
+                     Deliberately still, where the other two states move. */}}
+                <svg viewBox="0 0 120 76" fill="none" stroke="currentColor"
+                     stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M30 24h60c0 11-8 19-19 19H49c-11 0-19-8-19-19z"/>
+                  <path d="M26 24h68"/>
+                  <path d="M94 26l14-5"/>
+                  <ellipse cx="60" cy="60" rx="24" ry="8"/>
+                </svg>
               {{- end -}}
             </span>
             <span class="pipeline__status">{{ $status }}</span>
