@@ -40,7 +40,7 @@ git add themes/blowfish && git commit -m "Update Blowfish to <version>"
 |---|---|
 | `_default/baseof.html` | Adds `data-astral`, `data-heading-font` and `data-bg-tinted` attributes to `<html>` |
 | `_default/list.html` | Drops the theme's "no articles" line; sections use their own empty states. On a section with no table of contents, the body opens to the full container (`.list-body--roomy`) instead of the theme's 65ch cap |
-| `_default/_markup/render-heading.html` | Theme heading markup, but keeps classes set with `{.h-minor}` style attributes, and swaps the hover `#` for a drawn black hole positioned by `.heading-anchor` in `10-typography.css` |
+| `_default/_markup/render-heading.html` | Theme heading markup, but keeps classes set with `{.h-minor}` style attributes, and swaps the hover `#` for a drawn chef's toque positioned by `.heading-anchor` in `10-typography.css` |
 | `partials/header/floating.html`, `header/basic.html` | Compact pill nav with the Home icon |
 | `partials/home/landing.html` | Homepage hero: name, `heroRole` eyebrow, lead, buttons |
 | `partials/cta-button.html` | Primary and outline buttons with an arrow (optional `download`) |
@@ -97,7 +97,11 @@ set. Anything in `assets/icons/` overrides the theme's file of the same name.
 | Search | `assets/icons/search.svg`, replacing the theme's filled magnifier: a pan seen from above, with a hang hole on the handle and three wisps rising off it. The wisps animate through `.sr-wisp` in `30-nav.css` |
 | Home | `layouts/partials/nav-icons/tp-classic.html`, the terminal pot, with a blinking prompt cursor |
 | Pipeline badges | Drawn inline in `layouts/shortcodes/pipeline.html`: a steaming pan, a lidded stockpot, and a cold pan on an unlit burner |
-| Heading anchor | Drawn inline in `layouts/_default/_markup/render-heading.html`: a black hole with the accretion ring passing behind the event horizon. Sized by `--anchor-size` and `--anchor-gap` in `10-typography.css` |
+| Heading anchor | Drawn inline in `layouts/_default/_markup/render-heading.html`: a chef's toque, on the same kitchen metaphor as the rest. Sized by `--anchor-size` and `--anchor-gap` in `10-typography.css`, and carries a slightly heavier stroke because it renders as small as 14px |
+
+Keep to one metaphor. The site is a kitchen: a pot, pans, steam, a toque. Cosmic or abstract marks were
+tried here and dropped, because a second metaphor running alongside the first reads as indecision rather
+than as range.
 
 Icons are small. Check any change at the size it actually renders (the nav icons are 16px, the heading
 anchor beside the whoami eyebrow is about 14px) rather than at the size you drew it: fine interior detail

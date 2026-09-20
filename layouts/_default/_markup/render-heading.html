@@ -10,9 +10,11 @@
           box with the icon right-aligned puts every anchor the same distance
           from its heading, whatever the size.
 
-       The mark is a black hole: the accretion ring passes behind the event
-       horizon, and its front edge is a separate arc cut at the horizon so the
-       ring never crosses the dark centre. */ -}}
+       The mark is a chef's toque, which keeps the site on one metaphor: the
+       pot in the nav, the pan in the search icon, the pans on the pipeline
+       badges. Its stroke is a little heavier than the 1.8 the other icons use,
+       because this one renders as small as 14px and the finer weight thins out
+       there. */ -}}
 {{ $anchor := anchorize .Anchor }}
 {{- $class := "relative group" -}}
 {{- with .Attributes.class }}{{ $class = printf "%s %s" $class . }}{{ end -}}
@@ -21,11 +23,10 @@
     {{ if .Page.Params.showHeadingAnchors | default (.Page.Site.Params.article.showHeadingAnchors | default true) }}
     <span class="heading-anchor not-prose select-none">
         <a href="#{{ $anchor }}" aria-label="{{ i18n "article.anchor_label" }}">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1"
                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
-                <ellipse cx="12" cy="12" rx="9.6" ry="2.6" transform="rotate(-18 12 12)"/>
-                <circle cx="12" cy="12" r="4.2" fill="currentColor" stroke="none"/>
-                <path d="M14.51 8.63L15.98 8.36L17.34 8.19L18.54 8.14L19.54 8.20L20.32 8.37L20.86 8.65L21.13 9.03L21.13 9.50L20.86 10.04L20.33 10.64L19.56 11.28L18.56 11.94L17.36 12.61L16.01 13.25"/>
+                <path d="M5.9 12.4a4.6 4.6 0 1 1 2-8.5 4.6 4.6 0 0 1 8.2 0 4.6 4.6 0 1 1 2 8.5z"/>
+                <path d="M5.9 12.4h12.2v5.1a1.8 1.8 0 0 1-1.8 1.8H7.7a1.8 1.8 0 0 1-1.8-1.8z"/>
             </svg>
         </a>
     </span>
