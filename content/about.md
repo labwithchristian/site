@@ -17,7 +17,7 @@ I'm Christian. For ten plus years I've worked where IT operations and security m
 
 Two tracks have run side by side for my whole career: keeping environments operating, and keeping them defensible. Most of my roles have asked for both at once, and the ones that only asked for one were the exception.
 
-Operations leadership and security operations draw on the same instincts: triage under pressure, clear ownership, and evidence that holds up. I've been trusted with both, and I keep the technical side sharp in my home lab, I'm working toward the CISSP to formalize the program side, and the leadership side keeps growing.
+Operations leadership and security operations draw on the same instincts: triage under pressure, clear ownership, and evidence that holds up. I've been trusted with both, and I keep both current: the lab for the hands-on work, the CISSP for the breadth across risk and architecture.
 
 The dates, titles, and details are on my [resume]({{< ref "resume" >}}). This page is about how I work, and who I am outside of it.
 
