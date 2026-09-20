@@ -40,7 +40,7 @@ git add themes/blowfish && git commit -m "Update Blowfish to <version>"
 |---|---|
 | `_default/baseof.html` | Adds `data-astral`, `data-heading-font` and `data-bg-tinted` attributes to `<html>` |
 | `_default/list.html` | Drops the theme's "no articles" line; sections use their own empty states. On a section with no table of contents, the body opens to the full container (`.list-body--roomy`) instead of the theme's 65ch cap |
-| `_default/_markup/render-heading.html` | Theme heading markup, but keeps classes set with `{.h-minor}` style attributes |
+| `_default/_markup/render-heading.html` | Theme heading markup, but keeps classes set with `{.h-minor}` style attributes, and swaps the hover `#` for a drawn black hole positioned by `.heading-anchor` in `10-typography.css` |
 | `partials/header/floating.html`, `header/basic.html` | Compact pill nav with the Home icon |
 | `partials/home/landing.html` | Homepage hero: name, `heroRole` eyebrow, lead, buttons |
 | `partials/cta-button.html` | Primary and outline buttons with an arrow (optional `download`) |
@@ -90,17 +90,20 @@ visitors who prefer reduced motion. Set `introSequence = false` in `params.toml`
 ### Icons
 
 Nav and badge icons are drawn in this repo at a 24 unit viewBox and a 1.8 stroke, so they read as one
-set. Anything in `assets/icons/` overrides the theme's file of the same name:
+set. Anything in `assets/icons/` overrides the theme's file of the same name.
 
-| File | Replaces |
+| Icon | Where it lives |
 |---|---|
-| `assets/icons/search.svg` | The theme's filled magnifier, with a pan seen from above: a hang hole on the handle and three wisps rising off it. The wisps animate through `.sr-wisp` in `30-nav.css` |
+| Search | `assets/icons/search.svg`, replacing the theme's filled magnifier: a pan seen from above, with a hang hole on the handle and three wisps rising off it. The wisps animate through `.sr-wisp` in `30-nav.css` |
+| Home | `layouts/partials/nav-icons/tp-classic.html`, the terminal pot, with a blinking prompt cursor |
+| Pipeline badges | Drawn inline in `layouts/shortcodes/pipeline.html`: a steaming pan, a lidded stockpot, and a cold pan on an unlit burner |
+| Heading anchor | Drawn inline in `layouts/_default/_markup/render-heading.html`: a black hole with the accretion ring passing behind the event horizon. Sized by `--anchor-size` and `--anchor-gap` in `10-typography.css` |
 
-The pot in the nav is `layouts/partials/nav-icons/tp-classic.html`, and the pipeline badges are drawn
-inline in `layouts/shortcodes/pipeline.html`.
-
-Icons are small. Check any change at the size it actually renders (the nav icons are 16px) rather than
-at the size you drew it: fine interior detail and punched holes are the first things to close up.
+Icons are small. Check any change at the size it actually renders (the nav icons are 16px, the heading
+anchor beside the whoami eyebrow is about 14px) rather than at the size you drew it: fine interior detail
+and punched holes are the first things to close up. Two traps worth knowing, both found the hard way: a
+filled circle centred in an ellipse reads as an eye, and a shape whose parts nearly touch will merge into
+one blob long before it reaches its final size.
 
 ### What each page is for
 

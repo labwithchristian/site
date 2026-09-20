@@ -1,15 +1,33 @@
-{{- /* Site override of Blowfish's heading hook. Same markup, but keeps classes
-       set with Goldmark attributes ("## Education {.h-minor}"), which the
-       theme's version drops. */ -}}
+{{- /* Site override of Blowfish's heading hook. Two departures from the theme:
+
+       1. Classes set with Goldmark attributes ("## Education {.h-minor}") are
+          kept, which the theme's version drops.
+       2. The hover anchor is a drawn mark rather than a "#" glyph, and it is
+          positioned by `.heading-anchor` in 10-typography.css rather than by
+          utility classes. The theme sized the glyph with the heading's own
+          font-size inside a fixed 24px box, so the gap to the text ran from
+          0.6px on a large heading to 15.1px on the small mono eyebrow. A fixed
+          box with the icon right-aligned puts every anchor the same distance
+          from its heading, whatever the size.
+
+       The mark is a black hole: the accretion ring passes behind the event
+       horizon, and its front edge is a separate arc cut at the horizon so the
+       ring never crosses the dark centre. */ -}}
 {{ $anchor := anchorize .Anchor }}
 {{- $class := "relative group" -}}
 {{- with .Attributes.class }}{{ $class = printf "%s %s" $class . }}{{ end -}}
 <h{{ .Level }} class="{{ $class }}">{{ .Text | safeHTML }}
     <div id="{{ $anchor }}" class="anchor"></div>
     {{ if .Page.Params.showHeadingAnchors | default (.Page.Site.Params.article.showHeadingAnchors | default true) }}
-    <span
-        class="absolute top-0 w-6 transition-opacity opacity-0 -start-6 not-prose group-hover:opacity-100 select-none">
-        <a class="text-primary-300 dark:text-neutral-700 !no-underline" href="#{{ $anchor }}" aria-label="{{ i18n "article.anchor_label" }}">#</a>
+    <span class="heading-anchor not-prose select-none">
+        <a href="#{{ $anchor }}" aria-label="{{ i18n "article.anchor_label" }}">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"
+                 stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <ellipse cx="12" cy="12" rx="9.6" ry="2.6" transform="rotate(-18 12 12)"/>
+                <circle cx="12" cy="12" r="4.2" fill="currentColor" stroke="none"/>
+                <path d="M14.51 8.63L15.98 8.36L17.34 8.19L18.54 8.14L19.54 8.20L20.32 8.37L20.86 8.65L21.13 9.03L21.13 9.50L20.86 10.04L20.33 10.64L19.56 11.28L18.56 11.94L17.36 12.61L16.01 13.25"/>
+            </svg>
+        </a>
     </span>
     {{ end }}
 </h{{ .Level }}>

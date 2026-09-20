@@ -108,3 +108,66 @@ html.dark .prose :is(p, li, td) a:not(.cta-btn):not(#TableOfContents a),
 html.dark :is(.intro-block__text, .soon__text, .wip__text, .connect__text) a {
   text-decoration-color: rgba(var(--color-primary-300), 0.6);
 }
+
+/* --- Heading anchors (layouts/_default/_markup/render-heading.html) ---
+   The theme put a "#" glyph in a fixed 24px box and let the heading's own
+   font-size scale the glyph, so the gap between the anchor and the text ran
+   from 0.6px on a 2.3rem section title to 15.1px on the 0.75rem mono eyebrow
+   on whoami. Here the box is a fixed width and the icon is right-aligned
+   inside it, so every anchor sits exactly --anchor-gap from its heading no
+   matter how big the heading is.
+
+   The icon size is clamped rather than free: left to scale with the heading it
+   would be a 40px mark beside the page title and an illegible smudge beside
+   the eyebrow. */
+:root {
+  --anchor-size: clamp(0.85rem, 0.55em, 1.05rem);
+  --anchor-gap: 0.5rem;
+}
+
+.heading-anchor {
+  position: absolute;
+  top: 0;
+  inset-inline-start: calc(-1 * (var(--anchor-size) + var(--anchor-gap)));
+  width: var(--anchor-size);
+  /* Match the heading's first line box so the icon centres on the text.
+     1lh is exact; the 1em fallback is within a couple of pixels. */
+  height: 1em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+
+@supports (height: 1lh) {
+  .heading-anchor { height: 1lh; }
+}
+
+:is(h1, h2, h3, h4, h5, h6):hover > .heading-anchor,
+.heading-anchor:focus-within {
+  opacity: 1;
+}
+
+.heading-anchor a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: var(--anchor-size);
+  color: rgb(var(--color-primary-300));
+  text-decoration: none;
+}
+
+.heading-anchor a:hover { color: rgb(var(--color-primary-600)); }
+
+/* The theme's dark colour here was neutral-700, which is all but invisible
+   against the dark page. */
+.dark .heading-anchor a { color: rgba(var(--color-neutral-400), 0.85); }
+.dark .heading-anchor a:hover { color: rgb(var(--color-primary-200)); }
+
+.heading-anchor svg { width: 100%; height: 100%; display: block; overflow: visible; }
+
+@media (prefers-reduced-motion: reduce) {
+  .heading-anchor { transition: none; }
+}

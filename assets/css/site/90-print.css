@@ -80,4 +80,7 @@
   /* whoami portrait: the nebula glow is a blurred gradient, which prints as a
      muddy grey box. The photo itself is kept. */
   .intro-block__frame::before { display: none; }
+
+  /* Hover-only affordance, meaningless on paper. */
+  .heading-anchor { display: none; }
 }
