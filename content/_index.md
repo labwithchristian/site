@@ -2,7 +2,7 @@
 title: "Christian Carrasco · Security & IT Operations Leader"
 heroRole: "Security & IT Operations Leader"
 heroCaption: "Christian Carrasco"
-heroLead: "Ten plus years keeping enterprise systems running and defensible, from a HIPAA-regulated healthcare environment and a SOC to incident management for the world's largest car manufacturer."
+heroLead: "Ten plus years keeping enterprise systems running and defensible, from a HIPAA-regulated healthcare environment and a SOC to leading incident management as a consultant for the world's largest car manufacturer."
 heroButtons:
   - label: "View resume"
     url: "/resume/"
