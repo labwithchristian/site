@@ -1,6 +1,6 @@
 ---
 title: "Blog"
-description: "Shorter posts on the lab build, operations and security practice, and the reasoning behind both."
+description: "Shorter posts: the reasoning behind a decision, the tradeoff, the mistake, and what is going on outside the lab."
 showDate: false
 showAuthor: false
 showReadingTime: false
@@ -8,7 +8,7 @@ showTableOfContents: false
 showWordCount: false
 ---
 
-The looser register. One argument per post, three or four minutes, my own voice. The reasoning behind a decision, the tradeoff I picked, and the occasional mistake worth writing down.
+One argument per post, three or four minutes. The reasoning behind a decision, the tradeoff I actually picked, the mistakes I would rather write down than repeat, and every so often something from outside the lab.
 
 ## In the drafts folder
 

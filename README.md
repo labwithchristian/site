@@ -87,17 +87,29 @@ All are latin-subset woff2 files from Fontsource, so the site makes no third-par
 homepage visit, then animates the hero name. It's remembered per browser, skippable, and never runs for
 visitors who prefer reduced motion. Set `introSequence = false` in `params.toml` to turn it off.
 
-### Resume and its PDF
-
-`content/resume/index.md` is the full resume. The site pages split the work:
+### What each page is for
 
 | Page | Job |
 |---|---|
 | Home | The 30-second pitch: highlights, core strengths, a short career timeline, certifications |
 | Resume | The full record: dated experience, frameworks, tools, certifications, education |
 | whoami | How Christian works, and who he is outside of work |
+| Homelab | The running reference for the lab: hardware, network, software, constraints |
+| Writeups | Methodology, decisions and evidence. Lab milestones, public breach analysis, CTFs, Hack The Box and TryHackMe |
+| Blog | Shorter pieces: the reasoning behind a decision, the tradeoff, the mistake, and the occasional life update |
 
-The **Download PDF** button appears whenever a PDF sits next to the page
+**Writeups or Blog?** The Blog is about Christian and the choices he makes. The Writeups are about
+systems and the evidence behind them.
+
+So a certification post covering why he is taking it, how he studied and whether it was worth the
+money goes in the Blog: that is reasoning and experience. A post about what studying security
+architecture changed in the lab's segmentation is a Writeup, because the subject is the system and the
+credential is only the occasion. The same rule puts life updates in the Blog without needing a
+category for them.
+
+### Resume and its PDF
+
+`content/resume/index.md` is the full resume. The **Download PDF** button appears whenever a PDF sits next to the page
 (`content/resume/christian-carrasco-resume.pdf`). It can be Christian's own exported resume: replace
 the file, keeping the name. To generate one from the page instead: run `hugo server`, open `/resume/` in Chrome in light mode, Print, Destination "Save as PDF",
 Paper "Letter", Margins "Default", Background graphics off, and save over the file. `90-print.css`
