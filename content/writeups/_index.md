@@ -18,7 +18,7 @@ Each writeup follows a milestone in the lab, so they land in build order.
 |---|---|---|
 | Network segmentation | The Proxmox bridges, the OPNsense policy between them, and what the target segment is allowed to reach | 1 |
 | Asset inventory | NetBox as the source of truth, because nothing can be managed before it is counted | 1 |
-| Scanning and scoping | Greenbone and Nessus, credentialed and unauthenticated, kept inside the segments the rules allow | 1 |
+| Scanning and scoping | Greenbone, Nessus, and Qualys, credentialed and unauthenticated, kept inside the segments the rules allow | 1 |
 | Triage and prioritization | DefectDojo as the system of record, ranked with CISA KEV and FIRST EPSS rather than CVSS alone | 1 |
 | Remediation and verification | Ansible fixes, rescans that prove them, and findings tracked to closure | 1 |
 | Running it as a program | The vulnerability management standard, the exception process, and the false-positive procedure | 1 |

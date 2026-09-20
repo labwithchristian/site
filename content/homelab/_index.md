@@ -85,7 +85,8 @@ Scanners reach only the hosts that OPNsense rules explicitly allow. Nothing scan
 |---|---|---|
 | Asset inventory | NetBox | You cannot manage what you have not counted |
 | Network scanning | Greenbone (OpenVAS) | Open-source scanner, full coverage of the target segment, credentialed and unauthenticated |
-| Network scanning | Nessus Essentials | The commercial scanner most employers run, 16 IP limit, credentialed |
+| Network scanning | Nessus Essentials Plus | The commercial scanner most employers run, 20 IP limit, credentialed |
+| Network scanning | Qualys Community Edition | Second enterprise platform, with configuration assessment and one web app |
 | Container scanning | Trivy | Image and dependency findings |
 | Cloud | GCP free-tier project | Cloud findings alongside on-prem |
 | Findings management | DefectDojo | System of record: ownership, status, SLAs, deduplication |
@@ -129,7 +130,8 @@ Every Phase 2 writeup pairs an attack with the evidence it left behind.
 <!--
 ## Changelog {.h-minor}
 
-- **17 September 2026:** Restructured into two phases. Vulnerability management is Phase 1, with detection and the attack range moved to Phase 2. Added the storage expansion requirement, the target segment, scanner scoping rules, credentialed scanning, cloud scope, ticket workflow, program documents, off-box backups, and remote access. -->
+- **17 September 2026:** Restructured into two phases. Vulnerability management is Phase 1, with detection and the attack range moved to Phase 2. Added the storage expansion requirement, the target segment, scanner scoping rules, credentialed scanning, cloud scope, ticket workflow, program documents, off-box backups, and remote access.
+- **20 September 2026:** Scanner stack set to Greenbone, Nessus Essentials Plus, and Qualys Community Edition. -->
 
 {{< wip title="Still cooking" >}}
 Phase 1 is being built and documented as it lands, with sanitized configs and playbooks published alongside on [GitHub](https://github.com/labwithchristian).
