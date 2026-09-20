@@ -17,7 +17,7 @@ I'm Christian. For ten plus years I've worked where IT operations and security m
 
 Two tracks have run side by side for my whole career: keeping environments operating, and keeping them defensible. Most of my roles have asked for both at once, and the ones that only asked for one were the exception.
 
-Operations leadership and security operations draw on the same instincts: triage under pressure, clear ownership, and evidence that holds up. I've been trusted with both, and I keep the technical side sharp through the CISSP and my home lab while the leadership side keeps growing.
+Operations leadership and security operations draw on the same instincts: triage under pressure, clear ownership, and evidence that holds up. I've been trusted with both, and I keep the technical side sharp in my home lab, I'm working toward the CISSP to formalize the program side, and the leadership side keeps growing.
 
 The dates, titles, and details are on my [resume]({{< ref "resume" >}}). This page is about how I work, and who I am outside of it.
 
@@ -37,15 +37,19 @@ Five engineers, a shared backlog, an on-call rotation, and SLA commitments someb
 
 #### Translating between audiences
 
-Explaining a SIEM finding to an application team, the same finding to a compliance stakeholder, and the business impact of both to a client executive. It's most of the job in any senior role, and employers rarely list it. Done well, everyone leaves the call knowing what happens next and why it matters to them.
+During a major incident, the same outage has three versions. Engineers need the technical picture, the client's executives need the business impact and a restoration estimate, and the respective applications' service desk teams need something they can actually say. Audits work the same way: a control requirement has to become a concrete task for an engineer, and the engineer's work has to become evidence an auditor will accept. Getting each version right is most of the job in any senior role, and it rarely makes the job description. Done well, everyone leaves the call knowing what happens next and why it matters to them.
 
 ### Infrastructure & Cloud {.area}
 
 #### Keeping it up and keeping it closed
 
-Uptime and exposure are the same conversation. That means coordinating change and maintenance windows so a fix doesn't become the next outage, watching service health in Dynatrace and PagerDuty, and owning the certificate lifecycle so nothing expires quietly. On the cloud side, it means auditing AWS accounts for exploitable firewall and DNS misconfigurations and closing DDoS exposure with AWS Shield, WAF, and CDN.
+Uptime and exposure are the same conversation. That means coordinating change and maintenance windows so a fix doesn't become the next outage, watching service health in Dynatrace with PagerDuty routing alerts to whoever is on call, and owning the certificate lifecycle so nothing expires quietly. On the cloud side, it means auditing AWS accounts for exploitable misconfigurations in IAM policies and security groups, and validating Route 53 record changes before they go live so a mistaken or stale record can't be used to spoof or hijack a domain. When AWS Shield flags DDoS activity, the real response happens in WAF and CloudFront: rate-based rules, targeted blocks, and caching changes that absorb the traffic.
 
 ### Cybersecurity {.area}
+
+#### Vulnerability management
+
+A scan report is only as useful as the owner it reaches. At TelevisaUnivision, my part of the program came after the scan: tracing each Rapid7 finding to the team that owned the system, following exception requests through to a decision, and remediating the systems the information security team managed myself. At Toyota, the same discipline carried into cloud audits: exploitable IAM and security group misconfigurations went to the application teams that owned them and stayed on my list until they were closed.
 
 #### Detection engineering
 
@@ -71,7 +75,7 @@ If the parrot ever learns a new word worth sharing, you'll hear about it here fi
 
 ## What you'll find here
 
-The [Homelab]({{< ref "homelab" >}}) page is the running reference for the lab I'm building: hardware, segmentation, and service layout. Sanitized configs and playbooks go on [GitHub](https://github.com/labwithchristian) as the build grows.
+The [Homelab]({{< ref "homelab" >}}) page is the running reference for the lab I'm building: hardware, segmentation, and service layout. [Writeups]({{< ref "writeups" >}}) carry the technical detail as each milestone lands, and the [Blog]({{< ref "blog" >}}) carries the shorter reasoning behind the decisions. Sanitized configs and playbooks go on [GitHub](https://github.com/labwithchristian) as the build grows.
 
 {{< connect-mini url="https://linkedin.com/in/cybercc" label="Connect on LinkedIn" >}}
 Thanks for stopping by. Let's connect!

@@ -21,7 +21,7 @@ heroButtons:
 {{< highlights >}}
 
 {{< highlight figure="5 yrs" label="Incident management" icon="bell" >}}
-Incident manager for high-impact production outages at Toyota Motor North America, leading a five-person team.
+Five years managing high-impact production incidents at Toyota Motor North America, the last three leading a five-person team.
 {{< /highlight >}}
 
 {{< highlight figure="5" label="Audit domains" icon="scale-balanced" >}}
@@ -60,8 +60,8 @@ Fluent in English and Spanish, able to work directly with Spanish-speaking teams
 {{< timeline-role title="Operations Manager" dates="2023 to 2026" promoted="2023" >}}
 Incident management lead, SLA performance tracking, vendor contracts and budget utilization tracking, and a five-person team.
 {{< /timeline-role >}}
-{{< timeline-role title="Senior Lead Technical Systems Analyst" dates="2021 to 2023" company="Beyondsoft Consulting, on assignment at Toyota Motor North America" >}}
-AWS security audits, Entra ID, DNS and SSL certificates, and Dynatrace and PagerDuty monitoring for client production applications.
+{{< timeline-role title="Senior/Lead Technical Systems Analyst" dates="2021 to 2023" company="Beyondsoft Consulting, on assignment at Toyota Motor North America" >}}
+AWS security audits, Entra ID, DNS and SSL certificates, and Dynatrace monitoring with PagerDuty alerting for client production applications.
 {{< /timeline-role >}}
 {{< /timeline-item >}}
 
@@ -70,7 +70,7 @@ SOC triage, lead LogRhythm SIEM administrator, and detection alert enhancements 
 {{< /timeline-item >}}
 
 {{< timeline-item dates="2014 to 2019" role="System Administrator" company="Cigna HealthCare" >}}
-Progressive level 1 through level 3 escalations, identity and access management, and CMS and HIPAA audit evidence and compliance support.
+Grew from level 1 support to the team's level 3 escalation point, with identity and access management and CMS and HIPAA audit evidence along the way.
 {{< /timeline-item >}}
 
 {{< timeline-item dates="2013 to 2014" role="IT Support Specialist" company="Commonwealth-Altadis" >}}
@@ -90,5 +90,5 @@ Deployed more than 300 machines for a sales force of over 1,500 agents.
 ## Open to What's Next
 
 {{< connect url="https://linkedin.com/in/cybercc" label="Connect on LinkedIn" >}}
-Always happy to meet new people, swap ideas, or talk shop about keeping systems running and secure. LinkedIn is the easiest place to find me, so come say hi!
+I'm open to roles in IT operations, incident management, security operations, and vulnerability management. Beyond that, I'm always glad to meet new people, swap ideas, or talk shop about keeping systems running and secure. LinkedIn is the easiest place to find me, so come say hi!
 {{< /connect >}}

@@ -62,7 +62,7 @@ Traffic is split across isolated Proxmox bridges, with OPNsense as the only path
 | Attack | Attacker hosts for the validation range | None | 2 |
 | Detonation | Untrusted samples and range hosts | None | 2 |
 
-Scanners reach only the hosts that OPNsense rules explicitly allow. Nothing in the lab scans outside the lab.
+Scanners reach only the hosts that OPNsense rules explicitly allow. Nothing scans outside the lab and my own cloud project.
 
 ## Phase 1 Software
 
@@ -112,7 +112,7 @@ Phase 2 exists to support offensive practice, not to build a security operations
 
 | Function | Tool | Role |
 |---|---|---|
-| Attack range | Ludus with GOAD | Multi-domain Active Directory range |
+| Attack range | Ludus with GOAD-Light | Multi-domain Active Directory range |
 | Endpoint telemetry | Sysmon | What each technique leaves on the host |
 | Collection | Wazuh | Central view of range telemetry |
 | Local AI | Ollama with Open WebUI | Local inference for lab tooling |

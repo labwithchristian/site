@@ -10,13 +10,13 @@ copyright = "&copy; 2026 Christian Carrasco"
 
 [params]
   dateFormat = "2 January 2006"
-  description = "Christian Carrasco: 10+ years in enterprise IT operations, security, and service delivery. Incident and problem management, cloud and infrastructure, compliance and control testing, SIEM engineering."
+  description = "Christian Carrasco: 10+ years in enterprise IT operations, security, and service delivery. Incident and problem management, cloud and infrastructure, compliance and control testing, vulnerability management."
 
 [params.author]
   name = "Christian Carrasco"
   image = "img/author-avatar.jpg"
   headline = "IT Operations & Security"
-  bio = "10+ years across enterprise IT operations, security, and service delivery. Incident and problem management, cloud and infrastructure, compliance and control testing, and SIEM engineering. Building a lab in public and documenting it as I go. Bilingual, English and Spanish."
+  bio = "10+ years across enterprise IT operations, security, and service delivery. Incident and problem management, cloud and infrastructure, compliance and control testing, and vulnerability management. Building a lab in public and documenting it as I go. Bilingual, English and Spanish."
   links = [
     { linkedin = "https://linkedin.com/in/cybercc" },
     { github = "https://github.com/labwithchristian" },

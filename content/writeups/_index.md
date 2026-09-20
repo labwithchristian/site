@@ -23,7 +23,7 @@ Each writeup follows a milestone in the lab, so they land in build order.
 | Remediation and verification | Ansible fixes, rescans that prove them, and findings tracked to closure | 1 |
 | Running it as a program | The vulnerability management standard, the exception process, and the false-positive procedure | 1 |
 | CIS Controls v8 mapping | The capstone. Controls mapped to implemented evidence | 1 |
-| Attack range | Ludus with GOAD, and the rules that keep the range from reaching anything else | 2 |
+| Attack range | Ludus with GOAD-Light, and the rules that keep the range from reaching anything else | 2 |
 | Detection from attacks | Sysmon and Wazuh: what each technique left behind, paired with the attack that caused it | 2 |
 
 {{< soon title="Nothing published yet" status="drafting" >}}
