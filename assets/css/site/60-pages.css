@@ -9,41 +9,58 @@
   margin: 1.75rem 0 2.25rem;
 }
 
+/* No border or ring: concentric edges around a face read as noise at this size.
+   Instead a diffuse violet and magenta aura sits behind the photo and bleeds
+   past its corners, the same astral language as the page background and the
+   marquee logo hover. */
 .intro-block__frame {
   position: relative;
   width: 100%;
   aspect-ratio: 4 / 5;
-  border-radius: 1rem;
-  padding: 0.4rem;
-  border: 2px solid rgb(var(--color-primary-500));
-  background-color: rgba(var(--color-primary-200), 0.25);
 }
 
-.dark .intro-block__frame {
-  border-color: rgb(var(--color-primary-400));
-  background-color: rgba(var(--color-primary-800), 0.35);
-}
-
-.intro-block__frame::after {
+.intro-block__frame::before {
   content: '';
   position: absolute;
-  inset: -0.55rem;
-  border-radius: 1.4rem;
-  border: 1px solid rgba(var(--color-primary-400), 0.4);
+  inset: -12%;
+  z-index: 0;
   pointer-events: none;
+  background:
+    radial-gradient(60% 55% at 30% 25%, rgba(var(--color-primary-400), 0.34), transparent 70%),
+    radial-gradient(55% 50% at 75% 80%, rgba(var(--color-secondary-500), 0.26), transparent 72%);
+  filter: blur(26px);
+  transition: opacity 0.4s ease;
 }
 
-.intro-block__frame picture { display: block; width: 100%; height: 100%; }
+.dark .intro-block__frame::before {
+  background:
+    radial-gradient(60% 55% at 30% 25%, rgba(var(--color-primary-300), 0.38), transparent 70%),
+    radial-gradient(55% 50% at 75% 80%, rgba(var(--color-secondary-300), 0.26), transparent 72%);
+}
+
+.intro-block__frame:hover::before { opacity: 0.75; }
+
+.intro-block__frame picture {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
 
 .intro-block__img {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 0.7rem;
+  border-radius: 0.9rem;
   display: block;
 }
 
 .intro-block__placeholder {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -51,7 +68,8 @@
   gap: 0.6rem;
   width: 100%;
   height: 100%;
-  border-radius: 0.7rem;
+  border-radius: 0.9rem;
+  border: 1px dashed rgba(var(--color-primary-400), 0.5);
   text-align: center;
   font-size: 0.72rem;
   line-height: 1.4;
@@ -80,6 +98,11 @@
   .intro-block { grid-template-columns: 1fr; gap: 1.75rem; justify-items: center; }
   .intro-block__frame { width: min(100%, 21rem); }
   .intro-block__text { text-align: left; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-block__frame::before { transition: none; }
+  .intro-block__frame:hover::before { opacity: 1; }
 }
 
 /* --- Work in progress block --- */
