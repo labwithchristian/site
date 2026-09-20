@@ -87,6 +87,21 @@ All are latin-subset woff2 files from Fontsource, so the site makes no third-par
 homepage visit, then animates the hero name. It's remembered per browser, skippable, and never runs for
 visitors who prefer reduced motion. Set `introSequence = false` in `params.toml` to turn it off.
 
+### Icons
+
+Nav and badge icons are drawn in this repo at a 24 unit viewBox and a 1.8 stroke, so they read as one
+set. Anything in `assets/icons/` overrides the theme's file of the same name:
+
+| File | Replaces |
+|---|---|
+| `assets/icons/search.svg` | The theme's filled magnifier, with a pan seen from above: a hang hole on the handle and three wisps rising off it. The wisps animate through `.sr-wisp` in `30-nav.css` |
+
+The pot in the nav is `layouts/partials/nav-icons/tp-classic.html`, and the pipeline badges are drawn
+inline in `layouts/shortcodes/pipeline.html`.
+
+Icons are small. Check any change at the size it actually renders (the nav icons are 16px) rather than
+at the size you drew it: fine interior detail and punched holes are the first things to close up.
+
 ### What each page is for
 
 | Page | Job |
