@@ -22,20 +22,24 @@
 .intro-block__frame::before {
   content: '';
   position: absolute;
-  inset: -12%;
+  inset: -16%;
   z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(60% 55% at 30% 25%, rgba(var(--color-primary-400), 0.34), transparent 70%),
-    radial-gradient(55% 50% at 75% 80%, rgba(var(--color-secondary-500), 0.26), transparent 72%);
-  filter: blur(26px);
+    radial-gradient(56% 50% at 18% 14%, rgba(var(--color-primary-400), 0.55), transparent 64%),
+    radial-gradient(54% 48% at 84% 88%, rgba(var(--color-secondary-400), 0.44), transparent 66%),
+    radial-gradient(72% 66% at 50% 50%, transparent 50%, rgba(var(--color-primary-300), 0.28) 72%, transparent 90%);
+  filter: blur(20px);
   transition: opacity 0.4s ease;
 }
 
+/* Dark mode needs the lighter tints and more of them: the same alphas that read
+   as an aura on the light page almost vanish against the dark canvas. */
 .dark .intro-block__frame::before {
   background:
-    radial-gradient(60% 55% at 30% 25%, rgba(var(--color-primary-300), 0.38), transparent 70%),
-    radial-gradient(55% 50% at 75% 80%, rgba(var(--color-secondary-300), 0.26), transparent 72%);
+    radial-gradient(56% 50% at 18% 14%, rgba(var(--color-primary-300), 0.5), transparent 64%),
+    radial-gradient(54% 48% at 84% 88%, rgba(var(--color-secondary-300), 0.4), transparent 66%),
+    radial-gradient(72% 66% at 50% 50%, transparent 50%, rgba(var(--color-primary-300), 0.26) 72%, transparent 90%);
 }
 
 .intro-block__frame:hover::before { opacity: 0.75; }
