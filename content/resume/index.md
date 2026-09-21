@@ -36,7 +36,7 @@ IT operations and security leader with ten plus years in enterprise environments
 {{< /job >}}
 
 {{< job company="TelevisaUnivision" dates="2019 to 2020" location="Onsite then remote · Doral, FL" >}}
-{{< role title="Information Security Analyst" tags="Detection Rules, LogRhythm, MITRE ATT&CK, NIST 800-53, PCI DSS, Rapid7, ServiceNow, SIEM Engineering, SOX" >}}
+{{< role title="Information Security Analyst" tags="Detection Rules, LogRhythm, MITRE ATT&CK, NIST 800-53, PCI DSS, ServiceNow, SIEM Engineering, SOX, Vulnerability Management" >}}
 - Triaged SIEM alerts across networks, endpoints, and servers, correlating events to reconstruct incident timelines.
 - Investigated spear-phishing campaigns aimed at senior staff and delivered end user security awareness training.
 - Lead LogRhythm administrator: built correlation rules, wrote custom parsers for malformed log sources, and mapped detection coverage to MITRE ATT&CK.
@@ -73,7 +73,7 @@ IT operations and security leader with ten plus years in enterprise environments
 
 ## Tools and Platforms {.h-minor}
 
-{{< certs seal="false" class="certs--wide" groups="Cloud :: Amazon CloudFront, Amazon Route 53, AWS Shield and WAF, Microsoft Azure | Microsoft :: Active Directory, Entra ID, Exchange, Group Policy, Microsoft 365, Microsoft Defender for Cloud Apps (MCAS), Office 365 Security and Compliance | Security :: Check Point, Cisco Umbrella, Cylance, Imperva, LogRhythm, Rapid7, Sophos, Wireshark | Operations :: Dynatrace, FACETS, Jenkins, KACE, PagerDuty, Password Safe, ServiceNow | Infrastructure :: Hyper-V, Linux, PXE imaging, VMware, Windows Server" >}}
+{{< certs seal="false" class="certs--wide" groups="Cloud :: Amazon CloudFront, Amazon Route 53, AWS Shield and WAF, Microsoft Azure | Microsoft :: Active Directory, Entra ID, Exchange, Group Policy, Microsoft 365, Microsoft Defender for Cloud Apps (MCAS), Office 365 Security and Compliance | Security :: Check Point, Cisco Umbrella, Cylance, Imperva, LogRhythm, Sophos, Vulnerability Management, Wireshark | Operations :: Dynatrace, FACETS, Jenkins, KACE, PagerDuty, Password Safe, ServiceNow | Infrastructure :: Hyper-V, Linux, PXE imaging, VMware, Windows Server" >}}
 
 ## Education and Competitions {.h-minor}
 

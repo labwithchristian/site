@@ -14,7 +14,7 @@ heroButtons:
 
 ## Skills & Tools
 
-{{< logos items="aws, microsoft-azure, microsoft, dynatrace, pagerduty, text:ServiceNow, vmware, cisco, wireshark, text:LogRhythm, text:Rapid7, linux, ubuntu" speed="45" >}}
+{{< logos items="aws, microsoft-azure, microsoft, dynatrace, pagerduty, text:ServiceNow, vmware, cisco, wireshark, text:LogRhythm, linux, ubuntu" speed="45" >}}
 
 ## Highlights
 

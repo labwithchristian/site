@@ -49,7 +49,7 @@ Uptime and exposure are the same conversation. That means coordinating change an
 
 #### Vulnerability management
 
-A scan report is only as useful as the owner it reaches. At TelevisaUnivision, my part of the program came after the scan: tracing each Rapid7 finding to the team that owned the system, following exception requests through to a decision, and remediating the systems the information security team managed myself. At Toyota, the same discipline carried into cloud audits: exploitable IAM and security group misconfigurations went to the application teams that owned them and stayed on my list until they were closed.
+A scan report is only as useful as the owner it reaches. At TelevisaUnivision, my part of the program came after the scan: tracing each scanner finding to the team that owned the system, following exception requests through to a decision, and remediating the systems the information security team managed myself. At Toyota, the same discipline carried into cloud audits: exploitable IAM and security group misconfigurations went to the application teams that owned them and stayed on my list until they were closed.
 
 #### Detection engineering
 
