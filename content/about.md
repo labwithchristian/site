@@ -4,7 +4,7 @@ description: "Christian Carrasco: how I work across IT operations and security, 
 showDate: false
 showAuthor: false
 showReadingTime: false
-showTableOfContents: true
+showTableOfContents: false
 showWordCount: false
 showPagination: false
 ---
@@ -23,45 +23,17 @@ The dates, titles, and details are on my [resume]({{< ref "resume" >}}). This pa
 
 ## How I work
 
-### IT Service Management {.area}
+**A finding is only as useful as the owner it reaches.** At TelevisaUnivision, my part of the program came after the scan: tracing each finding to the team that owned the system and following exception requests through to a decision. At Toyota, the same discipline carried into cloud audits, where misconfigurations stayed on my list until they were closed.
 
-#### Incident management
+**The underrated part of an incident is the review afterward.** For over five years I assigned severity, coordinated the response, and decided when to escalate when production went down. The work that lasts is the post-incident review that stops the same failure from paging anyone again.
 
-When a production system is down and five teams are talking at once, someone has to assign severity, coordinate the response, decide when to escalate, and tell the client's executives what is happening in language they can act on. I did that for over five years. The underrated part is the post-incident review that turns a recurring failure into a lasting fix, so the same problem doesn't page anyone again.
+**The same outage has three versions.** Engineers need the technical picture, executives need the business impact and a restoration estimate, and the service desk needs something it can actually say. Audits work the same way. Getting each version right is most of the job in any senior role.
 
-### IT Leadership & Operations {.area}
+**A good team spends its time on what matters.** Five engineers, a shared backlog, an on-call rotation, and SLA commitments somebody is measuring. The job is triage discipline, clear ownership, and removing the recurring noise.
 
-#### Running a team and a queue
+**Uptime and exposure are the same conversation.** A rushed change can become the next outage, and an expired certificate or a stale DNS record can become the next incident. I treat change windows, certificates, and cloud permissions as one discipline, not two.
 
-Five engineers, a shared backlog, an on-call rotation, and SLA commitments somebody is measuring. The work is triage discipline, clear ownership, and removing the recurring noise so the team spends its time on what actually matters. Hiring, one-on-ones, and vendor contracts come with it.
-
-#### Translating between audiences
-
-During a major incident, the same outage has three versions. Engineers need the technical picture, the client's executives need the business impact and a restoration estimate, and the respective applications' service desk teams need something they can actually say. Audits work the same way: a control requirement has to become a concrete task for an engineer, and the engineer's work has to become evidence an auditor will accept. Getting each version right is most of the job in any senior role, and it rarely makes the job description. Done well, everyone leaves the call knowing what happens next and why it matters to them.
-
-### Infrastructure & Cloud {.area}
-
-#### Keeping it up and keeping it closed
-
-Uptime and exposure are the same conversation. That means coordinating change and maintenance windows so a fix doesn't become the next outage, watching service health in Dynatrace with PagerDuty routing alerts to whoever is on call, and owning the certificate lifecycle so nothing expires quietly. On the cloud side, it means auditing AWS accounts for exploitable misconfigurations in IAM policies and security groups, and validating Route 53 record changes before they go live so a mistaken or stale record can't be used to spoof or hijack a domain. When AWS Shield flags DDoS activity, the real response happens in WAF and CloudFront: rate-based rules, targeted blocks, and caching changes that absorb the traffic.
-
-### Cybersecurity {.area}
-
-#### Vulnerability management
-
-A scan report is only as useful as the owner it reaches. At TelevisaUnivision, my part of the program came after the scan: tracing each scanner finding to the team that owned the system, following exception requests through to a decision, and remediating the systems the information security team managed myself. At Toyota, the same discipline carried into cloud audits: exploitable IAM and security group misconfigurations went to the application teams that owned them and stayed on my list until they were closed.
-
-#### Detection engineering
-
-Writing a correlation rule is easy. Writing one that fires on real adversary behavior, does not bury the analyst in false positives, and maps to a technique you can name is the actual skill. Suppression logic and signal-to-noise are where most SIEM implementations quietly fail.
-
-#### Control testing that survives an auditor
-
-Evidence, ownership, and closure. Correlating a finding against the CMDB so it lands with the team that can fix it, then capturing closure evidence before the audit cycle asks for it.
-
-#### Identity lifecycle
-
-Joiner, mover, leaver. Least privilege at provisioning, revocation at termination treated as a controlled step rather than an afterthought, and access reviews across Active Directory and Entra ID.
+**A detection rule is easy to write and hard to trust.** The skill is one that fires on real adversary behavior, doesn't bury the analyst in false positives, and maps to a technique you can name.
 
 ## Off the clock
 
@@ -75,7 +47,7 @@ If the parrot ever learns a new word worth sharing, you'll hear about it here fi
 
 ## What you'll find here
 
-The [Homelab]({{< ref "homelab" >}}) page is the running reference for the lab I'm building: hardware, segmentation, and service layout. [Writeups]({{< ref "writeups" >}}) carry the technical detail as each milestone lands, and the [Blog]({{< ref "blog" >}}) carries the shorter reasoning behind the decisions. Sanitized configs and playbooks go on [GitHub](https://github.com/labwithchristian) as the build grows.
+The [Homelab]({{< ref "homelab" >}}) page is the running reference for the lab I'm building, and sanitized configs and playbooks land on [GitHub](https://github.com/labwithchristian) as the build grows.
 
 {{< connect-mini url="https://linkedin.com/in/cybercc" label="Connect on LinkedIn" >}}
 Thanks for stopping by. Let's connect!

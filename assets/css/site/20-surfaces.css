@@ -122,3 +122,13 @@ html:not(.dark) body {
 html.dark body {
   background-color: rgb(var(--color-page-dark, var(--color-neutral-800)));
 }
+
+/* Page-level sideways overflow guard. The whoami portrait's nebula glow
+   (.intro-block__frame::before in 60-pages.css) is blurred beyond its box,
+   which pushed the page 27px wider than a 390px phone and let it scroll
+   sideways. `clip` rather than `hidden`: it trims the overflow without
+   creating a scroll container, so sticky positioning keeps working. */
+html,
+body {
+  overflow-x: clip;
+}
