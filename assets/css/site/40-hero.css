@@ -156,6 +156,19 @@
 
 html.dark .cta-btn--primary { background-color: rgb(var(--color-primary-500)); }
 
+/* Placeholder where a button will be (resume-head download="paused"). A span,
+   not a link: nothing to click, focus or download. */
+.cta-btn--pending {
+  border: 1px dashed rgba(var(--color-neutral-400), 0.9);
+  background-color: transparent;
+  color: rgb(var(--color-neutral-500));
+  font-weight: 500;
+  cursor: default;
+  user-select: none;
+}
+.cta-btn__clock { width: 1.05rem; height: 1.05rem; }
+html.dark .cta-btn--pending { border-color: rgba(var(--color-neutral-500), 0.9); color: rgb(var(--color-neutral-400)); }
+
 /* Buttons placed inside page content (resume, timeline) keep their own colors
    instead of picking up the .prose link color. */
 html .prose a.cta-btn--primary { color: #fff; }

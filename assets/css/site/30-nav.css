@@ -254,28 +254,12 @@ html.dark .nav-home:hover .nav-home__icon { color: rgb(var(--color-neutral-50));
   .nav-home__icon .cursor { animation: none; }
 }
 
-/* --- Search icon steam (assets/icons/search.svg) ---
-   The site's own search icon is a pan from above with three wisps rising off
-   it. The wisps are staggered like the pan in the What's Cooking pipeline, but
-   they need their own keyframes: CSS transforms on an SVG child resolve in the
-   element's user units, and this icon's viewBox is 24 wide where the pipeline
-   pan's is 120, so reusing cooking-steam would throw the wisps clear of the
-   lens. */
-.sr-wisp {
-  transform-origin: 50% 100%;
-  animation: search-steam 3.2s ease-in-out infinite;
-}
-
-.sr-wisp--2 { animation-delay: 0.45s; }
-.sr-wisp--3 { animation-delay: 0.9s; }
-
-@keyframes search-steam {
-  0%   { opacity: 0;    transform: translateY(1px)    scaleY(0.82); }
-  25%  { opacity: 0.95; }
-  70%  { opacity: 0.55; transform: translateY(-0.7px) scaleY(1.04); }
-  100% { opacity: 0;    transform: translateY(-1.8px) scaleY(1.1); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .sr-wisp { animation: none; }
+/* --- Search icon (assets/icons/search.svg) ---
+   A plain pan-shaped magnifier with no animation. It draws a little larger
+   than the other nav icons (1rem) because its open lens reads lighter than
+   the filled icons beside it. Covers the desktop pill and the mobile row. */
+#search-button svg,
+#search-button-mobile svg {
+  width: 1.2rem;
+  height: 1.2rem;
 }

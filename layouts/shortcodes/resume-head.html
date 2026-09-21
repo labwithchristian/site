@@ -6,10 +6,14 @@
     {{< /resume-head >}}
 
   The Download PDF button appears when a PDF sits in the same page bundle
-  (content/resume/*.pdf). The identity block only shows when printing, so a
+  (content/resume/*.pdf). download="paused" swaps it for an inert "Download
+  coming soon" label and never touches the PDF, so with publishResources off in
+  the page's front matter the file is not written to the build at all. Remove
+  the attribute to bring the button back. The identity block only shows when printing, so a
   "Save as PDF" from the browser starts with name, role and links.
 */ -}}
 {{- $facts := .Get "facts" | default "" -}}
+{{- $paused := eq (.Get "download") "paused" -}}
 {{- $pdf := .Page.Resources.GetMatch "*.pdf" -}}
 {{- $author := site.Params.Author -}}
 {{- $linkedin := "" -}}{{- $github := "" -}}
@@ -43,8 +47,15 @@
     </dl>
   {{- end }}
   <div class="resume-head__actions">
-    {{- with $pdf }}
-      {{ partial "cta-button.html" (dict "url" .RelPermalink "label" "Download PDF" "style" "primary" "download" (path.Base .RelPermalink)) }}
+    {{- if $paused }}
+      <span class="cta-btn cta-btn--pending">
+        <svg class="cta-btn__clock" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="10" cy="10" r="7"/><path d="M10 6.2V10l2.6 1.6"/></svg>
+        <span>Download coming soon</span>
+      </span>
+    {{- else }}
+      {{- with $pdf }}
+        {{ partial "cta-button.html" (dict "url" .RelPermalink "label" "Download PDF" "style" "primary" "download" (path.Base .RelPermalink)) }}
+      {{- end }}
     {{- end }}
     {{- with $linkedin }}
       {{ partial "cta-button.html" (dict "url" . "label" "Connect on LinkedIn" "style" "outline") }}

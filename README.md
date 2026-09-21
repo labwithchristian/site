@@ -94,7 +94,7 @@ set. Anything in `assets/icons/` overrides the theme's file of the same name.
 
 | Icon | Where it lives |
 |---|---|
-| Search | `assets/icons/search.svg`, replacing the theme's filled magnifier: a pan seen from above, with a hang hole on the handle and three wisps rising off it. The wisps animate through `.sr-wisp` in `30-nav.css` |
+| Search | `assets/icons/search.svg`, replacing the theme's filled magnifier: a pan seen from above that doubles as a magnifier, with a hang hole on the handle. Static, and drawn at 1.2rem (the other nav icons are 1rem) through `#search-button` in `30-nav.css` |
 | Home | `layouts/partials/nav-icons/tp-classic.html`, the terminal pot, with a blinking prompt cursor |
 | Pipeline badges | Drawn inline in `layouts/shortcodes/pipeline.html`: a steaming pan, a lidded stockpot, and a cold pan on an unlit burner |
 | Heading anchor | Drawn inline in `layouts/_default/_markup/render-heading.html`: a chef's toque, on the same kitchen metaphor as the rest. Sized by `--anchor-size` and `--anchor-gap` in `10-typography.css`, and carries a slightly heavier stroke because it renders as small as 14px |
@@ -132,7 +132,14 @@ category for them.
 ### Resume and its PDF
 
 `content/resume/index.md` is the full resume. The **Download PDF** button appears whenever a PDF sits next to the page
-(`content/resume/christian-carrasco-resume.pdf`). It can be Christian's own exported resume: replace
+(`content/resume/christian-carrasco-resume.pdf`).
+
+**Downloads are currently paused.** `download="paused"` on the `resume-head` shortcode shows an inert "Download coming
+soon" label instead of the button, and `build: publishResources: false` in the page's front matter keeps the PDF out of
+the build entirely, so its URL returns 404 rather than just being unlinked. To turn downloads back on, delete
+`download="paused"`. The front matter setting can stay: Hugo still publishes any resource a template actually uses.
+
+The PDF can be Christian's own exported resume: replace
 the file, keeping the name. To generate one from the page instead: run `hugo server`, open `/resume/` in Chrome in light mode, Print, Destination "Save as PDF",
 Paper "Letter", Margins "Default", Background graphics off, and save over the file. `90-print.css`
 strips the site chrome and adds the name and links at the top.

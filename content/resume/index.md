@@ -8,9 +8,11 @@ showTableOfContents: true
 showWordCount: false
 showPagination: false
 showBreadcrumbs: false
+build:
+  publishResources: false
 ---
 
-{{< resume-head facts="Experience :: Ten Plus Years in Enterprise IT | Focus :: IT Operations and Security | Languages :: English and Spanish - Fluent | Studying :: CISSP - Target November 2026" >}}
+{{< resume-head download="paused" facts="Experience :: Ten Plus Years in Enterprise IT | Focus :: IT Operations and Security | Languages :: English and Spanish - Fluent | Studying :: CISSP - Target November 2026" >}}
 IT operations and security leader with ten plus years in enterprise environments. Five years on assignment at Toyota Motor North America, first owning cloud security, identity, and monitoring as a senior/lead technical systems analyst, then promoted to operations manager, leading incident management and a five-person engineering team. Before that, a year as a SOC analyst and lead SIEM administrator, and five years administering systems and identity in a HIPAA-regulated healthcare environment. Supported audit and control testing across SOX, PCI DSS, HIPAA, CMS, and ISO 27001.
 {{< /resume-head >}}
 
