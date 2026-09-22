@@ -12,7 +12,7 @@ The formal register. Methodology, decisions, and evidence, written for practitio
 
 ## What's planned
 
-The lab's six projects follow the [Blue Team Roadmap](https://github.com/keraattin/Blue-Team-Roadmap#phase-9-build-your-portfolio), plus one of my own. Each project ends in at least one writeup here.
+The lab's six projects follow keraattin's [Blue Team Roadmap](https://github.com/keraattin/Blue-Team-Roadmap#phase-9-build-your-portfolio), plus one of my own. Each project ends in at least one writeup here.
 
 | Writeup | Covers | Source |
 |---|---|---|
