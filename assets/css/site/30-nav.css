@@ -263,3 +263,8 @@ html.dark .nav-home:hover .nav-home__icon { color: rgb(var(--color-neutral-50));
   width: 1.2rem;
   height: 1.2rem;
 }
+
+/* CC brand mark as the Home icon: a lift on hover instead of the pot's tilt,
+   so the logo is never shown rotated. */
+.nav-home__icon:has(.nav-mark) { width: 1.35rem; }
+.nav-home:hover .nav-home__icon:has(.nav-mark) { transform: translateY(-1px); }

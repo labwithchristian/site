@@ -47,7 +47,7 @@ git add themes/blowfish && git commit -m "Update Blowfish to <version>"
 | `partials/extend-head.html` | Loads the site stylesheet bundle |
 | `partials/extend-head-uncached.html` | Loads the homepage intro script on the homepage only |
 | `partials/extend-footer.html` | Credits line |
-| `partials/nav-icons/tp-classic.html` | Terminal pot Home icon (`navHomeIcon` in `params.toml`) |
+| `partials/nav-icons/cc-mark.html` | CC brand mark Home icon (`navHomeIcon` in `params.toml`). `tp-classic.html`, the terminal pot, is kept as an alternative |
 | `partials/header/social-links.html` | LinkedIn and GitHub icons at the top right of every page (`navSocial` in `params.toml`, URLs from `languages.en.toml`) |
 
 ### Styles (`assets/css/site/`)
@@ -95,7 +95,7 @@ set. Anything in `assets/icons/` overrides the theme's file of the same name.
 | Icon | Where it lives |
 |---|---|
 | Search | `assets/icons/search.svg`, replacing the theme's filled magnifier: a pan seen from above that doubles as a magnifier, with a hang hole on the handle. Static, and drawn at 1.2rem (the other nav icons are 1rem) through `#search-button` in `30-nav.css` |
-| Home | `layouts/partials/nav-icons/tp-classic.html`, the terminal pot, with a blinking prompt cursor |
+| Home | `layouts/partials/nav-icons/cc-mark.html`, the CC brand mark. Set `navHomeIcon = "tp-classic"` to bring back the terminal pot with its blinking cursor |
 | Pipeline badges | Drawn inline in `layouts/shortcodes/pipeline.html`: a steaming pan, a lidded stockpot, and a cold pan on an unlit burner |
 | Heading anchor | Drawn inline in `layouts/_default/_markup/render-heading.html`: a chef's toque, on the same kitchen metaphor as the rest. Sized by `--anchor-size` and `--anchor-gap` in `10-typography.css`, and carries a slightly heavier stroke because it renders as small as 14px |
 
@@ -123,8 +123,8 @@ scheme's `primary-600`, which is why light mode uses it unchanged and dark mode 
 | Printed resume | The mark beside the name block, in the logo's purple. Styled in `90-print.css` |
 | Link previews | `static/img/og-card.jpg` carries the mark top left |
 
-The nav keeps the terminal pot as its Home icon, so the kitchen metaphor stays in the interface and the
-logo stays a signature rather than a second icon system.
+The nav uses the CC mark as its Home icon (`layouts/partials/nav-icons/cc-mark.html`). It lifts on hover
+rather than tilting, so the logo is never shown rotated. The kitchen metaphor carries on in the page icons.
 
 ### What each page is for
 
