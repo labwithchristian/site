@@ -4,7 +4,7 @@ description: "Christian Carrasco: how I work across IT operations and security, 
 showDate: false
 showAuthor: false
 showReadingTime: false
-showTableOfContents: false
+showTableOfContents: true
 showWordCount: false
 showPagination: false
 ---
