@@ -8,7 +8,7 @@ showTableOfContents: true
 showWordCount: false
 ---
 
-This is my blue team lab: one repurposed workstation running a small corporate network, the security stack that watches it, and an isolated room for malware. I build it on the portfolio design in Phase 9 of keraattin's [Blue Team Roadmap](https://github.com/keraattin/Blue-Team-Roadmap#phase-9-build-your-portfolio). Someone already mapped the path well, so I spend my time on the work instead of reinventing the layout. Every piece here earns its place by feeding one of the projects below.
+This is my blue team lab: one repurposed workstation running a small corporate network, the security stack that watches it, and an isolated room for malware. I build it on the portfolio design in Phase 9 of keraattin's [Blue Team Roadmap](https://github.com/keraattin/Blue-Team-Roadmap#phase-9-build-your-portfolio). The roadmap is written for beginners and career switchers, and I use it for a different reason: it is a well-mapped path for finding my own knowledge gaps, refreshing concepts I haven't touched in a while, and building up weaker areas like Python. Following it means I spend my time on the work instead of reinventing the layout. Every piece here earns its place by feeding one of the projects below.
 
 ## Build Status
 
@@ -140,6 +140,7 @@ The heaviest pieces set those numbers. Security Onion's evaluation mode asks for
 - **20 September 2026:** Scanner stack set to Greenbone, Nessus Essentials Plus, and Qualys Community Edition.
 - **22 September 2026:** Rebuilt as a blue team lab on the Blue Team Roadmap's Phase 9 design: three segments, the roadmap's tool stack, and its six portfolio projects. Elastic Security chosen as the SIEM over Wazuh and Splunk, with Elastic Defend beside Sysmon on the endpoints. Vulnerability management kept as one added project, scanning with Qualys Community Edition alone. ServiceNow Vulnerability Response on hold pending a test, with DefectDojo meanwhile. The offensive Phase 2 (Ludus, GOAD-Light) removed for now.
 - **22 September 2026 (later):** Rewritten in first person. Credit to keraattin made explicit.
+- **22 September 2026 (later):** Intro notes why I follow a beginner roadmap: to close gaps, refresh concepts and build weaker skills such as Python.
 -->
 
 {{< wip title="Still cooking" >}}
