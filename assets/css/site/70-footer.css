@@ -28,3 +28,18 @@
 #site-footer > nav { justify-content: center; }
 #site-footer > nav ul { justify-content: center; align-items: center; }
 html.dark #site-footer > nav a { color: rgb(var(--color-neutral-300)); }
+
+/* --- Brand lockup above the credits (layouts/partials/extend-footer.html) ---
+   The logo's own purple is the scheme's primary-600, so light mode uses it
+   unchanged. Dark mode lifts it to primary-300 for contrast on the dark page. */
+.site-brand {
+  display: block;
+  width: fit-content;
+  margin: 0.25rem auto 0.9rem;
+  color: rgb(var(--color-primary-600));
+  border-radius: 0.4rem;
+}
+.site-brand__lockup { display: block; height: 2rem; width: auto; }
+.dark .site-brand { color: rgb(var(--color-primary-300)); }
+.site-brand:focus-visible { outline: 2px solid rgb(var(--color-primary-600)); outline-offset: 4px; }
+.dark .site-brand:focus-visible { outline-color: rgb(var(--color-primary-200)); }

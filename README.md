@@ -109,6 +109,23 @@ and punched holes are the first things to close up. Two traps worth knowing, bot
 filled circle centred in an ellipse reads as an eye, and a shape whose parts nearly touch will merge into
 one blob long before it reaches its final size.
 
+### Brand
+
+The logo lives as two traced SVGs in `assets/img/brand/`: `mark.svg` (the CC symbol) and `lockup.svg`
+(symbol plus name). Both use `currentColor`, so CSS sets the colour. The logo's purple, `#4b349d`, is the
+scheme's `primary-600`, which is why light mode uses it unchanged and dark mode lifts it to `primary-300`.
+`layouts/partials/brand.html` inlines either one: `{{ partial "brand.html" (dict "kind" "lockup" "class" "..." "label" "...") }}`.
+
+| Where | How |
+|---|---|
+| Browser tab and home screen | `assets/img/brand/favicon.svg`, published as `/icon.svg` (lightens itself in dark browser chrome) plus PNG, `.ico` and `site.webmanifest` fallbacks, linked from `layouts/partials/favicons.html`. These replace Blowfish's default icons. SVGs are cleaned at build time: `brand.html`, `favicons.html` and the `icon.html` override strip comments and any `<metadata>` block, because the file bridge stamps C2PA provenance into SVGs |
+| Footer | The lockup above the credits line, linking home. Styled in `70-footer.css` |
+| Printed resume | The mark beside the name block, in the logo's purple. Styled in `90-print.css` |
+| Link previews | `static/img/og-card.jpg` carries the mark top left |
+
+The nav keeps the terminal pot as its Home icon, so the kitchen metaphor stays in the interface and the
+logo stays a signature rather than a second icon system.
+
 ### What each page is for
 
 | Page | Job |

@@ -1,0 +1,14 @@
+{{- /* Site favicons, replacing Blowfish's defaults. The theme renders this
+       partial in place of its own icon links when it exists. The SVG icon
+       (built from assets/img/brand/favicon.svg, metadata stripped) carries the brand mark and lightens itself in dark browser chrome; the
+       PNGs and .ico are fallbacks for browsers without SVG favicon support. */ -}}
+{{- with resources.Get "img/brand/favicon.svg" }}
+  {{- $svg := replaceRE `<!--[\s\S]*?-->\s*|<metadata>[\s\S]*?</metadata>|\s+xmlns:c2pa="[^"]*"` "" .Content }}
+  {{- with resources.FromString "icon.svg" $svg }}
+<link rel="icon" type="image/svg+xml" href="{{ .RelPermalink }}">
+  {{- end }}
+{{- end }}
+<link rel="icon" type="image/png" sizes="32x32" href="{{ "favicon-32x32.png" | relURL }}">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ "favicon-16x16.png" | relURL }}">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ "apple-touch-icon.png" | relURL }}">
+<link rel="manifest" href="{{ "site.webmanifest" | relURL }}">

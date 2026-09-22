@@ -1,0 +1,12 @@
+{{- /* Inline brand SVG so it inherits colour from CSS.
+       Usage: {{ partial "brand.html" (dict "kind" "mark" "class" "site-brand__mark") }}
+       kind: "mark" (the CC symbol) or "lockup" (symbol plus name).
+       Decorative by default; pass "label" to make it an image with a name. */ -}}
+{{- $kind := .kind | default "mark" -}}
+{{- with resources.Get (printf "img/brand/%s.svg" $kind) -}}
+  {{- $svg := replaceRE `<!--[\s\S]*?-->\s*` "" .Content -}}
+  {{- $svg = replaceRE `<metadata>[\s\S]*?</metadata>|\s+xmlns:c2pa="[^"]*"` "" $svg -}}
+  {{- $attrs := printf `class="%s" focusable="false"` ($.class | default "brand") -}}
+  {{- with $.label }}{{ $attrs = printf `%s role="img" aria-label="%s"` $attrs . }}{{ else }}{{ $attrs = printf `%s aria-hidden="true"` $attrs }}{{ end -}}
+  {{- replace $svg "<svg " (printf "<svg %s " $attrs) | safeHTML -}}
+{{- end -}}

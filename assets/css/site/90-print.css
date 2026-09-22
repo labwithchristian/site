@@ -22,6 +22,10 @@
 
   .resume-print-id { display: block; margin: 0 0 6pt; padding-bottom: 6pt; border-bottom: 1.25pt solid #111; }
   .resume-print-id p { margin: 0; }
+  /* Brand mark to the left of the name block, in the logo's own purple */
+  .resume-print-id { position: relative; padding-left: 44pt; min-height: 38pt; }
+  .resume-print-id__mark { position: absolute; left: 0; top: 1pt; width: 36pt; height: auto; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  .resume-print-id__mark g { fill: #4b349d !important; }
   .resume-print-id__name { font-family: var(--font-display); font-size: 22pt; font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; }
   .resume-print-id__role { margin-top: 2pt !important; font-family: var(--font-mono); font-size: 9pt; letter-spacing: 0.12em; text-transform: uppercase; color: #333; }
   .resume-print-id__links { margin-top: 3pt !important; font-size: 9pt; color: #333; white-space: pre; }

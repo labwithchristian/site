@@ -23,6 +23,7 @@
 {{- end -}}
 <div class="resume-head not-prose">
   <div class="resume-print-id">
+    {{ partial "brand.html" (dict "kind" "mark" "class" "resume-print-id__mark") }}
     <p class="resume-print-id__name">{{ $author.name }}</p>
     <p class="resume-print-id__role">{{ site.Home.Params.heroRole | default $author.headline }}</p>
     <p class="resume-print-id__links">

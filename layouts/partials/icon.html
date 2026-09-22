@@ -1,0 +1,9 @@
+{{- /* Override of Blowfish's icon partial. Same markup, but strips comments
+       and any <metadata> block (the file bridge stamps C2PA provenance into
+       SVGs) so inline icons stay small. */ -}}
+{{- $icon := resources.Get (print "icons/" . ".svg") -}}
+{{- if $icon -}}
+  <span class="relative block icon">
+    {{- replaceRE `<!--[\s\S]*?-->\s*|<metadata>[\s\S]*?</metadata>|\s+xmlns:c2pa="[^"]*"` "" $icon.Content | safeHTML -}}
+  </span>
+{{- end -}}
