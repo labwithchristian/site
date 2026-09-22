@@ -2,12 +2,13 @@
   Lab network as inline SVG, instead of a Mermaid bundle. Colors come from the
   theme's CSS variables (see "Network diagram" in assets/css/site/60-pages.css),
   so it follows light and dark mode. Edit labels here as the lab changes.
+  Segments follow the Blue Team Roadmap's Phase 9 lab, plus Management.
 */}}
 <figure class="netdiagram not-prose">
   <div class="netdiagram__scroll" tabindex="0" role="group" aria-label="Network diagram">
-    <svg viewBox="0 0 640 356" role="img" aria-labelledby="netdiagram-title netdiagram-desc" focusable="false">
+    <svg viewBox="0 0 640 300" role="img" aria-labelledby="netdiagram-title netdiagram-desc" focusable="false">
       <title id="netdiagram-title">Lab network segmentation</title>
-      <desc id="netdiagram-desc">Internet traffic enters OPNsense, which is the only path between segments. Five Proxmox bridges sit behind it: Management and Lab have uplinks, through the onboard NIC and the Intel I350. Target, Attack, and Detonation have no uplink and are reachable only through rules in OPNsense. Management, Lab, and Target are Phase 1; Attack and Detonation are Phase 2.</desc>
+      <desc id="netdiagram-desc">Internet traffic enters OPNsense, which is the only path between segments. Four segments sit behind it: Management, on the onboard NIC; VLAN 10 Corporate, the network being defended; VLAN 20 SOC, the monitoring tools; and VLAN 30 Malware, which has no uplink and is reachable only through rules in OPNsense.</desc>
       <defs>
         <marker id="netdiagram-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
           <path d="M0 0 10 5 0 10z" class="nd-arrowhead"/>
@@ -16,55 +17,49 @@
 
       <!-- edges -->
       <g class="nd-edge" fill="none" marker-end="url(#netdiagram-arrow)">
-        <path d="M78 178H100"/>
-        <path d="M232 178C262 178 258 63 288 63"/>
-        <path d="M232 178C262 178 258 126 288 126"/>
-        <path d="M232 178H288"/>
-        <path d="M232 178C262 178 258 230 288 230"/>
-        <path d="M232 178C262 178 258 293 288 293"/>
+        <path d="M78 157H100"/>
+        <path d="M232 157C262 157 258 63 288 63"/>
+        <path d="M232 157C262 157 258 126 288 126"/>
+        <path d="M232 157C262 157 258 189 288 189"/>
+        <path d="M232 157C262 157 258 252 288 252"/>
       </g>
 
       <!-- internet -->
-      <circle cx="42" cy="178" r="34" class="nd-node nd-node--edge"/>
-      <text x="42" y="183" text-anchor="middle" class="nd-label">Internet</text>
+      <circle cx="42" cy="157" r="34" class="nd-node nd-node--edge"/>
+      <text x="42" y="162" text-anchor="middle" class="nd-label">Internet</text>
 
       <!-- firewall -->
-      <rect x="104" y="148" width="128" height="60" rx="10" class="nd-node nd-node--host"/>
-      <text x="168" y="173" text-anchor="middle" class="nd-label">OPNsense</text>
-      <text x="168" y="192" text-anchor="middle" class="nd-sub">the only path between</text>
+      <rect x="104" y="127" width="128" height="60" rx="10" class="nd-node nd-node--host"/>
+      <text x="168" y="152" text-anchor="middle" class="nd-label">OPNsense</text>
+      <text x="168" y="171" text-anchor="middle" class="nd-sub">the only path between</text>
 
-      <!-- bridges -->
+      <!-- segments -->
       <text x="292" y="26" class="nd-sub">Proxmox bridges</text>
 
       <rect x="292" y="40" width="330" height="46" rx="10" class="nd-node"/>
       <text x="306" y="62" class="nd-label">Management</text>
       <text x="306" y="78" class="nd-sub">hypervisor, console, backups</text>
-      <text x="608" y="68" text-anchor="end" class="nd-sub">Phase 1</text>
+      <text x="608" y="68" text-anchor="end" class="nd-sub">Onboard NIC</text>
 
       <rect x="292" y="103" width="330" height="46" rx="10" class="nd-node"/>
-      <text x="306" y="125" class="nd-label">Lab</text>
-      <text x="306" y="141" class="nd-sub">services, dashboards, scanners</text>
-      <text x="608" y="131" text-anchor="end" class="nd-sub">Phase 1</text>
+      <text x="306" y="125" class="nd-label">Corporate</text>
+      <text x="306" y="141" class="nd-sub">domain controller, endpoints, Linux</text>
+      <text x="608" y="131" text-anchor="end" class="nd-sub">VLAN 10</text>
 
-      <rect x="292" y="166" width="330" height="46" rx="10" class="nd-node nd-node--isolated"/>
-      <text x="306" y="188" class="nd-label">Target</text>
-      <text x="306" y="204" class="nd-sub">deliberately unpatched hosts</text>
-      <text x="608" y="194" text-anchor="end" class="nd-sub">Phase 1</text>
+      <rect x="292" y="166" width="330" height="46" rx="10" class="nd-node"/>
+      <text x="306" y="188" class="nd-label">SOC</text>
+      <text x="306" y="204" class="nd-sub">SIEM, network monitoring, cases</text>
+      <text x="608" y="194" text-anchor="end" class="nd-sub">VLAN 20</text>
 
       <rect x="292" y="229" width="330" height="46" rx="10" class="nd-node nd-node--isolated"/>
-      <text x="306" y="251" class="nd-label">Attack</text>
-      <text x="306" y="267" class="nd-sub">attacker hosts for the range</text>
-      <text x="608" y="257" text-anchor="end" class="nd-sub">Phase 2</text>
-
-      <rect x="292" y="292" width="330" height="46" rx="10" class="nd-node nd-node--isolated"/>
-      <text x="306" y="314" class="nd-label">Detonation</text>
-      <text x="306" y="330" class="nd-sub">untrusted samples</text>
-      <text x="608" y="320" text-anchor="end" class="nd-sub">Phase 2</text>
+      <text x="306" y="251" class="nd-label">Malware</text>
+      <text x="306" y="267" class="nd-sub">FLARE-VM, REMnux, samples</text>
+      <text x="608" y="257" text-anchor="end" class="nd-sub">VLAN 30</text>
 
       <!-- isolation note -->
-      <text x="42" y="248" class="nd-note">Dashed: no uplink.</text>
-      <text x="42" y="266" class="nd-note">Reachable only through</text>
-      <text x="42" y="284" class="nd-note">rules in OPNsense.</text>
+      <text x="42" y="226" class="nd-note">Dashed: no uplink.</text>
+      <text x="42" y="244" class="nd-note">Reachable only through</text>
+      <text x="42" y="262" class="nd-note">rules in OPNsense.</text>
     </svg>
   </div>
 </figure>

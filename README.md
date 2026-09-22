@@ -116,8 +116,8 @@ one blob long before it reaches its final size.
 | Home | The 30-second pitch: highlights, core strengths, a short career timeline, certifications |
 | Resume | The full record: dated experience, frameworks, tools, certifications, education |
 | whoami | How Christian works, and who he is outside of work |
-| Homelab | The running reference for the lab: hardware, network, software, constraints |
-| Writeups | Methodology, decisions and evidence. Lab milestones, public breach analysis, CTFs, Hack The Box and TryHackMe |
+| Homelab | The running reference for the blue team lab: hardware, network, tools, the six projects, constraints. Built on Phase 9 of the [Blue Team Roadmap](https://github.com/keraattin/Blue-Team-Roadmap#phase-9-build-your-portfolio) |
+| Writeups | Methodology, decisions and evidence. The lab projects, incident response reports from retired Hack The Box Sherlocks and blue team labs, public breach analysis, detection rules |
 | Blog | Shorter pieces: the reasoning behind a decision, the tradeoff, the mistake, and the occasional life update |
 
 **Writeups or Blog?** The Blog is about Christian and the choices he makes. The Writeups are about

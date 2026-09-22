@@ -3,7 +3,7 @@ title: "The Life of One Finding"
 date: 2026-10-01
 draft: true
 tags: ["homelab", "vulnerability-management"]
-description: "One vulnerability, followed from discovery to proof it is gone. Why the next phase of the lab is vulnerability management."
+description: "One vulnerability, followed from discovery to proof it is gone. Why vulnerability management has its own project in the lab."
 ---
 
 This is a story about a single row in a spreadsheet.
@@ -58,12 +58,12 @@ Finding the vulnerability is reading the recipe. Closing the ticket is saying di
 
 Most of my career has been on the operations side, the side that lives in Wednesday through Friday. Ownership, change windows, the one dependency nobody documented. That is where vulnerability management succeeds or fails, and it is the part the tools cannot do for you.
 
-So the next phase of my lab is that whole week, run on purpose, end to end:
+So one project in my lab is that whole week, run on purpose, end to end:
 
 1. An inventory, so every finding has a home.
-2. Two scanners, so I can see what each one misses.
+2. Two ways of scanning, agent and network, so I can see what each one misses.
 3. Prioritization by real-world exploitation, not scores alone.
-4. Fixes through automation, so they are repeatable and documented.
+4. Fixes made under a change record, so they are repeatable and documented.
 5. A rescan, every time, before anything is called closed.
 6. One dashboard and one page a manager could actually read.
 
@@ -79,7 +79,7 @@ If you are trying to figure out whether I know what I am doing, this is the answ
 
 First is network segmentation, because I am about to host deliberately broken machines and would like them to stay in their room. Then the inventory, the least exciting step and the one most programs skip.
 
-Later there is a second phase: an attack range, and just enough detection to see what each attack leaves behind. Kitchen gets cleaned before anyone starts a grease fire on purpose.
+The rest of the lab is blue team work: a SIEM watching a small corporate network, attacks run against it on purpose, and a record of what each one left behind. Kitchen gets cleaned before anyone starts a grease fire on purpose.
 
 ---
 
@@ -88,7 +88,7 @@ Later there is a second phase: an attack range, and just enough detection to see
 - Alternative to "A Scan Report Is Not a Fix." Pick one; do not publish both.
 - The week in this post is a composite scenario, not a story from a past employer. Keep it that way, or sanitize any real detail: no employer systems, counts, or client names.
 - The numbers (2,000, 400, 12, fourteen people) are illustrative. Fine for narrative, but do not let them read like claims about a real environment.
-- Publish after "RAM ate my budget." Link back in the intro, forward to the segmentation writeup, and link "a second phase" to the Phase 2 section of /homelab/.
+- Publish after "RAM ate my budget." Link back in the intro, forward to the segmentation writeup, and link "the rest of the lab" to the Six Projects section of /homelab/.
 - Framing check: reads as operations discipline, which works for ops, change, and incident management roles too.
 - OPSEC: no addresses, hostnames, or topology specifics.
 - Likely runs a bit longer than the original. Check reading time lands around 4 minutes. Set `draft: false` and fix the date on publish.

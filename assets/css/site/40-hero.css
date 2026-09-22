@@ -167,7 +167,7 @@ html.dark .cta-btn--primary { background-color: rgb(var(--color-primary-500)); }
   user-select: none;
 }
 .cta-btn__clock { width: 1.05rem; height: 1.05rem; }
-html.dark .cta-btn--pending { border-color: rgba(var(--color-neutral-500), 0.9); color: rgb(var(--color-neutral-400)); }
+html.dark .cta-btn--pending { border-color: rgba(var(--color-neutral-500), 0.9); color: rgb(var(--color-neutral-300)); }
 
 /* Buttons placed inside page content (resume, timeline) keep their own colors
    instead of picking up the .prose link color. */

@@ -1,6 +1,6 @@
 ---
 title: "Writeups"
-description: "Technical writeups: lab builds, vulnerability management end to end, public breach analysis, and offensive practice."
+description: "Technical writeups: blue team lab projects, incident response reports, public breach analysis, and detection rules."
 showDate: false
 showAuthor: false
 showReadingTime: false
@@ -8,26 +8,25 @@ showTableOfContents: false
 showWordCount: false
 ---
 
-The formal register. Methodology, decisions, and evidence, written for practitioners and hiring managers rather than recruiters. The [lab]({{< ref "homelab" >}}) is where a lot of it starts, but not where it stops: public breaches worth taking apart, CTFs, and Hack The Box and TryHackMe machines land here too. Sanitized configs and playbooks go on [GitHub](https://github.com/labwithchristian).
+The formal register. Methodology, decisions, and evidence, written for practitioners and hiring managers rather than recruiters. The [lab]({{< ref "homelab" >}}) is where most of it starts, but not where it stops: incident response reports from retired Hack The Box Sherlocks and blue team labs, and public breaches worth taking apart, land here too. Sanitized configs, Sysmon settings and detection rules go on [GitHub](https://github.com/labwithchristian).
 
 ## What's planned
 
-Each writeup follows a milestone in the lab, so they land in build order.
+The lab's six projects follow the [Blue Team Roadmap](https://github.com/keraattin/Blue-Team-Roadmap#phase-9-build-your-portfolio), plus one of my own. Each project ends in at least one writeup here.
 
-| Writeup | Covers | Phase |
+| Writeup | Covers | Source |
 |---|---|---|
-| Network segmentation | The Proxmox bridges, the OPNsense policy between them, and what the target segment is allowed to reach | 1 |
-| Asset inventory | NetBox as the source of truth, because nothing can be managed before it is counted | 1 |
-| Scanning and scoping | Greenbone, Nessus, and Qualys, credentialed and unauthenticated, kept inside the segments the rules allow | 1 |
-| Triage and prioritization | DefectDojo as the system of record, ranked with CISA KEV and FIRST EPSS rather than CVSS alone | 1 |
-| Remediation and verification | Ansible fixes, rescans that prove them, and findings tracked to closure | 1 |
-| Running it as a program | The vulnerability management standard, the exception process, and the false-positive procedure | 1 |
-| CIS Controls v8 mapping | The capstone. Controls mapped to implemented evidence | 1 |
-| Attack range | Ludus with GOAD-Light, and the rules that keep the range from reaching anything else | 2 |
-| Detection from attacks | Sysmon and Wazuh: what each technique left behind, paired with the attack that caused it | 2 |
+| Network segmentation | The three segments, the OPNsense rules between them, and why the malware segment has no way out | Lab |
+| SIEM deployment and dashboards | Windows, Sysmon and network logs in Elastic Security and Security Onion, and the detections and dashboards built on top | Project 1 |
+| Adversary emulation | Atomic Red Team techniques run on purpose, what the SIEM caught, and the rules written for what it missed | Project 2 |
+| Phishing analysis | One email taken apart end to end, and the script that pulls out its IOCs | Project 3 |
+| Incident response reports | Full investigations from retired Sherlocks and blue team labs: summary, timeline, IOCs, ATT&CK mapping, remediation | Project 4 |
+| Threat intelligence brief | One threat group's techniques, turned into detections tested in the lab | Project 5 |
+| Detection rules | Sigma and YARA rules, how they were tested, and the pull requests upstream | Project 6 |
+| Vulnerability management | Qualys agent and network scans of the same hosts compared, and one finding followed from scan to verified fix | Added project |
 
 {{< soon title="Nothing published yet" status="drafting" >}}
-The lab has to run before the writeups mean anything. First pieces land as each Phase 1 milestone completes, starting with segmentation, then inventory and the first scan.
+First up are incident response reports, since they need no lab build, then segmentation and the SIEM as the lab comes online.
 
 In the meantime, the [Homelab]({{< ref "homelab" >}}) page tracks build status, and the [Blog]({{< ref "blog" >}}) will carry the shorter reasoning behind decisions.
 {{< /soon >}}
