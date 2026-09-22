@@ -33,7 +33,8 @@ The dates, titles, and details are on my [resume]({{< ref "resume" >}}). This pa
 
 **Uptime and exposure are the same conversation.** A rushed change can become the next outage, and an expired certificate or a stale DNS record can become the next incident. I treat change windows, certificates, and cloud permissions as one discipline, not two.
 
-**A detection rule is easy to write and hard to trust.** The skill is one that fires on real adversary behavior, doesn't bury the analyst in false positives, and maps to a technique you can name.
+<!-- **A detection rule is easy to write and hard to trust.** The skill is one that fires on real adversary behavior, doesn't bury the analyst in false positives, and maps to a technique you can name.
+-->
 
 ## Off the clock
 
