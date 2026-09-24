@@ -14,7 +14,8 @@ summaryLength = 0
 
 [taxonomies]
   tag = "tags"
-  category = "categories"
+  # No categories taxonomy: nothing uses it, and it only produced an empty
+  # /categories/ page. Tags cover grouping. Add the line back to restore it.
 
 [outputs]
   home = ["HTML", "RSS", "JSON"]

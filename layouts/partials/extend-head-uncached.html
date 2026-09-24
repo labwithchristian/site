@@ -6,6 +6,11 @@
   {{ $intro := resources.Get "js/intro.js" | resources.Minify | resources.Fingerprint $alg }}
   <script src="{{ $intro.RelPermalink }}" integrity="{{ $intro.Data.Integrity }}"></script>
 {{ end }}
+{{/* Page transition into and out of /ctf (styles in assets/css/site/85-transitions.css).
+     Must run in the head, before the first frame, so pageswap and pagereveal
+     are caught. Only a navigation that crosses the /ctf boundary gets a
+     transition; every other one is skipped, as is any for reduced motion. */}}
+<script>(function(){var c=function(u){try{return /\/ctf\/?$/.test(new URL(u,location.href).pathname)}catch(e){return false}},r=function(){return window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches},h=c(location.href);addEventListener("pageswap",function(e){var v=e.viewTransition,t=e.activation&&e.activation.entry&&e.activation.entry.url;if(!v)return;if(r()||!t||c(t)===h)return v.skipTransition();v.types.add(h?"from-ctf":"to-ctf")});addEventListener("pagereveal",function(e){var v=e.viewTransition,a=window.navigation&&navigation.activation,f=a&&a.from&&a.from.url;if(!v)return;if(r()||!f||c(f)===h)return v.skipTransition();v.types.add(h?"to-ctf":"from-ctf")})})();</script>
 {{/* /ctf: page-only stylesheet, and the page stays dark whatever the visitor's
      theme setting (the theme's script can only add "dark", but its
      system-theme listener could remove it, so this puts it back). */}}

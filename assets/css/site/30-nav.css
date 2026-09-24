@@ -271,7 +271,7 @@ html.dark .nav-home:hover .nav-home__icon { color: rgb(var(--color-neutral-50));
 
 /* --- /ctf tab ---------------------------------------------------------------
    Last in the menu and set apart by a hairline: it is the one link that leaves
-   the surface site. A small dark hole pulses in front of it; on hover the tab
+   the front-end site. A small dark hole pulses in front of it; on hover the tab
    goes black with green text. On /ctf itself the tab is restyled by
    assets/css/ctf.css. --------------------------------------------------------- */
 .site-nav__link--ctf {

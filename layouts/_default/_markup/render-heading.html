@@ -19,7 +19,7 @@
 {{- $class := "relative group" -}}
 {{- with .Attributes.class }}{{ $class = printf "%s %s" $class . }}{{ end -}}
 <h{{ .Level }} class="{{ $class }}">{{ .Text | safeHTML }}
-    <div id="{{ $anchor }}" class="anchor"></div>
+    <span id="{{ $anchor }}" class="anchor"></span>
     {{ if .Page.Params.showHeadingAnchors | default (.Page.Site.Params.article.showHeadingAnchors | default true) }}
     <span class="heading-anchor not-prose select-none">
         <a href="#{{ $anchor }}" aria-label="{{ i18n "article.anchor_label" }}">

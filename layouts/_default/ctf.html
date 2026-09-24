@@ -1,4 +1,4 @@
-{{- /* /ctf: the "hidden service" page. Everything below is rendered from
+{{- /* /ctf: the "backroom" page, behind the front end. Everything below is rendered from
        data/ctf.yaml; the page stays dark (layouts/_default/baseof.html and
        extend-head-uncached.html), its styles live in assets/css/ctf.css, and
        assets/js/ctf.js runs the countdown, the event states and the flashlight
@@ -10,13 +10,13 @@
 <div class="ctfx not-prose">
 
   <div class="circuit" aria-hidden="true">
-    <span class="lock">●</span><span class="node me">you</span><span class="hop">──▶</span><span class="node">guard · DE</span><span class="hop">──▶</span><span class="node">relay · NL</span><span class="hop">──▶</span><span class="node">relay · IS</span><span class="hop">──▶</span><span class="node">/ctf</span><span class="addr">cc7x3ptr4ilq9kd2uz0nd3rgr0und.onion</span>
+    <span class="lock">●</span><span class="node me">you</span><span class="hop">──▶</span><span class="node">front end</span><span class="hop">──▶</span><span class="node">api</span><span class="hop">──▶</span><span class="node">internal</span><span class="hop">──▶</span><span class="node">/ctf</span><span class="addr">staff only · 10.13.37.8:8443</span>
   </div>
 
   <div class="wrap">
-    <div class="eyebrow">hidden service · off the surface · no spoilers</div>
-    <h1><span class="slash">/</span>ctf underground</h1>
-    <p class="lede">You left the surface site. Down here is where I keep score: the timed, scored competitions I have entered, what I captured, and what I am training for next. Practice labs live in the {{ with site.GetPage "/homelab" }}<a href="{{ .RelPermalink }}">homelab</a>{{ else }}homelab{{ end }}. <b>No spoilers for live events.</b> Writeups go up after an event closes, and only where its rules allow.</p>
+    <div class="eyebrow">backend · staff only · no spoilers</div>
+    <h1><span class="slash">/</span>ctf backroom</h1>
+    <p class="lede">You are behind the front end now. The backroom is where I keep score: the timed, scored competitions I have entered, where I placed, and what is next. Practice labs live in the {{ with site.GetPage "/homelab" }}<a href="{{ .RelPermalink }}">homelab</a>{{ else }}homelab{{ end }}. <b>No spoilers for live events.</b> Writeups go up after an event closes, and only where its rules allow.</p>
 
     <div class="grid">
       <section class="panel" aria-labelledby="ctf-next-h">
@@ -97,7 +97,7 @@
 
     <div class="foot">
       <span class="who">{{ partial "brand.html" (dict "kind" "mark" "class" "ctfx__mark") }}christian carrasco · operator</span>
-      <a href="{{ "/" | relURL }}">← return to the surface</a>
+      <a href="{{ "/" | relURL }}">← back to the front end</a>
     </div>
   </div>
 </div>

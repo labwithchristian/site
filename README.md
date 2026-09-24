@@ -45,12 +45,12 @@ git add themes/blowfish && git commit -m "Update Blowfish to <version>"
 | `partials/ctf/bar.html` | One module row in that panel: hollow dot for the previous run, solid dot for this one |
 | `partials/ctf/spark.html` | The small up, down or flat trend line on each headline number |
 | `_default/list.html` | Drops the theme's "no articles" line; sections use their own empty states. On a section with no table of contents, the body opens to the full container (`.list-body--roomy`) instead of the theme's 65ch cap |
-| `_default/_markup/render-heading.html` | Theme heading markup, but keeps classes set with `{.h-minor}` style attributes, and swaps the hover `#` for a drawn chef's toque positioned by `.heading-anchor` in `10-typography.css` |
+| `_default/_markup/render-heading.html` | Theme heading markup, but keeps classes set with `{.h-minor}` style attributes, swaps the hover `#` for a drawn chef's toque positioned by `.heading-anchor` in `10-typography.css`, and uses a `span` for the jump target so headings stay valid HTML |
 | `partials/header/floating.html`, `header/basic.html` | Compact pill nav with the Home icon. A menu entry can carry its own class through `[main.params] class = "..."` (the /ctf tab uses this) |
 | `partials/home/landing.html` | Homepage hero: name, `heroRole` eyebrow, lead, buttons |
 | `partials/cta-button.html` | Primary and outline buttons with an arrow (optional `download`) |
 | `partials/extend-head.html` | Loads the site stylesheet bundle |
-| `partials/extend-head-uncached.html` | Loads the homepage intro script on the homepage only, and `assets/css/ctf.css` plus the keep-it-dark guard on /ctf only |
+| `partials/extend-head-uncached.html` | Loads the homepage intro script on the homepage only, `assets/css/ctf.css` plus the keep-it-dark guard on /ctf only, and on every page the small script that tags navigations into or out of /ctf for the page transition |
 | `partials/extend-footer.html` | Credits line |
 | `partials/nav-icons/cc-mark.html` | CC brand mark Home icon (`navHomeIcon` in `params.toml`). `tp-classic.html`, the terminal pot, is kept as an alternative |
 | `partials/header/social-links.html` | LinkedIn and GitHub icons at the top right of every page (`navSocial` in `params.toml`, URLs from `languages.en.toml`) |
@@ -70,6 +70,7 @@ Every file in this folder is concatenated in filename order and loaded after the
 | `60-pages.css` | whoami portrait and How I work headings, resume page, work-in-progress and coming-soon blocks, network diagram, spec cards |
 | `70-footer.css` | Footer menu and credits |
 | `80-intro.css` | Homepage intro overlay |
+| `85-transitions.css` | The "lights out" transition into /ctf (flicker, black, power on) and the short fade back out. Cross-document view transitions: Chrome, Edge, Safari 18.2+; other browsers load the page normally. Off for reduced motion |
 | `90-print.css` | Print and Save as PDF layout, mainly for the resume |
 
 Colors come from the scheme in `assets/css/schemes/nebula-stone.css` (`colorScheme` in `params.toml`).

@@ -1,6 +1,6 @@
 ---
 title: "/ctf"
-description: "Capture the flag: the events I have entered, what I scored, what I am training for next, and the rules I play by."
+description: "Capture the flag: the events I have entered, where I placed, what is next, and the rules I play by."
 layout: ctf
 showDate: false
 showAuthor: false

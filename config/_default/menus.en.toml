@@ -25,7 +25,7 @@
   pageRef = "about"
   weight = 40
 
-# Last on purpose: the door off the surface site, set apart by a hairline in
+# Last on purpose: the door to the backroom, off the front-end site, set apart by a hairline in
 # 30-nav.css. To switch /ctf off, comment out this block and set draft: true in
 # content/ctf.md (see "CTF record" in README.md).
 [[main]]

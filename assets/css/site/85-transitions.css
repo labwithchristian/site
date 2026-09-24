@@ -1,0 +1,50 @@
+/* Page transition into /ctf: "lights out".
+   Cross-document view transitions (Chrome, Edge, Safari 18.2+). The script in
+   layouts/partials/extend-head-uncached.html tags the navigation "to-ctf" or
+   "from-ctf" and skips every other one, so the rest of the site navigates as
+   before. Browsers without view transitions simply load the page.
+
+   Going in: the front end's lights fail with a fluorescent flicker, the screen
+   goes black, then /ctf powers on like a monitor (a thin line opens to full
+   height). Coming out: a short fade. Off for reduced motion. */
+
+@view-transition { navigation: auto; }
+
+html:active-view-transition-type(to-ctf)::view-transition { background: #000; }
+html:active-view-transition-type(to-ctf)::view-transition-old(root) {
+  animation: 700ms linear both ctf-lights-fail;
+  z-index: 2;
+}
+html:active-view-transition-type(to-ctf)::view-transition-new(root) {
+  animation: 1250ms cubic-bezier(0.2, 0.7, 0.2, 1) both ctf-power-on;
+  z-index: 1;
+}
+
+html:active-view-transition-type(from-ctf)::view-transition-old(root) { animation: 260ms ease both ctf-fade-out; }
+html:active-view-transition-type(from-ctf)::view-transition-new(root) { animation: 320ms ease both ctf-fade-in; }
+
+@keyframes ctf-lights-fail {
+  0% { opacity: 1; filter: brightness(1); }
+  10% { filter: brightness(0.35); }
+  14% { filter: brightness(1.1); }
+  30% { filter: brightness(0.2); }
+  33% { filter: brightness(0.9); }
+  50% { filter: brightness(0.1); }
+  54% { filter: brightness(0.6); }
+  70% { opacity: 1; filter: brightness(0.05); }
+  100% { opacity: 0; filter: brightness(0); }
+}
+@keyframes ctf-power-on {
+  0%, 56% { clip-path: inset(50% 0 50% 0); filter: brightness(3); }
+  66% { clip-path: inset(49.6% 0 49.6% 0); filter: brightness(3); }
+  82% { clip-path: inset(0 0 0 0); filter: brightness(1.6); }
+  88% { filter: brightness(0.6); }
+  92% { filter: brightness(1.2); }
+  100% { clip-path: inset(0); filter: none; }
+}
+@keyframes ctf-fade-out { to { opacity: 0; } }
+@keyframes ctf-fade-in { from { opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*), ::view-transition-old(*), ::view-transition-new(*) { animation: none !important; }
+}
