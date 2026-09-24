@@ -1,0 +1,130 @@
+{{- /* /ctf: the "hidden service" page. Everything below is rendered from
+       data/ctf.yaml; the page stays dark (layouts/_default/baseof.html and
+       extend-head-uncached.html), its styles live in assets/css/ctf.css, and
+       assets/js/ctf.js runs the countdown, the event states and the flashlight
+       menu bar. Event states: upcoming -> live -> closed -> results. */ -}}
+{{ define "main" }}
+{{ .Store.Set "suppressBackgroundCanvas" true }}
+{{- $events := hugo.Data.ctf.events | default slice -}}
+{{- $n := partial "ctf/next.html" . -}}
+<div class="ctfx not-prose">
+
+  <div class="circuit" aria-hidden="true">
+    <span class="lock">●</span><span class="node me">you</span><span class="hop">──▶</span><span class="node">guard · DE</span><span class="hop">──▶</span><span class="node">relay · NL</span><span class="hop">──▶</span><span class="node">relay · IS</span><span class="hop">──▶</span><span class="node">/ctf</span><span class="addr">cc7x3ptr4ilq9kd2uz0nd3rgr0und.onion</span>
+  </div>
+
+  <div class="wrap">
+    <div class="eyebrow">hidden service · off the surface · no spoilers</div>
+    <h1><span class="slash">/</span>ctf underground</h1>
+    <p class="lede">You left the surface site. Down here is where I keep score: the timed, scored competitions I have entered, what I captured, and what I am training for next. Practice labs live in the {{ with site.GetPage "/homelab" }}<a href="{{ .RelPermalink }}">homelab</a>{{ else }}homelab{{ end }}. <b>No spoilers for live events.</b> Writeups go up after an event closes, and only where its rules allow.</p>
+
+    <div class="grid">
+      <section class="panel" aria-labelledby="ctf-next-h">
+        {{- with $n.event }}
+          {{- $start := time.AsTime .start -}}
+          {{- $end := time.AsTime .end -}}
+          {{- $left := $start.Sub now -}}
+          {{- $secs := int (math.Max 0 $left.Seconds) -}}
+          <h2 id="ctf-next-h">next drop <i data-ctf-armed>● {{ cond (eq $n.state "live") "live" "armed" }}</i></h2>
+          <span class="status" data-ctf-badge>{{ cond (eq $n.state "live") "LIVE" "REGISTERED" }}</span>
+          <div class="drop" data-ctf-event data-start="{{ .start }}" data-end="{{ .end }}">
+            <div class="name">{{ .name }}</div>
+            <div class="meta">{{ .season }} · {{ .format }} · {{ .crew }} run</div>
+            <div class="cd" data-ctf-countdown role="timer" aria-label="Time until {{ .name }} starts"{{ if eq $n.state "live" }} hidden{{ end }}>
+              <div><b data-cd="d">{{ printf "%02d" (int (div $secs 86400)) }}</b><span>DAYS</span></div>
+              <div><b data-cd="h">{{ printf "%02d" (int (div (mod $secs 86400) 3600)) }}</b><span>HRS</span></div>
+              <div><b data-cd="m">{{ printf "%02d" (int (div (mod $secs 3600) 60)) }}</b><span>MIN</span></div>
+              <div><b data-cd="s">{{ printf "%02d" (int (mod $secs 60)) }}</b><span>SEC</span></div>
+            </div>
+            <div class="live" data-ctf-live{{ if ne $n.state "live" }} hidden{{ end }}>
+              <b data-ctf-day>live</b><span>daily drops running · no spoilers until close</span>
+            </div>
+            <div class="tags">{{ range .focus }}<span>#{{ . }}</span>{{ end }}</div>
+            {{- with .url }}<a class="event-link" href="{{ . }}" rel="noopener">event site ↗</a>{{ end }}
+          </div>
+        {{- else }}
+          <h2 id="ctf-next-h">next drop <i>standby</i></h2>
+          <div class="drop">
+            <div class="name">Nothing scheduled</div>
+            <div class="meta">The next event goes up here as soon as I register.</div>
+          </div>
+        {{- end }}
+      </section>
+
+      <section class="panel" aria-labelledby="ctf-rules-h">
+        <h2 id="ctf-rules-h">rules of engagement <i>house rules</i></h2>
+<div class="pgp"><span class="h">-----BEGIN RULES-----</span>
+<span class="t">1. No flags or solutions for live events.
+2. Writeups after close, where the event's rules allow.
+3. Scores posted as earned, with proof.
+4. Every weak category has a plan attached.</span>
+<span class="h">-----END RULES-----</span></div>
+      </section>
+    </div>
+
+    <section class="panel index" aria-labelledby="ctf-archive-h">
+      <h2 id="ctf-archive-h">archive <i>{{ len $events }} {{ cond (eq (len $events) 1) "entry" "entries" }}</i></h2>
+      {{- range $events }}
+        {{- $e := . -}}
+        {{- $state := "" -}}
+        {{- if .result }}{{ $state = "results" }}
+        {{- else if .done }}{{ $state = "done" }}
+        {{- else if and .start .end }}
+          {{- if (time.AsTime .start).After now }}{{ $state = "upcoming" }}
+          {{- else if (time.AsTime .end).After now }}{{ $state = "live" }}
+          {{- else }}{{ $state = "closed" }}{{ end }}
+        {{- end }}
+        <div class="row">
+          <span class="id">[{{ .tag }}]</span>
+          <span class="t">{{ .name }}<small>{{ .org }}{{ with .note }} · {{ . }}{{ end }}{{ with .season }} · {{ . }}{{ end }}{{ with .handle }} · as {{ . }}{{ end }}</small></span>
+          <span class="r r--{{ $state }}"{{ if and .start .end (not .result) }} data-ctf-row data-start="{{ .start }}" data-end="{{ .end }}"{{ end }}>
+            {{- if eq $state "results" }}{{ .result }}
+            {{- else if eq $state "done" }}competed · result not on file
+            {{- else if eq $state "upcoming" }}registered
+            {{- else if eq $state "live" }}live now
+            {{- else if eq $state "closed" }}closed · results being tallied
+            {{- end }}
+            {{- with .proof_url }}<a href="{{ . }}">{{ $e.proof_label | default "proof" }}</a>{{ end }}
+            {{- with .writeup_url }}<a href="{{ . }}">writeup</a>{{ end }}
+          </span>
+        </div>
+      {{- end }}
+    </section>
+
+    {{- $scored := false -}}
+    {{- range $events }}{{ if and (not $scored) .modules }}{{ $scored = . }}{{ end }}{{ end }}
+    {{- with $scored }}
+    <section class="panel index" aria-labelledby="ctf-signal-h">
+      <h2 id="ctf-signal-h">signal strength <i>{{ .name | lower }} · {{ .season | lower }} · module completion</i></h2>
+      <div class="sig">
+        <div class="sig__col">
+          <h3>strongest</h3>
+          {{- range .modules }}{{ if ge .pct 70 }}
+          <div class="bar"><span>{{ .name }}</span><i style="--w:{{ .pct }}%"></i><em>{{ .pct }}%</em></div>
+          {{- end }}{{ end }}
+        </div>
+        <div class="sig__col sig__col--gap">
+          <h3>working on · with a plan</h3>
+          {{- range .modules }}{{ if lt .pct 70 }}
+          <div class="bar gap"><span>{{ .name }}</span><i style="--w:{{ math.Max .pct 3 }}%"></i><em>{{ .pct }}%</em></div>
+          {{- with .plan }}<div class="plan">→ {{ . }}</div>{{ end }}
+          {{- end }}{{ end }}
+        </div>
+      </div>
+      {{- with $n.event }}
+      <p class="sig__next">{{ .name }} focus, not scored yet: {{ delimit .focus " · " }}</p>
+      {{- end }}
+    </section>
+    {{- end }}
+
+    <div class="foot">
+      <span class="who">{{ partial "brand.html" (dict "kind" "mark" "class" "ctfx__mark") }}christian carrasco · operator</span>
+      <a href="{{ "/" | relURL }}">← return to the surface</a>
+    </div>
+  </div>
+</div>
+{{- $alg := site.Params.fingerprintAlgorithm | default "sha512" -}}
+{{- with resources.Get "js/ctf.js" | resources.Minify | resources.Fingerprint $alg }}
+<script src="{{ .RelPermalink }}" integrity="{{ .Data.Integrity }}" defer></script>
+{{- end }}
+{{ end }}

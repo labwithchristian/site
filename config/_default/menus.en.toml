@@ -25,6 +25,16 @@
   pageRef = "about"
   weight = 40
 
+# Last on purpose: the door off the surface site, set apart by a hairline in
+# 30-nav.css. To switch /ctf off, comment out this block and set draft: true in
+# content/ctf.md (see "CTF record" in README.md).
+[[main]]
+  name = "/ctf"
+  pageRef = "ctf"
+  weight = 50
+  [main.params]
+    class = "site-nav__link--ctf"
+
 
 # -- Footer Menu --
 

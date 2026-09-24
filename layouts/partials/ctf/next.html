@@ -1,0 +1,20 @@
+{{- /* Returns the next CTF from data/ctf.yaml that has not ended, as
+       (dict "event" <event or false> "state" "upcoming"|"live"|"").
+       Build-time only: the /ctf page re-checks the dates in the browser, and
+       the daily scheduled build in .github/workflows/hugo.yml keeps the resume
+       and homepage lines current. */ -}}
+{{- $pick := false -}}
+{{- range hugo.Data.ctf.events -}}
+  {{- if and .start .end (not .result) -}}
+    {{- if (time.AsTime .end).After now -}}
+      {{- if or (not $pick) ((time.AsTime .start).Before (time.AsTime $pick.start)) -}}
+        {{- $pick = . -}}
+      {{- end -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+{{- $state := "" -}}
+{{- with $pick -}}
+  {{- $state = cond ((time.AsTime .start).After now) "upcoming" "live" -}}
+{{- end -}}
+{{- return (dict "event" $pick "state" $state) -}}

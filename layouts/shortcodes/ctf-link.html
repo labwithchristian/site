@@ -1,0 +1,5 @@
+{{- /* Link to /ctf that degrades to plain text when the page is switched off
+       (draft: true in content/ctf.md), so the kill switch never breaks a build
+       or leaves a dead link. Usage: {{< ctf-link >}} or {{< ctf-link "text" >}} */ -}}
+{{- $text := .Get 0 | default "/ctf" -}}
+{{- with site.GetPage "/ctf" -}}<a href="{{ .RelPermalink }}">{{ $text }}</a>{{- else -}}{{ $text }}{{- end -}}

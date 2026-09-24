@@ -4,6 +4,9 @@
    cards into plain ruled sections, and puts name and links at the top.
    --------------------------------------------------------------------------- */
 @media print {
+  /* The live CTF line is for the web only; print lists results */
+  .ctf-next { display: none !important; }
+
   @page { size: letter; margin: 11mm 13mm; }
 
   html, body { background: #fff !important; color: #111 !important; }

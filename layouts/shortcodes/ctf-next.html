@@ -1,0 +1,15 @@
+{{- /* One line for the resume: the next or live CTF from data/ctf.yaml plus a
+       link to the full record on /ctf. Renders nothing if the /ctf page is
+       switched off (draft: true in content/ctf.md). Hidden in print, since a
+       printed resume lists results only. */ -}}
+{{- with site.GetPage "/ctf" -}}
+  {{- $ctf := . -}}
+  {{- $n := partial "ctf/next.html" . -}}
+  <p class="ctf-next not-prose">
+    {{- with $n.event -}}
+      <span class="ctf-next__label">{{ cond (eq $n.state "live") "Competing now" "Competing next" }}:</span>
+      {{ .name }}, {{ .season }}, {{ .crew }}.
+    {{- end }}
+    <a class="ctf-next__link" href="{{ $ctf.RelPermalink }}">Full CTF record &rarr;</a>
+  </p>
+{{- end -}}

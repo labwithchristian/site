@@ -38,14 +38,16 @@ git add themes/blowfish && git commit -m "Update Blowfish to <version>"
 
 | File | What it changes |
 |---|---|
-| `_default/baseof.html` | Adds `data-astral`, `data-heading-font` and `data-bg-tinted` attributes to `<html>` |
+| `_default/baseof.html` | Adds `data-astral`, `data-heading-font` and `data-bg-tinted` attributes to `<html>`, and `data-page="ctf"` plus the `dark` class on /ctf |
+| `_default/ctf.html` | The /ctf page, rendered from `data/ctf.yaml` (see [CTF record](#ctf-record)) |
+| `partials/ctf/next.html` | Returns the next CTF that has not ended, and whether it is upcoming or live. Used by /ctf, the resume line and the homepage row |
 | `_default/list.html` | Drops the theme's "no articles" line; sections use their own empty states. On a section with no table of contents, the body opens to the full container (`.list-body--roomy`) instead of the theme's 65ch cap |
 | `_default/_markup/render-heading.html` | Theme heading markup, but keeps classes set with `{.h-minor}` style attributes, and swaps the hover `#` for a drawn chef's toque positioned by `.heading-anchor` in `10-typography.css` |
-| `partials/header/floating.html`, `header/basic.html` | Compact pill nav with the Home icon |
+| `partials/header/floating.html`, `header/basic.html` | Compact pill nav with the Home icon. A menu entry can carry its own class through `[main.params] class = "..."` (the /ctf tab uses this) |
 | `partials/home/landing.html` | Homepage hero: name, `heroRole` eyebrow, lead, buttons |
 | `partials/cta-button.html` | Primary and outline buttons with an arrow (optional `download`) |
 | `partials/extend-head.html` | Loads the site stylesheet bundle |
-| `partials/extend-head-uncached.html` | Loads the homepage intro script on the homepage only |
+| `partials/extend-head-uncached.html` | Loads the homepage intro script on the homepage only, and `assets/css/ctf.css` plus the keep-it-dark guard on /ctf only |
 | `partials/extend-footer.html` | Credits line |
 | `partials/nav-icons/cc-mark.html` | CC brand mark Home icon (`navHomeIcon` in `params.toml`). `tp-classic.html`, the terminal pot, is kept as an alternative |
 | `partials/header/social-links.html` | LinkedIn and GitHub icons at the top right of every page (`navSocial` in `params.toml`, URLs from `languages.en.toml`) |
@@ -78,8 +80,10 @@ dark mode stay in step.
 | Headings | Fraunces (variable) |
 | Body and UI | IBM Plex Sans (variable) |
 | Eyebrows, labels, terminal text | IBM Plex Mono 400 and 500 |
+| /ctf only | Major Mono Display 400 (title), JetBrains Mono 800 (countdown), Space Grotesk 700 (event name) |
 
-All are latin-subset woff2 files from Fontsource, so the site makes no third-party font requests.
+All are latin-subset woff2 files from Fontsource under the SIL Open Font License 1.1, so the site makes no
+third-party font requests. The three /ctf faces are declared in `assets/css/ctf.css` and only download on that page.
 
 ### Homepage intro
 
@@ -136,6 +140,7 @@ rather than tilting, so the logo is never shown rotated. The kitchen metaphor ca
 | Homelab | The running reference for the blue team lab: hardware, network, tools, the six projects, constraints. Built on Phase 9 of the [Blue Team Roadmap](https://github.com/keraattin/Blue-Team-Roadmap#phase-9-build-your-portfolio) |
 | Writeups | Methodology, decisions and evidence. The lab projects, incident response reports from retired Hack The Box Sherlocks and blue team labs, public breach analysis, detection rules |
 | Blog | Shorter pieces: the reasoning behind a decision, the tradeoff, the mistake, and the occasional life update |
+| /ctf | Timed, scored competitions: what's next with a live countdown, the archive with proof, category strengths and the plan for each weak one, and the house rules. Deliberately different from the rest of the site: always dark, its own menu bar. Practice platforms stay on Homelab and Writeups |
 
 **Writeups or Blog?** The Blog is about Christian and the choices he makes. The Writeups are about
 systems and the evidence behind them.
@@ -166,6 +171,44 @@ strips the site chrome and adds the name and links at the top.
 `static/img/og-card.jpg` (1200x630) is the image LinkedIn, Slack and X show when the site is shared.
 It's set with `images` in `params.toml`.
 
+### CTF record
+
+`data/ctf.yaml` is the one place CTF events live. It feeds three things:
+
+| Where | What shows |
+|---|---|
+| /ctf (`layouts/_default/ctf.html`) | Next event with countdown, the archive, category strengths and plans, house rules |
+| Resume (`ctf-next` shortcode) | One line while an event is coming up or live, with a link to /ctf. Web only |
+| Home (`pipeline ... ctf="true"`) | A What's Cooking row: `Queued`, then `Live now` |
+
+Scope is timed, scored competitions. Retired Hack The Box Sherlocks, CyberDefenders and other practice
+labs are homelab and writeups material, not /ctf.
+
+Event states come from the dates: **upcoming** before `start`, **live** until `end`, **closed** after,
+**results** once `result` is filled in. The page recomputes them in the browser every second, and the
+daily build keeps the resume and homepage in step.
+
+**Adding an event:** copy the Huntress entry at the top of `events`, newest first, and confirm the
+start and end times (with their time zone offset) from the registration email.
+
+**When an event closes:**
+
+1. Before the platform goes dark, screenshot the scoreboard: rank, points and solves, with your handle
+   visible. Save it in `content/resume/` next to the NCL scorecard.
+2. Fill in `result`, `handle`, `proof_url` and `proof_label` in `data/ctf.yaml`.
+3. Check the event's rules on writeups. Publish them under Writeups only when allowed, then set
+   `writeup_url`.
+4. Add the result to the resume's Education and Competitions section (the `ctf-next` line only covers
+   what's next). No em or en dashes.
+5. If the event had scored categories, add a `modules` list so the strengths panel can use it.
+
+**Turning /ctf off** (kill switch): set `draft: true` in `content/ctf.md` and comment out the `/ctf`
+block in `config/_default/menus.en.toml`. The resume line, homepage row and Writeups link hide
+themselves. Set both back to turn it on again.
+
+**Rolling back entirely:** revert the commit that added /ctf (GitHub Desktop: History, right-click the
+commit, "Revert Changes in Commit", then Push). `DEPLOYMENT-SOP.md` Phase 8 has the command-line version.
+
 ## Shortcodes
 
 | Shortcode | Used on | Purpose |
@@ -190,6 +233,10 @@ It's set with `images` in `params.toml`.
 | `vm-loop` | Homelab | Inline SVG of the vulnerability management loop, from inventory to verified fix. Edit the stage labels in the shortcode file |
 | `soon title status` | Writeups, Blog, Tags | Coming-soon block |
 | `wip title` | Homelab | Work-in-progress block |
+| `ctf-next` | Resume | "Competing next: ..." line plus a link to /ctf, from `data/ctf.yaml`. Hidden in print, gone when /ctf is off |
+| `ctf-link "text"` | Writeups | Link to /ctf that falls back to plain text when /ctf is off |
+
+`pipeline` also takes `ctf="true"` (Home): it appends the next CTF from `data/ctf.yaml` as `Queued`, then `Live now`, and drops it once the event ends.
 
 ### Heading attributes
 
@@ -224,11 +271,15 @@ for the card, so the source can be larger.
 
 ## Continuous integration
 
-`.github/workflows/hugo.yml` runs on every pull request and every push to `main`:
+`.github/workflows/hugo.yml` runs on every pull request, every push to `main`, and once a day at 09:15 UTC:
 
 1. Builds the site with Hugo extended.
 2. Checks every internal link, anchor, stylesheet, script and image in the build with
    [lychee](https://github.com/lycheeverse/lychee), offline. A broken internal link fails the run.
-3. On `main` only, deploys the build to GitHub Pages.
+3. On `main` and the daily run, deploys the build to GitHub Pages.
+
+The daily run exists for date-driven content (the /ctf event states, the resume's "Competing next" line,
+the homepage's CTF row), so they stay right without a commit. GitHub pauses scheduled runs after 60
+days with no push; any commit, or "Run workflow" on the Actions tab, turns them back on.
 
 Working on a branch and opening a pull request gets the checks without touching the live site.

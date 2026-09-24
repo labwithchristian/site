@@ -1,4 +1,15 @@
 {{- $items := .Get "items" | default "" -}}
+{{- /* ctf="true" appends the next CTF from data/ctf.yaml (see partials/ctf/next.html):
+       "Queued" before it starts, "Live now" while it runs, gone once it ends.
+       Skipped when the /ctf page is switched off. */ -}}
+{{- if and (.Get "ctf") (site.GetPage "/ctf") -}}
+  {{- $n := partial "ctf/next.html" . -}}
+  {{- with $n.event -}}
+    {{- $status := cond (eq $n.state "live") "Live now" "Queued" -}}
+    {{- $note := printf "%s, %s, %s. Tracked day by day on the /ctf page" .season .crew .format -}}
+    {{- $items = printf "%s | %s :: %s :: %s" $items .name $status $note -}}
+  {{- end -}}
+{{- end -}}
 <div class="pipeline not-prose my-8">
   <ul class="pipeline__list">
     {{- range split $items "|" -}}

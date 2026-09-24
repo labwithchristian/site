@@ -268,3 +268,64 @@ html.dark .nav-home:hover .nav-home__icon { color: rgb(var(--color-neutral-50));
    so the logo is never shown rotated. */
 .nav-home__icon:has(.nav-mark) { width: 1.35rem; }
 .nav-home:hover .nav-home__icon:has(.nav-mark) { transform: translateY(-1px); }
+
+/* --- /ctf tab ---------------------------------------------------------------
+   Last in the menu and set apart by a hairline: it is the one link that leaves
+   the surface site. A small dark hole pulses in front of it; on hover the tab
+   goes black with green text. On /ctf itself the tab is restyled by
+   assets/css/ctf.css. --------------------------------------------------------- */
+.site-nav__link--ctf {
+  position: relative;
+  margin-inline-start: 0.7rem;
+  font-family: "IBM Plex Mono", ui-monospace, monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+}
+.site-nav__link--ctf::before {
+  content: "";
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: #07060b;
+  box-shadow: 0 0 0 2px rgba(124, 92, 255, 0.4);
+  animation: ctf-hole 3.2s ease-in-out infinite;
+}
+.site-nav__link--ctf::after {
+  content: "";
+  position: absolute;
+  left: -0.45rem;
+  top: 25%;
+  height: 50%;
+  width: 1px;
+  background: rgba(var(--color-primary-400), 0.45);
+}
+@keyframes ctf-hole {
+  0%, 100% { box-shadow: 0 0 0 2px rgba(124, 92, 255, 0.35); }
+  50% { box-shadow: 0 0 0 2px rgba(124, 92, 255, 0.85), 0 0 10px rgba(124, 92, 255, 0.55); }
+}
+.site-nav__link--ctf:hover { background-color: #07060b; color: #9dff6a; }
+.site-nav__link--ctf:hover::before { background: #9dff6a; box-shadow: 0 0 8px #9dff6a; }
+html.dark .site-nav__link--ctf::before { background: #000; }
+
+/* Phone menu: the same dark hole in front of /ctf */
+#mobile-menu-dialog a[href$="/ctf/"] span { font-family: "IBM Plex Mono", ui-monospace, monospace; font-weight: 500; letter-spacing: 0; }
+#mobile-menu-dialog a[href$="/ctf/"]::before {
+  content: "";
+  flex: none;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background: #07060b;
+  box-shadow: 0 0 0 2px rgba(124, 92, 255, 0.55);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-nav__link--ctf::before { animation: none; }
+}
+
+/* Resume: the "Competing next" line above Education and Competitions */
+.ctf-next { margin: 0 0 1.4rem; font-size: 0.9rem; color: rgb(var(--color-neutral-600)); }
+.ctf-next__label { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 0.78rem; letter-spacing: 0.04em; color: rgb(var(--color-primary-700)); }
+.ctf-next__link { margin-inline-start: 0.4rem; font-weight: 500; color: rgb(var(--color-primary-700)); text-decoration: underline; text-underline-offset: 3px; }
+html.dark .ctf-next { color: rgb(var(--color-neutral-300)); }
+html.dark .ctf-next__label, html.dark .ctf-next__link { color: rgb(var(--color-primary-300)); }

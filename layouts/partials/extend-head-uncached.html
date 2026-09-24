@@ -6,3 +6,12 @@
   {{ $intro := resources.Get "js/intro.js" | resources.Minify | resources.Fingerprint $alg }}
   <script src="{{ $intro.RelPermalink }}" integrity="{{ $intro.Data.Integrity }}"></script>
 {{ end }}
+{{/* /ctf: page-only stylesheet, and the page stays dark whatever the visitor's
+     theme setting (the theme's script can only add "dark", but its
+     system-theme listener could remove it, so this puts it back). */}}
+{{ if eq .Layout "ctf" }}
+  {{ $alg := site.Params.fingerprintAlgorithm | default "sha512" }}
+  {{ $ctfCSS := resources.Get "css/ctf.css" | resources.Minify | resources.Fingerprint $alg }}
+  <link rel="stylesheet" href="{{ $ctfCSS.RelPermalink }}" integrity="{{ $ctfCSS.Data.Integrity }}">
+  <script>(function(d){d.classList.add("dark");new MutationObserver(function(){if(!d.classList.contains("dark"))d.classList.add("dark")}).observe(d,{attributes:true,attributeFilter:["class"]})})(document.documentElement);</script>
+{{ end }}

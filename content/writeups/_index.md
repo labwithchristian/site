@@ -1,6 +1,6 @@
 ---
 title: "Writeups"
-description: "Technical writeups: blue team lab projects, incident response reports, public breach analysis, and detection rules."
+description: "Technical writeups: blue team lab projects, incident response reports, CTF challenges, public breach analysis, and detection rules."
 showDate: false
 showAuthor: false
 showReadingTime: false
@@ -24,6 +24,7 @@ The lab's six projects follow keraattin's [Blue Team Roadmap](https://github.com
 | Threat intelligence brief | One threat group's techniques, turned into detections tested in the lab | Project 5 |
 | Detection rules | Sigma and YARA rules, how they were tested, and the pull requests upstream | Project 6 |
 | Vulnerability management | Qualys agent and network scans of the same hosts compared, and one finding followed from scan to verified fix | Added project |
+| CTF writeups | Challenges from scored competitions: approach, tools and what I would do differently. Published after an event closes, and only where its rules allow | {{< ctf-link >}} |
 
 {{< soon title="Nothing published yet" status="drafting" >}}
 First up are incident response reports, since they need no lab build, then segmentation and the SIEM as the lab comes online.
