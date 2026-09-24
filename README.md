@@ -70,7 +70,7 @@ Every file in this folder is concatenated in filename order and loaded after the
 | `60-pages.css` | whoami portrait and How I work headings, resume page, work-in-progress and coming-soon blocks, network diagram, spec cards |
 | `70-footer.css` | Footer menu and credits |
 | `80-intro.css` | Homepage intro overlay |
-| `85-transitions.css` | The "lights out" transition into /ctf (flicker, black, power on) and the short fade back out. Cross-document view transitions: Chrome, Edge, Safari 18.2+; other browsers load the page normally. Off for reduced motion |
+| `85-transitions.css` | The "lights out" transition into /ctf (flicker, black, power on) and "monitor off" on the way out (collapse to a line, then a dot). Cross-document view transitions: Chrome, Edge, Safari 18.2+; other browsers load the page normally. Off for reduced motion |
 | `90-print.css` | Print and Save as PDF layout, mainly for the resume |
 
 Colors come from the scheme in `assets/css/schemes/nebula-stone.css` (`colorScheme` in `params.toml`).

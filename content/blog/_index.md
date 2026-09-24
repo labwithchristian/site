@@ -8,7 +8,7 @@ showTableOfContents: false
 showWordCount: false
 ---
 
-One argument per post, three or four minutes. The reasoning behind a decision, the tradeoff I actually picked, the mistakes I would rather write down than repeat, and every so often something from outside the lab.
+Short takes, three or four minutes each. Writeups show the work; the blog explains the thinking: why I chose one tradeoff over another, what I got wrong, and sometimes life outside the lab.
 
 ## In the drafts folder
 

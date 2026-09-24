@@ -1,6 +1,6 @@
 ---
 title: "Writeups"
-description: "Technical writeups: blue team lab projects, incident response reports, CTF challenges, public breach analysis, and detection rules."
+description: "Technical writeups: retired Hack The Box and TryHackMe boxes, LetsDefend and blue team labs, CTF postmortems, coursework and lab projects."
 showDate: false
 showAuthor: false
 showReadingTime: false
@@ -8,7 +8,14 @@ showTableOfContents: false
 showWordCount: false
 ---
 
-The formal register. Methodology, decisions, and evidence, written for practitioners and hiring managers rather than recruiters. The [lab]({{< ref "homelab" >}}) is where most of it starts, but not where it stops: incident response reports from retired Hack The Box Sherlocks and blue team labs, and public breaches worth taking apart, land here too. Sanitized configs, Sysmon settings and detection rules go on [GitHub](https://github.com/labwithchristian).
+The long form: how I worked a problem, what I decided and the evidence behind it. What lands here:
+
+- Walkthroughs of retired Hack The Box and TryHackMe boxes
+- LetsDefend and other blue team lab investigations
+- CTF postmortems and lessons learned, after each event closes
+- Coursework and projects from the [lab]({{< ref "homelab" >}})
+
+Configs and detection rules go on [GitHub](https://github.com/labwithchristian).
 
 ## What's planned
 

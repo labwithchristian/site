@@ -8,7 +8,7 @@ showTableOfContents: true
 showWordCount: false
 ---
 
-This is my blue team lab: one repurposed workstation running a small corporate network, the security stack that watches it, and an isolated room for malware. I build it on the portfolio design in Phase 9 of keraattin's [Blue Team Roadmap](https://github.com/keraattin/Blue-Team-Roadmap#phase-9-build-your-portfolio). The roadmap is written for beginners and career switchers, and I use it for a different reason: it is a well-mapped path for finding my own knowledge gaps, refreshing concepts I haven't touched in a while, and building up weaker areas like Python. Following it means I spend my time on the work instead of reinventing the layout. Every piece here earns its place by feeding one of the projects below.
+A blue team lab on one repurposed workstation: a small corporate network, the tools that watch it, and an isolated segment for malware. I follow keraattin's [Blue Team Roadmap](https://github.com/keraattin/Blue-Team-Roadmap#phase-9-build-your-portfolio) because it maps out the work, which leaves my time for finding gaps, refreshing concepts and building up skills like Python. Every piece feeds a project below.
 
 ## Build Status
 
