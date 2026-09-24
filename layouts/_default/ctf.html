@@ -76,9 +76,11 @@
         {{- end }}
         <div class="row">
           <span class="id">[{{ .tag }}]</span>
-          <span class="t">{{ .name }}<small>{{ .org }}{{ with .note }} · {{ . }}{{ end }}{{ with .season }} · {{ . }}{{ end }}{{ with .handle }} · as {{ . }}{{ end }}</small></span>
+          <span class="t">{{ .name }}<small>{{ .org }}{{ with .note }} · {{ . }}{{ end }}{{ with .season }} · {{ . }}{{ end }}{{ with .handle }} · as {{ . }}{{ with $e.school }} @ {{ . }}{{ end }}{{ end }}</small></span>
           <span class="r r--{{ $state }}"{{ if and .start .end (not .result) }} data-ctf-row data-start="{{ .start }}" data-end="{{ .end }}"{{ end }}>
-            {{- if eq $state "results" }}{{ .result }}
+            {{- if eq $state "results" }}
+              {{- if and .rank .field }}<b class="rank">#{{ .rank }} of {{ lang.FormatNumber 0 .field }} · top {{ lang.FormatNumber 1 (mul 100 (div (float .rank) .field)) }}%</b><span class="sub">{{ .result }}</span>
+              {{- else }}{{ .result }}{{ end }}
             {{- else if eq $state "done" }}competed · result not on file
             {{- else if eq $state "upcoming" }}registered
             {{- else if eq $state "live" }}live now
@@ -102,6 +104,8 @@
       {{- with $prev }}
       <p class="sig__delta">
         <span>vs {{ $vs }}</span>
+        {{- $c := index $seasons 0 -}}
+        {{- if and $c.rank .rank $c.field .field }}<span>rank {{ .rank }} → <b>{{ $c.rank }}</b> · top {{ lang.FormatNumber 1 (mul 100 (div (float .rank) .field)) }} → <b>{{ lang.FormatNumber 1 (mul 100 (div (float $c.rank) $c.field)) }}%</b></span>{{ end }}
         {{- $cur := index $seasons 0 -}}
         {{- if and $cur.points .points }}{{ $dp := sub (int $cur.points) (int .points) }}<span><b>{{ if gt $dp 0 }}+{{ end }}{{ $dp }}</b> pts</span>{{ end }}
         {{- if and $cur.accuracy .accuracy }}<span>accuracy {{ .accuracy }} → <b>{{ $cur.accuracy }}%</b></span>{{ end }}

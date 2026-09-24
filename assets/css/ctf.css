@@ -105,6 +105,8 @@ html[data-page="ctf"] body { background: transparent !important; }
 .ctfx .row .t small { display: block; font-size: 0.78rem; color: var(--dim); }
 .ctfx .row .r { text-align: right; color: var(--acid); }
 .ctfx .row .r a { display: block; margin-top: 0.2rem; font-size: 0.75rem; }
+.ctfx .row .r .rank { display: block; font-weight: 400; }
+.ctfx .row .r .sub { display: block; margin-top: 0.15rem; font-size: 0.78rem; color: var(--dim); }
 .ctfx .r--done, .ctfx .r--closed { color: var(--warn) !important; }
 .ctfx .r--upcoming { color: var(--p) !important; }
 

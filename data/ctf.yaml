@@ -45,6 +45,9 @@ events:
     done: true
     crew: solo
     handle: Proj3ctL1nux
+    school: WGU
+    rank: 338
+    field: 5356
     result: 1,755 / 3,000 pts · 79.5% accuracy
     points: 1755
     accuracy: 79.5
@@ -52,10 +55,12 @@ events:
     proof_url: /resume/#ncl-2020
     proof_label: scorecard
     writeup_url: ""
+    # rank / field: overall placement among all Individual Game players,
+    # shown on /ctf with the top percentage worked out from them.
     # Module completion from the Cyber Skyline scorecard (the Survey module is
     # left out: it is a questionnaire, not a challenge). `plan` says where a
     # weaker category gets worked on. The newest season with modules feeds the
-    # signal panel on /ctf, compared with the next season down (points,
+    # signal panel on /ctf, compared with the next season down (rank, points,
     # accuracy, completion and each module), so keep those fields on both.
     modules:
       - { name: osint, pct: 100 }
@@ -77,6 +82,9 @@ events:
     done: true
     crew: solo
     handle: Proj3ctL1nux
+    school: WGU
+    rank: 463
+    field: 4147
     result: 1,470 / 3,000 pts · 72.9% accuracy
     points: 1470
     accuracy: 72.9

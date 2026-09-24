@@ -196,7 +196,8 @@ start and end times (with their time zone offset) from the registration email.
 
 1. Before the platform goes dark, screenshot the scoreboard: rank, points and solves, with your handle
    visible. Save it in `content/resume/` next to the NCL scorecards.
-2. Fill in `result`, `handle`, `proof_url` and `proof_label` in `data/ctf.yaml`. Point `proof_url` at the
+2. Fill in `result`, `handle`, `proof_url` and `proof_label` in `data/ctf.yaml`, plus `rank` and `field`
+   (placement and number of players) when the event publishes them; /ctf works out the top percentage. Point `proof_url` at the
    event's own resume card: give its `job` shortcode an `id` and link `/resume/#that-id`.
 3. Check the event's rules on writeups. Publish them under Writeups only when allowed, then set
    `writeup_url`.
