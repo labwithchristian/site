@@ -57,7 +57,7 @@
 <span class="t">1. No flags or solutions for live events.
 2. Writeups after close, where the event's rules allow.
 3. Scores posted as earned, with proof.
-4. Every weak category has a plan attached.</span>
+4. Rank against the whole field, not a hand-picked number.</span>
 <span class="h">-----END RULES-----</span></div>
       </section>
     </div>
@@ -93,46 +93,7 @@
       {{- end }}
     </section>
 
-    {{- /* Signal panel: the newest season with modules, compared with the
-           season before it (a marker on each bar and a change figure). */ -}}
-    {{- $seasons := where $events "modules" "!=" nil -}}
-    {{- with index $seasons 0 }}
-    {{- $prev := cond (gt (len $seasons) 1) (index $seasons 1) false -}}
-    {{- $vs := "" -}}{{ with $prev }}{{ $vs = .season | lower }}{{ end -}}
-    <section class="panel index" aria-labelledby="ctf-signal-h">
-      <h2 id="ctf-signal-h">signal strength <i>{{ .name | lower }} · {{ .season | lower }} · module completion</i></h2>
-      {{- with $prev }}
-      <p class="sig__delta">
-        <span>vs {{ $vs }}</span>
-        {{- $c := index $seasons 0 -}}
-        {{- if and $c.rank .rank $c.field .field }}<span>rank {{ .rank }} → <b>{{ $c.rank }}</b> · top {{ lang.FormatNumber 1 (mul 100 (div (float .rank) .field)) }} → <b>{{ lang.FormatNumber 1 (mul 100 (div (float $c.rank) $c.field)) }}%</b></span>{{ end }}
-        {{- $cur := index $seasons 0 -}}
-        {{- if and $cur.points .points }}{{ $dp := sub (int $cur.points) (int .points) }}<span><b>{{ if gt $dp 0 }}+{{ end }}{{ $dp }}</b> pts</span>{{ end }}
-        {{- if and $cur.accuracy .accuracy }}<span>accuracy {{ .accuracy }} → <b>{{ $cur.accuracy }}%</b></span>{{ end }}
-        {{- if and $cur.completion .completion }}<span>completion {{ .completion }} → <b>{{ $cur.completion }}%</b></span>{{ end }}
-        <span class="sig__key" aria-hidden="true"><i></i>{{ $vs }}</span>
-      </p>
-      {{- end }}
-      <div class="sig">
-        <div class="sig__col">
-          <h3>strongest</h3>
-          {{- range .modules }}{{ if ge .pct 70 }}
-          {{ partial "ctf/bar.html" (dict "m" . "prev" $prev "vs" $vs) }}
-          {{- end }}{{ end }}
-        </div>
-        <div class="sig__col sig__col--gap">
-          <h3>working on · with a plan</h3>
-          {{- range .modules }}{{ if lt .pct 70 }}
-          {{ partial "ctf/bar.html" (dict "m" . "prev" $prev "vs" $vs "gap" true) }}
-          {{- with .plan }}<div class="plan">→ {{ . }}</div>{{ end }}
-          {{- end }}{{ end }}
-        </div>
-      </div>
-      {{- with $n.event }}
-      <p class="sig__next">{{ .name }} focus, not scored yet: {{ delimit .focus " · " }}</p>
-      {{- end }}
-    </section>
-    {{- end }}
+    {{ partial "ctf/signal.html" . }}
 
     <div class="foot">
       <span class="who">{{ partial "brand.html" (dict "kind" "mark" "class" "ctfx__mark") }}christian carrasco · operator</span>

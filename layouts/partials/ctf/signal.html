@@ -1,0 +1,190 @@
+{{- /* /ctf signal strength panel: one view per scored event, picked from a
+       dropdown. It opens on the newest event with a result; events that are
+       registered, live or waiting on scores are listed but locked.
+
+       Comparisons only run between events from the same organiser (NCL with
+       NCL), since ranks and categories from different CTFs do not line up.
+       CTF data only: every number here comes from data/ctf.yaml.
+
+       Behaviour (the dropdown) lives in assets/js/ctf.js, styles in
+       assets/css/ctf.css. Without JavaScript the newest view shows. */ -}}
+{{- $events := hugo.Data.ctf.events | default slice -}}
+{{- $scored := slice -}}{{- $locked := slice -}}
+{{- range $events }}
+  {{- if .result }}{{ $scored = $scored | append . }}
+  {{- else if and .start .end }}{{ $locked = $locked | append . }}{{ end }}
+{{- end }}
+{{- with $scored }}
+{{- $first := index $scored 0 }}
+<section class="panel index sigx" aria-labelledby="ctf-signal-h" data-sig>
+  <h2 id="ctf-signal-h">signal strength <i data-sig-title>{{ $first.name | lower }} · {{ $first.season | lower }}</i></h2>
+
+  <div class="dd" data-sig-dd>
+    <span class="dd__p" id="ctf-sig-label">$ load --event</span>
+    <button class="dd__b" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="ctf-sig-list" aria-labelledby="ctf-sig-label ctf-sig-current" data-sig-btn>
+      <span id="ctf-sig-current" data-sig-current>{{ $first.name | lower }} · {{ $first.season | lower }}</span><i aria-hidden="true">▾</i>
+    </button>
+    <span class="dd__meta">{{ len $scored }} scored{{ with $locked }} · {{ len . }} pending{{ end }}</span>
+    <ul class="dd__l" id="ctf-sig-list" role="listbox" tabindex="-1" aria-labelledby="ctf-sig-label" hidden data-sig-list>
+      {{- range $i, $e := $scored }}
+      <li class="opt{{ if eq $i 0 }} is-on{{ end }}" id="ctf-sig-opt-{{ $e.id }}" role="option" aria-selected="{{ if eq $i 0 }}true{{ else }}false{{ end }}" data-sig-id="{{ $e.id }}" data-sig-label="{{ $e.name | lower }} · {{ $e.season | lower }}">
+        <span class="opt__n">{{ $e.name }}<small>{{ $e.season }}{{ if eq $i 0 }} · latest{{ end }}</small></span>
+        <span class="opt__r">{{ with $e.rank }}#{{ . }}{{ with $e.field }} of {{ lang.FormatNumber 0 . }}{{ end }}<small>top {{ lang.FormatNumber 1 (mul 100 (div (float $e.rank) $e.field)) }}%</small>{{ else }}{{ $e.result }}{{ end }}</span>
+      </li>
+      {{- end }}
+      {{- range $locked }}
+        {{- $st := "registered" -}}
+        {{- if (time.AsTime .start).Before now }}{{ $st = cond ((time.AsTime .end).After now) "live now" "scores being tallied" }}{{ end }}
+      <li class="opt opt--locked" id="ctf-sig-opt-{{ .id }}" role="option" aria-selected="false" aria-disabled="true">
+        <span class="opt__n">{{ .name }}<small>{{ .season }} · {{ $st }}</small></span>
+        <span class="opt__r">scores after {{ (time.AsTime .end).Format "Jan 2" }}</span>
+      </li>
+      {{- end }}
+    </ul>
+  </div>
+
+  {{- range $i, $e := $scored }}
+    {{- /* the nearest older and newer events from the same organiser */ -}}
+    {{- $prev := false -}}{{- $next := false -}}
+    {{- range after (add $i 1) $scored }}{{ if and (not $prev) (eq .org $e.org) }}{{ $prev = . }}{{ end }}{{ end }}
+    {{- range first $i $scored }}{{ if eq .org $e.org }}{{ $next = . }}{{ end }}{{ end }}
+    {{- $pl := "" }}{{ with $prev }}{{ $pl = .season | lower }}{{ end }}
+    {{- $top := 0.0 }}{{ with $e.rank }}{{ $top = mul 100 (div (float $e.rank) $e.field) }}{{ end }}
+  <div class="sigv" data-sig-view="{{ $e.id }}"{{ if ne $i 0 }} hidden{{ end }}>
+
+    {{- /* headline numbers */ -}}
+    <div class="kpis">
+      {{- with $e.rank }}
+      <div class="kpi"><span class="k">rank</span><b>#{{ . }}</b><span class="u">of {{ lang.FormatNumber 0 $e.field }}</span>
+        {{- if and $prev $prev.rank }}{{ $d := sub (int $prev.rank) (int .) }}
+        <span class="was">{{ partial "ctf/spark.html" (dict "d" $d) }}<span>was #{{ $prev.rank }}</span></span>
+        {{- else }}<span class="was was--base">baseline · first run</span>{{ end }}
+      </div>
+      <div class="kpi"><span class="k">percentile</span><b>top {{ lang.FormatNumber 1 $top }}%</b><span class="u">of all players</span>
+        {{- if and $prev $prev.rank }}{{ $pt := mul 100 (div (float $prev.rank) $prev.field) }}
+        <span class="was">{{ partial "ctf/spark.html" (dict "d" (sub $pt $top)) }}<span>was top {{ lang.FormatNumber 1 $pt }}%</span></span>
+        {{- else }}<span class="was was--base">baseline · first run</span>{{ end }}
+      </div>
+      {{- end }}
+      {{- with $e.points }}
+      <div class="kpi"><span class="k">points</span><b>{{ lang.FormatNumber 0 . }}</b><span class="u">{{ with $e.points_max }}of {{ lang.FormatNumber 0 . }}{{ else }}scored{{ end }}</span>
+        {{- if and $prev $prev.points }}{{ $d := sub (int .) (int $prev.points) }}
+        <span class="was">{{ partial "ctf/spark.html" (dict "d" $d) }}<span>{{ if gt $d 0 }}+{{ end }}{{ $d }} pts</span></span>
+        {{- else }}<span class="was was--base">baseline · first run</span>{{ end }}
+      </div>
+      {{- end }}
+      {{- with $e.accuracy }}
+      <div class="kpi"><span class="k">accuracy</span><b>{{ . }}%</b><span class="u">of submissions correct</span>
+        {{- if and $prev $prev.accuracy }}{{ $d := sub (float .) (float $prev.accuracy) }}
+        <span class="was">{{ partial "ctf/spark.html" (dict "d" $d) }}<span>{{ if gt $d 0.0 }}+{{ end }}{{ lang.FormatNumber 1 $d }} pts</span></span>
+        {{- else }}<span class="was was--base">baseline · first run</span>{{ end }}
+      </div>
+      {{- end }}
+      {{- with $e.completion }}
+      <div class="kpi"><span class="k">completion</span><b>{{ . }}%</b><span class="u">of all challenges</span>
+        {{- if and $prev $prev.completion }}{{ $d := sub (float .) (float $prev.completion) }}
+        <span class="was">{{ partial "ctf/spark.html" (dict "d" $d) }}<span>{{ if gt $d 0.0 }}+{{ end }}{{ lang.FormatNumber 1 $d }} pts</span></span>
+        {{- else }}<span class="was was--base">baseline · first run</span>{{ end }}
+      </div>
+      {{- end }}
+    </div>
+
+    <div class="sigv__body">
+      <div class="sigv__chart">
+        {{- with $e.modules }}
+        <h3>module completion{{ with $prev }}, {{ $pl }} to {{ $e.season | lower }}{{ end }}</h3>
+        <div class="db db--axis" aria-hidden="true"><span></span><span class="db__t"><span class="db__in"><b style="left:0">0</b><b style="left:25%">25</b><b style="left:50%">50</b><b class="axis__strong" style="left:70%">70 strong</b><b style="left:100%">100</b></span></span><span></span><span></span></div>
+        <div class="dbs" role="list">
+          {{- range sort . "pct" "desc" }}
+            {{- $m := . }}{{ $was := false }}
+            {{- with $prev }}{{ range .modules }}{{ if eq .name $m.name }}{{ $was = .pct }}{{ end }}{{ end }}{{ end }}
+            {{- partial "ctf/bar.html" (dict "m" $m "was" $was "vs" $pl) }}
+          {{- end }}
+        </div>
+        <p class="legend">
+          {{- with $prev }}<span><i class="lg-was"></i>{{ $pl }}</span>{{ end }}
+          <span><i class="lg-now"></i>{{ $e.season | lower }}</span>
+          {{- if $prev }}<span><i class="lg-up"></i>gained</span><span><i class="lg-down"></i>dropped</span>
+          {{- else }}<span>baseline · first scored run</span>{{ end }}
+        </p>
+
+        {{- /* three headline takeaways, all from the scorecards */ -}}
+        {{- $hi := dict "n" "" "v" -1 }}{{ $lo := dict "n" "" "v" 101 }}
+        {{- range . }}{{ if gt (int .pct) (int $hi.v) }}{{ $hi = dict "n" .name "v" .pct }}{{ end }}{{ if lt (int .pct) (int $lo.v) }}{{ $lo = dict "n" .name "v" .pct }}{{ end }}{{ end }}
+        <div class="story">
+          {{- if $prev }}
+            {{- $gain := dict "n" "" "d" -1000 "a" 0 "b" 0 }}{{ $held := "" }}
+            {{- range . }}{{ $m := . }}{{ range $prev.modules }}{{ if eq .name $m.name }}
+              {{- $d := sub (int $m.pct) (int .pct) }}
+              {{- if gt $d (int $gain.d) }}{{ $gain = dict "n" $m.name "d" $d "a" .pct "b" $m.pct }}{{ end }}
+              {{- if and (eq (int $m.pct) 100) (eq (int .pct) 100) (not $held) }}{{ $held = $m.name }}{{ end }}
+            {{- end }}{{ end }}{{ end }}
+            {{- if gt (int $gain.d) 0 }}
+          <div><span class="k">biggest gain</span><b class="up">{{ $gain.n }} +{{ $gain.d }}</b><span>{{ $gain.a }}% to {{ $gain.b }}% in one run</span></div>
+            {{- end }}
+            {{- with $held }}
+          <div><span class="k">held</span><b>{{ . }} 100%</b><span>perfect in both runs</span></div>
+            {{- else }}
+          <div><span class="k">strongest</span><b>{{ $hi.n }} {{ $hi.v }}%</b><span>best module this run</span></div>
+            {{- end }}
+            {{- if and $e.rank $prev.rank }}{{ $dp := sub (int $prev.rank) (int $e.rank) }}{{ $df := sub (int $e.field) (int $prev.field) }}
+          <div><span class="k">field</span><b class="{{ if gt $dp 0 }}up{{ else }}warn{{ end }}">{{ if gt $dp 0 }}+{{ end }}{{ $dp }} places</b><span>{{ if gt $df 0 }}while {{ lang.FormatNumber 0 $df }} more players joined{{ else }}in a field of {{ lang.FormatNumber 0 $e.field }}{{ end }}</span></div>
+            {{- end }}
+          {{- else }}
+            {{- with $e.rank }}
+          <div><span class="k">first run</span><b class="up">top {{ lang.FormatNumber 1 $top }}%</b><span>#{{ . }} of {{ lang.FormatNumber 0 $e.field }} players</span></div>
+            {{- end }}
+          <div><span class="k">strongest</span><b>{{ $hi.n }} {{ $hi.v }}%</b><span>{{ if eq (int $hi.v) 100 }}every challenge solved{{ else }}best module this run{{ end }}</span></div>
+          <div><span class="k">biggest gap</span><b class="warn">{{ $lo.n }} {{ $lo.v }}%</b><span>
+            {{- with $next }}{{ range .modules }}{{ if eq .name $lo.n }}{{ .pct }}% by {{ $next.season | lower }}{{ end }}{{ end }}{{ else }}lowest module this run{{ end }}</span></div>
+          {{- end }}
+        </div>
+        {{- else }}
+        <h3>result</h3>
+        <p class="sigv__plain">{{ $e.result }}</p>
+        {{- end }}
+      </div>
+
+      <div class="sigv__side">
+        <h3>run details</h3>
+        <dl class="runinfo">
+          <div><dt>event</dt><dd>{{ $e.name }}</dd></div>
+          <div><dt>season</dt><dd>{{ $e.season }}</dd></div>
+          {{- with $e.platform }}<div><dt>platform</dt><dd>{{ . }}</dd></div>{{ end }}
+          {{- with $e.crew }}<div><dt>crew</dt><dd>{{ . }}</dd></div>{{ end }}
+          {{- with $e.handle }}<div><dt>handle</dt><dd>{{ . }}{{ with $e.school }} @ {{ . }}{{ end }}</dd></div>{{ end }}
+          {{- with $e.rank }}<div><dt>placed</dt><dd>#{{ . }} of {{ lang.FormatNumber 0 $e.field }} · ahead of {{ lang.FormatNumber 0 (sub (int $e.field) (int .)) }}</dd></div>{{ end }}
+          {{- with $e.proof_url }}<div><dt>proof</dt><dd><a href="{{ . }}">{{ $e.proof_label | default "proof" }} and certificate</a></dd></div>{{ end }}
+        </dl>
+
+        {{- /* gap tracking: a module under 70% is a gap; what did the next run of
+               the same CTF do with it? */ -}}
+        {{- with $e.modules }}
+          {{- $from := false }}{{ $to := false }}{{ $title := "" }}
+          {{- if $next }}{{ $from = $e }}{{ $to = $next }}{{ $title = printf "gaps this run · in %s" ($next.season | lower) }}
+          {{- else if $prev }}{{ $from = $prev }}{{ $to = $e }}{{ $title = printf "gaps from %s · this run" ($prev.season | lower) }}
+          {{- else }}{{ $from = $e }}{{ $title = "gaps this run" }}{{ end }}
+        <h3 class="sigv__gh">{{ $title }}</h3>
+        <ul class="gaps">
+          {{- range sort $from.modules "pct" "asc" }}{{ if lt (int .pct) 70 }}
+            {{- $m := . }}{{ $then := false }}
+            {{- with $to }}{{ range .modules }}{{ if eq .name $m.name }}{{ $then = .pct }}{{ end }}{{ end }}{{ end }}
+            {{- $st := "" }}
+            {{- if ne $then false }}{{ $st = cond (ge (int $then) 70) "closed" (cond (gt (int $then) (int $m.pct)) "improving" "still open") }}{{ end }}
+          <li class="gap gap--{{ $st | default "open" | replaceRE " " "-" }}">
+            <span class="gap__n">{{ $m.name }}</span>
+            <span class="gap__v">{{ $m.pct }}{{ if ne $then false }} → {{ $then }}{{ end }}%</span>
+            {{- with $st }}<span class="chip chip--{{ . | replaceRE " " "-" }}">{{ . }}</span>{{ end }}
+          </li>
+          {{- end }}{{ end }}
+        </ul>
+        {{- end }}
+      </div>
+    </div>
+    {{- if or $prev $next }}
+    <p class="caveat">Challenge sets change from run to run, so module scores compare different problems. Rank against the whole field is the like for like number.</p>
+    {{- end }}
+  </div>
+  {{- end }}
+</section>
+{{- end }}

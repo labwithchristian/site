@@ -40,6 +40,7 @@ events:
     name: NCL Individual Game
     org: National Cyber League
     note: Cyber Skyline
+    platform: Cyber Skyline
     tag: "2020.S"
     season: Spring 2020
     done: true
@@ -50,6 +51,7 @@ events:
     field: 5356
     result: 1,755 / 3,000 pts · 79.5% accuracy
     points: 1755
+    points_max: 3000
     accuracy: 79.5
     completion: 74.8
     proof_url: /resume/#ncl-2020
@@ -58,10 +60,10 @@ events:
     # rank / field: overall placement among all Individual Game players,
     # shown on /ctf with the top percentage worked out from them.
     # Module completion from the Cyber Skyline scorecard (the Survey module is
-    # left out: it is a questionnaire, not a challenge). `plan` says where a
-    # weaker category gets worked on. The newest season with modules feeds the
-    # signal panel on /ctf, compared with the next season down (rank, points,
-    # accuracy, completion and each module), so keep those fields on both.
+    # left out: it is a questionnaire, not a challenge). The signal panel on
+    # /ctf opens on the newest event with a result and compares it with the
+    # previous event from the same organiser (rank, points, accuracy,
+    # completion and each module), so keep those fields on both seasons.
     modules:
       - { name: osint, pct: 100 }
       - { name: wireless access, pct: 92 }
@@ -69,14 +71,15 @@ events:
       - { name: password cracking, pct: 89 }
       - { name: cryptography, pct: 81 }
       - { name: log analysis, pct: 71 }
-      - { name: web app, pct: 67, plan: "Huntress CTF 2026" }
-      - { name: scanning, pct: 18, plan: "homelab vulnerability management" }
-      - { name: exploitation, pct: 17, plan: "homelab project 2, adversary emulation" }
+      - { name: web app, pct: 67 }
+      - { name: scanning, pct: 18 }
+      - { name: exploitation, pct: 17 }
 
   - id: ncl-fall-2019
     name: NCL Individual Game
     org: National Cyber League
     note: Cyber Skyline
+    platform: Cyber Skyline
     tag: "2019.F"
     season: Fall 2019
     done: true
@@ -87,6 +90,7 @@ events:
     field: 4147
     result: 1,470 / 3,000 pts · 72.9% accuracy
     points: 1470
+    points_max: 3000
     accuracy: 72.9
     completion: 65.3
     proof_url: /resume/#ncl-2019
@@ -99,7 +103,7 @@ events:
       - { name: wireless access, pct: 77 }
       - { name: network traffic, pct: 74 }
       - { name: password cracking, pct: 74 }
-      - { name: log analysis, pct: 61, plan: "homelab project 1, SIEM" }
-      - { name: scanning, pct: 47, plan: "homelab vulnerability management" }
-      - { name: exploitation, pct: 25, plan: "homelab project 2, adversary emulation" }
-      - { name: web app, pct: 9, plan: "Huntress CTF 2026" }
+      - { name: log analysis, pct: 61 }
+      - { name: scanning, pct: 47 }
+      - { name: exploitation, pct: 25 }
+      - { name: web app, pct: 9 }

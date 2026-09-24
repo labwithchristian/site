@@ -1,0 +1,7 @@
+{{- /* Two-point trend line for a headline number on /ctf.
+       d: the change, positive when it got better (a lower rank counts as
+       better). Draws up for better, down for worse, flat for no change. */ -}}
+{{- $d := float .d -}}
+{{- $a := 11 }}{{ $b := 11 }}{{ $c := "flat" -}}
+{{- if gt $d 0.0 }}{{ $a = 18 }}{{ $b = 4 }}{{ $c = "up" }}{{ else if lt $d 0.0 }}{{ $a = 4 }}{{ $b = 18 }}{{ $c = "down" }}{{ end -}}
+<svg class="spk spk--{{ $c }}" viewBox="0 0 64 22" width="64" height="22" aria-hidden="true" focusable="false"><line x1="4" y1="{{ $a }}" x2="60" y2="{{ $b }}"/><circle class="o" cx="4" cy="{{ $a }}" r="2.6"/><circle cx="60" cy="{{ $b }}" r="3.2"/></svg>

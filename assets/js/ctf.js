@@ -53,6 +53,79 @@
     el.className = "r r--" + state;
   });
 
+  /* ---- 1b · signal strength: pick which event to show ----
+     A listbox behind a button. Opens on the newest scored event (the build
+     marks it); locked events (registered, live, tallying) cannot be picked.
+     Keys: Enter, Space or the arrows open it; arrows, Home and End move;
+     Enter or Space picks; Escape or Tab closes. */
+  var sig = document.querySelector("[data-sig]");
+  if (sig) {
+    var btn = sig.querySelector("[data-sig-btn]"), list = sig.querySelector("[data-sig-list]");
+    var cur = sig.querySelector("[data-sig-current]"), title = sig.querySelector("[data-sig-title]");
+    var opts = [].slice.call(list.querySelectorAll('[role="option"]'));
+    var active = -1;
+    var pickable = function (o) { return o.getAttribute("aria-disabled") !== "true"; };
+    var setActive = function (i) {
+      opts.forEach(function (o) { o.classList.remove("is-active"); });
+      active = i;
+      if (i < 0) { list.removeAttribute("aria-activedescendant"); return; }
+      opts[i].classList.add("is-active");
+      list.setAttribute("aria-activedescendant", opts[i].id);
+      opts[i].scrollIntoView({ block: "nearest" });
+    };
+    var selectedIndex = function () {
+      for (var i = 0; i < opts.length; i++) if (opts[i].getAttribute("aria-selected") === "true") return i;
+      return 0;
+    };
+    var open = function () {
+      list.hidden = false;
+      btn.setAttribute("aria-expanded", "true");
+      setActive(selectedIndex());
+      list.focus();
+    };
+    var close = function (refocus) {
+      list.hidden = true;
+      btn.setAttribute("aria-expanded", "false");
+      setActive(-1);
+      if (refocus) btn.focus();
+    };
+    var choose = function (i) {
+      var o = opts[i];
+      if (!o || !pickable(o)) return;
+      var id = o.getAttribute("data-sig-id");
+      opts.forEach(function (x) { x.setAttribute("aria-selected", x === o ? "true" : "false"); });
+      sig.querySelectorAll("[data-sig-view]").forEach(function (v) { v.hidden = v.getAttribute("data-sig-view") !== id; });
+      cur.textContent = title.textContent = o.getAttribute("data-sig-label");
+      close(true);
+    };
+    var step = function (dir) {
+      var i = active;
+      for (var n = 0; n < opts.length; n++) {
+        i = (i + dir + opts.length) % opts.length;
+        if (pickable(opts[i])) { setActive(i); return; }
+      }
+    };
+    btn.addEventListener("click", function () { if (list.hidden) open(); else close(true); });
+    btn.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowDown" || e.key === "ArrowUp") { e.preventDefault(); open(); }
+    });
+    list.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowDown") { e.preventDefault(); step(1); }
+      else if (e.key === "ArrowUp") { e.preventDefault(); step(-1); }
+      else if (e.key === "Home") { e.preventDefault(); active = -1; step(1); }
+      else if (e.key === "End") { e.preventDefault(); active = 0; step(-1); }
+      else if (e.key === "Enter" || e.key === " ") { e.preventDefault(); choose(active); }
+      else if (e.key === "Escape") { e.preventDefault(); close(true); }
+      else if (e.key === "Tab") { close(false); }
+    });
+    opts.forEach(function (o, i) {
+      o.addEventListener("click", function () { choose(i); });
+      o.addEventListener("mousemove", function () { if (pickable(o) && active !== i) setActive(i); });
+    });
+    var dd = sig.querySelector("[data-sig-dd]");
+    document.addEventListener("click", function (e) { if (!list.hidden && !dd.contains(e.target)) close(false); });
+  }
+
   /* ---- 2 · the flashlight menu bar ---- */
   var bar = document.querySelector(".site-nav__bar");
   if (!bar) return;
