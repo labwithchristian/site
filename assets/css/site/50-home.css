@@ -791,6 +791,14 @@ html[data-astral="true"]:not(.dark) .pipeline__item {
   background-color: rgba(var(--color-neutral-800), 0.45);
 }
 
+/* Cards with an id (job id="...") are link targets, e.g. the /ctf proof
+   links to /resume/#ncl-2020: clear the floating nav and mark the card. */
+.xp__item[id] { scroll-margin-top: 6.5rem; }
+.xp__item:target {
+  border-color: rgba(var(--color-primary-500), 0.9);
+  box-shadow: 0 0 0 3px rgba(var(--color-primary-500), 0.18);
+}
+
 html[data-astral="true"] .xp__item {
   backdrop-filter: blur(12px) saturate(125%);
   -webkit-backdrop-filter: blur(12px) saturate(125%);

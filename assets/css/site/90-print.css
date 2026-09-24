@@ -51,7 +51,7 @@
   }
 
   .xp { gap: 0 !important; margin: 0 !important; }
-  .xp__item { padding: 4pt 0 3pt !important; border: 0 !important; border-radius: 0 !important; background: none !important; break-inside: avoid; }
+  .xp__item { padding: 4pt 0 3pt !important; border: 0 !important; border-radius: 0 !important; background: none !important; box-shadow: none !important; break-inside: avoid; }
   .xp__item + .xp__item { border-top: 0.5pt solid #ddd !important; }
   .xp__head { margin-bottom: 1pt; }
   .xp__role { font-size: 11pt !important; color: #111 !important; }

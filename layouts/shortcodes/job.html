@@ -21,7 +21,11 @@
     - Bullet
     {{< /role >}}
     {{< /job >}}
+
+  Optional id="ncl-2020" gives the card an anchor, so other pages (the /ctf
+  proof links) can point at one entry: /resume/#ncl-2020.
 */ -}}
+{{- $id := .Get "id" -}}
 {{- $company := .Get "company" -}}
 {{- $dates := .Get "dates" -}}
 {{- $location := .Get "location" -}}
@@ -30,7 +34,7 @@
 {{- $tags := .Get "tags" | default "" -}}
 {{- $inner := trim .Inner "\n " -}}
 {{- $hasRoles := in $inner "job__role" -}}
-<article class="xp__item job{{ if $hasRoles }} job--roles{{ end }}">
+<article{{ with $id }} id="{{ . | anchorize }}"{{ end }} class="xp__item job{{ if $hasRoles }} job--roles{{ end }}">
   <div class="xp__head">
     <h3 class="xp__role">{{ $company }}</h3>
     {{- with $dates }}<span class="xp__year">{{ . }}</span>{{ end }}

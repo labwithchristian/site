@@ -41,6 +41,7 @@ git add themes/blowfish && git commit -m "Update Blowfish to <version>"
 | `_default/baseof.html` | Adds `data-astral`, `data-heading-font` and `data-bg-tinted` attributes to `<html>`, and `data-page="ctf"` plus the `dark` class on /ctf |
 | `_default/ctf.html` | The /ctf page, rendered from `data/ctf.yaml` (see [CTF record](#ctf-record)) |
 | `partials/ctf/next.html` | Returns the next CTF that has not ended, and whether it is upcoming or live. Used by /ctf, the resume line and the homepage row |
+| `partials/ctf/bar.html` | One module bar in the /ctf signal panel, with a marker and change figure against the previous scored season |
 | `_default/list.html` | Drops the theme's "no articles" line; sections use their own empty states. On a section with no table of contents, the body opens to the full container (`.list-body--roomy`) instead of the theme's 65ch cap |
 | `_default/_markup/render-heading.html` | Theme heading markup, but keeps classes set with `{.h-minor}` style attributes, and swaps the hover `#` for a drawn chef's toque positioned by `.heading-anchor` in `10-typography.css` |
 | `partials/header/floating.html`, `header/basic.html` | Compact pill nav with the Home icon. A menu entry can carry its own class through `[main.params] class = "..."` (the /ctf tab uses this) |
@@ -194,13 +195,16 @@ start and end times (with their time zone offset) from the registration email.
 **When an event closes:**
 
 1. Before the platform goes dark, screenshot the scoreboard: rank, points and solves, with your handle
-   visible. Save it in `content/resume/` next to the NCL scorecard.
-2. Fill in `result`, `handle`, `proof_url` and `proof_label` in `data/ctf.yaml`.
+   visible. Save it in `content/resume/` next to the NCL scorecards.
+2. Fill in `result`, `handle`, `proof_url` and `proof_label` in `data/ctf.yaml`. Point `proof_url` at the
+   event's own resume card: give its `job` shortcode an `id` and link `/resume/#that-id`.
 3. Check the event's rules on writeups. Publish them under Writeups only when allowed, then set
    `writeup_url`.
 4. Add the result to the resume's Education and Competitions section (the `ctf-next` line only covers
    what's next). No em or en dashes.
-5. If the event had scored categories, add a `modules` list so the strengths panel can use it.
+5. If the event had scored categories, add a `modules` list so the strengths panel can use it, plus
+   `points`, `accuracy` and `completion` as plain numbers. The panel shows the newest scored season and
+   compares it with the one before (NCL Spring 2020 against Fall 2019 today).
 
 **Turning /ctf off** (kill switch): set `draft: true` in `content/ctf.md` and comment out the `/ctf`
 block in `config/_default/menus.en.toml`. The resume line, homepage row and Writeups link hide
@@ -218,7 +222,7 @@ commit, "Revert Changes in Commit", then Push). `DEPLOYMENT-SOP.md` Phase 8 has 
 | `timeline more` + `timeline-item dates role company` | Home | Career at a glance, with a button to the full resume |
 | `timeline-role title dates promoted company` | Home | Inside `timeline-item`, one title of a promotion, newest first. Each title gets its own row and dates; `promoted="2023"` on the newer title draws the promotion comet |
 | `resume-head facts="Label :: Value \| ..."` | Resume | Summary, quick facts, Download PDF and LinkedIn buttons, print-only name block |
-| `job company dates location context positions tags` | Resume | One employer: titles held (`"Title :: years \| Title :: years"`), Markdown bullets, tags |
+| `job id company dates location context positions tags` | Resume | One employer: titles held (`"Title :: years \| Title :: years"`), Markdown bullets, tags. Optional `id` makes the card a link target (`/resume/#ncl-2020`), used by the /ctf proof links |
 | `role title dates promoted tags` | Resume | Inside `job`, one title with its own bullets and tags, for a promotion (newest first; `promoted="2023"` on the newer title draws the promotion comet) |
 | `strengths` + `strength icon title items` | Home | Core Strengths cards |
 | `pipeline items="Name :: Status :: Note \| ..."` | Home, Homelab | Status list with cooking-themed badges. The status word picks the icon: a steaming pan for anything else, a lidded stockpot for `Ongoing` or `Continuous`, and a cold pan on an unlit burner for `Planned`, `Queued` or `Target`. Only the first two move |

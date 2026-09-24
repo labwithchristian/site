@@ -89,8 +89,15 @@ IT operations and security leader with ten plus years in enterprise environments
 {{< proof items="Diploma :: wgu-diploma.jpg :: Western Governors University diploma: Bachelor of Science, Network Operations and Security, conferred to Christian Carrasco in January 2021" >}}
 {{< /job >}}
 
-{{< job company="National Cyber League" dates="2019 to 2020" location="Remote" positions="Individual Game, Cyber Skyline" >}}
-- Hands-on skills assessment scored on accuracy and completion across nine challenge modules. Competed in the Fall 2019 and Spring 2020 seasons.
+{{< job id="ncl-2020" company="National Cyber League" dates="2020" location="Remote" positions="Individual Game, Cyber Skyline" >}}
+- Hands-on skills assessment scored on accuracy and completion across nine challenge modules. Spring 2020 season, improving on Fall 2019 by 285 points.
+- Spring 2020: 1,755 of 3,000 points at 79.5% accuracy and 74.8% completion. Strongest in OSINT, wireless access exploitation, network traffic analysis, password cracking, cryptography, and log analysis.
+
+{{< proof items="Certificate :: ncl-spring-2020-certificate.jpg :: NCL Spring 2020 certificate of participation for Christian Carrasco, verified by Cyber Skyline | Score card :: ncl-spring-2020-scorecard.jpg :: NCL Spring 2020 score card: 1,755 of 3,000 points, 79.5 percent accuracy, 74.8 percent completion" >}}
+{{< /job >}}
+
+{{< job id="ncl-2019" company="National Cyber League" dates="2019" location="Remote" positions="Individual Game, Cyber Skyline" >}}
+- Hands-on skills assessment scored on accuracy and completion across nine challenge modules. Fall 2019 season.
 - Fall 2019: 1,470 of 3,000 points at 72.9% accuracy and 65.3% completion. Strongest in OSINT, cryptography, wireless access exploitation, network traffic analysis, and password cracking.
 
 {{< proof items="Certificate :: ncl-certificate.jpg :: NCL Fall 2019 certificate of participation for Christian Carrasco, verified by Cyber Skyline | Score card :: ncl-scorecard.jpg :: NCL Fall 2019 score card: 1,470 of 3,000 points, 72.9 percent accuracy, 65.3 percent completion" >}}

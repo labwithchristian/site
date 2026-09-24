@@ -44,9 +44,29 @@ events:
     season: Spring 2020
     done: true
     crew: solo
-    # Competed; the scorecard is not on file, so no score is claimed.
-    result: ""
+    handle: Proj3ctL1nux
+    result: 1,755 / 3,000 pts · 79.5% accuracy
+    points: 1755
+    accuracy: 79.5
+    completion: 74.8
+    proof_url: /resume/#ncl-2020
+    proof_label: scorecard
     writeup_url: ""
+    # Module completion from the Cyber Skyline scorecard (the Survey module is
+    # left out: it is a questionnaire, not a challenge). `plan` says where a
+    # weaker category gets worked on. The newest season with modules feeds the
+    # signal panel on /ctf, compared with the next season down (points,
+    # accuracy, completion and each module), so keep those fields on both.
+    modules:
+      - { name: osint, pct: 100 }
+      - { name: wireless access, pct: 92 }
+      - { name: network traffic, pct: 91 }
+      - { name: password cracking, pct: 89 }
+      - { name: cryptography, pct: 81 }
+      - { name: log analysis, pct: 71 }
+      - { name: web app, pct: 67, plan: "Huntress CTF 2026" }
+      - { name: scanning, pct: 18, plan: "homelab vulnerability management" }
+      - { name: exploitation, pct: 17, plan: "homelab project 2, adversary emulation" }
 
   - id: ncl-fall-2019
     name: NCL Individual Game
@@ -58,13 +78,13 @@ events:
     crew: solo
     handle: Proj3ctL1nux
     result: 1,470 / 3,000 pts · 72.9% accuracy
+    points: 1470
+    accuracy: 72.9
     completion: 65.3
-    proof_url: /resume/#education-and-competitions
+    proof_url: /resume/#ncl-2019
     proof_label: scorecard
     writeup_url: ""
-    # Module completion from the Cyber Skyline scorecard (the Survey module is
-    # left out: it is a questionnaire, not a challenge). `plan` says where a
-    # weaker category gets worked on.
+    # The Fall 2019 scorecard, same modules as above.
     modules:
       - { name: osint, pct: 100 }
       - { name: cryptography, pct: 77 }

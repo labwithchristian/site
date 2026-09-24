@@ -1,0 +1,14 @@
+{{- /* One module bar in the /ctf signal panel.
+       m: the module ({name, pct}); prev: the season before, or false;
+       vs: that season's name; gap: true for the "working on" column.
+       The marker on the bar and the change figure compare with prev. */ -}}
+{{- $m := .m -}}
+{{- $was := false -}}
+{{- with .prev }}{{ range .modules }}{{ if eq .name $m.name }}{{ $was = .pct }}{{ end }}{{ end }}{{ end -}}
+<div class="bar{{ if .gap }} gap{{ end }}"><span>{{ $m.name }}</span><i style="--w:{{ math.Max $m.pct 3 }}%{{ if ne $was false }};--was:{{ $was }}%{{ end }}"></i><em>{{ $m.pct }}%</em>
+  {{- if ne $was false }}
+    {{- $d := sub (int $m.pct) (int $was) -}}
+    {{- if eq $d 0 }}<b class="d d--flat">=<span class="sr"> unchanged since {{ .vs }}</span></b>
+    {{- else }}<b class="d d--{{ cond (gt $d 0) "up" "down" }}">{{ if gt $d 0 }}+{{ end }}{{ $d }}<span class="sr"> points since {{ .vs }}</span></b>{{ end }}
+  {{- else }}<b class="d"></b>{{ end -}}
+</div>
