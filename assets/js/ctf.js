@@ -53,7 +53,7 @@
     el.className = "r r--" + state;
   });
 
-  /* ---- 1b · signal strength: pick which event to show ----
+  /* ---- 1b · results panel: pick which event to show ----
      A listbox behind a button. Opens on the newest scored event (the build
      marks it); locked events (registered, live, tallying) cannot be picked.
      Keys: Enter, Space or the arrows open it; arrows, Home and End move;

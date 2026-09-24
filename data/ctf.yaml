@@ -15,6 +15,21 @@
 # After an event closes, see "CTF record" in README.md for the proof checklist.
 # No em or en dashes in any text here: it feeds the resume.
 
+# Full names for the skill categories in the results panel, keyed by the
+# short `name` used in each event's `modules` list.
+module_names:
+  osint: Open-source intelligence
+  wireless access: Wireless access exploitation
+  network traffic: Network traffic analysis
+  password cracking: Password cracking
+  cryptography: Cryptography
+  log analysis: Log analysis
+  web app: Web application exploitation
+  scanning: Scanning and reconnaissance
+  exploitation: Enumeration and exploitation
+# At or above this share solved, a category counts as strong.
+module_strong: 70
+
 events:
   - id: huntress-2026
     name: Huntress CTF 2026
@@ -43,6 +58,10 @@ events:
     platform: Cyber Skyline
     tag: "2020.S"
     season: Spring 2020
+    short: NCL
+    league: the National Cyber League
+    scope: nationwide
+    about: a national, timed cyber skills competition run by Cyber Skyline. Every player gets the same challenges and is ranked against the whole field.
     done: true
     crew: solo
     handle: Proj3ctL1nux
@@ -56,14 +75,14 @@ events:
     completion: 74.8
     proof_url: /resume/#ncl-2020
     proof_label: scorecard
+    proof_text: Scorecard and certificate
     writeup_url: ""
     # rank / field: overall placement among all Individual Game players,
     # shown on /ctf with the top percentage worked out from them.
     # Module completion from the Cyber Skyline scorecard (the Survey module is
-    # left out: it is a questionnaire, not a challenge). The signal panel on
-    # /ctf opens on the newest event with a result and compares it with the
-    # previous event from the same organiser (rank, points, accuracy,
-    # completion and each module), so keep those fields on both seasons.
+    # left out: it is a questionnaire, not a challenge). The results panel on
+    # /ctf opens on the newest event with a result and compares its rank,
+    # completion and accuracy with the previous event from the same organiser.
     modules:
       - { name: osint, pct: 100 }
       - { name: wireless access, pct: 92 }
@@ -82,6 +101,10 @@ events:
     platform: Cyber Skyline
     tag: "2019.F"
     season: Fall 2019
+    short: NCL
+    league: the National Cyber League
+    scope: nationwide
+    about: a national, timed cyber skills competition run by Cyber Skyline. Every player gets the same challenges and is ranked against the whole field.
     done: true
     crew: solo
     handle: Proj3ctL1nux
@@ -95,6 +118,7 @@ events:
     completion: 65.3
     proof_url: /resume/#ncl-2019
     proof_label: scorecard
+    proof_text: Scorecard and certificate
     writeup_url: ""
     # The Fall 2019 scorecard, same modules as above.
     modules:

@@ -1,22 +1,10 @@
-{{- /* One module row in the /ctf signal panel: a hollow dot for the previous
-       run, a solid dot for this one, joined by a line (green when it went
-       up, amber when it went down). 70% marks a strong module.
-       m: the module ({name, pct}); was: previous run's pct, or false;
-       vs: previous run's season. */ -}}
-{{- $m := .m }}{{ $was := .was }}
-{{- $b := int $m.pct }}
-{{- $cls := "flat" }}{{ $d := 0 }}
-{{- if ne $was false }}{{ $d = sub $b (int $was) }}{{ $cls = cond (gt $d 0) "up" (cond (lt $d 0) "down" "flat") }}{{ end }}
-<div class="db db--{{ $cls }} db--{{ cond (lt $b 70) "gap" "ok" }}" role="listitem">
-  <span class="db__n">{{ $m.name }}</span>
-  <span class="db__t" aria-hidden="true"><span class="db__in">
-    {{- if ne $was false }}{{ $lo := math.Min $b (int $was) }}{{ $hi := math.Max $b (int $was) }}
-    <i class="db__l" style="left:{{ $lo }}%;width:{{ sub $hi $lo }}%"></i><i class="db__was" style="left:{{ $was }}%"></i>
-    {{- end }}<i class="db__now" style="left:{{ $b }}%"></i></span></span>
-  <span class="db__v">{{ $b }}%</span>
-  <span class="db__d">
-    {{- if ne $was false }}
-      {{- if eq $d 0 }}=<span class="sr"> unchanged since {{ .vs }}</span>
-      {{- else }}{{ if gt $d 0 }}+{{ end }}{{ $d }}<span class="sr"> points since {{ .vs }}, was {{ $was }}%</span>{{ end }}
-    {{- end }}</span>
+{{- /* One skill row in the /ctf results panel: name, a bar for the share of
+       the category solved, and the exact figure. Bars under the "strong" line
+       use the softer purple so the strong ones read first.
+       m: the module ({name, pct}); label: its full name; strong: the line. */ -}}
+{{- $v := int .m.pct -}}
+<div class="bar{{ if lt $v (int .strong) }} bar--low{{ end }}" role="listitem" title="{{ .label }}: {{ $v }}% solved">
+  <span class="bar__n">{{ .label }}</span>
+  <span class="bar__t" aria-hidden="true"><i style="width:{{ math.Max $v 1 }}%"></i></span>
+  <span class="bar__v">{{ $v }}%<span class="sr"> solved</span></span>
 </div>

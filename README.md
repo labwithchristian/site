@@ -41,9 +41,8 @@ git add themes/blowfish && git commit -m "Update Blowfish to <version>"
 | `_default/baseof.html` | Adds `data-astral`, `data-heading-font` and `data-bg-tinted` attributes to `<html>`, and `data-page="ctf"` plus the `dark` class on /ctf |
 | `_default/ctf.html` | The /ctf page, rendered from `data/ctf.yaml` (see [CTF record](#ctf-record)) |
 | `partials/ctf/next.html` | Returns the next CTF that has not ended, and whether it is upcoming or live. Used by /ctf, the resume line and the homepage row |
-| `partials/ctf/signal.html` | The /ctf signal strength panel: an event dropdown (opens on the newest scored event, locks events without scores), headline numbers, module chart, run details and gap tracking. CTF data only |
-| `partials/ctf/bar.html` | One module row in that panel: hollow dot for the previous run, solid dot for this one |
-| `partials/ctf/spark.html` | The small up, down or flat trend line on each headline number |
+| `partials/ctf/signal.html` | The /ctf results panel: an event dropdown (opens on the newest scored event, locks events without scores), the headline "Top X%" with a meter against the whole field, rank, challenges solved and accuracy with their change since the previous run of the same CTF, and one chart of the skills tested. CTF data only |
+| `partials/ctf/bar.html` | One skill row in that panel: full name, bar, exact share solved. Bars under the "strong" line use the softer purple |
 | `_default/list.html` | Drops the theme's "no articles" line; sections use their own empty states. On a section with no table of contents, the body opens to the full container (`.list-body--roomy`) instead of the theme's 65ch cap |
 | `_default/_markup/render-heading.html` | Theme heading markup, but keeps classes set with `{.h-minor}` style attributes, swaps the hover `#` for a drawn chef's toque positioned by `.heading-anchor` in `10-typography.css`, and uses a `span` for the jump target so headings stay valid HTML |
 | `partials/header/floating.html`, `header/basic.html` | Compact pill nav with the Home icon. A menu entry can carry its own class through `[main.params] class = "..."` (the /ctf tab uses this) |
@@ -144,7 +143,7 @@ rather than tilting, so the logo is never shown rotated. The kitchen metaphor ca
 | Homelab | The running reference for the blue team lab: hardware, network, tools, the six projects, constraints. Built on Phase 9 of the [Blue Team Roadmap](https://github.com/keraattin/Blue-Team-Roadmap#phase-9-build-your-portfolio) |
 | Writeups | Methodology, decisions and evidence. The lab projects, incident response reports from retired Hack The Box Sherlocks and blue team labs, public breach analysis, detection rules |
 | Blog | Shorter pieces: the reasoning behind a decision, the tradeoff, the mistake, and the occasional life update |
-| /ctf | Timed, scored competitions: what's next with a live countdown, the archive with proof, a signal strength panel with an event picker (rank, percentile, points, accuracy, completion, modules run over run), and the house rules. Deliberately different from the rest of the site: always dark, its own menu bar. Practice platforms stay on Homelab and Writeups |
+| /ctf | Timed, scored competitions: what's next with a live countdown, the archive with proof, a results panel with an event picker (top X% of the field, rank, challenges solved, accuracy, skills tested), and the house rules. Deliberately different from the rest of the site: always dark in its own Graphite theme (colour tokens at the top of `assets/css/ctf.css`), its own menu bar. Practice platforms stay on Homelab and Writeups |
 
 **Writeups or Blog?** The Blog is about Christian and the choices he makes. The Writeups are about
 systems and the evidence behind them.
@@ -181,7 +180,7 @@ It's set with `images` in `params.toml`.
 
 | Where | What shows |
 |---|---|
-| /ctf (`layouts/_default/ctf.html`) | Next event with countdown, the archive, signal strength with an event picker, house rules |
+| /ctf (`layouts/_default/ctf.html`) | Next event with countdown, the archive, results with an event picker, house rules |
 | Resume (`ctf-next` shortcode) | One line while an event is coming up or live, with a link to /ctf. Web only |
 | Home (`pipeline ... ctf="true"`) | A What's Cooking row: `Queued`, then `Live now` |
 
@@ -207,9 +206,11 @@ start and end times (with their time zone offset) from the registration email.
 4. Add the result to the resume's Education and Competitions section (the `ctf-next` line only covers
    what's next). No em or en dashes.
 5. Add `rank`, `field`, `points`, `points_max`, `accuracy` and `completion` where the event publishes
-   them, and a `modules` list (`name`, `pct`) if it scores by category. The signal strength panel then
-   opens on this event and compares it with the previous event from the same organiser only (NCL with
-   NCL), so a new CTF starts as its own baseline. The panel is CTF data only: no study or lab plans.
+   them, and a `modules` list (`name`, `pct`) if it scores by category, with each short name listed
+   under `module_names`. Optional: `league` and `scope` for the headline sentence, `about` for the one
+   line on what the event is, and `proof_text` for the proof link. The results panel then opens on this
+   event and compares it with the previous event from the same organiser only (NCL with NCL), so a new
+   CTF starts as its own baseline. The panel is CTF data only: no study or lab plans.
 
 **Turning /ctf off** (kill switch): set `draft: true` in `content/ctf.md` and comment out the `/ctf`
 block in `config/_default/menus.en.toml`. The resume line, homepage row and Writeups link hide
