@@ -133,15 +133,6 @@ The heaviest pieces set those numbers. Security Onion's evaluation mode asks for
 - Qualys Community Edition keeps scan data for 90 days, so I export any scan worth writing up the week it runs.
 - I do not publish addresses, hostnames, or topology specifics here. That is deliberate.
 
-<!--
-## Changelog {.h-minor}
-
-- **17 September 2026:** Restructured into two phases. Vulnerability management is Phase 1, with detection and the attack range moved to Phase 2.
-- **20 September 2026:** Scanner stack set to Greenbone, Nessus Essentials Plus, and Qualys Community Edition.
-- **22 September 2026:** Rebuilt as a blue team lab on the Blue Team Roadmap's Phase 9 design: three segments, the roadmap's tool stack, and its six portfolio projects. Elastic Security chosen as the SIEM over Wazuh and Splunk, with Elastic Defend beside Sysmon on the endpoints. Vulnerability management kept as one added project, scanning with Qualys Community Edition alone. ServiceNow Vulnerability Response on hold pending a test, with DefectDojo meanwhile. The offensive Phase 2 (Ludus, GOAD-Light) removed for now.
-- **22 September 2026 (later):** Rewritten in first person. Credit to keraattin made explicit.
-- **22 September 2026 (later):** Intro notes why I follow a beginner roadmap: to close gaps, refresh concepts and build weaker skills such as Python.
--->
 
 {{< wip title="Still cooking" >}}
 I am building the lab and documenting it as it lands. Sanitized configs, Sysmon settings and detection rules go up on [GitHub](https://github.com/labwithchristian) alongside it.

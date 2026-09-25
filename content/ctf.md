@@ -2,6 +2,8 @@
 title: "/ctf"
 description: "Capture the flag: the events I have entered, where I placed, what is next, and the rules I play by."
 layout: ctf
+# Link preview card for this page (1200x630). The rest of the site uses img/og-card.jpg.
+images: ["img/og-ctf.jpg"]
 showDate: false
 showAuthor: false
 showReadingTime: false

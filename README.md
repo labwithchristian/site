@@ -171,7 +171,8 @@ chrome and adds the name and links at the top.
 ### Link previews
 
 `static/img/og-card.jpg` (1200x630) is the image LinkedIn, Slack and X show when the site is shared.
-It's set with `images` in `params.toml`.
+It's set with `images` in `params.toml`. /ctf has its own card, `static/img/og-ctf.jpg` (Graphite, the
+backroom title and the NCL headline), set with `images` in `content/ctf.md`. Any page can do the same.
 
 ### CTF record
 
@@ -280,7 +281,7 @@ for the card, so the source can be larger.
 
 ## Continuous integration
 
-`.github/workflows/hugo.yml` runs on every pull request, every push to `main`, and once a day at 09:15 UTC:
+`.github/workflows/hugo.yml` runs on every pull request, every push to `main`, and once a day at 13:15 UTC (9:15 am Eastern in summer):
 
 1. Builds the site with Hugo extended.
 2. Checks every internal link, anchor, stylesheet, script and image in the build with
@@ -292,3 +293,47 @@ the homepage's CTF row), so they stay right without a commit. GitHub pauses sche
 days with no push; any commit, or "Run workflow" on the Actions tab, turns them back on.
 
 Working on a branch and opening a pull request gets the checks without touching the live site.
+
+The upload step stays on `actions/upload-pages-artifact@v3`, which keeps dot folders. From v4 on, hidden files
+are dropped, which would silently remove `/.well-known/security.txt`; on v5+ add `include-hidden-files: true`.
+
+## Security
+
+**security.txt.** `static/.well-known/security.txt` (RFC 9116) says how to report a problem with the site.
+Its `Expires` line must stay in the future: renew it before **25 September 2027**, then yearly.
+
+**Response headers.** GitHub Pages can't set headers, so they are added at Cloudflare, in front of the site
+(Rules, Transform Rules, a response header rule on all requests). The set in use:
+
+| Header | Value |
+|---|---|
+| Content-Security-Policy | `default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; form-action 'self'; object-src 'none'; upgrade-insecure-requests` |
+| X-Content-Type-Options | `nosniff` |
+| X-Frame-Options | `DENY` |
+| Referrer-Policy | `strict-origin-when-cross-origin` |
+| Permissions-Policy | `camera=(), microphone=(), geolocation=(), payment=(), usb=()` |
+| Strict-Transport-Security | set in SSL/TLS, Edge Certificates, HSTS: max-age 6 months, include subdomains, no preload at first |
+
+Everything the site loads is served from its own domain, so the policy allows only `'self'`. `'unsafe-inline'`
+covers the theme's small inline scripts and the style attributes the templates set (bar widths, meter
+positions). If a new feature loads anything from another domain (a font, an embed, analytics), add that origin
+to the matching directive or the browser will block it.
+
+**No analytics,** by choice: no tracking scripts and no cookies.
+
+## Homelab changelog
+
+Kept here rather than in `content/homelab/_index.md`: an HTML comment in a page still ships in its source.
+
+- **17 September 2026:** Restructured into two phases. Vulnerability management is Phase 1, with detection and the attack range moved to Phase 2.
+- **20 September 2026:** Scanner stack set to Greenbone, Nessus Essentials Plus, and Qualys Community Edition.
+- **22 September 2026:** Rebuilt as a blue team lab on the Blue Team Roadmap's Phase 9 design: three segments, the roadmap's tool stack, and its six portfolio projects. Elastic Security chosen as the SIEM over Wazuh and Splunk, with Elastic Defend beside Sysmon on the endpoints. Vulnerability management kept as one added project, scanning with Qualys Community Edition alone. ServiceNow Vulnerability Response on hold pending a test, with DefectDojo meanwhile. The offensive Phase 2 (Ludus, GOAD-Light) removed for now.
+- **22 September 2026 (later):** Rewritten in first person. Credit to keraattin made explicit.
+- **22 September 2026 (later):** Intro notes why I follow a beginner roadmap: to close gaps, refresh concepts and build weaker skills such as Python.
+- **24 September 2026:** Intro shortened; it keeps the Blue Team Roadmap credit and why I follow it.
+
+## Parked drafts
+
+Lines taken off the live pages but worth keeping.
+
+- whoami, "How I work": **A detection rule is easy to write and hard to trust.** The skill is one that fires on real adversary behavior, doesn't bury the analyst in false positives, and maps to a technique you can name.

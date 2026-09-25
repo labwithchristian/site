@@ -1,12 +1,21 @@
 name: Build, check and deploy
 
 # Pull requests: build the site and check every internal link, no deploy.
-# Pushes to main: the same checks, then deploy to GitHub Pages.
+# Pushes to main and the daily schedule: the same checks, then deploy to GitHub Pages.
 on:
   push:
     branches: ["main"]
   pull_request:
   workflow_dispatch:
+  # Daily rebuild so date-driven content stays current without a commit: the
+  # /ctf event states, the resume's "Competing next" line and the homepage's
+  # What's Cooking row are all worked out from data/ctf.yaml at build time.
+  # 13:15 UTC is 9:15 am US Eastern in daylight time (8:15 am in winter), just
+  # after events that open at 9 am Eastern, such as Huntress CTF 2026.
+  # GitHub pauses scheduled runs after 60 days without a push; any commit (or
+  # "Run workflow") turns them back on.
+  schedule:
+    - cron: "15 13 * * *"
 
 permissions:
   contents: read
@@ -54,6 +63,8 @@ jobs:
             --remap 'https://christiancarrasco\.dev/(.*) file://${{ github.workspace }}/public/$1'
             './public/**/*.html'
 
+      # v3 keeps dot folders, so /.well-known/security.txt deploys. From v4 on,
+      # hidden files are left out: on v5+ add `include-hidden-files: true`.
       - name: Upload Pages artifact
         if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v3

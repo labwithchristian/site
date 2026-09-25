@@ -112,8 +112,6 @@ fingerprintAlgorithm = "sha512"
   cardView = false
   cardViewScreenWidth = false
 
-[firebase]
-
-[fathomAnalytics]
+# No analytics on this site, by choice: no tracking scripts, no cookies.
 
 [verification]

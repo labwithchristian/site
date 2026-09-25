@@ -37,9 +37,9 @@ events:
     note: Cybersecurity Awareness Month
     tag: "2026.O"
     season: October 2026
-    # Start and end assume midnight US Eastern. Confirm both against the
-    # registration email and adjust if Huntress publishes a different time.
-    start: "2026-10-01T00:00:00-04:00"
+    # Start confirmed: 1 October, 9:00 am US Eastern. The end still assumes
+    # 31 October at 11:59 pm Eastern; adjust if Huntress says otherwise.
+    start: "2026-10-01T09:00:00-04:00"
     end: "2026-10-31T23:59:00-04:00"
     crew: solo
     format: daily challenge drops

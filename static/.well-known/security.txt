@@ -1,0 +1,9 @@
+# Security contact for christiancarrasco.dev (RFC 9116).
+# If you find a vulnerability on this site, please report it privately
+# through LinkedIn. This is a static personal site with no user accounts,
+# no forms and no stored personal data.
+
+Contact: https://www.linkedin.com/in/cybercc
+Expires: 2027-09-25T00:00:00.000Z
+Preferred-Languages: en, es
+Canonical: https://christiancarrasco.dev/.well-known/security.txt

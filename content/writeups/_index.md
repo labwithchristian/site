@@ -27,7 +27,7 @@ The lab's six projects follow keraattin's [Blue Team Roadmap](https://github.com
 | SIEM deployment and dashboards | Windows, Sysmon and network logs in Elastic Security and Security Onion, and the detections and dashboards built on top | Project 1 |
 | Adversary emulation | Atomic Red Team techniques run on purpose, what the SIEM caught, and the rules written for what it missed | Project 2 |
 | Phishing analysis | One email taken apart end to end, and the script that pulls out its IOCs | Project 3 |
-| Incident response reports | Full investigations from retired Sherlocks and blue team labs: summary, timeline, IOCs, ATT&CK mapping, remediation | Project 4 |
+| Incident response reports | Full investigations from retired boxes and blue team labs (Hack The Box, TryHackMe, LetsDefend): summary, timeline, IOCs, ATT&CK mapping, remediation | Project 4 |
 | Threat intelligence brief | One threat group's techniques, turned into detections tested in the lab | Project 5 |
 | Detection rules | Sigma and YARA rules, how they were tested, and the pull requests upstream | Project 6 |
 | Vulnerability management | Qualys agent and network scans of the same hosts compared, and one finding followed from scan to verified fix | Added project |
