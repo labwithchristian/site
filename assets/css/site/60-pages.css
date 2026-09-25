@@ -542,6 +542,16 @@ html.dark .nd-barrier { stroke: rgb(var(--color-secondary-300)); }
   margin-top: 1.5rem;
 }
 
+/* One line under the request button: why there is no download */
+.resume-head__note {
+  margin: 0.7rem 0 0;
+  max-width: 52ch;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: rgb(var(--color-neutral-600));
+}
+.dark .resume-head__note { color: rgb(var(--color-neutral-400)); }
+
 /* Titles held at one employer, newest first */
 .job__positions {
   list-style: none;

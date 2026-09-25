@@ -15,7 +15,7 @@
   .proof, .proof-lb,
   .site-nav, .site-nav-spacer, .site-nav__social, #site-footer, #scroll-to-top,
   #the-top, #reading-progress, #background-canvas, .toc, .anchor,
-  .resume-head__actions, .cta-btn { display: none !important; }
+  .resume-head__actions, .resume-head__note, .cta-btn { display: none !important; }
 
   * { box-shadow: none !important; backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
   a { color: inherit !important; text-decoration: none !important; }

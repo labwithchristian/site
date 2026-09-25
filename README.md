@@ -154,20 +154,19 @@ architecture changed in the lab's segmentation is a Writeup, because the subject
 credential is only the occasion. The same rule puts life updates in the Blog without needing a
 category for them.
 
-### Resume and its PDF
+### Resume: no public download
 
-`content/resume/index.md` is the full resume. The **Download PDF** button appears whenever a PDF sits next to the page
-(`content/resume/christian-carrasco-resume.pdf`).
+`content/resume/index.md` is the full resume. There is deliberately no public PDF: Christian tailors his resume to each
+role, so the `resume-head` shortcode shows a **Request a tailored resume** button (it opens his LinkedIn) with a
+one-line note under it. The button and note are hidden when printing.
 
-**Downloads are currently paused.** `download="paused"` on the `resume-head` shortcode shows an inert "Download coming
-soon" label instead of the button, and `build: publishResources: false` in the page's front matter keeps the PDF out of
-the build entirely, so its URL returns 404 rather than just being unlinked. To turn downloads back on, delete
-`download="paused"`. The front matter setting can stay: Hugo still publishes any resource a template actually uses.
+To offer a PDF again later: put it in `content/resume/` and add `download="on"` to the `resume-head` shortcode. The
+button then reads **Download PDF**, with **Connect on LinkedIn** beside it. `build: publishResources: false` in the
+page's front matter keeps any PDF that is not linked out of the build.
 
-The PDF can be Christian's own exported resume: replace
-the file, keeping the name. To generate one from the page instead: run `hugo server`, open `/resume/` in Chrome in light mode, Print, Destination "Save as PDF",
-Paper "Letter", Margins "Default", Background graphics off, and save over the file. `90-print.css`
-strips the site chrome and adds the name and links at the top.
+A clean copy can still be made from the page: run `hugo server`, open `/resume/` in Chrome in light mode, Print,
+Destination "Save as PDF", Paper "Letter", Margins "Default", Background graphics off. `90-print.css` strips the site
+chrome and adds the name and links at the top.
 
 ### Link previews
 
